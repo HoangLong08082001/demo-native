@@ -1,0 +1,53 @@
+.wrapper
+{
+  
+   display: flex;
+    width: 100%;
+    justify-content: center;
+    overflow-x: hidden;
+   
+}
+.wrapper-img
+{
+    border-radius: 10px;
+    width: 97%;
+    height: 551px;
+    opacity:0 ;
+    background-color: aqua;
+    object-fit: cover;
+    position:absolute;
+}
+.wrapper-img.active
+{
+    opacity: 1;
+    transition: ease-in-out;
+}
+.wrapper-arrow2
+{
+    
+    text-align: end;
+    width: 80%;
+    color: rgb(37, 39, 39);
+    cursor: pointer;
+    border: 0;
+    font-size: 40px;
+    line-height: 550px;
+    background-color: white;
+    padding-bottom: 0;
+    
+}
+.wrapper-arrow1
+{
+    padding-bottom: 0;
+    text-align: start;
+    width: 80%;
+    
+    color: rgb(37, 39, 39);
+    cursor: pointer;
+    border: 0;
+    font-size: 40px;
+    line-height: 550px;
+    background-color: white;
+   
+    
+}
