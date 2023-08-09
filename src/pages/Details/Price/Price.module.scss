@@ -1,0 +1,31 @@
+.wrapper {
+  margin-top: 20px;
+  width: 100%;
+  background: #e8c087;
+  padding: 10px 40px;
+}
+.table {
+  width: 100%;
+  margin-left: 20px;
+}
+.head {
+  color: black;
+  font-weight: 800;
+  font-size: 25px;
+}
+.line {
+  width: 520%;
+  background: black;
+  height: 2px;
+}
+.time-tour,
+.id-tour,
+.adult-price,
+.baby-price {
+  margin-left: 80px;
+}
+
+.adult-price,
+.baby-price {
+  color: red;
+}
