@@ -29,6 +29,11 @@
 }
 .login
 {
+    cursor: pointer;
+    display: block;
+    line-height: 2;
+    text-align: center;
+    text-decoration: none;
     border: 0;
     background-color: #2F81BD;
     border-radius: 10px;
@@ -37,6 +42,7 @@
     color: white;
     margin-right: 20px;
 }
+
 .logout
 {
     border: 0;
@@ -67,4 +73,15 @@
     border-radius: 17px;
     margin-left:50px;
     height: 40px;
+}
+.loginweb{
+    width: 90%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+    border: 0;
+    color: white;
+    font-size: 19px;
+    height: 40px;
+    background-color: #2F81BD;
 }

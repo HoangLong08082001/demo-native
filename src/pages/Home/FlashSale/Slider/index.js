@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-
+import '../../../../../node_modules/slick-carousel/slick/slick.scss';
 import classname from 'classnames/bind';
 import ProductBox from "../../../../components/Product";
 import styles from'./Slick.module.scss';
@@ -63,7 +63,7 @@ export default class MultipleItems extends Component {
     return (
       <div>
       
-        <Slider  {...settings}>
+        <Slider className={cx('slick-slider')} {...settings}>
           <ProductBox container margin/> 
           <ProductBox container margin/> 
           <ProductBox container margin/> 

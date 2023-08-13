@@ -11,10 +11,18 @@ function App() {
             publicRoutes.map((route,index)=>{
               const Layout=DefaultLayout
               const Page=route.component
-              return <Route key={index} path={route.path} element={
-              <Layout>
-                <Page/>
-              </Layout>}/>
+              if(index===2||index===3)
+              {
+                return <Route key={index} path={route.path} element={
+                  <Page/>}/>
+              }
+              else
+              {
+                return <Route key={index} path={route.path} element={
+                  <Layout>
+                    <Page/>
+                  </Layout>}/>
+              }
             })
           }
        </Routes>
