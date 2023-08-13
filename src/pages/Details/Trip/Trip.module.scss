@@ -1,0 +1,27 @@
+.wrapper {
+  padding: 10px 20px;
+  display: flex;
+}
+.trips {
+  width: 100%;
+}
+.help {
+  width: 40%;
+}
+.description {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  width: 100%;
+  padding: 10px 2px;
+}
+.first-img,
+.second-img,
+.third-img {
+  width: 70%;
+  height: 500px;
+  margin-left: 150px;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}

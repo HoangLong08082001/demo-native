@@ -1,0 +1,29 @@
+.wrapper {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 80%;
+  right: 20;
+  position: fixed;
+  top: 0;
+}
+.title {
+  padding: 10px 10px;
+  background: #2f81bd;
+  p {
+    margin-left: 120px;
+    color: white;
+    font-weight: 700;
+  }
+}
+.hotline,
+.mail {
+  display: flex;
+  p {
+    margin-left: 5px;
+  }
+}
+.icon-phone,
+.icon-mail {
+  margin-top: 20px;
+  margin-left: 30px;
+  font-size: 25px;
+}

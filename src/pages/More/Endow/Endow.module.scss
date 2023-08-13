@@ -1,0 +1,21 @@
+.wrapper {
+  width: 100%;
+  margin-top: 20px;
+  p {
+    margin-left: 50px;
+    font-size: 30px;
+    font-weight: 900;
+    color: #2f81bd;
+  }
+}
+.line {
+  background: #2f81bd;
+  height: 5px;
+  width: 50%;
+  margin-left: 50px;
+}
+.list-endow {
+  width: 100%;
+  padding: 5px 20px;
+  display: flex;
+}

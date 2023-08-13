@@ -1,0 +1,25 @@
+.wrapper {
+  padding: 10px 50px;
+}
+.first-line {
+  display: flex;
+  justify-content: space-between;
+  p {
+    font-size: 30px;
+  }
+  b {
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+  }
+}
+.second-line {
+  display: flex;
+  justify-content: space-between;
+  p {
+    font-size: 30px;
+  }
+  b {
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+  }
+}

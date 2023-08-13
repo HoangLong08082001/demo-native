@@ -1,32 +1,31 @@
-.watchadd{
-    position:absolute;
-    width: 230px;
-    height: 45px;
-    font-size: 15px;
-    border: 0;
-    top:80%;
-    cursor: pointer;
-    left: 13%;
-    font-weight: 600;
-    color: white;
-    border-radius: 5px;
-    background-color: #2F81BD;
+.watchadd {
+  position: absolute;
+  width: 230px;
+  height: 45px;
+  font-size: 15px;
+  border: 0;
+  top: 80%;
+  cursor: pointer;
+  left: 13%;
+  font-weight: 600;
+  color: white;
+  border-radius: 5px;
+  background-color: #2f81bd;
 }
-.watchadd2
-{
-    
-    width: 150px;
-    height: 45px;
-    font-size: 15px;
-    border: 0;
-    top:80%;
-    cursor: pointer;
-    left: 13%;
-    font-weight: 500;
-    color: white;
-    border-radius: 10px;
-    background-color: #1494ef;
+.watchadd2 {
+  width: 150px;
+  height: 45px;
+  font-size: 15px;
+  border: 0;
+  top: 80%;
+  cursor: pointer;
+  left: 13%;
+  font-weight: 500;
+  color: white;
+  border-radius: 10px;
+  background-color: #1494ef;
 }
+<<<<<<< HEAD
 .login
 {
     cursor: pointer;
@@ -51,18 +50,100 @@
     border-radius: 10px;
     width: 127px;
     height: 35px;
+=======
+.LinkMore {
+  text-decoration: none;
+  background-color: #1494ef;
+  padding: 10px 40px;
+  border-radius: 10px;
+  color: white;
 }
-.search
-{
-    cursor: pointer;
-    height: 55px;
-    border-radius: 5px;
-    width: 50px;
-    color: white;
-    background-color:#484f4a;
-    border: 1px solid black;
-    font-size: 20px;
+.login {
+  cursor: pointer;
+  border: 0;
+  background-color: #2f81bd;
+  border-radius: 10px;
+  width: 127px;
+  height: 35px;
+  color: white;
+  margin-right: 20px;
+>>>>>>> 92bb01457bb29b07aac2453aff568fa3d8136673
 }
+.logout {
+  cursor: pointer;
+  border: 0.1px solid #2f81bd;
+  background-color: #ffffff;
+  color: #2f81bd;
+  border-radius: 10px;
+  width: 127px;
+  height: 35px;
+}
+.search {
+  cursor: pointer;
+  height: 60px;
+  width: 50px;
+  color: white;
+  background-color: #484f4a;
+  border: 1px solid black;
+  font-size: 20px;
+}
+.buttonproduct {
+  background-color: white;
+  color: black;
+  font-weight: 700;
+  width: 120px;
+  font-size: 17px;
+  border-radius: 17px;
+  margin-left: 50px;
+  height: 40px;
+}
+
+.buttonlocation {
+  width: 150px;
+  height: 45px;
+  font-size: 15px;
+  border: 1px solid black;
+  top: 80%;
+  cursor: pointer;
+  left: 13%;
+  font-weight: 500;
+  color: black;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.marginleft {
+  margin-left: 20px;
+}
+.pagingpage {
+  cursor: pointer;
+  padding: 10px 10px;
+  margin-left: 10px;
+  border: none;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.pagingpageactive {
+  cursor: pointer;
+  padding: 10px 10px;
+  margin-left: 10px;
+  color: white;
+  border: none;
+  background: #2f81bd;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.purchase {
+  padding: 10px 20px;
+  color: white;
+  background: red;
+  border: none;
+  border-radius: 5px;
+}
+.underline {
+  text-decoration: none;
+  color: unset;
+}
+<<<<<<< HEAD
 .buttonproduct
 {
     background-color: white;
@@ -85,3 +166,5 @@
     height: 40px;
     background-color: #2F81BD;
 }
+=======
+>>>>>>> 92bb01457bb29b07aac2453aff568fa3d8136673
