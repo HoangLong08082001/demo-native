@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./ImageDetail.module.scss";
 import classNames from "classnames/bind";
-import pq1 from "../../../../../DoAnDuLich/src/assets/images/PhuQuoc/pq1.jpeg";
-import pq2 from "../../../../../DoAnDuLich/src/assets/images/PhuQuoc/pq2.png";
-import pq3 from "../../../../../DoAnDuLich/src/assets/images/PhuQuoc/pq3.png";
-import pq4 from "../../../../../DoAnDuLich/src/assets/images/PhuQuoc/pq4.png";
-import pq5 from "../../../../../DoAnDuLich/src/assets/images/PhuQuoc/pq5.jpeg";
+import pq1 from "../../../../../travel-ui/src/assets/images/PhuQuoc/pq1.jpeg";
+import pq2 from "../../../../../travel-ui/src/assets/images/PhuQuoc/pq2.png";
+import pq3 from "../../../../../travel-ui/src/assets/images/PhuQuoc/pq3.png";
+import pq4 from "../../../../../travel-ui/src/assets/images/PhuQuoc/pq4.png";
+import pq5 from "../../../../../travel-ui/src/assets/images/PhuQuoc/pq5.jpeg";
 const cx = classNames.bind(styles);
 export default function ImageDetail() {
   return (

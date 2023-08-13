@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Trip.module.scss";
 import classNames from "classnames/bind";
-import pq1 from "../../../../../DoAnDuLich/src/assets/images/PhuQuoc/pq5.jpeg";
+import pq1 from '../../../../../travel-ui/src/assets/images/PhuQuoc/pq1.jpeg'
 import HelpForm from "./HelpForm";
 import { useState, useEffect } from "react";
 
