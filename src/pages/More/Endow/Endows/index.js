@@ -3,7 +3,7 @@ import styles from "./Endows.module.scss";
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
-import endow from "../../../../../../DoAnDuLich/src/assets/images/flash.png";
+import endow from "../../../../../../travel-ui/src/assets/images/flash.png";
 import Button from "../../../../components/Button";
 const cx = classNames.bind(styles);
 export default function Endows() {
