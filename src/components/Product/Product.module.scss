@@ -60,3 +60,13 @@
 .margintop {
   margin-top: 20px;
 }
+.sale-off {
+  background: red;
+  width: 40px;
+  padding: 1px 5px;
+  border-radius: 5px 0px 60px 0px;
+  p {
+    color: white;
+    font-weight: 800;
+  }
+}

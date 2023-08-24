@@ -6,7 +6,10 @@ import img1 from "../../../../../travel-ui/src/assets/images/slider/img1.png";
 import img2 from "../../../../../travel-ui/src/assets/images/slider/img2.png";
 import img3 from "../../../../../travel-ui/src/assets/images/slider/img3.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 import Button from "../../../components/Button";
 const cx = classname.bind(styles);
 const data = [img1, img2, img3];
@@ -38,9 +41,9 @@ function Slider() {
   };
   return (
     <div className={cx("wrapper")}>
-      <button onClick={preonclick} className={cx("wrapper-arrow1")}>
-        <FontAwesomeIcon icon={faCaretLeft} />
-      </button>
+      <div className={cx("left-icon")} onClick={preonclick}>
+        <FontAwesomeIcon icon={faChevronLeft}></FontAwesomeIcon>
+      </div>
       {data.map((item, zindex) => {
         return (
           <img
@@ -51,10 +54,13 @@ function Slider() {
           ></img>
         );
       })}
-      <Button watchadd>Xem Thêm</Button>
-      <button onClick={nextonclick} className={cx("wrapper-arrow2")}>
-        <FontAwesomeIcon icon={faCaretRight} />
-      </button>
+      <div className={cx("title-about")}>
+        <p>TOUR DU LICH</p>
+        <Button watchadd>Xem Thêm</Button>
+      </div>
+      <div className={cx("right-icon")} onClick={nextonclick}>
+        <FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon>
+      </div>
     </div>
   );
 }

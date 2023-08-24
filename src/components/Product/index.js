@@ -15,7 +15,11 @@ function ProductBox({ margin, container, margintop }) {
         <div
           className={cx("container-img")}
           style={{ backgroundImage: `url(${img1})` }}
-        ></div>
+        >
+          <div className={cx("sale-off")}>
+            <p>15%</p>
+          </div>
+        </div>
         <div className={cx("container-date")}>3N/2D</div>
         <div className={cx("container-content")}>
           Tour Phu Quoc: Khám phá vùng đảo cuối đất nước

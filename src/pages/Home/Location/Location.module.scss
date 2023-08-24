@@ -1,17 +1,22 @@
-.List-tour
-{
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    gap: 45px 0;
+.wrapper {
+  h2 {
+    margin-left: 50px;
+    font-size: 30px;
+    color: #2f81bd;
+    font-weight: 800;
+  }
 }
-.Watch-add
-{
-    text-align: center;
-    margin-top: 20px;
+
+.List-tour {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 45px 0;
 }
-.location-tour
-{
-    
-    margin-bottom: 20px;
+.Watch-add {
+  text-align: center;
+  margin-top: 20px;
+}
+.location-tour {
+  margin-bottom: 20px;
 }

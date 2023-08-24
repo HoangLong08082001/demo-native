@@ -20,6 +20,10 @@ function Button({
   purchase,
   LinkMore,
   underline,
+  loginweb,
+  forgotPass,
+  linkregister,
+  registerweb,
 }) {
   let Comp = "button";
   const props = {
@@ -46,6 +50,10 @@ function Button({
     purchase,
     LinkMore,
     underline,
+    loginweb,
+    forgotPass,
+    linkregister,
+    registerweb,
   });
   return (
     <Comp className={classes} {...props}>

@@ -8,25 +8,29 @@ const cx = classname.bind(styles);
 function Search() {
   return (
     <div className={cx("wrapper")}>
-      <form className={cx("wrapper-f")}>
-        <div className={cx("form-destination")}>
-          <span>Dia diem</span>
-          <input type="text" placeholder="Ban sap di dau?" />
-        </div>
-        <div className={cx("departure-day")}>
-          <span>Ngay di</span>
-          <input type="date" />
-        </div>
-        <div className={cx("return-day")}>
-          <span>Ngay ve</span>
-          <input type="date" />
-        </div>
-        <div className={cx("btn-search")}>
-          <Button search>
-            <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
-          </Button>
-        </div>
-      </form>
+      <div className={cx("location")}>
+        <label htmlFor="location">Di diem</label>
+        <input
+          type="text"
+          name=""
+          id="location"
+          placeholder="Ban muon di dau..."
+        />
+      </div>
+      <div className={cx("day-go")}>
+        <label htmlFor="daygo">Ngay di</label>
+        <input type="date" name="" id="daygo" />
+      </div>
+      <div className={cx("day-out")}>
+        <label htmlFor="dayout">Ngay ve</label>
+        <input type="date" name="" id="dayout" />
+      </div>
+      <div className={cx("btn-search")}>
+        <FontAwesomeIcon
+          className={cx("icon-search")}
+          icon={faSearch}
+        ></FontAwesomeIcon>
+      </div>
     </div>
   );
 }

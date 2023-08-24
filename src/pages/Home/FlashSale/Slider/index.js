@@ -3,10 +3,9 @@ import Slider from "react-slick";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-import '../../../../../node_modules/slick-carousel/slick/slick.scss';
+import "slick-carousel/slick/slick.scss";
 
-
-import "../../../../../node_modules/slick-carousel/slick/slick.scss";
+import "slick-carousel/slick/slick.scss";
 import classname from "classnames/bind";
 
 import ProductBox from "../../../../components/Product";

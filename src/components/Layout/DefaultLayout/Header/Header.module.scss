@@ -1,45 +1,36 @@
-.wrapper
-{
-    background-color: rgb(255, 255, 255);
-    margin-bottom: 1px;
-    
-    display: flex;   
-    height: 150px;
+.wrapper {
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 1px;
+
+  display: flex;
+  height: 150px;
 }
-.link
-{
-    font-size: 20px;
-    color: black;
-    padding: 10px;
-    text-decoration: none;
-    
+.link {
+  font-size: 20px;
+  color: black;
+  padding: 10px;
+  text-decoration: none;
 }
-.warpper-link
-{
-    margin-right: 50px;
+.warpper-link {
+  margin-right: 50px;
   line-height: 75px;
-   text-align: center;
-    width: 50%;
+  text-align: center;
+  width: 50%;
 }
-.warpper-link-h
-{
-    display: flex;
-    justify-content: space-around;
-    height: 50%;
+.warpper-link-h {
+  display: flex;
+  justify-content: space-around;
+  height: 50%;
 }
-.warpper-link-icon
-{
-    padding-bottom: 30px;
-    display: flex;
-    justify-content: space-evenly;
+.warpper-link-icon {
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: space-evenly;
 }
-.warpper-link-icon div svg
-{
-    font-size: 20px;
+.warpper-link-icon div svg {
+  font-size: 20px;
 }
 
-.warpper-icon
-{
-    padding-top: 10px;
-   
+.warpper-icon {
+  padding-top: 10px;
 }

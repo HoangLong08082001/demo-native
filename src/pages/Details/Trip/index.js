@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Trip.module.scss";
 import classNames from "classnames/bind";
-import pq1 from '../../../../../travel-ui/src/assets/images/PhuQuoc/pq1.jpeg'
+import pq1 from "../../../../../travel-ui/src/assets/images/PhuQuoc/pq1.jpeg";
 import HelpForm from "./HelpForm";
 import { useState, useEffect } from "react";
 
@@ -10,7 +10,7 @@ export default function Trip() {
   const [show, setShow] = useState(false);
   useEffect(() => {
     const handlScroll = () => {
-      if (window.scrollY >= 1000 && window.scrollY <= 2950) {
+      if (window.scrollY >= 1100 && window.scrollY <= 2950) {
         setShow(!show);
       } else {
         setShow(show);

@@ -41,6 +41,14 @@
   height: 35px;
   color: white;
   margin-right: 20px;
+  transition: 0.2s linear;
+  border: 0.1px solid #2f81bd;
+  &:hover {
+    transition: 0.2s linear;
+    background: white;
+    color: #2f81bd;
+    border: 0.1px solid #2f81bd;
+  }
 }
 .logout {
   cursor: pointer;
@@ -115,4 +123,41 @@
 .underline {
   text-decoration: none;
   color: unset;
+}
+.loginweb {
+  cursor: pointer;
+  padding: 10px 150px;
+  font-size: 30px;
+  border: none;
+  background: #2f81bd;
+  border: 0.1px solid #2f81bd;
+  color: white;
+  font-weight: 700;
+  width: 100%;
+  transition: 0.2s linear;
+  &:hover {
+    transition: 0.2s linear;
+    background: white;
+    color: #2f81bd;
+    border: 0.1px solid #2f81bd;
+  }
+}
+.registerweb {
+  margin-top: 5px;
+  padding: 5px 130px;
+  font-size: 30px;
+  color: white;
+  border: none;
+  background: #2f81bd;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+.forgotPass {
+  color: #2f81bd;
+  text-decoration: none;
+}
+.linkregister {
+  color: #2f81bd;
+  text-decoration: none;
 }
