@@ -6,7 +6,7 @@ const cx = classNames.bind(styles);
 export default function FlashSale() {
   return (
     <div className={cx("form-img")}>
-      <img src={saleimage} alt="loi" />
+      <div className={cx("form-img-1")}></div>
     </div>
   );
 }
