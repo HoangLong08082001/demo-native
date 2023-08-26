@@ -9,8 +9,8 @@ export default function Details() {
   return (
     <div>
       <About />
-      <ImageDetail />
       <Price />
+      <ImageDetail />
       <Trip />
       <AnotherTour />
     </div>

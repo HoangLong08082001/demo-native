@@ -10,7 +10,7 @@ export default function Trip() {
   const [show, setShow] = useState(false);
   useEffect(() => {
     const handlScroll = () => {
-      if (window.scrollY >= 1100 && window.scrollY <= 2950) {
+      if (window.scrollY >= 1100 && window.scrollY <= 3550) {
         setShow(!show);
       } else {
         setShow(show);

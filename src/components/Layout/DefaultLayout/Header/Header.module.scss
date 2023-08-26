@@ -28,13 +28,13 @@
     border-radius:0 0 10px 10px;
     position: absolute;
     ul{
-        padding: 0;
+        padding-left: 0;
     }
     ul li{
         list-style-type: none;
         height: 50px;
-        padding-left: 5%;
-        padding-right:5%;
+        display: block;
+        padding: 0;
         text-align:center;
         line-height: 50px;
         

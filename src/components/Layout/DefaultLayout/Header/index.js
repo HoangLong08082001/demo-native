@@ -79,11 +79,11 @@ function Header() {
                 <div className={cx('link')} onClick={handleclick1}>Tour Nước Ngoài <span><FontAwesomeIcon onClick={handleclick1} icon={faCaretDown} />
                    {set1&&
                      <div  className={cx('menu-show')}>
-                     <ul>
-                         <li> Châu Âu </li>
-                         <li> Châu Mĩ</li>
-                         <li> Châu Á </li>
-                     </ul>
+                        <ul>
+                            <li> Châu Âu </li>
+                            <li> Châu Mĩ</li>
+                            <li> Châu Á </li>
+                        </ul>
                  </div>
                    }
                 </span></div>

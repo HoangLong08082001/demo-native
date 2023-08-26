@@ -6,6 +6,7 @@
 }
 .left-image {
   width: 70%;
+  
   z-index: 1;
   img {
     cursor: pointer;
@@ -21,7 +22,7 @@
   opacity: 0.8;
   top: 0;
   z-index: 2;
-  margin-top: 46%;
+  top: 143%;
   height: 16%;
   border-radius: 0 0px 15px 15px;
   padding: 10px 20px;
