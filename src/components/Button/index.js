@@ -24,6 +24,16 @@ function Button({
   forgotPass,
   linkregister,
   registerweb,
+  btnBack,
+  showhidden,
+  loginadmin,
+  itemmenu,
+  btnDetailAdmin,
+  btnLogoutAdmin,
+  activeitem,
+  servicebtn,
+  btnAdd,
+  btnSearch,
 }) {
   let Comp = "button";
   const props = {
@@ -54,6 +64,16 @@ function Button({
     forgotPass,
     linkregister,
     registerweb,
+    btnBack,
+    showhidden,
+    loginadmin,
+    itemmenu,
+    btnDetailAdmin,
+    btnLogoutAdmin,
+    servicebtn,
+    activeitem,
+    btnAdd,
+    btnSearch,
   });
   return (
     <Comp className={classes} {...props}>

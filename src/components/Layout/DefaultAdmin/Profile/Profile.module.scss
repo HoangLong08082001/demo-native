@@ -1,0 +1,32 @@
+.wrapper {
+  background: white;
+  width: 100%;
+  height: 5%;
+  display: flex;
+}
+.back-website {
+  margin-top: 20px;
+  margin-left: 60%;
+}
+.profile {
+  margin-left: 150px;
+  display: flex;
+  p {
+    font-weight: 800;
+    color: black;
+  }
+  .circle {
+    cursor: pointer;
+    margin-left: 30px;
+    margin-top: 10px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 50%;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+  }
+}
