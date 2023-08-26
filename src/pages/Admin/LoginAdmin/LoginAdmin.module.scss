@@ -1,0 +1,59 @@
+.wrapper {
+  width: 30%;
+  margin: 100px auto;
+  padding: 20px 20px;
+  p {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+  }
+}
+.form {
+  border-radius: 10px;
+  padding: 10px 40px;
+  .form-input {
+    margin-top: 20px;
+    input {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: 1px solid black;
+      width: 100%;
+      padding: 15px 20px;
+      font-size: 18px;
+      display: block;
+      &:focus {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid black;
+        outline: none;
+      }
+    }
+  }
+}
+
+.showpass {
+  cursor: pointer;
+  background: #1494ef;
+  color: white;
+  font-weight: 700;
+  width: 30%;
+  margin-left: 230px;
+  border-radius: 10px;
+  p {
+    font-size: 15px;
+  }
+}
+.hidepass {
+  cursor: pointer;
+  background: red;
+  color: white;
+  width: 30%;
+  font-weight: 700;
+  margin-left: 230px;
+  border-radius: 10px;
+  p {
+    font-size: 15px;
+  }
+}

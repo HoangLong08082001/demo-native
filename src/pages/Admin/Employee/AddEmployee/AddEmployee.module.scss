@@ -1,0 +1,20 @@
+.wrapper {
+  margin-top: 20px;
+  padding: 20px 30px;
+  p {
+    font-size: 30px;
+    color: black;
+    font-weight: 800;
+  }
+}
+.form {
+  margin-top: 20px;
+  height: 500px;
+  display: flex;
+  .form-left {
+    width: 100%;
+  }
+  .form-right {
+    width: 100%;
+  }
+}

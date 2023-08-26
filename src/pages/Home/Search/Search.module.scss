@@ -1,67 +1,96 @@
 .wrapper {
-  background-color: #2f81bd;
-  width: 100%;
-  height: 150px;
-  margin-top: 5px;
-}
-.wrapper-f {
+  height: 200px;
+  margin-top: 550px;
+  z-index: 1;
+  background: #2f81bd;
+  padding: 50px 150px;
   display: flex;
 }
-.form-destination {
-  border: 0.5px solid black;
-  background: rgb(221, 219, 219);
-  width: 30%;
-  margin-left: 15%;
-  margin-top: 30px;
+.location {
+  width: 50%;
+
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  span {
-    font-size: 15px;
-  }
+  background: white;
+  padding: 10px 0px;
   input {
-    background: rgb(221, 219, 219);
-    outline: none;
-    border: 0;
+    padding: 13px 10px;
     font-size: 20px;
+    background: white;
+    border: none;
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+  label {
+    margin-left: 10px;
+    color: black;
+    font-weight: 700;
   }
 }
-.departure-day {
-  border: 0.5px solid black;
-  background: rgb(221, 219, 219);
-  display: flex;
+.day-go {
   width: 20%;
+
+  display: flex;
   flex-direction: column;
-  margin-top: 30px;
-  padding: 10px;
-  span {
-    font-size: 15px;
-  }
+  background: white;
+  padding: 10px 0px;
   input {
-    background: rgb(221, 219, 219);
-    outline: none;
-    border: 0;
+    background: white;
+    padding: 20px 10px;
     font-size: 20px;
+    border: none;
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+  label {
+    margin-left: 10px;
+    color: black;
+    font-weight: 700;
   }
 }
-.return-day {
-  border: 0.5px solid black;
-  background: rgb(221, 219, 219);
-  display: flex;
+.day-out {
+  background: white;
   width: 20%;
+
+  display: flex;
   flex-direction: column;
-  margin-top: 30px;
-  padding: 10px;
-  span {
-    font-size: 15px;
-  }
+  padding: 10px 0px;
   input {
-    background: rgb(221, 219, 219);
-    outline: none;
-    border: 0;
+    padding: 20px 10px;
+    background: white;
+    border: none;
     font-size: 20px;
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+  label {
+    margin-left: 10px;
+    color: black;
+    font-weight: 700;
   }
 }
 .btn-search {
-  margin-top: 33px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 2px;
+  width: 10%;
+
+  background: #035189;
+  text-align: center;
+  font-size: 40px;
+  transition: 0.1s linear;
+  .icon-search {
+    margin-top: 30px;
+    color: white;
+  }
+  &:hover {
+    transition: 0.1s linear;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
 }

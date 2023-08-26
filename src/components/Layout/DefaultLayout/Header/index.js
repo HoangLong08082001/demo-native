@@ -1,11 +1,11 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classname from 'classnames/bind';
-import styles from'./Header.module.scss';
-import { useNavigate } from 'react-router-dom';
-import Button from'../../../../../src/components/Button'
-import { faCaretDown, faEarth } from '@fortawesome/free-solid-svg-icons';
-import { faBell, faStar } from '@fortawesome/free-regular-svg-icons';
-import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import classname from "classnames/bind";
+import styles from "./Header.module.scss";
+import { useNavigate } from "react-router-dom";
+import Button from "../../../Button";
+import { faCaretDown, faEarth } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faStar } from "@fortawesome/free-regular-svg-icons";
+import { Link } from "react-router-dom";
 
 import logo from '../../../../../src/assets/images/logo.png';
 import {  useEffect, useRef, useState } from 'react';
@@ -50,7 +50,8 @@ function Header() {
         }
     }
     
-    return ( <div className={cx('wrapper')}>
+    return ( 
+    <div className={cx('wrapper')}>
         <div>
             <img src={logo}alt='Logo' width={400} height={150}></img>
         </div>
@@ -89,23 +90,21 @@ function Header() {
                
             </div>
         </div>
-
-        <div className={cx('warpper-icon')}>
-            <div className={cx('warpper-link-icon')}>
-                <div> <FontAwesomeIcon  icon={faEarth}/></div>
-                <div> <FontAwesomeIcon icon={faBell}/></div>
-                <div><div><FontAwesomeIcon  icon={faStar}/></div></div>
-            </div>
-            <div className={cx('warpper-link-icon')}>
-                <div>
-                    <Button login onClick={() => navigate('/login')}>Đăng Nhập</Button>
-                </div>
-                <div>
-                    <Button logout onClick={() => navigate('/register')}>Đăng Xuất</Button>
-                </div>
-            </div>
+        <div className={cx("warpper-link-icon")}>
+          <div>
+            <Button login onClick={() => navigate("/login")}>
+              Đăng Nhập
+            </Button>
+          </div>
+          <div>
+            <Button logout onClick={() => navigate("/register")}>
+              Đăng Xuất
+            </Button>
+          </div>
         </div>
-    </div>);
+      </div>
+    
+  );
 }
 
 export default Header;

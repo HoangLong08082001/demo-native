@@ -8,7 +8,6 @@ import Endow from "./Endow";
 export default function More() {
   return (
     <div>
-      <FlashSale />
       <Location />
       <Sort />
       <Tours />

@@ -1,0 +1,44 @@
+.wrapper {
+  margin-top: 30px;
+  height: 711px;
+  padding: 10px 20px;
+}
+.search {
+  margin-top: 20px;
+  input {
+    padding: 10px 10px;
+    width: 50%;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+.form-table {
+  margin-top: 5px;
+  height: 600px;
+  overflow-y: scroll;
+  table {
+    width: 100%;
+    tr th {
+      background: rgb(195, 195, 195);
+      border: 1px solid black;
+      font-weight: 900;
+      color: black;
+    }
+    tr td {
+      padding: 10px;
+      text-align: center;
+    }
+  }
+}
+.icon-pen {
+  cursor: pointer;
+  color: rgb(30, 30, 203);
+  font-size: 30px;
+}
+.icon-trash {
+  cursor: pointer;
+  margin-left: 30px;
+  color: rgb(203, 30, 30);
+  font-size: 30px;
+}

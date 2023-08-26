@@ -6,10 +6,9 @@ import ProductBox from "../../../components/Product";
 const cx = classname.bind(styles);
 function Location() {
   return (
-    <div>
-      <div style={{ color: "#2f81bd ", marginLeft: 20 }}>
-        <h2>Hè 2023</h2>
-      </div>
+    <div className={cx("wrapper")}>
+      <h2>Hè 2023</h2>
+
       <div className={cx("location-tour")}>
         <Button buttonproduct>Trong Nước</Button>
         <Button buttonproduct>Châu Âu</Button>
