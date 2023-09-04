@@ -1,0 +1,32 @@
+.wrapper {
+    h2 {
+      margin-left: 50px;
+      font-size: 30px;
+      color: #2f81bd;
+      font-weight: 800;
+    }
+  }
+  
+  .List-tour {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 45px 0;
+  }
+  .Watch-add {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .location-tour {
+    margin-bottom: 20px;
+  }
+  .wrapper-ketqua
+  {
+    margin: 0;
+    color: rgb(208, 245, 0);
+    height: 50px;
+    padding-left: 3.5%;
+    font-size: 20px;
+    background-color: #2f81bd;
+    font-weight: 600;
+  }

@@ -3,7 +3,10 @@ import { publicRoutes, adminRoutes } from "./routers/index";
 import Error from "./pages/Error";
 import DefaultLayout from "./components/Layout/DefaultLayout";
 import DefaultAdmin from "./components/Layout/DefaultAdmin";
+import { useEffect, useState } from "react";
+
 function App() {
+  
   return (
     <Router>
       <div className="App">
@@ -34,7 +37,8 @@ function App() {
                   element={
                     <Layout>
                       <Page />
-                    </Layout>
+                   </Layout>
+                  
                   }
                 />
               );

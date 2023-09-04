@@ -15,7 +15,7 @@ const publicRoutes = [
   { path: "/login", component: Login },
   { path: "/register", component: Register },
   { path: "/more-summer", component: More },
-  { path: "/details", component: Details },
+  { path: "/details/:id", component: Details },
   { path: "*", component: Error },
   { path: "/admin-login", component: LoginAdmin },
   { path: "/admin-home", component: HomeAdmin },
