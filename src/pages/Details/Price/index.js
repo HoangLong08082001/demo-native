@@ -32,7 +32,9 @@ export default function Price() {
             <p className={cx("baby-price")}>0</p>
           </td>
           <td>
-            <Button purchase>Mua tour</Button>
+            <Button to="/bill" purchase>
+              Mua tour
+            </Button>
           </td>
         </tr>
         <tr>
@@ -52,7 +54,9 @@ export default function Price() {
             <p className={cx("baby-price")}>0</p>
           </td>
           <td>
-            <Button purchase>Mua tour</Button>
+            <Button to="/bill" purchase>
+              Mua tour
+            </Button>
           </td>
         </tr>
         <tr>
@@ -72,7 +76,9 @@ export default function Price() {
             <p className={cx("baby-price")}>0</p>
           </td>
           <td>
-            <Button purchase>Mua tour</Button>
+            <Button to="/bill" purchase>
+              Mua tour
+            </Button>
           </td>
         </tr>
       </table>

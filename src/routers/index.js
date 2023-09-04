@@ -9,6 +9,7 @@ import HomeAdmin from "../pages/Admin/HomeAdmin/HomeAdmin";
 import Error from "../pages/Error";
 import Employee from "../pages/Admin/Employee";
 import AddEmployee from "../pages/Admin/Employee/AddEmployee";
+import Bill from "../pages/Bill";
 const publicRoutes = [
   { path: "/", component: Home },
   { path: "/review", component: Review },
@@ -21,6 +22,7 @@ const publicRoutes = [
   { path: "/admin-home", component: HomeAdmin },
   { path: "/employee", component: Employee },
   { path: "/AddEmployee", component: AddEmployee },
+  { path: "/bill", component: Bill },
 ];
 const privateRoutes = [];
 export { publicRoutes, privateRoutes };

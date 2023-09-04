@@ -10,50 +10,22 @@
 }
 .form {
   border-radius: 10px;
-  padding: 10px 40px;
+  border: 1px solid black;
+  padding: 30px 20px;
   .form-input {
-    margin-top: 20px;
+    margin-top: 30px;
     input {
+      width: 90%;
+      padding: 10px 20px;
+      outline: none;
+      border-bottom: 1px solid black;
       border-top: none;
       border-left: none;
       border-right: none;
-      border-bottom: 1px solid black;
-      width: 100%;
-      padding: 15px 20px;
-      font-size: 18px;
-      display: block;
-      &:focus {
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        border-bottom: 1px solid black;
-        outline: none;
-      }
+      font-size: 20px;
     }
-  }
-}
-
-.showpass {
-  cursor: pointer;
-  background: #1494ef;
-  color: white;
-  font-weight: 700;
-  width: 30%;
-  margin-left: 230px;
-  border-radius: 10px;
-  p {
-    font-size: 15px;
-  }
-}
-.hidepass {
-  cursor: pointer;
-  background: red;
-  color: white;
-  width: 30%;
-  font-weight: 700;
-  margin-left: 230px;
-  border-radius: 10px;
-  p {
-    font-size: 15px;
+    .icon {
+      cursor: pointer;
+    }
   }
 }

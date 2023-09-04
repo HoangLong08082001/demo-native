@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import style from "./LoginAdmin.module.scss";
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faLock } from "@fortawesome/free-solid-svg-icons";
+import {
+  faE,
+  faEye,
+  faEyeSlash,
+  faLock,
+} from "@fortawesome/free-solid-svg-icons";
 import Button from "../../../components/Button";
 
 const cx = classNames.bind(style);
@@ -18,26 +23,20 @@ export default function LoginAdmin() {
       </p>
       <form className={cx("form")}>
         <div className={cx("form-input")}>
-          <input type="text" name="" id="" placeholder="Enter your username" />
+          <input type="text" placeholder="Enter your email" />
         </div>
         <div className={cx("form-input")}>
           <input
-            type={show === true ? "text" : "password"}
-            name=""
-            id=""
+            type={show === false ? "text" : "password"}
             placeholder="Enter your password"
           />
+          <FontAwesomeIcon
+            onClick={handleShowHide}
+            className={cx("icon")}
+            icon={show === true ? faEye : faEyeSlash}
+          ></FontAwesomeIcon>
         </div>
         <div className={cx("form-input")}>
-          <div
-            className={show === true ? cx("hidepass") : cx("showpass")}
-            onClick={handleShowHide}
-            showhidden
-          >
-            <p>{show === true ? "HIDE PASS" : "SHOW PASS"}</p>
-          </div>
-        </div>
-        <div className="btn-login">
           <Button loginadmin>LOGIN</Button>
         </div>
       </form>

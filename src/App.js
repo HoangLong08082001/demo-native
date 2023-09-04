@@ -3,6 +3,7 @@ import { publicRoutes, adminRoutes } from "./routers/index";
 import Error from "./pages/Error";
 import DefaultLayout from "./components/Layout/DefaultLayout";
 import DefaultAdmin from "./components/Layout/DefaultAdmin";
+import BillLayout from "./components/Layout/BillLayout";
 function App() {
   return (
     <Router>
@@ -11,10 +12,11 @@ function App() {
           {publicRoutes.map((route, index) => {
             const Layout = DefaultLayout;
             const LayoutAdmin = DefaultAdmin;
+            const LayoutBill = BillLayout;
             const Page = route.component;
             if (index === 2 || index === 3 || index === 6 || index === 7) {
               return <Route key={index} path={route.path} element={<Page />} />;
-            } else if (index >= 8) {
+            } else if (index >= 8 && index <= 10) {
               return (
                 <Route
                   key={index}
@@ -23,6 +25,18 @@ function App() {
                     <LayoutAdmin>
                       <Page />
                     </LayoutAdmin>
+                  }
+                />
+              );
+            } else if (index === 11) {
+              return (
+                <Route
+                  key={index}
+                  path={route.path}
+                  element={
+                    <LayoutBill>
+                      <Page />
+                    </LayoutBill>
                   }
                 />
               );

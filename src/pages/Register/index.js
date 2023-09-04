@@ -26,56 +26,50 @@ function Register() {
       <div className={cx("title")}>
         <p>CREATE YOUR ACCOUNT</p>
       </div>
-      <form action="">
-        <div className={cx("logo-form")}>
-          <img src={logo} alt="" />
+      <div className={cx("form-login")}>
+        <div className={cx("form-logo")}>
+          <img src={logo} alt="loi" />
         </div>
-        <div className={cx("form-input")}>
-          <label htmlFor="">Email</label>
-          <input type="email" name="" id="" placeholder="Enter your email" />
+        <label htmlFor="">Username</label>
+        <div className={cx("input-form")}>
+          <input type="text" placeholder="Enter your username" />
         </div>
-        <div className={cx("password-input")}>
-          <label htmlFor="">Password</label>
-
-          <FontAwesomeIcon
-            onClick={handleHideShow}
-            className={cx("show-pass")}
-            icon={show === true ? faEyeSlash : faEye}
-          ></FontAwesomeIcon>
+        <label htmlFor="">Password</label>
+        <div className={cx("input-form")}>
           <input
             type={type === true ? "password" : "text"}
-            name=""
-            id=""
             placeholder="Enter your password"
           />
-        </div>
-        <div className={cx("password-input")}>
-          <label htmlFor=""> Confirm Password</label>
-
           <FontAwesomeIcon
-            onClick={handleHideShowConfirm}
-            className={cx("show-confirm-pass")}
-            icon={showConfirm === true ? faEyeSlash : faEye}
+            className={cx("icon")}
+            icon={show === true ? faEye : faEyeSlash}
+            onClick={handleHideShow}
           ></FontAwesomeIcon>
+        </div>
+        <label htmlFor="">Confirm Password</label>
+        <div className={cx("input-form")}>
           <input
             type={typeConfirm === true ? "password" : "text"}
-            name=""
-            id=""
             placeholder="Confirm your password"
           />
+          <FontAwesomeIcon
+            className={cx("icon")}
+            icon={showConfirm === true ? faEye : faEyeSlash}
+            onClick={handleHideShowConfirm}
+          ></FontAwesomeIcon>
         </div>
         <div className={cx("btn-login")}>
           <Button loginweb>CREATE</Button>
         </div>
         <div className={cx("text")}>
           <p>
-            Already have account?
-            <Button linkregister to="/login">
-              Login here.
+            Don't have an account ?{" "}
+            <Button to="/login" linkregister>
+              login here
             </Button>
           </p>
         </div>
-      </form>
+      </div>
     </div>
   );
 }
