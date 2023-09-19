@@ -8,7 +8,7 @@ import { faClock, faEarth, faPerson, faPlane, faStar } from "@fortawesome/free-s
 import { faChrome } from "@fortawesome/free-brands-svg-icons";
 
 const cx = classNames.bind(styles);
-export default function About() {
+export default function About({matour}) {
   return (
     <div className={cx("wrapper")}>
         <hr></hr>
@@ -42,13 +42,14 @@ export default function About() {
           </div>
           <div className={cx("wrapper-menu")}>
           <div>
-                <div><FontAwesomeIcon icon={faEarth}/></div>
+                <div><FontAwesomeIcon icon={faPerson}/></div>
                 <div><span>Quy Mô</span><br></br><span>100 Người</span></div>
             </div>
             <div>
                 <div><FontAwesomeIcon icon={faPlane}/></div>
                 <div><span>Phương Tiện Chính</span><br></br><span>Máy Bay</span></div>
             </div>
+            
             
             
           </div>

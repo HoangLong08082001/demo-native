@@ -1,5 +1,5 @@
 import {  useEffect, useRef, useState } from "react";
-import axios from "axios"
+import axios from "../../setup-axios/axios"
 import {  useNavigate } from "react-router-dom";
 import Slider from'./Slider'
 import Panner from "./Panner";
@@ -9,19 +9,59 @@ import Search from "./Search";
 import Connect from "./Connect-partner";
 import Famos from "./Famos";
 import HotLocation from "./Hot";
+import Loading from "../../components/Loading";
+import Searchresult from "./SearchResult";
 function Home() {
-    
+    const [value2,setvalue2]=useState([])
+    const [value1,setvalue1]=useState(false)
+    const [loading, setLoading] = useState(false);
+    const [ketqua,setketqua]=useState("Hãy Điền Thông Tin Phía Trên Để Tìm Kiếm Tour")
+    const callbackFunction = (childData) => {
+      setvalue2(childData);
+      if(childData.length > 0)
+      {
+        setvalue1(true)
+        setketqua(" ")
+      }
+      else if(childData.length <= 0)
+      {
+        setketqua("Không Thể Tìm Thấy Tour Bạn Mong Muốn. Vui Lòng Liên Hệ Hotline 035235235")
+        setvalue1(false)
+      }
+    }
+    useEffect(() => {
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1300);
+    }, [value2]);
+   
+  
     return ( 
-      <div>
-        <Slider/>
-        <Search/>
-        <FlashSale/>
-        <Panner/>
-        <Location/>
-        <Connect/>
-        <Famos/>
-        <HotLocation/>
-      </div>
+             <div> 
+              <Slider/>
+             <Search parentCallback={callbackFunction}/>
+              { loading ? (<Loading/>) : ( <Searchresult data={value2} Ketqua={ketqua} moment={value1} />) }
+             <FlashSale/>
+             <Panner/>
+             <Location/>
+             <Connect/>
+             <Famos/>
+             <HotLocation/></div>
+    //  <div>
+    //     {loading ?(<Loading/>):( 
+    //       <div>
+    //         <Slider/>
+    //         <Search parentCallback={callbackFunction}/>
+    //         <Searchresult data={value2} Ketqua={ketqua} moment={value1} />
+    //         <FlashSale/>
+    //         <Panner/>
+    //         <Location/>
+    //         <Connect/>
+    //         <Famos/>
+    //         <HotLocation/>
+    //     </div>)}
+    //  </div>
    );
 }
 

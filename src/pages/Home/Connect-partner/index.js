@@ -18,26 +18,26 @@ function Connect() {
         <Button buttonproduct>Xe Du Lịch</Button>
       </div>
       <div className={cx("container-box")}>
-        <div
-          className={cx("container")}
-          style={{ backgroundImage: `url(${img1})` }}
-        ></div>
-        <div
-          className={cx("container-1")}
-          style={{ backgroundImage: `url(${img2})` }}
-        ></div>
-        <div
-          className={cx("container")}
-          style={{ backgroundImage: `url(${img3})` }}
-        ></div>
-        <div
-          className={cx("container")}
-          style={{ backgroundImage: `url(${img4})` }}
-        ></div>
-        <div
-          className={cx("container")}
-          style={{ backgroundImage: `url(${img5})` }}
-        ></div>
+        <div className={cx("container-fluid")}>
+          <div className={cx("container")}>
+            <img src={img1} alt="" />
+          </div>
+          <div className={cx("container")}>
+            <img src={img2} alt="" />
+          </div>
+          <div className={cx("container")}>
+            <img src={img3} alt="" />
+          </div>
+          <div className={cx("container")}>
+            <img src={img4} alt="" />
+          </div>
+          <div className={cx("container")}>
+            <img src={img5} alt="" />
+          </div>
+          <div className={cx("container")}>
+            <img src={img5} alt="" />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -34,6 +34,8 @@ function Button({
   servicebtn,
   btnAdd,
   btnSearch,
+  btnSubmit,
+  itemmenuactive,
 }) {
   let Comp = "button";
   const props = {
@@ -74,6 +76,8 @@ function Button({
     activeitem,
     btnAdd,
     btnSearch,
+    btnSubmit,
+    itemmenuactive,
   });
   return (
     <Comp className={classes} {...props}>

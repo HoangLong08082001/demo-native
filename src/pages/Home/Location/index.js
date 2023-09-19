@@ -2,9 +2,18 @@ import classname from "classnames/bind";
 import Button from "../../../components/Button";
 import styles from "./Location.module.scss";
 import ProductBox from "../../../components/Product";
+import axios from "../../../setup-axios/axios";
 
+import { useState, useEffect } from "react";
 const cx = classname.bind(styles);
 function Location() {
+  const [data, setdata] = useState([]);
+  useEffect(() => {
+    axios.get("/tour/alltour").then((response) => {
+      setdata(response.data);
+    });
+  }, []);
+
   return (
     <div className={cx("wrapper")}>
       <h2>Hè 2023</h2>
@@ -17,14 +26,18 @@ function Location() {
         <Button buttonproduct>Châu Phi</Button>
       </div>
       <div className={cx("List-tour")}>
-        <ProductBox container />
-        <ProductBox container />
-        <ProductBox container />
-        <ProductBox container />
-        <ProductBox container />
-        <ProductBox container />
-        <ProductBox container />
-        <ProductBox container />
+        {data.map((value) => {
+          return (
+            <ProductBox
+              key={value.MaTour}
+              id={value.MaTour}
+              Name={value.DiaDiemDen}
+              NgayDi={value.NgayDi}
+              img={value.HinhAnh.data}
+              container
+            />
+          );
+        })}
       </div>
       <div className={cx("Watch-add")}>
         <Button to="/more-summer" LinkMore>

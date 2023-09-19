@@ -209,6 +209,11 @@
     color: white;
   }
 }
+.itemmenuactive {
+  color: rgb(255, 255, 255);
+  margin-left: 15px;
+  text-decoration: none;
+}
 .btnDetailAdmin {
   cursor: pointer;
   color: black;
@@ -221,6 +226,8 @@
 .btnLogoutAdmin {
   color: red;
   cursor: pointer;
+  border: none;
+  background-color: white;
   text-decoration: none;
   &:hover {
     opacity: 0.3;
@@ -265,5 +272,20 @@
   cursor: pointer;
   &:hover {
     opacity: 0.3;
+  }
+}
+.btnSubmit {
+  padding: 15px 50px;
+  margin-top: 10px;
+  border: none;
+  background: #1494ef;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 10px;
+  margin-left: 1000px;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.5;
   }
 }

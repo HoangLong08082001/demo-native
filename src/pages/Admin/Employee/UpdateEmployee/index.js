@@ -1,61 +1,60 @@
 import React, { useEffect, useState } from "react";
-import style from "./AddEmployee.module.scss";
+import style from "./UpdateEmployee.module.scss";
 import classNames from "classnames/bind";
 import Button from "../../../../components/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import axios from "../../../../setup-axios/axios";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 const cx = classNames.bind(style);
-export default function AddEmployee() {
+export default function UpdateEmployee() {
+  const navigate = useNavigate();
   const [TenNV, setTenvNV] = useState("");
   const [cmnd, setCMND] = useState("");
-  const [Ngaysinh, setNgaySinh] = useState("");
   const [Sdt, setSdt] = useState("");
-  const [Email, setEmail] = useState("");
-  const [Password, setPaswword] = useState("");
   const [Position, setPosition] = useState("");
-  const [show, setShow] = useState(false);
+  const { id } = useParams();
   const [listPosition, setListPosition] = useState([]);
-  const handleShow = () => {
-    setShow(!show);
-  };
-  const handleSubmit = async () => {
-    await axios
-      .post("/employees/add", {
-        TenNV,
-        cmnd,
-        Ngaysinh,
-        Sdt,
-        Email,
-        Password,
-        Position,
-      })
-      .then((res) => {
-        if (res) {
-          toast.success("Them thanh cong");
-        }
-      });
-    setTenvNV("");
-    setCMND("");
-    setNgaySinh("");
-    setSdt("");
-    setEmail("");
-    setPaswword("");
-  };
-  useEffect(() => {
+  const fetchPostion = () => {
     axios.get("/position/list-postion").then((res) => {
       console.log(res.data);
       setListPosition(res.data);
     });
+  };
+  const fetchById = () => {
+    axios.get(`/employees/GetById/${id}`).then((response) => {
+      if (response) {
+        setTenvNV(response.data[0].TenNV);
+        setCMND(response.data[0].CMND);
+        setSdt(response.data[0].Sdt);
+      }
+    });
+  };
+  const handleUpdate = async () => {
+    await axios
+      .put(`/employees/update/${id}`, {
+        TenNV,
+        cmnd,
+        Sdt,
+        Position,
+      })
+      .then((res) => {
+        if (res) {
+          toast.success(`Cap nhat thanh cong ${TenNV}`);
+        } else {
+          toast.success(`Cap nhat that bai`);
+        }
+      });
+  };
+  useEffect(() => {
+    fetchPostion();
+    fetchById();
   }, []);
   return (
     <div className={cx("wrapper")}>
       <Button btnAdd to="/employee">
         TRO LAI
       </Button>
-      {/* TENNV CMND NGAYSINH SDT EMAIL PASS POSTION*/}
-      <p>Nhap thong tin nhan vien</p>
+      <p>Sua thong tin nhan vien</p>
       <div className={cx("form")}>
         <div className={cx("form-left")}>
           <div className={cx("form-input")}>
@@ -79,16 +78,6 @@ export default function AddEmployee() {
             />
           </div>
           <div className={cx("form-input")}>
-            <label htmlFor="">Ngay sinh:</label>
-            <input
-              type="date"
-              name=""
-              id=""
-              value={Ngaysinh}
-              onChange={(e) => setNgaySinh(e.target.value)}
-            />
-          </div>
-          <div className={cx("form-input")}>
             <label htmlFor="">So dien thoai:</label>
             <input
               type="number"
@@ -100,31 +89,6 @@ export default function AddEmployee() {
           </div>
         </div>
         <div className={cx("form-right")}>
-          <div className={cx("form-input")}>
-            <label htmlFor="">Email:</label>
-            <input
-              type="email"
-              name=""
-              id=""
-              value={Email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className={cx("form-input-password")}>
-            <label htmlFor="">Password:</label>
-            <input
-              type={show === false ? "password" : "text"}
-              name=""
-              id=""
-              value={Password}
-              onChange={(e) => setPaswword(e.target.value)}
-            />
-            <FontAwesomeIcon
-              onClick={handleShow}
-              className={cx("icon")}
-              icon={show === false ? faEye : faEyeSlash}
-            ></FontAwesomeIcon>
-          </div>
           <div className={cx("form-input")}>
             <label htmlFor="">Vi tri:</label>
             <select
@@ -146,8 +110,8 @@ export default function AddEmployee() {
         </div>
       </div>
       <div className={cx("btn-submit")}>
-        <Button type="submit" onClick={handleSubmit} btnSubmit>
-          SUBMIT
+        <Button type="submit" btnSubmit onClick={handleUpdate}>
+          Update
         </Button>
       </div>
     </div>

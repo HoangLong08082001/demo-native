@@ -9,9 +9,8 @@
 
 .List-tour {
   display: flex;
-  justify-content: space-evenly;
+  gap: 20px;
   flex-wrap: wrap;
-  gap: 45px 0;
 }
 .Watch-add {
   text-align: center;

@@ -10,6 +10,7 @@ import {
   faPlane,
   faTicket,
   faUser,
+  faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
 
 const cx = classNames.bind(style);
@@ -43,6 +44,17 @@ export default function Sidebar() {
             <p>
               <Button itemmenu to="/employee">
                 Nhan vien
+              </Button>
+            </p>
+          </li>
+          <li>
+            <FontAwesomeIcon
+              className={cx("icon")}
+              icon={faUserGroup}
+            ></FontAwesomeIcon>
+            <p>
+              <Button itemmenu to="/custommer">
+                Khach hang
               </Button>
             </p>
           </li>

@@ -62,7 +62,7 @@ export default class MultipleItems extends Component {
     return (
       <div>
         <Slider className={cx("slick-slider")} {...settings}>
-          <ProductBox container margin />
+          <ProductBox container margin  />
           <ProductBox container margin />
           <ProductBox container margin />
           <ProductBox container margin />
