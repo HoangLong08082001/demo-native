@@ -36,6 +36,12 @@ function Button({
   btnSearch,
   btnSubmit,
   itemmenuactive,
+  editbtn,
+  payment,
+  Booking,
+  Cancel,
+  btnInfor,
+  btnLogout,
 }) {
   let Comp = "button";
   const props = {
@@ -78,6 +84,12 @@ function Button({
     btnSearch,
     btnSubmit,
     itemmenuactive,
+    editbtn,
+    payment,
+    Booking,
+    Cancel,
+    btnInfor,
+    btnLogout,
   });
   return (
     <Comp className={classes} {...props}>

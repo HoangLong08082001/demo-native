@@ -7,13 +7,21 @@ import styles from "./Login.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faE, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../components/Button";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 const cx = classname.bind(styles);
 function Login() {
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [type, setType] = useState(true);
   const [show, setShow] = useState(true);
   const handleHideShow = () => {
     setShow(!show);
     setType(!type);
+  };
+  const handleLogin = () => {
+    
   };
   return (
     <div className={cx("box")}>
@@ -26,11 +34,18 @@ function Login() {
         </div>
         <label htmlFor="">Username</label>
         <div className={cx("input-form")}>
-          <input type="text" placeholder="Enter your username" />
+          <input
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            type="text"
+            placeholder="Enter your username"
+          />
         </div>
         <label htmlFor="">Password</label>
         <div className={cx("input-form")}>
           <input
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
             type={type === true ? "password" : "text"}
             placeholder="Enter your password"
           />
@@ -41,7 +56,9 @@ function Login() {
           ></FontAwesomeIcon>
         </div>
         <div className={cx("btn-login")}>
-          <Button loginweb>LOGIN</Button>
+          <Button loginweb onClick={handleLogin}>
+            LOGIN
+          </Button>
         </div>
         <div className={cx("text")}>
           <p>

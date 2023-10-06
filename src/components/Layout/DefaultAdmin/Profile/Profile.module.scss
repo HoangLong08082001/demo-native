@@ -6,10 +6,15 @@
 }
 .back-website {
   margin-top: 20px;
-  margin-left: 60%;
+  margin-left: 74%;
+  display: flex;
+  .wellcome {
+    color: black;
+    font-weight: 800;
+  }
 }
 .profile {
-  margin-left: 150px;
+  margin-left: 20px;
   display: flex;
   p {
     font-weight: 800;

@@ -1,0 +1,16 @@
+.wrapper {
+  padding: 20px;
+
+  .rule {
+    display: flex;
+    p {
+      margin-left: 20px;
+    }
+  }
+  .list-rules {
+    padding: 20px;
+    border: 1px solid black;
+    height: 250px;
+    overflow-y: scroll;
+  }
+}

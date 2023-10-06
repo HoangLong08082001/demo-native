@@ -1,0 +1,122 @@
+.wrapper {
+  width: 100%;
+  padding: 20px;
+}
+.form {
+  margin-top: 5px;
+  display: flex;
+  .left-form {
+    width: 100%;
+  }
+  .right-form {
+    border-left: 1px solid black;
+    width: 100%;
+  }
+  .third-form {
+    border-left: 1px solid black;
+    width: 100%;
+  }
+}
+.form-input {
+  display: flex;
+  padding: 10px 10px;
+  label {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  input {
+    margin-left: 10px;
+    width: 70%;
+    padding: 15px 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 0.5px solid black;
+    font-size: 20px;
+    &:focus {
+      outline: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: 0.5px solid black;
+    }
+  }
+}
+.form-input-text-area {
+  label {
+    font-size: 20px;
+  }
+  width: 100%;
+  display: flex;
+  margin-top: 15px;
+  textarea {
+    font-size: 20px;
+    margin-left: 5px;
+    width: 100%;
+    height: 150px;
+    resize: none;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+.btn-submit {
+}
+.vehicle {
+  border: 1px solid black;
+  margin-left: 10px;
+  width: 60%;
+  padding: 5px;
+  text-align: center;
+}
+.item-chose {
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  cursor: pointer;
+  width: 150%;
+  height: 200px;
+  background-color: white;
+  border: 1px solid black;
+  ul li:hover {
+    opacity: 0.5;
+  }
+}
+.form-input-file {
+  display: flex;
+  padding: 5px;
+  label {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  input {
+    margin-left: 10px;
+    width: 70%;
+    padding: 15px 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 20px;
+  }
+}
+.select-container {
+  border-radius: 20px;
+  background: white;
+  padding: 2px;
+  border: 1px solid black;
+  margin-left: 10px;
+  .select-box {
+    border-radius: 20px;
+    border: none;
+    background: white;
+    appearance: none;
+    padding: 10px;
+    font-size: 15px;
+    &:focus {
+      outline: none;
+    }
+  }
+  .icon-dropdown {
+    font-size: 20px;
+    margin-bottom: 3px;
+  }
+}

@@ -3,51 +3,54 @@ import style from "./UpdateEmployee.module.scss";
 import classNames from "classnames/bind";
 import Button from "../../../../components/Button";
 import axios from "../../../../setup-axios/axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 const cx = classNames.bind(style);
 export default function UpdateEmployee() {
+  const location = useLocation();
   const navigate = useNavigate();
+  const [id, setId] = useState("");
   const [TenNV, setTenvNV] = useState("");
   const [cmnd, setCMND] = useState("");
   const [Sdt, setSdt] = useState("");
   const [Position, setPosition] = useState("");
-  const { id } = useParams();
   const [listPosition, setListPosition] = useState([]);
   const fetchPostion = () => {
     axios.get("/position/list-postion").then((res) => {
-      console.log(res.data);
       setListPosition(res.data);
     });
   };
-  const fetchById = () => {
-    axios.get(`/employees/GetById/${id}`).then((response) => {
-      if (response) {
-        setTenvNV(response.data[0].TenNV);
-        setCMND(response.data[0].CMND);
-        setSdt(response.data[0].Sdt);
-      }
-    });
-  };
+  // const fetchById = (user) => {
+  //   let response = axios.get("/employees/GetById-employee/", { id });
+  //   if (response) {
+  //     console.log(response.data);
+  //   }
+  // };
   const handleUpdate = async () => {
-    await axios
-      .put(`/employees/update/${id}`, {
-        TenNV,
-        cmnd,
-        Sdt,
-        Position,
-      })
-      .then((res) => {
-        if (res) {
-          toast.success(`Cap nhat thanh cong ${TenNV}`);
-        } else {
-          toast.success(`Cap nhat that bai`);
-        }
-      });
+    let response = await axios.put(`/employees/update-employee`, {
+      id,
+      TenNV,
+      cmnd,
+      Sdt,
+      Position,
+    });
+    if (response && response.message === "success") {
+      toast.success("Update succcess");
+      navigate("/employee");
+    }
+  };
+  const setItemUpdate = () => {
+    setId(location.state.MaNV);
+    setTenvNV(location.state.TenNV);
+    setCMND(location.state.CMND);
+    setSdt(location.state.Sdt);
+    setPosition(location.state.id_vitri);
   };
   useEffect(() => {
+    console.log(location);
+    setItemUpdate();
     fetchPostion();
-    fetchById();
+    // fetchById();
   }, []);
   return (
     <div className={cx("wrapper")}>
@@ -93,10 +96,10 @@ export default function UpdateEmployee() {
             <label htmlFor="">Vi tri:</label>
             <select
               name={Position}
+              disabled
               id=""
               onChange={(e) => setPosition(e.target.value)}
             >
-              <option value="">Chon vi tri</option>
               {listPosition.length > 0 &&
                 listPosition.map((postion, index) => {
                   return (

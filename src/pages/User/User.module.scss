@@ -1,0 +1,46 @@
+.wrapper {
+  padding: 30px;
+  width: 100%;
+  p {
+    text-align: center;
+    font-size: 30px;
+  }
+}
+.content {
+  display: flex;
+  ul li {
+    cursor: pointer;
+    margin-top: 5px;
+    padding: 10px;
+    width: 300px;
+    transition: all 0.2s linear;
+    &:hover {
+      transition: all 0.2s linear;
+      color: white;
+      background-color: #2f81bd;
+      font-weight: 800;
+    }
+  }
+  .container {
+    width: 50%;
+    margin-left: 20%;
+  }
+}
+
+.content-active {
+  display: flex;
+  ul li {
+    cursor: pointer;
+    margin-top: 5px;
+    padding: 10px;
+    width: 300px;
+    background-color: #2f81bd;
+    color: white;
+    font-weight: 800;
+    transition: all 0.2s linear;
+  }
+  .container {
+    width: 50%;
+    margin-left: 20%;
+  }
+}

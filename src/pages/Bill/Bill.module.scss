@@ -1,8 +1,5 @@
 .wrapper {
   padding: 10px 20px;
-  p {
-    font-size: 20px;
-  }
 }
 .wrapper-tour {
   padding: 10px 20px;
@@ -10,98 +7,46 @@
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   display: flex;
-  justify-content: space-between;
 }
 .img-form {
   width: 40%;
   height: 300px;
   margin: 10px 100px;
   img {
+    margin-top: 50px;
     width: 100%;
     height: 100%;
   }
 }
 .inform {
-  margin-left: 100px;
+  margin-left: 10px;
 }
 .name-tour {
-  color: cornflowerblue;
+  color: #2f81bd;
+  font-weight: 900;
+  font-size: 30px;
 }
-.children-price {
-  margin-left: 420px;
-  p {
-    color: red;
-    font-weight: 900;
-  }
-}
-.total-price {
-  margin-left: 350px;
-  p {
-    font-size: 30px;
-    color: red;
-    font-weight: 900;
-  }
-}
-.payment-paypal,
-.payment-momo,
-.payment-cash {
-  border-radius: 20px;
+.list {
   display: flex;
-  width: 50%;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
-    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
-    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-  padding: 10px 30px;
-  margin: auto;
-  .img-payment {
-    width: 15%;
-    height: 60px;
-    img {
-      width: 100%;
-      height: 100%;
+  ul li {
+    display: flex;
+    p {
+      margin-left: 20px;
+      font-size: 20px;
+    }
+    .icon {
+      margin-top: 22px;
+      font-size: 20px;
+      color: #2f81bd;
     }
   }
-  &:hover {
-    cursor: pointer;
-    opacity: 0.5;
-  }
 }
-.payment-paypal {
-  margin-top: 20px;
-  background-color: white;
-  .text-payment {
-    width: 30%;
-    margin-left: 30px;
-  }
+.title {
+  font-size: 30px;
+  color: black;
+  font-weight: 900;
 }
-.payment-momo {
+.btn {
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: #d82d88;
-  .text-payment {
-    width: 30%;
-    color: white;
-    font-weight: 800;
-    margin-left: 30px;
-  }
-}
-.form {
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
-    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
-    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-  padding: 10px 20px;
-}
-.form-input {
-  padding: 10px;
-  label {
-    font-size: 20px;
-  }
-  input {
-    padding: 10px 20px;
-    width: 50%;
-    border-top: none;
-    border-bottom: 0.5px solid black;
-    border-left: none;
-    border-right: none;
-  }
 }

@@ -7,7 +7,7 @@ import Button from "../Button";
 import dayjs from "dayjs";
 const cx = classname.bind(styles);
 
-function ProductBox({ margin, container, margintop, Name, NgayDi, img, id }) {
+function ProductBox({ margin, container, margintop, Name, DiaDiemDen, img, id }) {
   const styles = cx({ margin, container, margintop });
   const base64String = btoa(String.fromCharCode(...new Uint8Array(img)));
   return (
@@ -33,7 +33,7 @@ function ProductBox({ margin, container, margintop, Name, NgayDi, img, id }) {
           <FontAwesomeIcon style={{ color: "black" }} icon={faStar} />
         </div>
         <div className={cx("container-discount")}>
-          <span>{NgayDi}</span>
+          <span>{DiaDiemDen}</span>
           <span>
             <strike>5.200.000</strike>
           </span>

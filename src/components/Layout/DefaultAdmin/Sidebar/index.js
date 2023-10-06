@@ -28,7 +28,7 @@ export default function Sidebar() {
         <ul>
           <li onClick={handleActive}>
             <FontAwesomeIcon className={cx("icon")} icon={faHome}>
-              {" "}
+              
             </FontAwesomeIcon>
             <p>
               <Button itemmenu to="/admin-home">
@@ -65,7 +65,7 @@ export default function Sidebar() {
             ></FontAwesomeIcon>
             <p>
               <Button itemmenu to="/">
-                Hoa don{" "}
+                Hoa don
               </Button>
             </p>
           </li>
@@ -75,7 +75,7 @@ export default function Sidebar() {
               icon={faPlane}
             ></FontAwesomeIcon>
             <p>
-              <Button itemmenu to="/">
+              <Button itemmenu to="/tour">
                 Tours
               </Button>
             </p>

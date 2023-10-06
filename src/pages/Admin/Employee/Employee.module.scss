@@ -1,6 +1,5 @@
 .wrapper {
   margin-top: 30px;
-  height: 711px;
   padding: 10px 20px;
 }
 .search {
@@ -15,7 +14,7 @@
 }
 .form-table {
   margin-top: 5px;
-  height: 600px;
+  height: 550px;
   overflow-y: scroll;
   table {
     width: 100%;
@@ -33,6 +32,8 @@
 }
 .icon-pen {
   cursor: pointer;
+  background-color: white;
+  border: white;
   color: rgb(30, 30, 203);
   font-size: 30px;
 }

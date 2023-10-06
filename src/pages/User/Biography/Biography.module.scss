@@ -1,0 +1,25 @@
+.wrapper {
+  padding: 20px;
+}
+.form {
+  padding: 10px;
+  label {
+    font-size: 25px;
+  }
+  input {
+    padding: 10px;
+    font-size: 20px;
+    width: 40%;
+    border: none;
+    background-color: rgb(234, 255, 255);
+    outline: none;
+    color: black;
+    text-align: center;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+.icon {
+  cursor: pointer;
+}

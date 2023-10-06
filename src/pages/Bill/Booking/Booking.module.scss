@@ -1,0 +1,101 @@
+.booking {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  display: flex;
+  justify-content: space-around;
+  .inform-passenger {
+    width: 100%;
+    padding: 20px;
+    .form-input {
+      padding: 20px;
+      label {
+        color: black;
+        font-weight: 700;
+      }
+      input {
+        font-size: 20px;
+        padding: 10px;
+        width: 60%;
+        background-color: rgb(247, 247, 247);
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: 2px solid black;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    .form-input-inform {
+      padding: 20px;
+      .input {
+        margin-top: 15px;
+        .icon {
+          font-size: 20px;
+        }
+        input {
+          margin-left: 15px;
+          font-size: 20px;
+          padding: 10px;
+          width: 55%;
+          background-color: rgb(247, 247, 247);
+          border-top: none;
+          border-right: none;
+          border-left: none;
+          border-bottom: 2px solid black;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+  .quantity-tour {
+    width: 100%;
+    padding: 20px;
+    .quality {
+      display: flex;
+      justify-content: space-between;
+      .title-quality {
+        padding: 20px;
+        p {
+          margin-top: 25px;
+        }
+        span {
+          color: rgb(255, 0, 0);
+          margin-top: 50px;
+          font-size: 30px;
+          font-weight: bold;
+        }
+      }
+      .money-quality {
+        padding: 20px;
+        .item-quality {
+          display: flex;
+          p {
+            color: rgb(120, 120, 120);
+          }
+          span {
+            color: rgb(255, 0, 0);
+            font-size: 30px;
+            font-weight: bold;
+          }
+          input {
+            font-size: 20px;
+            padding-left: 10px;
+            color: black;
+            font-weight: 900;
+            border: none;
+            background-color: rgb(231, 231, 231);
+            height: 50px;
+            width: 70px;
+            margin-left: 10px;
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

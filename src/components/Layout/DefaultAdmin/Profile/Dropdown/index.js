@@ -21,7 +21,6 @@ export default function Dropdown() {
   };
   return (
     <div className={cx("wrapper")}>
-      {user && user.isAuthenticated === true && <p>{user.accout.email}</p>}
       <p>
         <Button btnDetailAdmin to="/">
           DETAIL

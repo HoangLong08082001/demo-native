@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { publicRoutes, adminRoutes } from "./routers/index";
+import { publicRoutes, adminRoutes, privateRoutes } from "./routers/index";
 import Error from "./pages/Error";
 import DefaultLayout from "./components/Layout/DefaultLayout";
 import DefaultAdmin from "./components/Layout/DefaultAdmin";
@@ -24,13 +24,18 @@ function App() {
             {publicRoutes.map((route, index) => {
               const Layout = DefaultLayout;
               const LayoutAdmin = DefaultAdmin;
-              const LayoutBill = BillLayout;
+              const LayoutBill =
+                BillLayout; /* The line `const Page = route.component;` is assigning
+              the value of `route.component` to the variable `Page`.
+              This allows us to use the `Page` variable as a component
+              in the JSX code later on. */
+
               const Page = route.component;
-              if (index === 2 || index === 3 || index === 6 || index === 7) {
+              if (index >= 0 && index <= 3) {
                 return (
                   <Route key={index} path={route.path} element={<Page />} />
                 );
-              } else if (index >= 8 && index <= 13) {
+              } else if (index >= 10) {
                 return (
                   <Route
                     key={index}
@@ -55,7 +60,7 @@ function App() {
                     }
                   />
                 );
-              } else if (index === 14) {
+              } else if (index === 5) {
                 return (
                   <Route
                     key={index}
@@ -83,7 +88,6 @@ function App() {
             })}
           </Routes>
         </div>
-        )
       </Router>
       <ToastContainer
         position="top-center"

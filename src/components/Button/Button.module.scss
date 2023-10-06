@@ -40,6 +40,7 @@
   width: 127px;
   height: 35px;
   color: white;
+  margin-top: 30px;
   margin-right: 20px;
   transition: 0.2s linear;
   border: 0.1px solid #2f81bd;
@@ -52,6 +53,7 @@
 }
 .logout {
   cursor: pointer;
+  margin-top: 30px;
   border: 0.1px solid #2f81bd;
   background-color: #ffffff;
   color: #2f81bd;
@@ -288,4 +290,68 @@
   &:hover {
     opacity: 0.5;
   }
+}
+.editbtn {
+  background: white;
+  border: none;
+}
+.payment {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: white;
+  outline: none;
+  border: none;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+.Booking {
+  cursor: pointer;
+  width: 100%;
+  padding: 20px;
+  font-size: 20px;
+  background-color: #2f81bd;
+  border: #2f81bd;
+  color: white;
+  font-weight: 800;
+  transition: all 0.2s linear;
+  &:hover {
+    background-color: white;
+    color: #2f81bd;
+    border: #2f81bd;
+    transition: all 0.2s linear;
+  }
+}
+.Cancel {
+  color: #2f81bd;
+  background-color: white;
+  border: #1494ef;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 20px;
+  width: 100%;
+  padding: 20px;
+  transition: all 0.2s linear;
+  &:hover {
+    background-color: #2f81bd;
+    color: white;
+    border: #2f81bd;
+    transition: all 0.2s linear;
+  }
+}
+.btnInfor {
+  cursor: pointer;
+  border: none;
+  color: #484f4a;
+  background: white;
+  font-size: 20px;
+  text-decoration: none;
+}
+.btnLogout {
+  color: red;
+  cursor: pointer;
+  border: none;
+  background: white;
+  font-size: 20px;
 }

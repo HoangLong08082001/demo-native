@@ -13,22 +13,28 @@ import Bill from "../pages/Bill";
 import UpdateEmployee from "../pages/Admin/Employee/UpdateEmployee";
 import DetailEmployee from "../pages/Admin/Employee/DetailEmployee";
 import Custommer from "../pages/Admin/Custommer";
+import Tour from "../pages/Admin/Tour";
+import AddTour from "../pages/Admin/Tour/AddTour";
+import User from "../pages/User";
 const publicRoutes = [
-  { path: "/", component: Home },
-  { path: "/review", component: Review },
   { path: "/login", component: Login },
   { path: "/register", component: Register },
-  { path: "/more-summer", component: More },
-  { path: "/details/:id", component: Details },
   { path: "*", component: Error },
   { path: "/admin-login", component: LoginAdmin },
+  { path: "/", component: Home },
+  { path: "/bill", component: Bill },
+  { path: "/review", component: Review },
+  { path: "/more-summer", component: More },
+  { path: "/details/:id", component: Details },
+  { path: "/User", component: User },
   { path: "/admin-home", component: HomeAdmin },
   { path: "/employee", component: Employee },
   { path: "/custommer", component: Custommer },
   { path: "/AddEmployee", component: AddEmployee },
-  { path: "/updateEmployee/:id", component: UpdateEmployee },
-  { path: "/detailEmployee/:id", component: DetailEmployee },
-  { path: "/bill", component: Bill },
+  { path: "/updateEmployee", component: UpdateEmployee },
+  { path: "/detailEmployee", component: DetailEmployee },
+  { path: "/tour", component: Tour },
+  { path: "/AddTour", component: AddTour },
 ];
 const privateRoutes = [];
 export { publicRoutes, privateRoutes };

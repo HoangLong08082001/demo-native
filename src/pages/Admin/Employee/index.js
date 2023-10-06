@@ -15,6 +15,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { UserContext } from "../../../context/UserContext";
 const cx = classNames.bind(style);
 export default function Employee() {
+  const [id, setId] = useState("");
+
   const { user } = useContext(UserContext);
   console.log(user);
   const navigate = useNavigate();
@@ -33,13 +35,14 @@ export default function Employee() {
     }
   };
   const handleRemove = async (emp) => {
-    const employeeId = emp.MaNV;
-    await axios.delete(`/employees/delete/${employeeId}`).then((response) => {
-      if (response.data === "success") {
-        toast.success("Xoa thanh cong");
-        fetchAllEmployee();
-      }
-    });
+    await axios
+      .delete(`/employees/delete-employee`, { data: { id: emp.MaNV } })
+      .then((response) => {
+        if (response.message === "success") {
+          toast.success("Xoa thanh cong");
+          fetchAllEmployee();
+        }
+      });
   };
   if (user && user.isAuthenticated === true) {
     return (
@@ -51,6 +54,7 @@ export default function Employee() {
           <input type="text" name="" id="" placeholder="search employee" />
           <Button btnSearch>SEARCH</Button>
         </div>
+
         <div className={cx("form-table")}>
           <table border={1} cellSpacing={0}>
             <tr>
@@ -74,14 +78,25 @@ export default function Employee() {
                   <td>{list.Sdt}</td>
                   <td>{list.Email}</td>
                   <td>{list.TenViTri}</td>
+
                   <td>
-                    <Button to={`/detailEmployee/${list.MaNV}`}>
+                    <Button
+                      editbtn
+                      onClick={() => {
+                        navigate("/detailEmployee", { state: list });
+                      }}
+                    >
                       <FontAwesomeIcon
                         className={cx("icon-info")}
                         icon={faCircleInfo}
                       ></FontAwesomeIcon>
                     </Button>
-                    <Button to={`/updateEmployee/${list.MaNV}`}>
+                    <Button
+                      editbtn
+                      onClick={() =>
+                        navigate("/updateEmployee", { state: list })
+                      }
+                    >
                       <FontAwesomeIcon
                         className={cx("icon-pen")}
                         icon={faPen}

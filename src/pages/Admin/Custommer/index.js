@@ -17,10 +17,10 @@ export default function Custommer() {
 
   const [listCustommer, setListCustommer] = useState([]);
   const fetchAllCustommer = async () => {
-    await axios.get("/custommer/list").then((response) => {
+    let response = await axios.get("/custommer/list-customer");
+    if (response && response.data === "ok") {
       setListCustommer(response.list);
-      console.log(response.list);
-    });
+    }
   };
   useEffect(() => {
     fetchAllCustommer();
@@ -28,10 +28,14 @@ export default function Custommer() {
   if (user && user.isAuthenticated === true) {
     return (
       <div className={cx("wrapper")}>
-        <div className={cx("search")}>
-          <input type="text" name="" id="" placeholder="search custommer" />
-          <Button btnSearch>SEARCH</Button>
-        </div>
+        {user && user.accout.role ? (
+          <div className={cx("search")}>
+            <input type="text" name="" id="" placeholder="search custommer" />
+            <Button btnSearch>SEARCH</Button>
+          </div>
+        ) : (
+          <></>
+        )}
         <div className={cx("form-table")}>
           <table border={1} cellSpacing={0}>
             <tr>
@@ -41,25 +45,24 @@ export default function Custommer() {
               <th>Email</th>
               <th>Action</th>
             </tr>
-            {listCustommer.length > 0 &&
-              listCustommer.map((list, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>{list.TenKH}</td>
-                    <td>{list.username}</td>
-                    <td>{list.Sdt}</td>
-                    <td>
-                      <FontAwesomeIcon
-                        icon={faTrash}
-                        className={cx("icon-trash")}
-                      >
-                        DELETE
-                      </FontAwesomeIcon>
-                    </td>
-                  </tr>
-                );
-              })}
+            {listCustommer.map((list, index) => {
+              return (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{list.TenKH}</td>
+                  <td>{list.username}</td>
+                  <td>{list.Sdt}</td>
+                  <td>
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      className={cx("icon-trash")}
+                    >
+                      DELETE
+                    </FontAwesomeIcon>
+                  </td>
+                </tr>
+              );
+            })}
           </table>
         </div>
       </div>

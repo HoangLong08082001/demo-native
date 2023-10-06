@@ -2,51 +2,75 @@ import React, { useContext, useEffect } from "react";
 import style from "./HomeAdmin.module.scss";
 import classNames from "classnames/bind";
 import Button from "../../../components/Button";
-import Chart from "./Chart";
-import Statistical from "./Statistical";
+
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { UserContext } from "../../../context/UserContext";
+import ChartOne from "./Chart";
+import TableStatitical from "./Statistical";
+import ChartTwo from "./Chart/ChartTwo";
 const cx = classNames.bind(style);
+
 export default function HomeAdmin() {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
-  const [active, setActive] = useState(false);
-  const handle = () => {
-    setActive(!active);
-  };
+
   // useEffect(() => {
   //   console.log(user);
-  //   let session = sessionStorage.getItem("account");
-  //   if (!session) {
+  //   let local = localStorage.getItem("jwt");
+  //   if (!local) {
   //     navigate("/admin-login");
   //   }
   // }, []);
   if (user && user.isAuthenticated === true) {
     return (
       <div className={cx("wrapper")}>
-        <div className="btn-service">
-          {active === true ? (
-            <Button onClick={handle} servicebtn>
-              CHART
-            </Button>
-          ) : (
-            <Button onClick={handle} activeitem>
-              CHART
-            </Button>
-          )}
-          {active === true ? (
-            <Button onClick={handle} activeitem>
-              STATISTICAL
-            </Button>
-          ) : (
-            <Button onClick={handle} servicebtn>
-              STATISTICAL
-            </Button>
-          )}
+        <div className={cx("dash-up")}>
+          <div className={cx("list-statifies")}>
+            <div className={cx("item-up")}>
+              <div
+                className={cx("item-statifies")}
+                style={{ backgroundColor: "#92A8D1" }}
+              >
+                <p>Customer</p>
+                <span>45.000</span>
+              </div>
+              <div
+                className={cx("item-statifies")}
+                style={{ backgroundColor: "#0049B7" }}
+              >
+                <p>Customer</p>
+                <span>45.000</span>
+              </div>
+            </div>
+            <div className={cx("item-down")}>
+              <div
+                className={cx("item-statifies")}
+                style={{ backgroundColor: "#ff1d58" }}
+              >
+                <p>Customer</p>
+                <span>45.000</span>
+              </div>
+              <div
+                className={cx("item-statifies")}
+                style={{ backgroundColor: "#88B04B" }}
+              >
+                <p>Customer</p>
+                <span>45.000</span>
+              </div>
+            </div>
+          </div>
+          <div className={cx("chart-1")}>
+            <ChartOne />
+          </div>
         </div>
-        <div className={cx("content")}>
-          {active === true ? <Statistical /> : <Chart />}
+        <div className={cx("dash-down")}>
+          <div className={cx("list-top")}>
+            <TableStatitical />
+          </div>
+          <div className={cx("chart-top")}>
+            <ChartTwo />
+          </div>
         </div>
       </div>
     );

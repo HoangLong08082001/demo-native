@@ -32,7 +32,7 @@ function Location() {
               key={value.MaTour}
               id={value.MaTour}
               Name={value.DiaDiemDen}
-              NgayDi={value.NgayDi}
+              DiaDiemDen={value.DiaDiemDen}
               img={value.HinhAnh.data}
               container
             />

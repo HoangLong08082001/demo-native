@@ -1,6 +1,12 @@
+.all {
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+}
 .wrapper {
+  overflow-y: hidden;
   display: flex;
 }
 .container {
+  overflow-y: scroll;
   width: 85%;
 }

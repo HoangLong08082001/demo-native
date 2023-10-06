@@ -4,7 +4,7 @@ import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../../../components/Button";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import axios from "../../../../setup-axios/axios";
 const cx = classNames.bind(style);
 export default function DetailEmployee() {
@@ -13,20 +13,16 @@ export default function DetailEmployee() {
   const [email, setEmail] = useState("");
   const [postion, setPosition] = useState("");
   const { id } = useParams();
-  const fetchById = async () => {
-    await axios.get(`/employees/GetById/${id}`).then((res) => {
-      if (res) {
-        let result = res;
-        // setName(res.data[0].TenNV);
-        // setEmail(res.data[0].Email);
-        // setSdt(res.data[0].Sdt);
-        // setPosition(res.data[0].TenViTri);
-        console.log(result);
-      }
-    });
+  const location = useLocation();
+  const getItemLocation = () => {
+    setEmail(location.state.Email);
+    setName(location.state.TenNV);
+    setSdt(location.state.Sdt);
+    setPosition(location.state.TenViTri);
   };
   useEffect(() => {
-    fetchById();
+    getItemLocation();
+    console.log(location);
   }, []);
   return (
     <div className={cx("wrapper")}>
