@@ -5,7 +5,7 @@ import HeaderLogin from "./HeaderLogin";
 function DefaultLayout({ children }) {
   return (
     <div>
-      <HeaderLogin />
+      <Header />
       <div>{children}</div>
       <Footer />
     </div>

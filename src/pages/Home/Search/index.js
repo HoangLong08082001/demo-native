@@ -12,6 +12,7 @@ function Search(props) {
   const [diadiem, setdiadiem] = useState("");
   const [ngaydi, setngaydi] = useState();
   const [ngayve, setngayve] = useState();
+  
 
   var value2 = [];
   const value = {
@@ -28,7 +29,7 @@ function Search(props) {
       value.NgayDi != null &&
       value.NgayVe != null
     ) {
-      axios.post("/search/", value).then((response) => {
+      axios.post("/tour/search", value).then((response) => {
         value2 = response.data;
         props.parentCallback(value2);
       });

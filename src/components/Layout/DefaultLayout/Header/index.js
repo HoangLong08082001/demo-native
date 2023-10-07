@@ -65,28 +65,41 @@ function Header() {
             Hợp Tác
           </Link>
         </div>
-        <Tippy
-          placement="bottom"
-          interactive
-          render={(attrs) => <Menu tabIndex="-1" {...attrs} />}
-        >
-          <div className={cx("warpper-link-h")}>
-            <div className={cx("link")} onClick={handleclick}>
-              {" "}
-              Tour Trong Nước{" "}
-              <span>
-                <FontAwesomeIcon icon={faCaretDown} />
-              </span>
-            </div>
 
-            <div className={cx("link")} onClick={handleclick1}>
-              Tour Nước Ngoài{" "}
-              <span>
-                <FontAwesomeIcon onClick={handleclick1} icon={faCaretDown} />
-              </span>
-            </div>
+        <div className={cx("warpper-link-h")}>
+          <div className={cx("link")} onClick={handleclick}>
+            {" "}
+            Tour Trong Nước{" "}
+            <span>
+              <FontAwesomeIcon icon={faCaretDown} />
+              {set && (
+                <div className={cx("menu-show")}>
+                  <ul>
+                    <li>Mien Bac</li>
+                    <li>Mien Nam</li>
+                    <li>Mien Trung</li>
+                  </ul>
+                </div>
+              )}
+            </span>
           </div>
-        </Tippy>
+
+          <div className={cx("link")} onClick={handleclick1}>
+            Tour Nước Ngoài{" "}
+            <span>
+              <FontAwesomeIcon onClick={handleclick1} icon={faCaretDown} />
+              {set1 && (
+                <div className={cx("menu-show")}>
+                  <ul>
+                    <li>Chau Au</li>
+                    <li>Chau Mi</li>
+                    <li>Chau A</li>
+                  </ul>
+                </div>
+              )}
+            </span>
+          </div>
+        </div>
       </div>
       <div className={cx("warpper-link-icon")}>
         <div>

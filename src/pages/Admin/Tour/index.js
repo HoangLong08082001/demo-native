@@ -13,10 +13,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const cx = classNames.bind(style);
 export default function Tour() {
-  const [toggle, setToggle] = useState(null);
-  const handleToggle = (index) => {
-    return setToggle(index);
-  };
+  const [check, setCheck] = useState(true);
   const [listTour, setListTour] = useState([]);
   const fetchListTour = async () => {
     let response = await axios.get("/tour/alltour");
@@ -29,6 +26,10 @@ export default function Tour() {
   }, []);
   const handleRemove = () => {};
   const { user } = useContext(UserContext);
+  const handleChange = (id) => {
+    setCheck(!check);
+    console.log(id, check);
+  };
   if (user && user.isAuthenticated === true) {
     return (
       <div className={cx("wrapper")}>
@@ -50,7 +51,7 @@ export default function Tour() {
         <div className={cx("form-table")}>
           <table border={1} cellSpacing={0}>
             <tr>
-              {/* <th>Status</th> */}
+              <th>Status</th>
               <th>STT</th>
               <th>Ma Tour</th>
               <th>Dia diem di</th>
@@ -67,21 +68,14 @@ export default function Tour() {
               let ngayve = new Date(list.NgayVe).toLocaleDateString("en-US");
               return (
                 <tr key={index}>
-                  {/* <td onClick={() => handleToggle(index)}>
-                    <div
-                      className={
-                        toggle === index ? cx("toggle-active") : cx("toggle")
-                      }
-                    >
-                      <div
-                        className={
-                          toggle === index
-                            ? cx("button-toggle-active")
-                            : cx("button-toggle")
-                        }
-                      ></div>
-                    </div>
-                  </td> */}
+                  <td>
+                    <input
+                      type="checkbox"
+                      value={check}
+                      onChange={() => handleChange(list.MaTour)}
+                    />
+                  </td>
+
                   <td>{index + 1}</td>
                   <td>
                     {list.LoaiTour}
