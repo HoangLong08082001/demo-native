@@ -14,10 +14,11 @@ import Searchresult from "./SearchResult";
 function Home() {
     const [value2,setvalue2]=useState([])
     const [value1,setvalue1]=useState(false)
-    const [loading, setLoading] = useState(false);
+    const [ham,setham]=useState(false)
     const [ketqua,setketqua]=useState("Hãy Điền Thông Tin Phía Trên Để Tìm Kiếm Tour")
-    const callbackFunction = (childData) => {
+    const callbackFunction = (childData,hamkq) => {
       setvalue2(childData);
+      setham(hamkq);
       if(childData.length > 0)
       {
         setvalue1(true)
@@ -30,18 +31,15 @@ function Home() {
       }
     }
     useEffect(() => {
-      setLoading(true);
       setTimeout(() => {
-        setLoading(false);
+        setham(false);
       }, 1300);
-    }, [value2]);
-   
-  
+    }, [ham]);
     return ( 
              <div> 
               <Slider/>
-             <Search parentCallback={callbackFunction}/>
-              { loading ? (<Loading/>) : ( <Searchresult data={value2} Ketqua={ketqua} moment={value1} />) }
+             <Search parentCallback={callbackFunction} />
+              { ham ? (<Loading/>) : ( <Searchresult data={value2} Ketqua={ketqua} moment={value1} />) }
              <FlashSale/>
              <Panner/>
              <Location/>

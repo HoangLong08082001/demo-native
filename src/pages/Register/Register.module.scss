@@ -1,16 +1,28 @@
+.box-full
+{
+  
+  height: 100%;
+ 
+}
 .box {
+  opacity: 0.8;
+  border-radius: 10px;
   width: 35%;
-  margin: 15px auto;
+  margin:auto;
+  background-color: rgb(226, 229, 230);
+  box-shadow: rgba(254, 253, 253, 0.2) 0px 12px 18px 0px;
 }
 .title {
   p {
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 800;
+    
+    margin-top: 0;
   }
 }
 .form-login {
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 10px;
   padding: 40px 20px;
   label {
     margin-left: 20px;

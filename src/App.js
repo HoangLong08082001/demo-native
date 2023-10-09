@@ -3,6 +3,7 @@ import { publicRoutes, adminRoutes, privateRoutes } from "./routers/index";
 import Error from "./pages/Error";
 import DefaultLayout from "./components/Layout/DefaultLayout";
 import DefaultAdmin from "./components/Layout/DefaultAdmin";
+
 import { useContext, useEffect, useState } from "react";
 import style from "./App.module.scss";
 import classNames from "classnames/bind";
@@ -24,6 +25,7 @@ function App() {
             {publicRoutes.map((route, index) => {
               const Layout = DefaultLayout;
               const LayoutAdmin = DefaultAdmin;
+              
               const LayoutBill =
                 BillLayout; /* The line `const Page = route.component;` is assigning
               the value of `route.component` to the variable `Page`.
@@ -33,7 +35,7 @@ function App() {
               const Page = route.component;
               if (index >= 0 && index <= 3) {
                 return (
-                  <Route key={index} path={route.path} element={<Page />} />
+                  <Route key={index} path={route.path} element={ <Page />} />
                 );
               } else if (index >= 10) {
                 return (

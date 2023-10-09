@@ -9,6 +9,7 @@ import { faE, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../components/Button";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import img4 from "../../../src/assets/images/slider/img5.jpg";
 const cx = classname.bind(styles);
 function Login() {
   const navigate = useNavigate();
@@ -24,7 +25,8 @@ function Login() {
     
   };
   return (
-    <div className={cx("box")}>
+    <div  style={{ backgroundImage: `url(${img4})`,backgroundRepeat:"no-repeat",backgroundSize:"cover"  }} className={cx("box-full")} >
+      <div className={cx("box")}>
       <div className={cx("title")}>
         <p>LOGIN YOUR ACCOUNT</p>
       </div>
@@ -70,6 +72,8 @@ function Login() {
         </div>
       </div>
     </div>
+    </div>
+    
   );
 }
 

@@ -6,6 +6,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../../components/Button";
 import { useEffect, useState } from "react";
 import axios from "../../../setup-axios/axios";
+import { toast } from "react-toastify";
 import Searchresult from "../SearchResult";
 const cx = classname.bind(styles);
 function Search(props) {
@@ -22,8 +23,10 @@ function Search(props) {
   };
 
   const handleSearch = () => {
+    
     if (ngaydi > ngayve) {
-      alert("Vui Lòng Xem Lại Thông Tin ");
+      toast.warning("Kiem Tra Lai Thong Tin Ngay");
+      return;
     } else if (
       value.DiaDiemDen != null &&
       value.NgayDi != null &&
@@ -31,12 +34,13 @@ function Search(props) {
     ) {
       axios.post("/tour/search", value).then((response) => {
         value2 = response.data;
-        props.parentCallback(value2);
+        props.parentCallback(value2,true);
       });
     } else {
-      alert("Vui Lòng Dien Day Du Thông Tin ");
+      toast.warning("Vui Long Dien Day Du Thong Tin Tim Kiem");
+      return;
     }
-  };
+  };  
 
   return (
     <div className={cx("wrapper")}>

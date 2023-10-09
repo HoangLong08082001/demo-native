@@ -1,5 +1,6 @@
 import classname from "classnames/bind";
 import { useState } from "react";
+import img4 from "../../../src/assets/images/slider/img5.jpg";
 import logo from "../../assets/images/logo.png";
 import google from "../../assets/images/logoGoogle.png";
 import facebook from "../../assets/images/logoFacebook.png";
@@ -87,99 +88,101 @@ function Register() {
     }
   };
   return (
-    <div className={cx("box")}>
-      <div className={cx("title")}>
-        <p>CREATE YOUR ACCOUNT</p>
-      </div>
-      <div className={cx("form-login")}>
-        <div className={cx("form-logo")}>
-          <img src={logo} alt="loi" />
+    <div  style={{ backgroundImage: `url(${img4})`,backgroundRepeat:"no-repeat",backgroundSize:"cover"  }} className={cx("box-full")} >
+      <div className={cx("box")}>
+        <div className={cx("title")}>
+          <p>CREATE YOUR ACCOUNT</p>
         </div>
-        <label htmlFor="">Ten Khach hang</label>
-        <div className={cx("input-form")}>
-          <input
-            type="text"
-            value={TenKH}
-            onChange={(e) => setTenKH(e.target.value)}
-            placeholder="Enter your name"
-          />
-        </div>{" "}
-        <label htmlFor="">So dien thoai</label>
-        <div className={cx("input-form")}>
-          <input
-            type="number"
-            placeholder="Enter your phone munber"
-            value={Sdt}
-            onChange={(e) => setSdt(e.target.value)}
-          />
-        </div>
-        <label htmlFor="">Dia chi</label>
-        <div className={cx("input-form")}>
-          <input
-            type="text"
-            placeholder="Enter your address"
-            value={Diachi}
-            onChange={(e) => setDiaChi(e.target.value)}
-          />
-        </div>
-        <label htmlFor="">CMND</label>
-        <div className={cx("input-form")}>
-          <input
-            type="number"
-            placeholder="Enter your code"
-            value={CMND}
-            onChange={(e) => setCMND(e.target.value)}
-          />
-        </div>
-        <label htmlFor="">Email</label>
-        <div className={cx("input-form")}>
-          <input
-            type="text"
-            placeholder="Enter your Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <label htmlFor="">Password</label>
-        <div className={cx("input-form")}>
-          <input
-            type={type === true ? "password" : "text"}
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <FontAwesomeIcon
-            className={cx("icon")}
-            icon={show === true ? faEye : faEyeSlash}
-            onClick={handleHideShow}
-          ></FontAwesomeIcon>
-        </div>
-        <label htmlFor="">Confirm Password</label>
-        <div className={cx("input-form")}>
-          <input
-            type={typeConfirm === true ? "password" : "text"}
-            placeholder="Confirm your password"
-            value={confirm}
-            onChange={(e) => setConfirm(e.target.value)}
-          />
-          <FontAwesomeIcon
-            className={cx("icon")}
-            icon={showConfirm === true ? faEye : faEyeSlash}
-            onClick={handleHideShowConfirm}
-          ></FontAwesomeIcon>
-        </div>
-        <div className={cx("btn-login")}>
-          <Button loginweb onClick={handleCreate}>
-            CREATE
-          </Button>
-        </div>
-        <div className={cx("text")}>
-          <p>
-            Don't have an account ?{" "}
-            <Button to="/login" linkregister>
-              login here
+        <div className={cx("form-login")}>
+          <div className={cx("form-logo")}>
+            <img src={logo} alt="loi" />
+          </div>
+          <label htmlFor="">Ten Khach hang</label>
+          <div className={cx("input-form")}>
+            <input
+              type="text"
+              value={TenKH}
+              onChange={(e) => setTenKH(e.target.value)}
+              placeholder="Enter your name"
+            />
+          </div>{" "}
+          <label htmlFor="">So dien thoai</label>
+          <div className={cx("input-form")}>
+            <input
+              type="number"
+              placeholder="Enter your phone munber"
+              value={Sdt}
+              onChange={(e) => setSdt(e.target.value)}
+            />
+          </div>
+          <label htmlFor="">Dia chi</label>
+          <div className={cx("input-form")}>
+            <input
+              type="text"
+              placeholder="Enter your address"
+              value={Diachi}
+              onChange={(e) => setDiaChi(e.target.value)}
+            />
+          </div>
+          <label htmlFor="">CMND</label>
+          <div className={cx("input-form")}>
+            <input
+              type="number"
+              placeholder="Enter your code"
+              value={CMND}
+              onChange={(e) => setCMND(e.target.value)}
+            />
+          </div>
+          <label htmlFor="">Email</label>
+          <div className={cx("input-form")}>
+            <input
+              type="text"
+              placeholder="Enter your Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <label htmlFor="">Password</label>
+          <div className={cx("input-form")}>
+            <input
+              type={type === true ? "password" : "text"}
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <FontAwesomeIcon
+              className={cx("icon")}
+              icon={show === true ? faEye : faEyeSlash}
+              onClick={handleHideShow}
+            ></FontAwesomeIcon>
+          </div>
+          <label htmlFor="">Confirm Password</label>
+          <div className={cx("input-form")}>
+            <input
+              type={typeConfirm === true ? "password" : "text"}
+              placeholder="Confirm your password"
+              value={confirm}
+              onChange={(e) => setConfirm(e.target.value)}
+            />
+            <FontAwesomeIcon
+              className={cx("icon")}
+              icon={showConfirm === true ? faEye : faEyeSlash}
+              onClick={handleHideShowConfirm}
+            ></FontAwesomeIcon>
+          </div>
+          <div className={cx("btn-login")}>
+            <Button loginweb onClick={handleCreate}>
+              CREATE
             </Button>
-          </p>
+          </div>
+          <div className={cx("text")}>
+            <p>
+              Don't have an account ?{" "}
+              <Button to="/login" linkregister>
+                login here
+              </Button>
+            </p>
+          </div>
         </div>
       </div>
     </div>
