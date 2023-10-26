@@ -40,26 +40,13 @@ function Home() {
               <Slider/>
              <Search parentCallback={callbackFunction} />
               { ham ? (<Loading/>) : ( <Searchresult data={value2} Ketqua={ketqua} moment={value1} />) }
-             <FlashSale/>
+            
              <Panner/>
              <Location/>
              <Connect/>
              <Famos/>
              <HotLocation/></div>
-    //  <div>
-    //     {loading ?(<Loading/>):( 
-    //       <div>
-    //         <Slider/>
-    //         <Search parentCallback={callbackFunction}/>
-    //         <Searchresult data={value2} Ketqua={ketqua} moment={value1} />
-    //         <FlashSale/>
-    //         <Panner/>
-    //         <Location/>
-    //         <Connect/>
-    //         <Famos/>
-    //         <HotLocation/>
-    //     </div>)}
-    //  </div>
+
    );
 }
 

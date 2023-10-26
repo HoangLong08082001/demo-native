@@ -9,7 +9,7 @@ function Searchresult({data,Ketqua,moment}) {
     return (  
     <div className={cx("wrapper")}>
          {moment ?(<div>
-            <h2>Kết Quả Tìm Kiếm</h2>
+            <h2 >Kết Quả Tìm Kiếm</h2>
             <div className={cx("List-tour")}>
               {
                 

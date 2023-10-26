@@ -4,49 +4,69 @@
 .wrapper-tour {
   padding: 10px 20px;
   border-radius: 10px;
+
+  display: flex;
+  
+}
+.background-tour
+{
+  border-radius: 5px 0 0 5px;
+  width: 50%;
+  height: 350px;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}.background-tour-detail-tittle-css
+{
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  width: 80%;
+  background-color: #ffffff;
+  text-align: center;
+  padding: 10px;
+}
+.background-tour-detail-tittle
+{
+  color: 
+  #0d91f5 ;
+  font-size: 15px;
+}
+.background-tour-detail
+{
   display: flex;
+  justify-content: space-evenly;
+  height: 50px;
 }
-.img-form {
-  width: 40%;
-  height: 300px;
-  margin: 10px 100px;
-  img {
-    margin-top: 50px;
-    width: 100%;
-    height: 100%;
-  }
+.background-tour-detail div {
+  line-height: 50px;
+  font-weight: 600;
 }
-.inform {
-  margin-left: 10px;
+.background-tour-hr
+{
+  width: 50%;
+
+  margin: auto;
+  border: solid 1px rgba(0,0,0,.15);
 }
-.name-tour {
-  color: #2f81bd;
-  font-weight: 900;
-  font-size: 30px;
-}
-.list {
-  display: flex;
-  ul li {
-    display: flex;
-    p {
-      margin-left: 20px;
-      font-size: 20px;
-    }
-    .icon {
-      margin-top: 22px;
-      font-size: 20px;
-      color: #2f81bd;
-    }
-  }
+.background-tour-detail-price
+{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 20px;
+  height: 50px;
+  color: rgb(255, 119, 0);
+  background-color: white;
+  border-radius: 10px;
 }
 .title {
-  font-size: 30px;
+  font-size: 25px;
   color: black;
-  font-weight: 900;
+  font-weight: 600;
 }
 .btn {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }

@@ -17,8 +17,8 @@ import Tour from "../pages/Admin/Tour";
 import AddTour from "../pages/Admin/Tour/AddTour";
 import User from "../pages/User";
 const publicRoutes = [
-  { path: "/login", component: Login },
-  { path: "/register", component: Register },
+  { path: "/login-user", component: Login },
+  { path: "/register-user", component: Register },
   { path: "*", component: Error },
   { path: "/admin-login", component: LoginAdmin },
   { path: "/", component: Home },
@@ -26,6 +26,7 @@ const publicRoutes = [
   { path: "/review", component: Review },
   { path: "/more-summer", component: More },
   { path: "/details/:id", component: Details },
+  { path: "/more-summer/:nn", component: More },
   { path: "/User", component: User },
   { path: "/admin-home", component: HomeAdmin },
   { path: "/employee", component: Employee },

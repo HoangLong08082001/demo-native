@@ -5,12 +5,13 @@
  
 }
 .box {
-  opacity: 0.8;
+  background-color: transparent;
+  backdrop-filter: blur(20px) ;
   border-radius: 10px;
   width: 35%;
   margin:auto;
-  background-color: rgb(226, 229, 230);
-  box-shadow: rgba(254, 253, 253, 0.2) 0px 12px 18px 0px;
+ border: 1px solid ;
+  box-shadow: rgba(222, 44, 44, 0.2) 0px 22px 28px 0px;
 }
 .title {
   p {
@@ -25,6 +26,7 @@
   border-radius: 10px;
   padding: 40px 20px;
   label {
+    color: white;
     margin-left: 20px;
     font-size: 15px;
     font-weight: 700;
@@ -44,6 +46,8 @@
   input {
     padding: 10px 10px;
     width: 95%;
+    color: rgb(0, 0, 0);
+    background-color: transparent;
     border-top: none;
     border-left: none;
     border-right: none;

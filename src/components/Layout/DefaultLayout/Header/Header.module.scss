@@ -13,14 +13,16 @@
   padding: 10px;
   text-decoration: none;
   position: relative;
-    
+  
 }
 .menu-show
 {
+  
     top:100%;
     left: 0%;
     z-index: 1;
     opacity: 0.9;
+    
     background-color: 
     #2f81bd;
     width: 200px;
@@ -56,6 +58,7 @@
   display: flex;
   justify-content: space-around;
   height: 50%;
+  
 }
 .warpper-link-icon {
   padding-bottom: 30px;
@@ -68,4 +71,327 @@
 
 .warpper-icon {
   padding-top: 10px;
+}
+.menu-bar-overlay
+{
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  position: fixed;
+  z-index: 10;
+  background-color: rgba(0, 0, 0,0.3);
+  animation: fadein linear 0.3s;
+}
+.menu-bar
+{
+  transition: transform linear 0.2s;
+  
+  position: absolute;
+  width: 35%;
+  left: 0;
+  opacity: 0;
+  border-radius: 0 0 20px 0;
+  height: 50%;
+  background-color: white;
+  z-index: 11;
+  transform: translateX(-100%);
+  ul
+  {
+    
+    li{
+      font-weight: 600;
+      
+      font-size: 20px;
+      a{
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+  label{
+    svg{
+      
+      top: 10px;
+      font-size: 35px;
+      position: absolute;
+      right: 15px;
+    }
+  }
+  
+}
+
+.bar-icon
+{
+  display: none;
+  line-height: 110px;
+  svg{
+    font-size: 30px;
+    color: black;
+    
+    
+  }
+  
+}
+.wrapper-input
+{
+  display: none;
+}
+.wrapper-input:checked ~ .menu-bar-overlay
+{
+  display: block;
+}
+.wrapper-input:checked ~ .menu-bar
+{
+  transform: translateX(0%);
+  opacity: 1;
+}
+.warpper-link-icon-avatar
+{
+  
+  width: 40px;
+  cursor: pointer;
+  margin-left: 10px;
+  position: relative;
+}
+.warpper-link-icon-avatar-tamgiac{
+  height: 0;
+  display: none;
+  position: absolute;
+  top: 12.5%;
+  right:11.5%;
+  z-index: 2;
+     width: 0;
+     border-left: 10px solid transparent;
+     border-right: 10px solid transparent;
+     border-bottom: 10px solid #70a6d3;
+     border-top: 10px solid transparent;
+}
+.warpper-link-icon-avatar-select
+{
+  top: 15.2%;
+  right: 8%;
+  display: none;
+  position: absolute;
+  width: 200px;
+  background-color: #70a6d3;
+  
+  z-index: 1;
+  ul{
+    margin: 0;
+    padding: 2px;
+    align-items:center ;
+    li{
+      justify-content: center;
+      span{
+        cursor: pointer;
+        color: white;
+        &:hover{
+          color: #2f81bd;
+          transition:all 0.3s;
+        }
+        font-size: 15px;
+      }
+    }
+  }
+}   
+.link-icon
+{
+  height: 17px;
+}
+.warpper-link-icon-check
+{
+  display: none;
+}
+.warpper-link-icon-check:checked ~ .warpper-link-icon-avatar-select
+{
+  display: block;
+}
+.warpper-link-icon-check:checked ~ .warpper-link-icon-avatar-tamgiac
+{
+  display: block;
+}
+.warpper-link-icon-login
+{
+  
+  font-size: 15px;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+//mobile
+@media only screen and (max-width: 480px) and (min-width:375px)  {
+  .warpper-link
+  {
+    display: none;
+  }
+  .wrapper
+  {
+    justify-content: space-around;
+  }
+  .bar-img
+  {
+    
+    width: 140px;
+    height: 70px;
+  }
+  .bar-img-height
+  {
+    line-height: 150px;
+  }
+  .warpper-link-icon
+  {
+    
+    flex-direction: column;
+  }
+  .bar-icon
+  {
+    display: block;
+    svg
+    {
+      font-size: 25px;
+    }
+  }
+  .menu-bar
+  {
+    width: 55%;
+    height: 70%;
+    ul{
+      li{
+        font-size: 10px;
+      }
+    }
+    label{
+      svg{
+        top: 10px;
+        font-size: 20px;
+        position: absolute;
+        right: 15px;
+      }
+    }
+  }
+  
+}
+
+@media only screen and (max-width: 530px) and (min-width:480px)  {
+  .warpper-link
+  {
+    display: none;
+  }
+  .wrapper
+  {
+    justify-content: space-around;
+  }
+  .bar-img
+  {
+   
+    width: 180px;
+    height: 100px;
+  }
+  .bar-icon
+  {
+    display: block;
+  }
+  .menu-bar
+  {
+    width: 55%;
+    height: 70%;
+    ul{
+      li{
+        font-size: 10px;
+      }
+    }
+    label{
+      svg{
+        top: 10px;
+        font-size: 20px;
+        position: absolute;
+        right: 15px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 650px) and (min-width: 530px){
+  .warpper-link
+  {
+    display: none;
+  }
+  .wrapper
+  {
+    justify-content: space-around;
+  }
+  .bar-img
+  {
+   
+    width: 250px;
+    height: 100px;
+  }
+  .bar-icon
+  {
+    display: block;
+  }
+}
+//tablet
+@media only screen and (min-width:650px)  and (max-width: 1024px) {
+  .warpper-link
+  {
+    display: none;
+  }
+  .bar-icon
+  {
+    display: block;
+  }
+  .wrapper
+  {
+    justify-content: space-evenly;
+  }
+  .menu-bar
+  {
+    width: 45%;
+    height: 60%;
+    ul{
+      li{
+        font-size: 20px;
+      }
+    }
+  }
+  .bar-img
+  {
+   
+    width: 250px;
+    height: 100px;
+  }
+}
+//tabletpro
+@media only screen and (min-width:1024px)  and (max-width: 1366px) {
+  .link
+  {
+    font-size: 17px;
+  }
+  .bar-img
+  {
+    width: 300px;
+    height: 100px;
+  }
+  .menu-bar
+  {
+    width: 40%;
+  }
+}
+
+//pc
+@media only screen and (min-width: 1024px) {
+  
+}
+
+@keyframes fadein{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
 }

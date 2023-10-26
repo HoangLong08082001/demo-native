@@ -7,7 +7,9 @@ import styles from "./Login.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faE, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../components/Button";
+import axios from "../../setup-axios/axios";
 import { toast } from "react-toastify";
+
 import { useNavigate } from "react-router-dom";
 import img4 from "../../../src/assets/images/slider/img5.jpg";
 const cx = classname.bind(styles);
@@ -22,7 +24,20 @@ function Login() {
     setType(!type);
   };
   const handleLogin = () => {
-    
+    axios
+    .post("/api/login-client", {
+      username,
+      password,
+    })
+    .then((res) => {
+      if (res.message === "success") {
+        localStorage.setItem("account",res.username);
+        navigate("/");
+        toast.success("Login success");
+      } else {
+        toast.error("Wrong password or username");
+      }
+    });
   };
   return (
     <div  style={{ backgroundImage: `url(${img4})`,backgroundRepeat:"no-repeat",backgroundSize:"cover"  }} className={cx("box-full")} >

@@ -18,7 +18,7 @@ const GalleryPrevArrow = ({ currentSlide, slideCount, ...props }) => {
     <div {...props} className={cx("custom-prevArrow")} onClick={onClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="24"
+        width="20"
         height="24"
         viewBox="0 0 24 24"
       >
@@ -35,7 +35,7 @@ const GalleryNextArrow = ({ currentSlide, slideCount, ...props }) => {
     <div {...props} className={cx("custom-nextArrow")} onClick={onClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="24"
+        width="20"
         height="24"
         viewBox="0 0 24 24"
       >
@@ -50,11 +50,102 @@ export default class MultipleItems extends Component {
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 4,
+      slidesToShow: 4.1,
       slidesToScroll: 1,
-
+      responsive: [
+        {
+          breakpoint: 1366,
+          settings: {
+            slidesToShow: 3.1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 975,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 930,
+          settings: {
+            slidesToShow: 2.1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2.1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 670,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 650,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 580,
+          settings: {
+            slidesToShow: 1.6,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 530,
+          settings: {
+            slidesToShow: 1.1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 500,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1.1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        }
+      ],
       autoplay: true,
-
+      
       cssEase: "linear",
       nextArrow: <GalleryNextArrow />,
       prevArrow: <GalleryPrevArrow />,

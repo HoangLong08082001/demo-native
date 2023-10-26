@@ -1,0 +1,88 @@
+.box
+{
+   
+    display: flex;
+    width: 90%;
+    margin: auto;
+}
+.box-show-comment-reponse
+{   margin-bottom: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    width: 800px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    padding: 10px;
+    p{
+        margin: 0;
+        font-size: 15px;
+        font-weight: 400;
+    }
+    div{
+        display: flex;
+        align-items: center;
+        height: 50px;
+        font-weight: 600;
+        line-height: 50px;
+    }
+    img{
+        margin-right: 10px;
+        width: 25px;
+        height: 25px;
+        
+    }
+}
+.box-push-comment
+{
+    
+    width: 50%;
+    display: flex;
+    
+    padding: 20px;
+}
+.box-push-comment-left
+{
+    img{
+        width: 40px;
+    }
+}
+.box-push-comment-right
+{
+    margin-left: 10px;
+    
+    h5{
+        margin: 0;
+        font-size: 15px;
+    }
+}
+.box-push-comment-text
+{
+    textarea
+    {
+        width: 300px;
+        height: 200px;
+    }
+}
+.box-push-comment-button
+{
+    button{
+        width: 100px;
+        height: 35px;
+        border: 0;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color:
+         
+        #14a44d;
+        opacity: 0.9;
+        color: white;
+        box-shadow: rgba(86, 212, 32, 0.25) 0px 54px 55px, rgba(53, 202, 12, 0.12) 0px -12px 30px rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        &:hover{
+            opacity: 2;
+        }
+    }
+}
+.box-push-comment-rating
+{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}

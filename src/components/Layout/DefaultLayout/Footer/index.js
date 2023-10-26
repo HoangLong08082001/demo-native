@@ -11,15 +11,15 @@ function Footer() {
           className={cx("container-img")}
           style={{ backgroundImage: `url(${img1})` }}
         ></div>
-        <div>
-          <div>
+        <div className={cx("container-box-2")}>
+          <div className={cx("container-box-2-1")}>
             <h2>Chính Sách Và Quy Định</h2>
           </div>
-          <div>
-            <p>Dieu khoan va dieu kien</p>
-            <p>Qui dinh ve thanh toan</p>
-            <p>Chinh sach bao mat </p>
-            <p>Quy che hoat dong</p>
+          <div className={cx("container-box-2-2")}>
+            <p>Điều khoản và điều kiện</p>
+            <p>Qui định về thanh toán</p>
+            <p>Chính sách bảo mật </p>
+            <p>Quy chế hoạt động</p>
           </div>
         </div>
         <div className={cx("container-l")}>

@@ -54,7 +54,7 @@
   justify-content: end;
   padding-right: 5px;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 25px;
   color: #2f81bd;
 }
 .margintop {
@@ -70,3 +70,113 @@
     font-weight: 800;
   }
 }
+
+/// 
+  //mobile
+  @media only screen and (max-width: 480px) and (min-width:375px)  {
+   .container{
+    width: 270px;
+   }
+   .container-img {
+    height: 120px;
+  }
+  .container-date {
+    margin-top: 4px;
+    font-weight: 600;
+    font-size: 13px; 
+    height: 25px;
+    line-height: 25px;
+  }
+  .container-content {
+    margin-top: 8px;
+    margin-bottom: 7px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .container-star {
+    font-size: 16px;
+  }
+  .container-discount {
+    font-size: 17px;
+  }
+  .container-price {
+   
+    font-size: 23px;
+   
+  }
+  .sale-off {
+    p {
+      font-size: 12px;
+    }
+  }
+    
+  }
+  @media only screen and (max-width: 530px) and (min-width:480px)  {
+    
+  }
+  @media only screen and (max-width: 650px) and (min-width: 530px){
+    .container {
+     
+      width: 260px;
+     
+     
+    }
+    .container-img {
+      height: 120px;
+    }
+    .container-date {
+      margin-top: 4px;
+      font-weight: 600;
+      font-size: 13px; 
+      height: 25px;
+      line-height: 25px;
+    }
+    .container-content {
+      margin-top: 8px;
+      margin-bottom: 7px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .container-star {
+      font-size: 16px;
+    }
+    .container-discount {
+      font-size: 17px;
+    }
+    .container-price {
+     
+      font-size: 23px;
+     
+    }
+    .sale-off {
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+  //tablet
+  @media only screen and (min-width:650px)  and (max-width: 1024px) {
+    .container {
+     
+      width: 290px;
+     
+     
+    }
+  }
+    
+  
+  //tabletpro
+  @media only screen and (min-width:1024px)  and (max-width: 1366px) {
+    .container {
+     
+      width: 300px;
+     
+     
+    }
+    
+  }
+  
+  //pc
+  @media only screen and (min-width: 1024px) {
+    
+  }

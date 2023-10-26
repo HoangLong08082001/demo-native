@@ -8,7 +8,7 @@ export default function Rules() {
     <div className={cx("wrapper")}>
       <div className={cx("rule")}>
         <input type="checkbox" name="" id="" />
-        <p>Toi da doc va dong y dieu khoan</p>
+        <p>Tôi đã đọc và đồng ý với điều khoản</p>
       </div>
       <div className={cx("list-rules")}>
         <p>

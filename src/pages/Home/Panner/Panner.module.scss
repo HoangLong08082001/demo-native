@@ -1,5 +1,5 @@
 .container {
-  margin-top: 40px;
+  
   min-height: 500px;
 
   /* Create the parallax scrolling effect */
@@ -8,3 +8,43 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+ /////////
+  /// 
+  /// 
+  //mobile
+  @media only screen and (max-width: 480px) and (min-width:375px)  {
+    .container{
+      min-height: 170px;
+    }
+    
+  }
+  @media only screen and (max-width: 530px) and (min-width:480px)  {
+    .container{
+      min-height: 180px;
+    }
+  }
+  @media only screen and (max-width: 650px) and (min-width: 530px){
+    .container{
+      min-height: 300px;
+    }
+  }
+  //tablet
+  @media only screen and (min-width:650px)  and (max-width: 1024px) {
+    .container{
+      min-height: 350px;
+    }
+  }
+    
+  
+  //tabletpro
+  @media only screen and (min-width:1024px)  and (max-width: 1366px) {
+    .container{
+      min-height: 400px;
+    }
+    
+  }
+  
+  //pc
+  @media only screen and (min-width: 1024px) {
+    
+  }

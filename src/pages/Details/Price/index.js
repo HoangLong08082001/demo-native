@@ -8,11 +8,11 @@ export default function Price() {
     <div className={cx("wrapper")}>
       <table className={cx("table")}>
         <tr className={cx("title")}>
-          <th className={cx("head")}>Khoi hanh</th>
-          <th className={cx("head")}>Ma tour</th>
-          <th className={cx("head")}>Gia tour</th>
-          <th className={cx("head")}>Gia tre em</th>
-          <th className={cx("head")}>Gia em be</th>
+          <th className={cx("head")}>Khởi Hành</th>
+          <th className={cx("head")}>Mã Tour</th>
+          <th className={cx("head")}>Giá Tour</th>
+          <th className={cx("head")}>Giá Trẻ Em</th>
+          <th className={cx("head")}></th>
         </tr>
         <div className={cx("line")}></div>
         <tr>
@@ -29,7 +29,7 @@ export default function Price() {
             <p className={cx("baby-price")}>4.250.000</p>
           </td>
           <td>
-            <p className={cx("baby-price")}>0</p>
+            <p className={cx("baby-price")}></p>
           </td>
           <td>
             <Button to="/bill" purchase>
@@ -51,7 +51,7 @@ export default function Price() {
             <p className={cx("baby-price")}>4.250.000</p>
           </td>
           <td>
-            <p className={cx("baby-price")}>0</p>
+            <p className={cx("baby-price")}></p>
           </td>
           <td>
             <Button to="/bill" purchase>
@@ -69,11 +69,11 @@ export default function Price() {
           <td>
             <p className={cx("adult-price")}>4.250.000</p>
           </td>
-          <td>
+          <td >
             <p className={cx("baby-price")}>4.250.000</p>
           </td>
           <td>
-            <p className={cx("baby-price")}>0</p>
+            <p className={cx("baby-price")}></p>
           </td>
           <td>
             <Button to="/bill" purchase>

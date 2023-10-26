@@ -1,16 +1,142 @@
 .wrapper {
   width: 100%;
+  
+  padding: 10px;
+  background-color: rgb(211, 216, 220);
+  
+  
+}
+.wrapper-full
+{width: 100%;
+  display: flex;
+  padding: 10px;
+  background-color: rgb(211, 216, 220);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .sort-form {
   cursor: pointer;
-  background: rgb(220, 220, 220);
-  width: 9%;
-  display: flex;
-  margin-left: 90%;
+  
+ 
+  width: 10%;
+  margin-left: 4.5%;
+  line-height: 50px;
+  height: 50px;
   border-radius: 25px;
+  text-align: center;
+  color: black;
   padding: 0 20px;
+  p{
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+  }
 }
-.icon-sort {
-  margin-top: 20px;
-  margin-left: 10px;
+.sort-tour
+{
+  position: relative;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 50px;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  line-height: 50px;
+  
+  align-items: center;
+  p{
+    font-size: 15px;
+    margin: 0;
+    
+    font-weight: 600;
+  }
+  label{
+    cursor: pointer;
+  }
+  svg{
+    color: black;
+    margin-left: 9px;
+    font-size: 15px;
+  }
+  
 }
+.sort-tour-down-price
+{
+ 
+  top: 70%;
+  right: -12%;
+  cursor: pointer;
+  width: 180px;
+  
+  height: 0;
+  position: absolute;
+  transition: height 0.2s;
+  border-radius: 0 0 10px 10px;
+  background-color: rgb(170, 188, 202);
+  color: white;
+  ul{
+    padding: 0;
+    li{
+      justify-content: center;
+      display: none;
+    }
+    li:hover{
+      color: black;
+    }
+  }
+}
+.sort-tour-down-date
+{
+  
+  text-align: center;
+  top: 70%;
+  right: -3%;
+  display: flex;
+  width: 280px;
+  justify-content: space-around;
+  height: 0;
+  position: absolute;
+  transition: height 0.2s;
+  border-radius: 0 0 10px 10px;
+  background-color: rgb(170, 188, 202);
+  color: white;
+  ul{
+    padding: 0;
+    justify-content: center;
+    li{
+      justify-content: center;
+      display: none;
+    }
+    li:hover{
+      color: black;
+    }
+  }
+}
+
+.cscheck2[type="radio"]:checked ~ .sort-tour-down-price
+{
+  
+  height: 200px;
+  ul{
+    li{
+      display: block;
+      text-align: center;
+    }
+  }
+
+  
+}
+.cscheck3[type="radio"]:checked ~ .sort-tour-down-date
+{
+  height: 300px;
+  ul{
+    li{
+      display: block;
+      text-align: center;
+    }
+  }
+}
+
+.cscheck1,.cscheck2,.cscheck3{
+ display: none;
+}
+

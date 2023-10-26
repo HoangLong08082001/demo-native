@@ -9,11 +9,11 @@ export default function User() {
   const [show, setShow] = useState(null);
   const listmenu = [
     {
-      item: "Ho so",
+      item: "Hồ Sơ",
       component: Biography,
     },
     {
-      item: "Lich Su tour",
+      item: "Lịch Sử Tour",
       component: History,
     },
   ];
@@ -25,7 +25,7 @@ export default function User() {
   };
   return (
     <div className={cx("wrapper")}>
-      <p>Thong tin Khach Hang</p>
+      <p>Thông Tin Khách Hàng</p>
       {listmenu.map((item, index) => (
         <div className={show === index ? cx("content-active") : cx("content")}>
           <ul key={index}>

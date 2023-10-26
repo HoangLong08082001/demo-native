@@ -6,10 +6,10 @@ const cx = classNames.bind(style);
 export default function History() {
   return (
     <div className={cx("wrapper")}>
-      <p>Lich su giao dich Tour</p>
+      <p>Lịch Sử Giao Dịch Tour</p>
       <table>
         <tr>
-          <th>Ten Tour</th>
+          <th>Tên Tour</th>
           <th>Dia diem den</th>
           <th>Ngay di</th>
           <th>Ngay ve</th>

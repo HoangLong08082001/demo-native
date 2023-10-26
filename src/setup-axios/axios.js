@@ -30,7 +30,7 @@ instance.interceptors.response.use(
     const status = (error && error.response && error.response.status) || 500;
     switch (status) {
       case 401: {
-        toast.error("Unauthorized the user");
+        toast.warning("Unauthorized the user");
         return true;
       }
       case 403: {

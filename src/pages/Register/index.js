@@ -5,6 +5,7 @@ import logo from "../../assets/images/logo.png";
 import google from "../../assets/images/logoGoogle.png";
 import facebook from "../../assets/images/logoFacebook.png";
 import styles from "./Register.module.scss";
+import { Navigate, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faE, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../components/Button";
@@ -12,6 +13,7 @@ import { toast } from "react-toastify";
 import axios from "../../setup-axios/axios";
 const cx = classname.bind(styles);
 function Register() {
+  const navigate = useNavigate();
   const [type, setType] = useState(true);
   const [show, setShow] = useState(true);
   const [typeConfirm, setTypeConfirm] = useState(true);
@@ -56,7 +58,7 @@ function Register() {
       toast.warning("Sai mat khau");
       return false;
     }
-    toast.success("Tao mat khau thanh cong");
+    toast.success("Tao tai khoan thanh cong");
     return true;
   };
   const handleHideShow = () => {
@@ -86,6 +88,7 @@ function Register() {
       setSdt("");
       setTenKH("");
     }
+    navigate("/login-user")
   };
   return (
     <div  style={{ backgroundImage: `url(${img4})`,backgroundRepeat:"no-repeat",backgroundSize:"cover"  }} className={cx("box-full")} >

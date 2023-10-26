@@ -1,3 +1,5 @@
+
+
 .wrapper {
   width: 100%;
 }
@@ -10,6 +12,36 @@
   flex-wrap: wrap;
 }
 .paging{
-  margin-top: 50px;
-  margin-left: 46%;
+  
+  text-align: center;
+  width: 500px;
+  margin: auto;
+}
+.pagination{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  font-size: 1rem;
+  gap: 5px;
+  
+}
+.pagination .page-num
+{
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius:3px;
+  font-weight: 600;
+}
+.pagination .page-num:hover
+{
+  background-color: #15deca;
+  color: white;
+}
+.pagination .active
+{
+  background-color: #15deca;
+  
+  
 }

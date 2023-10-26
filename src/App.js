@@ -68,9 +68,9 @@ function App() {
                     key={index}
                     path={route.path}
                     element={
-                      <LayoutBill>
+                      <Layout>
                         <Page />
-                      </LayoutBill>
+                      </Layout>
                     }
                   />
                 );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./Booking.module.scss";
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,67 +9,55 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 const cx = classNames.bind(style);
 export default function Booking() {
+  const [Person,setPerson]=useState(0);
+  const [Personmin,setPersonmin]=useState(0);
+  const handleuppersonmin=()=>{
+    setPersonmin(Personmin+1);
+  }
+  const handledownpersonmin=()=>{
+    setPersonmin(Personmin-1);
+  }
+  const handleupperson=()=>{
+    setPerson(Person+1);
+  }
+  const handledownperson=()=>{
+    setPerson(Person-1);
+  }
+  
   return (
     <div className={cx("booking")}>
-      <div className={cx("inform-passenger")}>
-        <div className={cx("form-input")}>
-          <label htmlFor="">Ho va Ten</label>
-          <br />
-          <input type="text" name="" placeholder="Nhap ho va ten" id="" />
+        <div className={cx("booking-information")}>
+            <div>
+                 <span>Họ Tên</span>
+                 <input className={cx("booking-information-input")} type="text" id="fname" name="firstname" placeholder="Your name.."></input>
+            </div>
+            <div>
+                 <span>Email</span>
+                 <input className={cx("booking-information-input")} type="text" id="fname" name="firstname" placeholder="Your name.."></input>
+            </div>
+            <div>
+                 <span>Số Điện Thoại</span>
+                 <input className={cx("booking-information-input")} type="text" id="fname" name="firstname" placeholder="Your name.."></input>
+            </div>
+            <div>
+                 <span>Địa Chỉ</span>
+                 <input className={cx("booking-information-input")} type="text" id="fname" name="firstname" placeholder="Your name.."></input>
+            </div>
         </div>
-        <div className={cx("form-input-inform")}>
-          <label htmlFor="">Thong tin</label>
-          <div className={cx("input")}>
-            <FontAwesomeIcon
-              className={cx("icon")}
-              icon={faEnvelope}
-            ></FontAwesomeIcon>
-            <input placeholder="Nhap dia chi email" type="text" name="" id="" />
-          </div>
-          <div className={cx("input")}>
-            <FontAwesomeIcon
-              className={cx("icon")}
-              icon={faLocationDot}
-            ></FontAwesomeIcon>
-            <input placeholder="Nhap dia chi noi o" type="text" name="" id="" />
-          </div>
-          <div className={cx("input")}>
-            <FontAwesomeIcon
-              className={cx("icon")}
-              icon={faPhone}
-            ></FontAwesomeIcon>
-            <input placeholder="Nhap so dien thoai" type="text" name="" id="" />
-          </div>
+        <div className={cx("booking-total")}>
+           <div className={cx("booking-total-title")}><span>Lịch Khởi Hành $ Tổng Giá</span></div>
+           <div className={cx("booking-total-check")}><span>Người Lớn</span> 
+           <span> x700.000</span>
+           <button onClick={handledownperson}>-</button>
+           <span>{Person}</span>
+           <button onClick={handleupperson}>+</button></div>
+           <div className={cx("booking-total-check")}><span>Trẻ Em </span> 
+           <span> x700.000</span>
+           <button onClick={handledownpersonmin}>-</button>
+           <span>{Personmin}</span>
+           <button onClick={handleuppersonmin}>+</button></div>
+           <div className={cx("booking-total-price")}><span>Tổng Cộng</span> <span>700000 VND</span></div>
         </div>
-      </div>
-      <div className={cx("quantity-tour")}>
-        <label htmlFor="">So luong hanh khach</label>
-        <div className={cx("quality")}>
-          <div className={cx("title-quality")}>
-            <p>Nguoi lon ( {">"} 12 tuoi)</p>
-            <p>Tre em ( 2 - 11 tuoi)</p>
-            <p>Em be (0 - 1 tuoi)</p>
-            <span>TONG CONG</span>
-          </div>
-          <div className={cx("money-quality")}>
-            <div className={cx("item-quality")}>
-              <p>900.000 VND x</p>
-              <input type="number" name="" id="" />
-            </div>
-            <div className={cx("item-quality")}>
-              <p>900.000 VND x</p>
-              <input type="number" name="" id="" />
-            </div>
-            <div className={cx("item-quality")} style={{ marginLeft: "55px" }}>
-              <p>0 VND x</p>
-              <input type="number" name="" id="" />
-            </div>
-            <div className={cx("item-quality")}>
-              <span>90.000.000 VND</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+     </div>
   );
 }

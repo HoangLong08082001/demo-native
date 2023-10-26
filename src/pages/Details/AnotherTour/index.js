@@ -1,19 +1,17 @@
 import React from "react";
 import styles from "./anotherTour.module.scss";
 import classNames from "classnames/bind";
-import ProductBox from "../../../components/Product";
+
+import Slider from "../../Home/FlashSale/Slider"
 const cx = classNames.bind(styles);
 export default function AnotherTour() {
   return (
     <div className={cx("wrapper")}>
-      <p>Cac tour lien quan</p>
+      <p className={cx("wrapper-p")}>Các Tour Liên Quan</p>
       <div className={cx("line")}></div>
-      <div className={cx("tours")}>
-        <ProductBox container margin />
-        <ProductBox container margin />
-        <ProductBox container margin />
-        <ProductBox container margin />
-      </div>
+      
+        <Slider/>
+      
     </div>
   );
 }

@@ -6,7 +6,7 @@ import Endows from "./Endows";
 const cx = classNames.bind(styles);
 export default function Endow() {
   return <div className={cx("wrapper")}>
-    <p>Cac uu dai khac</p>
+    <p>Các ưu đãi khác</p>
     <div className={cx("line")}></div>
     <div className={cx("list-endow")}>
         <Endows/>

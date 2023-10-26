@@ -11,41 +11,51 @@ const cx = classname.bind(styles);
 function HotLocation() {
   return (
     <div className={cx("wrapper")}>
-      <h2>Địa Điểm Yêu Thích</h2>
+      <h2>Điểm Đến Yêu Thích</h2>
 
       <div className={cx("container-box")}>
-        <div
-          className={cx("container")}
-          style={{ backgroundImage: `url(${img1})` }}
-        ></div>
-        <div
-          className={cx("container")}
-          style={{ backgroundImage: `url(${img2})` }}
-        ></div>
-        <div
-          className={cx("container")}
-          style={{ backgroundImage: `url(${img3})` }}
-        ></div>
-        <div
-          className={cx("container")}
-          style={{ backgroundImage: `url(${img4})` }}
-        ></div>
-        <div
-          className={cx("container")}
-          style={{ backgroundImage: `url(${img5})` }}
-        ></div>
-        <div
-          className={cx("container")}
-          style={{ backgroundImage: `url(${img2})` }}
-        ></div>
-        <div
-          className={cx("container")}
-          style={{ backgroundImage: `url(${img3})` }}
-        ></div>
-        <div
-          className={cx("container")}
-          style={{ backgroundImage: `url(${img4})` }}
-        ></div>
+        <div className={cx("container-detail")}>
+          <div
+            className={cx("container")}
+            style={{ backgroundImage: `url(${img1})` }}
+          ></div>
+          <h5>Phú Quốc</h5>
+          
+        </div>
+        <div className={cx("container-detail")}>
+          <div
+            className={cx("container")}
+            style={{ backgroundImage: `url(${img2})` }}
+          ></div>
+          <h5>Phú Quốc</h5>
+          
+        </div>
+        <div className={cx("container-detail")}>
+          <div
+            className={cx("container")}
+            style={{ backgroundImage: `url(${img3})` }}
+          ></div>
+          <h5>Phú Quốc</h5>
+          
+        </div>
+        <div className={cx("container-detail")}>
+          <div
+            className={cx("container")}
+            style={{ backgroundImage: `url(${img4})` }}
+          ></div>
+          <h5>Phú Quốc</h5>
+          
+        </div>
+        <div className={cx("container-detail")}>
+          <div
+            className={cx("container")}
+            style={{ backgroundImage: `url(${img5})` }}
+          ></div>
+          <h5>Phú Quốc</h5>
+          
+        </div>
+      
+        
       </div>
     </div>
   );

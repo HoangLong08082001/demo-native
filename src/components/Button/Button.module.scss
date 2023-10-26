@@ -40,6 +40,7 @@
   width: 127px;
   height: 35px;
   color: white;
+  
   margin-top: 30px;
   margin-right: 20px;
   transition: 0.2s linear;
@@ -83,6 +84,7 @@
 
 .buttonlocation {
   width: 150px;
+  margin-bottom: 10px;
   height: 45px;
   font-size: 15px;
   border: 1px solid black;
@@ -93,6 +95,14 @@
   color: black;
   border-radius: 10px;
   background-color: white;
+  &:focus
+  {
+    background-color: 
+    #2f81bd;
+    transition: all 0.1s ease-in-out;
+    color: white;
+  }
+  
 }
 
 .marginleft {
@@ -132,6 +142,7 @@
   padding: 10px 150px;
   font-size: 30px;
   border: none;
+  border-radius: 10px;
   background: #2f81bd;
   border: 0.1px solid #2f81bd;
   color: white;
@@ -149,6 +160,7 @@
   margin-top: 5px;
   padding: 5px 130px;
   font-size: 30px;
+  border-radius: 10px;
   color: white;
   border: none;
   background: #2f81bd;
@@ -161,8 +173,11 @@
   text-decoration: none;
 }
 .linkregister {
-  color: #2f81bd;
+  color: #fafafa;
   text-decoration: none;
+  &:hover{
+    color: rgb(3, 24, 251);
+  }
 }
 .btnBack {
   text-decoration: none;
@@ -308,11 +323,14 @@
 }
 .Booking {
   cursor: pointer;
-  width: 100%;
+  width: 20%;
+  
   padding: 20px;
-  font-size: 20px;
+  font-size: 18px;
+  font-family: 'Times New Roman', Times, serif;
   background-color: #2f81bd;
   border: #2f81bd;
+  border-radius: 10px;
   color: white;
   font-weight: 800;
   transition: all 0.2s linear;
@@ -328,9 +346,10 @@
   background-color: white;
   border: #1494ef;
   cursor: pointer;
+  border-radius: 10px;
   font-size: 20px;
   margin-top: 20px;
-  width: 100%;
+  width: 20%;
   padding: 20px;
   transition: all 0.2s linear;
   &:hover {
@@ -355,3 +374,92 @@
   background: white;
   font-size: 20px;
 }
+
+@media only screen and (max-width: 480px) and (min-width:375px)  {
+  .login,.logout
+  {
+    font-size: 10px;
+    width: 80px;
+  }
+  .watchadd{
+    width: 70px;
+    height: 20px;
+    font-size: 8px;
+    font-weight: 400;
+  }
+  .buttonproduct
+  {
+    width: 80px;
+    height: 30px;
+    font-size: 8px;
+    margin-bottom: 3px;
+  }
+  .LinkMore{
+    font-size: 13px;
+  }
+}
+@media only screen and (max-width: 530px) and (min-width:480px)  {
+  .login,.logout
+    {
+      width: 100px;
+    }
+    .watchadd{
+      width: 120px;
+      font-size: 13px;
+      height: 25px;
+      font-weight: 400;
+    }
+    .buttonproduct
+  {
+    width: 100px;
+    font-size: 13px;
+    margin-bottom: 5px;
+  }
+}
+@media only screen and (max-width: 650px) and (min-width: 530px){
+  .watchadd{
+    width: 120px;
+    height: 30px;
+    font-weight: 400;
+  }
+  .buttonproduct
+  {
+    width: 90px;
+    font-size: 10px;
+    margin-bottom: 5px;
+  }
+}
+//tablet
+@media only screen and (min-width:650px)  and (max-width: 1024px) {
+  .watchadd{
+    width: 120px;
+    font-weight: 400;
+  }
+  .buttonproduct
+  {
+    width: 100px;
+    font-size: 13px;
+    margin-bottom: 5px;
+  }
+}
+//tabletpro
+@media only screen and (min-width:1024px)  and (max-width: 1366px) {
+  .watchadd{
+    width: 120px;
+    font-weight: 400;
+  }
+  .buttonproduct
+  {
+    font-size: 13px;
+    width: 100px;
+
+  }
+}
+
+//pc
+@media only screen and (min-width: 1024px) {
+  
+}
+////////////////////////////
+
+

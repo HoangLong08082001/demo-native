@@ -7,9 +7,13 @@ import Button from "../Button";
 import dayjs from "dayjs";
 const cx = classname.bind(styles);
 
-function ProductBox({ margin, container, margintop, Name, DiaDiemDen, img, id }) {
+function ProductBox({ margin, container, margintop, Name, DiaDiemDen,price,img, id }) {
   const styles = cx({ margin, container, margintop });
-  const base64String = btoa(String.fromCharCode(...new Uint8Array(img)));
+  price = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+  const base64String = btoa(
+    new Uint8Array(img)
+      .reduce((data, byte) => data + String.fromCharCode(byte), '')
+  );;
   return (
     <Button underline to={"/details/" + id}>
       <div className={styles}>
@@ -38,7 +42,7 @@ function ProductBox({ margin, container, margintop, Name, DiaDiemDen, img, id })
             <strike>5.200.000</strike>
           </span>
         </div>
-        <div className={cx("container-price")}>4.200.000</div>
+        <div className={cx("container-price")}>{price}</div>
       </div>
     </Button>
   );

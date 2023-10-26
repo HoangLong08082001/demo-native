@@ -5,13 +5,16 @@
  
 }
 .box {
-  opacity: 0.8;
+  
   border-radius:10px ;
   width: 35%;
+  background-color: transparent;
+  backdrop-filter: blur(20px) ;
   height: 100%;
+  border: 1px solid;
   margin: auto;
-  box-shadow: rgba(55, 5, 5, 0.2) 0px 12px 18px 0px;
-  background-color:white ;
+  box-shadow: rgba(5, 2, 2, 0.2) 0px 22px 28px 0px;
+  
   
 }
 .title {
@@ -26,6 +29,7 @@
   border-radius: 10px;
   padding: 40px 20px;
   label {
+    color: white;
     margin-left: 20px;
     font-size: 15px;
     font-weight: 700;
@@ -45,6 +49,8 @@
   input {
     padding: 10px 10px;
     width: 95%;
+    color: rgb(19, 11, 11);
+    background-color: transparent;
     border-top: none;
     border-left: none;
     border-right: none;
@@ -61,10 +67,12 @@
 }
 .btn-login {
   padding: 15px 10px;
+  
 }
 .text{
   padding: 10px ;
   p{
+    
     text-align: center;
   }
 }

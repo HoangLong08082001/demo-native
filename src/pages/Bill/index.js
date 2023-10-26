@@ -28,64 +28,49 @@ export default function Bill() {
   return (
     <div className={cx("wrapper")}>
       <div className={cx("wrapper-tour")}>
-        <div className={cx("img-form")}>
-          <img src={img1} alt="loi" />
+        <div className={cx("background-tour")}  style={{ backgroundImage: `url(${img1})` }}>
+
         </div>
-        <div className={cx("inform")}>
-          <p className={cx("name-tour")}>
-            THAM GIA SINGAPO VA MALAYSIA TU HA NOI
-          </p>
-          <div className={cx("list")}>
-            <ul>
-              <li>
-                <FontAwesomeIcon
-                  className={cx("icon")}
-                  icon={faClock}
-                ></FontAwesomeIcon>
-                <p>3 Ngay 2 Dem</p>
-              </li>
-              <li>
-                <FontAwesomeIcon
-                  className={cx("icon")}
-                  icon={faPlane}
-                ></FontAwesomeIcon>
-                <p>TP.HCM</p>
-              </li>
-              <li>
-                <FontAwesomeIcon
-                  className={cx("icon")}
-                  icon={faCalendar}
-                ></FontAwesomeIcon>
-                <p>Khoi hanh: 19/9/2023</p>
-              </li>
-            </ul>
-            <ul>
-              <li>
-                <FontAwesomeIcon
-                  className={cx("icon")}
-                  icon={faUser}
-                ></FontAwesomeIcon>
-                <p>Con cho: 10 hanh khach</p>
-              </li>
-              <li>
-                <FontAwesomeIcon
-                  className={cx("icon")}
-                  icon={faPlaneArrival}
-                ></FontAwesomeIcon>
-                <p>Ha Noi</p>
-              </li>
-            </ul>
-          </div>
+        <div className={cx("background-tour-detail-tittle-css")}  >
+        <div className={cx("background-tour-detail-tittle")}>
+            <div><h2>Tour Hà Nội 2 Ngày 1 Đêm</h2>
+            </div>
         </div>
+        <div className={cx("background-tour-hr")}></div>
+        <div className={cx("background-tour-detail")}>
+            <div>Mã Tour</div>
+            <div>TK52352</div>
+        </div>
+        <div className={cx("background-tour-hr")}></div>
+        <div className={cx("background-tour-detail")}>
+            <div>Chỗ Còn Trống</div>
+            <div>50</div>
+        </div>
+        <div className={cx("background-tour-hr")}></div>
+        <div className={cx("background-tour-detail")}>
+            <div>Ngày Khởi Hành</div>
+            <div>14/14/2200</div>
+        </div>
+        <div className={cx("background-tour-hr")}></div>
+        <div className={cx("background-tour-detail")}>
+            <div>Địa Điểm Khởi Hành</div>
+            <div>Hồ Chí Minh</div>
+        </div>
+        <div className={cx("background-tour-hr")}></div>
+        <div className={cx("background-tour-detail")}>
+          <div className={cx("background-tour-detail-price")} >Giá Từ 9.000.000 VND</div>
+        </div>
+        </div>
+        
       </div>
-      <p className={cx("title")}>THONG TIN DAT TOUR</p>
+      <p className={cx("title")}>Thông Tin Đặt Tour</p>
       <Booking />
-      <p className={cx("title")}>PHUONG THUC THANH TOAN</p>
+      <p className={cx("title")}>Phương Thức Thanh Toán</p>
       <Accordion />
       <Rules />
       <div className={cx("btn")}>
-        <Button Booking>DAT TOUR</Button>
-        <Button Cancel>HUY</Button>
+        <Button Booking>Đặt  Tour</Button>
+        <Button Cancel>Hủy</Button>
       </div>
     </div>
   );

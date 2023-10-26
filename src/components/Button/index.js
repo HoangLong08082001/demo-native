@@ -42,6 +42,8 @@ function Button({
   Cancel,
   btnInfor,
   btnLogout,
+
+  
 }) {
   let Comp = "button";
   const props = {
@@ -54,6 +56,7 @@ function Button({
     props.href = href;
     Comp = "a";
   }
+ 
   const classes = cx({
     watchadd,
     watchadd2,
@@ -90,10 +93,13 @@ function Button({
     Cancel,
     btnInfor,
     btnLogout,
+   
   });
   return (
-    <Comp className={classes} {...props}>
+
+    <Comp  className={classes} {...props}>
       <span>{children}</span>
+      
     </Comp>
   );
 }

@@ -5,6 +5,7 @@ import Price from "./Price";
 import Trip from "./Trip";
 import AnotherTour from "./AnotherTour";
 import { useParams } from "react-router-dom";
+import Comment from "./Comment";
 export default function Details() {
   const {id}=useParams();
   useLayoutEffect(() => {
@@ -16,6 +17,7 @@ export default function Details() {
       <Price matour={id} />
       <ImageDetail />
       <Trip />
+      <Comment/>
       <AnotherTour />
     </div>
   );

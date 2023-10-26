@@ -6,7 +6,7 @@
       font-weight: 800;
     }
   }
-  
+
   .List-tour {
     display: flex;
     justify-content: space-evenly;
@@ -30,3 +30,53 @@
     background-color: #2f81bd;
     font-weight: 600;
   }
+  /////////
+  /// 
+  /// 
+  //mobile
+@media only screen and (max-width: 480px) and (min-width:375px)  {
+  .wrapper {
+    p{
+      font-size: 10px;
+    }
+  }
+  
+}
+@media only screen and (max-width: 530px) and (min-width:480px)  {
+  .wrapper {
+    p{
+      font-size: 10px;
+    }
+  }
+}
+@media only screen and (max-width: 650px) and (min-width: 530px){
+  .wrapper {
+    p{
+      font-size: 15px;
+    }
+  }
+}
+//tablet
+@media only screen and (min-width:650px)  and (max-width: 1024px) {
+  .wrapper {
+    p{
+      font-size: 15px;
+    }
+  }
+}
+  
+
+//tabletpro
+@media only screen and (min-width:1024px)  and (max-width: 1366px) {
+  .wrapper {
+    p{
+      font-size: 18px;
+    }
+  }
+  
+}
+
+//pc
+@media only screen and (min-width: 1024px) {
+  
+}

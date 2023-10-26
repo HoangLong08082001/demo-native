@@ -31,7 +31,7 @@ function Location() {
             <ProductBox
               key={value.MaTour}
               id={value.MaTour}
-              Name={value.DiaDiemDen}
+              Name={value.TenTour}
               DiaDiemDen={value.DiaDiemDen}
               img={value.HinhAnh.data}
               container
