@@ -25,3 +25,11 @@ ul li {
   margin-top: 20px;
   color: rgb(154, 154, 154);
 }
+.active {
+  opacity: 0.5;
+}
+@media only screen and (max-width: 1024px) {
+  .wrapper {
+    display: none;
+  }
+}

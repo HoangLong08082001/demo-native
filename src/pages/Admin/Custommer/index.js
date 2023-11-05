@@ -11,10 +11,11 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserContext } from "../../../context/UserContext";
 import { Navigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const cx = classNames.bind(style);
 export default function Custommer() {
   const { user } = useContext(UserContext);
-
+  const [search, setSearch] = useState("");
   const [listCustommer, setListCustommer] = useState([]);
   const fetchAllCustommer = async () => {
     let response = await axios.get("/custommer/list-customer");
@@ -25,13 +26,29 @@ export default function Custommer() {
   useEffect(() => {
     fetchAllCustommer();
   }, []);
+  const handleRemove = async (list) => {
+    await axios
+      .delete("/custommer/delete-custommer", { data: { id: list.MaKH } })
+      .then((res) => {
+        if (res.message === "success") {
+          toast.success("Xoa thanh cong");
+          fetchAllCustommer();
+        }
+      });
+  };
   if (user && user.isAuthenticated === true) {
     return (
       <div className={cx("wrapper")}>
-        {user && user.accout.role ? (
+        {user && user.accout.roles ? (
           <div className={cx("search")}>
-            <input type="text" name="" id="" placeholder="search custommer" />
-            <Button btnSearch>SEARCH</Button>
+            <input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              type="text"
+              name=""
+              id=""
+              placeholder="search employee"
+            />
           </div>
         ) : (
           <></>
@@ -41,28 +58,34 @@ export default function Custommer() {
             <tr>
               <th>STT</th>
               <th>Ten Khach Hang</th>
-              <th>Sdt</th>
               <th>Email</th>
+              <th>Sdt</th>
               <th>Action</th>
             </tr>
-            {listCustommer.map((list, index) => {
-              return (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{list.TenKH}</td>
-                  <td>{list.username}</td>
-                  <td>{list.Sdt}</td>
-                  <td>
-                    <FontAwesomeIcon
-                      icon={faTrash}
-                      className={cx("icon-trash")}
-                    >
-                      DELETE
-                    </FontAwesomeIcon>
-                  </td>
-                </tr>
-              );
-            })}
+            {listCustommer
+              .filter((item) => {
+                return search === "" ? item : item.Sdt.includes(search);
+              })
+              .map((list, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{list.TenKH}</td>
+                    <td>{list.username}</td>
+                    <td>{list.Sdt}</td>
+                    <td>
+                      <button onClick={() => handleRemove(list)}>
+                        <FontAwesomeIcon
+                          icon={faTrash}
+                          className={cx("icon-trash")}
+                        >
+                          DELETE
+                        </FontAwesomeIcon>
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
           </table>
         </div>
       </div>

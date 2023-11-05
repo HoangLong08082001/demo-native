@@ -5,17 +5,34 @@ import img1 from "../../assets/images/slider/img1.png";
 import styles from "./Product.module.scss";
 import Button from "../Button";
 import dayjs from "dayjs";
+import slugify from "react-slugify";
+
 const cx = classname.bind(styles);
 
-function ProductBox({ margin, container, margintop, Name, DiaDiemDen,price,img, id }) {
+function ProductBox({
+  margin,
+  container,
+  margintop,
+  Name,
+  DiaDiemDen,
+  price,
+  img,
+  id,
+}) {
   const styles = cx({ margin, container, margintop });
-  price = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+  price = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  }).format(price);
   const base64String = btoa(
-    new Uint8Array(img)
-      .reduce((data, byte) => data + String.fromCharCode(byte), '')
-  );;
+    new Uint8Array(img).reduce(
+      (data, byte) => data + String.fromCharCode(byte),
+      ""
+    )
+  );
   return (
-    <Button underline to={"/details/" + id}>
+    
+    <Button underline to={"/details/" + slugify(Name) + "/" + id}>
       <div className={styles}>
         <div
           className={cx("container-img")}

@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import style from "./DetailEmployee.module.scss";
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faUser } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../../../components/Button";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import axios from "../../../../setup-axios/axios";
+import user from "../../../../../src/assets/images/userimg.png";
 const cx = classNames.bind(style);
 export default function DetailEmployee() {
   const [name, setName] = useState("");
@@ -26,24 +27,48 @@ export default function DetailEmployee() {
   }, []);
   return (
     <div className={cx("wrapper")}>
-      <Button btnAdd to="/employee">
-        TRO LAI
-      </Button>
-      <div className={cx("form-img")}>
-        <FontAwesomeIcon className={cx("icon")} icon={faUser}></FontAwesomeIcon>
+      <div className={cx("form")}>
+        <div className={cx("img-user")}>
+          <img src={user} alt="" />
+        </div>
+        <div className={cx("form-info")}>
+          <p>THONG TIN NHAN VIEN</p>
+          <div className={cx("form-input")}>
+            <label htmlFor="">Email</label>
+            <input type="text" disabled value={email} />
+          </div>
+          <div className={cx("form-input")}>
+            <label htmlFor="">Ten</label>
+            <input
+              style={{ marginLeft: "32px" }}
+              disabled
+              value={name}
+              type="text"
+            />
+          </div>
+          <div className={cx("form-input")}>
+            <label htmlFor="">Sdt</label>
+            <input
+              type="text"
+              disabled
+              style={{ marginLeft: "32px" }}
+              value={sdt}
+            />
+          </div>
+          <div className={cx("form-input")}>
+            <label htmlFor="">Vi tri</label>
+            <input
+              type="text"
+              disabled
+              style={{ marginLeft: "22px" }}
+              value={postion}
+            />
+          </div>
+        </div>
       </div>
-      <div className={cx("name")}>
-        <p>Ten: {name}</p>
-      </div>
-      <div className={cx("sdt")}>
-        <p>So dien thoai: {sdt}</p>
-      </div>
-      <div className={cx("email")}>
-        <p>Email: {email}</p>
-      </div>
-      <div className={cx("position")}>
-        <p>Vi tri: {postion}</p>
-      </div>
+      <Link to="/employee">
+        <button className={cx("btn-cancel")}>Tro lai</button>
+      </Link>
     </div>
   );
 }

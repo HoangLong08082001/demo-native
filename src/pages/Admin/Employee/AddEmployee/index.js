@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import style from "./AddEmployee.module.scss";
 import classNames from "classnames/bind";
+import Select from 'react-dropdown-select';
 import Button from "../../../../components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import axios from "../../../../setup-axios/axios";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 const cx = classNames.bind(style);
 export default function AddEmployee() {
   const [TenNV, setTenvNV] = useState("");
@@ -51,9 +53,6 @@ export default function AddEmployee() {
   }, []);
   return (
     <div className={cx("wrapper")}>
-      <Button btnAdd to="/employee">
-        TRO LAI
-      </Button>
       {/* TENNV CMND NGAYSINH SDT EMAIL PASS POSTION*/}
       <p>Nhap thong tin nhan vien</p>
       <div className={cx("form")}>
@@ -71,6 +70,7 @@ export default function AddEmployee() {
           <div className={cx("form-input")}>
             <label htmlFor="">CMND:</label>
             <input
+              style={{ marginLeft: "85px" }}
               type="number"
               name=""
               id=""
@@ -81,6 +81,7 @@ export default function AddEmployee() {
           <div className={cx("form-input")}>
             <label htmlFor="">Ngay sinh:</label>
             <input
+              style={{ marginLeft: "50px" }}
               type="date"
               name=""
               id=""
@@ -91,6 +92,7 @@ export default function AddEmployee() {
           <div className={cx("form-input")}>
             <label htmlFor="">So dien thoai:</label>
             <input
+              style={{ marginLeft: "20px" }}
               type="number"
               name=""
               id=""
@@ -112,20 +114,22 @@ export default function AddEmployee() {
           </div>
           <div className={cx("form-input-password")}>
             <label htmlFor="">Password:</label>
-            <input
-              type={show === false ? "password" : "text"}
-              name=""
-              id=""
-              value={Password}
-              onChange={(e) => setPaswword(e.target.value)}
-            />
-            <FontAwesomeIcon
-              onClick={handleShow}
-              className={cx("icon")}
-              icon={show === false ? faEye : faEyeSlash}
-            ></FontAwesomeIcon>
+            <div className={cx("input-password")}>
+              <input
+                type={show === false ? "password" : "text"}
+                name=""
+                id=""
+                value={Password}
+                onChange={(e) => setPaswword(e.target.value)}
+              />
+              <FontAwesomeIcon
+                onClick={handleShow}
+                className={cx("icon")}
+                icon={show === false ? faEye : faEyeSlash}
+              ></FontAwesomeIcon>
+            </div>
           </div>
-          <div className={cx("form-input")}>
+          <div className={cx("form-input")} style={{ display: "flex" }}>
             <label htmlFor="">Vi tri:</label>
             <select
               name={Position}
@@ -146,9 +150,16 @@ export default function AddEmployee() {
         </div>
       </div>
       <div className={cx("btn-submit")}>
-        <Button type="submit" onClick={handleSubmit} btnSubmit>
-          SUBMIT
-        </Button>
+        <Link to="/employee" className={cx("text")}>
+          <button className={cx("btn-cancel")}>TRO LAI</button>
+        </Link>
+        <button
+          className={cx("btn-submit")}
+          onClick={handleSubmit}
+          onSubmit={handleSubmit}
+        >
+          THEM MOI
+        </button>
       </div>
     </div>
   );

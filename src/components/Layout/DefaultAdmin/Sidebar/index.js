@@ -11,6 +11,8 @@ import {
   faTicket,
   faUser,
   faUserGroup,
+  faNewspaper,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 
 const cx = classNames.bind(style);
@@ -19,91 +21,45 @@ export default function Sidebar() {
   const handleActive = () => {
     setActive(!active);
   };
+  const menus = [
+    { icon: faHome, title: "Trang chu", to: "/admin-home" },
+    { icon: faUser, title: "Nhan vien", to: "/employee" },
+    { icon: faUserGroup, title: "Khach hang", to: "/custommer" },
+    { icon: faPlane, title: "Tours", to: "/tour" },
+    { icon: faNewspaper, title: "Phieu dat tour", to: "/PhieuDatTour" },
+    { icon: faTicket, title: "Hoa don", to: "/" },
+  ];
+  const [click, setClick] = useState("Trang chu");
   return (
-    <div className={cx("wrapper")}>
-      <div className={cx("title-admin")}>
-        <p>DASHBOARD</p>
+    <>
+      <div className={cx("wrapper")}>
+        <div className={cx("title-admin")}>
+          <p>DASHBOARD</p>
+        </div>
+        <div className={cx("list-menu")}>
+          <ul>
+            {menus.map((menu, index) => {
+              return (
+                <li
+                  className={click === menu.title ? cx("active") : null}
+                  key={index}
+                  onClick={() => setClick(menu.title)}
+                >
+                  <FontAwesomeIcon
+                    className={cx("icon")}
+                    icon={menu.icon}
+                  ></FontAwesomeIcon>
+                  <p>
+                    <Button itemmenu to={menu.to}>
+                      {menu.title}
+                    </Button>
+                  </p>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
-      <div className={cx("list-menu")}>
-        <ul>
-          <li onClick={handleActive}>
-            <FontAwesomeIcon className={cx("icon")} icon={faHome}>
-              
-            </FontAwesomeIcon>
-            <p>
-              <Button itemmenu to="/admin-home">
-                Trang chu
-              </Button>
-            </p>
-          </li>
-          <li>
-            <FontAwesomeIcon
-              className={cx("icon")}
-              icon={faUser}
-            ></FontAwesomeIcon>
-            <p>
-              <Button itemmenu to="/employee">
-                Nhan vien
-              </Button>
-            </p>
-          </li>
-          <li>
-            <FontAwesomeIcon
-              className={cx("icon")}
-              icon={faUserGroup}
-            ></FontAwesomeIcon>
-            <p>
-              <Button itemmenu to="/custommer">
-                Khach hang
-              </Button>
-            </p>
-          </li>
-          <li>
-            <FontAwesomeIcon
-              className={cx("icon")}
-              icon={faTicket}
-            ></FontAwesomeIcon>
-            <p>
-              <Button itemmenu to="/">
-                Hoa don
-              </Button>
-            </p>
-          </li>
-          <li>
-            <FontAwesomeIcon
-              className={cx("icon")}
-              icon={faPlane}
-            ></FontAwesomeIcon>
-            <p>
-              <Button itemmenu to="/tour">
-                Tours
-              </Button>
-            </p>
-          </li>
-          <li>
-            <FontAwesomeIcon
-              className={cx("icon")}
-              icon={faMoneyBill}
-            ></FontAwesomeIcon>
-            <p>
-              <Button itemmenu to="/">
-                Phieu dat tour
-              </Button>
-            </p>
-          </li>
-          <li>
-            <FontAwesomeIcon
-              className={cx("icon")}
-              icon={faList}
-            ></FontAwesomeIcon>
-            <p>
-              <Button itemmenu to="/">
-                Vi tri quyen
-              </Button>
-            </p>
-          </li>
-        </ul>
-      </div>
-    </div>
+    </>
   );
 }

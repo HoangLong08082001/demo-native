@@ -2,9 +2,12 @@
   margin-top: 20px;
   padding: 20px 30px;
   p {
+    background-color: rgb(13, 163, 205);
+    text-align: center;
+    padding: 10px;
     font-size: 30px;
-    color: black;
-    font-weight: 800;
+    color: white;
+    font-weight: 900;
   }
 }
 .form {
@@ -26,21 +29,12 @@
     margin-left: 10px;
     width: 70%;
     padding: 15px 10px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 0.5px solid black;
+    border: 0.5px solid black;
     font-size: 20px;
-    &:focus {
-      outline: none;
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      border-bottom: 0.5px solid black;
-    }
   }
   select {
-    margin-left: 10px;
+    width: 50%;
+    margin-left: 150px;
     padding: 10px 20px;
     &:focus {
       outline: none;
@@ -48,32 +42,59 @@
   }
 }
 .btn-submit {
-  width: 10%;
+  .btn-cancel {
+    cursor: pointer;
+    border: none;
+    padding: 20px 45px;
+    background-color: #ff0e0e;
+    color: white;
+    font-weight: 900;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  .btn-submit {
+    cursor: pointer;
+    border: none;
+    color: white;
+    font-weight: 900;
+    background-color: #0000ff;
+    margin-left: 10px;
+    padding: 20px 45px;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
 }
 .form-input-password {
   padding: 20px 15px;
+  display: flex;
   label {
     font-size: 20px;
   }
-  input {
-    margin-left: 10px;
+  .input-password {
+    margin-left: 100px;
+    border: 0.5px solid black;
+    display: flex;
     width: 50%;
-    padding: 15px 10px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 0.5px solid black;
-    font-size: 20px;
-    &:focus {
-      outline: none;
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      border-bottom: 0.5px solid black;
+    input {
+      width: 100%;
+      margin-left: 10px;
+      padding: 15px 10px;
+      border: none;
+      font-size: 20px;
+      &:focus {
+        outline: none;
+        border: none;
+      }
     }
   }
 }
 .icon {
+  margin-top: 15px;
+  margin-right: 10px;
   cursor: pointer;
 }
 input::-webkit-outer-spin-button,

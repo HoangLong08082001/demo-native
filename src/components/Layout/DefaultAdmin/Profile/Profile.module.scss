@@ -1,3 +1,6 @@
+.menu {
+  display: none;
+}
 .wrapper {
   background: white;
   width: 100%;
@@ -34,4 +37,33 @@
       border-radius: 50%;
     }
   }
+}
+@media only screen and (max-width: 1024px) {
+  .wrapper {
+    display: none;
+  }
+  .menu {
+    width: 100%;
+    display: block;
+    .icon {
+      cursor: pointer;
+      margin-left: 20px;
+      margin-top: 10px;
+      font-size: 25px;
+    }
+    .drop-down {
+      width: 100%;
+      background: rgb(49, 49, 49);
+      li {
+        cursor: pointer;
+        color: rgb(180, 179, 179);
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+.active {
+  color: white;
 }

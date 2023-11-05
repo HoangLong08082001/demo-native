@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import style from "./HomeAdmin.module.scss";
 import classNames from "classnames/bind";
 import Button from "../../../components/Button";
-
+import Chart from "chart.js";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { UserContext } from "../../../context/UserContext";
@@ -42,8 +42,6 @@ export default function HomeAdmin() {
                 <p>Customer</p>
                 <span>45.000</span>
               </div>
-            </div>
-            <div className={cx("item-down")}>
               <div
                 className={cx("item-statifies")}
                 style={{ backgroundColor: "#ff1d58" }}
@@ -59,17 +57,10 @@ export default function HomeAdmin() {
                 <span>45.000</span>
               </div>
             </div>
-          </div>
-          <div className={cx("chart-1")}>
-            <ChartOne />
-          </div>
-        </div>
-        <div className={cx("dash-down")}>
-          <div className={cx("list-top")}>
-            <TableStatitical />
-          </div>
-          <div className={cx("chart-top")}>
-            <ChartTwo />
+            
+            <div className={cx("item-down")}>
+              <TableStatitical />
+            </div>
           </div>
         </div>
       </div>

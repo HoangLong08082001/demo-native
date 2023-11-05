@@ -3,7 +3,7 @@ import style from "./UpdateEmployee.module.scss";
 import classNames from "classnames/bind";
 import Button from "../../../../components/Button";
 import axios from "../../../../setup-axios/axios";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 const cx = classNames.bind(style);
 export default function UpdateEmployee() {
@@ -44,7 +44,7 @@ export default function UpdateEmployee() {
     setTenvNV(location.state.TenNV);
     setCMND(location.state.CMND);
     setSdt(location.state.Sdt);
-    setPosition(location.state.id_vitri);
+    setPosition(location.state.TenViTri);
   };
   useEffect(() => {
     console.log(location);
@@ -54,9 +54,6 @@ export default function UpdateEmployee() {
   }, []);
   return (
     <div className={cx("wrapper")}>
-      <Button btnAdd to="/employee">
-        TRO LAI
-      </Button>
       <p>Sua thong tin nhan vien</p>
       <div className={cx("form")}>
         <div className={cx("form-left")}>
@@ -73,6 +70,7 @@ export default function UpdateEmployee() {
           <div className={cx("form-input")}>
             <label htmlFor="">CMND:</label>
             <input
+              style={{ marginLeft: "85px" }}
               type="number"
               name=""
               id=""
@@ -83,6 +81,7 @@ export default function UpdateEmployee() {
           <div className={cx("form-input")}>
             <label htmlFor="">So dien thoai:</label>
             <input
+              style={{ marginLeft: "20px" }}
               type="number"
               name=""
               id=""
@@ -100,6 +99,7 @@ export default function UpdateEmployee() {
               id=""
               onChange={(e) => setPosition(e.target.value)}
             >
+              <option value="">{Position}</option>
               {listPosition.length > 0 &&
                 listPosition.map((postion, index) => {
                   return (
@@ -113,9 +113,16 @@ export default function UpdateEmployee() {
         </div>
       </div>
       <div className={cx("btn-submit")}>
-        <Button type="submit" btnSubmit onClick={handleUpdate}>
-          Update
-        </Button>
+        <Link to="/employee" className={cx("text")}>
+          <button className={cx("btn-cancel")}>TRO LAI</button>
+        </Link>
+        <button
+          className={cx("btn-submit")}
+          onClick={handleUpdate}
+          onSubmit={handleUpdate}
+        >
+          THEM MOI
+        </button>
       </div>
     </div>
   );

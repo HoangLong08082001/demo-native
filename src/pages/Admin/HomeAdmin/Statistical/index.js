@@ -13,58 +13,14 @@ export default function TableStatitical() {
           <th>PRICE</th>
           <th>TOP</th>
         </tr>
-        <tr>
+        <tr className={cx("tr")}>
           <td>Da Nang</td>
           <td>20.000.000 VND</td>
           <td>#1</td>
         </tr>
 
-        <tr>
-          <td>Da Nang</td>
-          <td>20.000.000 VND</td>
-          <td>#1</td>
-        </tr>
-        <tr>
-          <td>Da Nang</td>
-          <td>20.000.000 VND</td>
-          <td>#1</td>
-        </tr>
-        <tr>
-          <td>Da Nang</td>
-          <td>20.000.000 VND</td>
-          <td>#1</td>
-        </tr>
-
-        <tr>
-          <td>Da Nang</td>
-          <td>20.000.000 VND</td>
-          <td>#1</td>
-        </tr>
-        <tr>
-          <td>Da Nang</td>
-          <td>20.000.000 VND</td>
-          <td>#1</td>
-        </tr>
-        <tr>
-          <td>Da Nang</td>
-          <td>20.000.000 VND</td>
-          <td>#1</td>
-        </tr>
-        <tr>
-          <td>Da Nang</td>
-          <td>20.000.000 VND</td>
-          <td>#1</td>
-        </tr>
-        <tr>
-          <td>Da Nang</td>
-          <td>20.000.000 VND</td>
-          <td>#1</td>
-        </tr>
-        <tr>
-          <td>Da Nang</td>
-          <td>20.000.000 VND</td>
-          <td>#1</td>
-        </tr>
+        
+        
       </table>
     </div>
   );

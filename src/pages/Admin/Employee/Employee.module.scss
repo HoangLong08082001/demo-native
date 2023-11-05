@@ -5,11 +5,10 @@
 .search {
   margin-top: 20px;
   input {
+    border: 0.5px solid black;
     padding: 10px 10px;
-    width: 50%;
-    &:focus {
-      outline: none;
-    }
+    width: 98.5%;
+    font-size: 15px;
   }
 }
 .form-table {
@@ -17,6 +16,7 @@
   height: 550px;
   overflow-y: scroll;
   table {
+    border-collapse: collapse;
     width: 100%;
     tr th {
       background: rgb(195, 195, 195);
@@ -28,24 +28,52 @@
       padding: 10px;
       text-align: center;
     }
+    tr {
+      transition: 0.2s linear;
+      &:hover {
+        transition: 0.2s linear;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+      td {
+        button {
+          margin-left: 5px;
+          padding: 10px;
+          width: 30%;
+          border: none;
+          color: white;
+          font-weight: 900;
+          cursor: pointer;
+          border-radius: 2px;
+        }
+        .btnInfo {
+          background-color: #5cb85c;
+        }
+        .btnUpdate {
+          background-color: #0000ff;
+        }
+        .btnTrash {
+          background-color: #ff0000;
+        }
+      }
+    }
   }
 }
-.icon-pen {
-  cursor: pointer;
-  background-color: white;
-  border: white;
-  color: rgb(30, 30, 203);
-  font-size: 30px;
-}
-.icon-trash {
-  cursor: pointer;
-  margin-left: 30px;
-  color: rgb(203, 30, 30);
-  font-size: 30px;
-}
-.icon-info {
-  cursor: pointer;
-  margin-right: 30px;
-  color: rgb(30, 203, 131);
-  font-size: 30px;
+
+@media only screen and (max-width: 1024px) {
+  .icon-pen,
+  .icon-trash,
+  .icon-info {
+    font-size: 25px;
+  }
+  .icon-info {
+    margin-right: 20px;
+  }
+  .icon-pen {
+    margin-right: 20px;
+    margin-top: 10px;
+  }
+  .icon-trash {
+    margin-top: 10px;
+    margin-right: 45px;
+  }
 }

@@ -56,6 +56,7 @@ function Slider() {
       })}
       <div className={cx("title-about")}>
         <p>TOUR DU LICH</p>
+        
         <Button watchadd>Xem Thêm</Button>
       </div>
       <div className={cx("right-icon")} onClick={nextonclick}>

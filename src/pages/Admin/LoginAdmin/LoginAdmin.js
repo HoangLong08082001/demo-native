@@ -6,14 +6,17 @@ import {
   faE,
   faEye,
   faEyeSlash,
+  faKey,
   faLock,
+  faUserAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../../components/Button";
 import axios from "../../../setup-axios/axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../context/UserContext";
-
+import logo from "../../../../src/assets/images/logo.png";
+import bgadmin from "../../../../src/assets/images/background-admin.jpeg";
 const cx = classNames.bind(style);
 export default function LoginAdmin() {
   const { loginContext } = useContext(UserContext);
@@ -51,35 +54,48 @@ export default function LoginAdmin() {
 
   return (
     <div className={cx("wrapper")}>
-      <p>
-        LOGIN FOR EMPLOYEE <FontAwesomeIcon icon={faLock}></FontAwesomeIcon>
-      </p>
-      <div className={cx("form")}>
-        <div className={cx("form-input")}>
-          <input
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            type="text"
-            placeholder="Enter your email"
-          />
-        </div>
-        <div className={cx("form-input")}>
-          <input
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            type={show === false ? "text" : "password"}
-            placeholder="Enter your password"
-          />
-          <FontAwesomeIcon
-            onClick={handleShowHide}
-            className={cx("icon")}
-            icon={show === true ? faEye : faEyeSlash}
-          ></FontAwesomeIcon>
-        </div>
-        <div className={cx("form-input")}>
-          <Button loginadmin onClick={handleLogin}>
-            LOGIN
-          </Button>
+      <div className={cx("logo")}>
+        <img src={logo} alt="" />
+      </div>
+      <div className={cx("form-login")}>
+        <p>
+          LOGIN FOR EMPLOYEE <FontAwesomeIcon icon={faLock}></FontAwesomeIcon>
+        </p>
+        <div className={cx("form")}>
+          <div className={cx("form-input")}>
+            <FontAwesomeIcon
+              className={cx("icon-input")}
+              icon={faUserAlt}
+            ></FontAwesomeIcon>
+            <input
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              type="text"
+              placeholder="Enter your email"
+            />
+          </div>
+          <div className={cx("form-input")}>
+            <FontAwesomeIcon
+              className={cx("icon-input")}
+              icon={faKey}
+            ></FontAwesomeIcon>
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type={show === false ? "text" : "password"}
+              placeholder="Enter your password"
+            />
+            <FontAwesomeIcon
+              onClick={handleShowHide}
+              className={cx("icon")}
+              icon={show === true ? faEye : faEyeSlash}
+            ></FontAwesomeIcon>
+          </div>
+          <div className={cx("form-input")}>
+            <Button loginadmin onClick={handleLogin} onSubmit={handleLogin}>
+              LOGIN
+            </Button>
+          </div>
         </div>
       </div>
     </div>

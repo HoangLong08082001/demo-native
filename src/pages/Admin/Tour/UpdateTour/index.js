@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import style from "./AddTour.module.scss";
+import style from "./UpdateTour.module.scss";
 import classNames from "classnames/bind";
 import JoditEditor from "jodit-react";
 
@@ -12,15 +12,17 @@ import {
   faArrowDown,
   faChevronDown,
   faImage,
+  faRotateLeft,
+  faRotateRight,
   faSortDown,
   faUpload,
 } from "@fortawesome/free-solid-svg-icons";
 import FormData from "form-data";
 import axios from "../../../../setup-axios/axios";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 const cx = classNames.bind(style);
-export default function AddTour() {
+export default function UpdateTour() {
   const countries = [
     {
       name: "NN",
@@ -148,10 +150,12 @@ export default function AddTour() {
       ],
     },
   ];
+  const location = useLocation();
   const vehicles = ["Xe Khach", "May bay", "Tu tuc"];
   const [country, setCountry] = useState("Loai Tour");
   const [state, setState] = useState("Khu Vuc");
   const [city, setCity] = useState("Dia Diem Den");
+  const [id, setId] = useState("");
   const [TenTour, setTenTour] = useState("");
   const [ngayDi, setNgayDi] = useState("");
   const [ngayVe, setNgayVe] = useState("");
@@ -166,12 +170,6 @@ export default function AddTour() {
   const [hinhAnh4, setHinhAnh4] = useState(null);
   const [hinhAnh5, setHinhAnh5] = useState(null);
   const [files, setFiles] = useState([]);
-  const [imageName1, setImageName1] = useState("");
-  const [imageName2, setImageName2] = useState("");
-  const [imageName3, setImageName3] = useState("");
-  const [imageName4, setImageName4] = useState("");
-  const [imageName5, setImageName5] = useState("");
-  const [imageName6, setImageName6] = useState("");
   const [lichTrinh1, setLichTrinh1] = useState("");
   const [lichTrinh2, setLichTrinh2] = useState("");
   const [lichTrinh3, setLichTrinh3] = useState("");
@@ -198,17 +196,11 @@ export default function AddTour() {
   const handleAddTour = (e) => {
     e.preventDefault();
     let fd = new FormData();
-    fd.append("imgone", hinhAnh1);
-    fd.append("imgone", hinhAnh2);
-    fd.append("imgone", hinhAnh3);
-    fd.append("imgone", hinhAnh4);
-    fd.append("imgone", hinhAnh5);
-    fd.append("date", ngayDi);
-    fd.append("date", ngayVe);
     fd.append("char", TenTour);
     fd.append("char", giaTour);
     fd.append("char", giamGia);
     fd.append("char", diaDiemDi);
+    fd.append("char", id);
     fd.append("number", quyMo);
     fd.append("editor", lichTrinh1);
     fd.append("editor", lichTrinh2);
@@ -223,28 +215,53 @@ export default function AddTour() {
     fd.append("select", phuongTien);
     console.log(fd);
     axios
-      .post("/tourserver/add-tour", fd, {
+      .put("/tourserver/update-tour", fd, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then((res) => {
         if (res && res.message === "success") {
-          toast.success("da them tour moi");
+          toast.success("Cap nhat tour thanh cong");
         } else {
-          toast.error("khong them duoc tour moi");
+          toast.error("khong cap nhat duoc tour");
         }
       })
       .catch((err) => console.log(err));
   };
-  useEffect(() => {}, []);
+  const SetItemUpdate = () => {
+    setId(location.state.MaTour);
+    setTenTour(location.state.TenTour);
+    setNgayDi(location.state.NgayDi);
+    setNgayVe(location.state.NgayVe);
+    setQuyMo(location.state.QuyMo);
+    setGiaTour(location.state.GiaTour);
+    setGiamGia(location.state.GiamGia);
+    setState(location.state.vungMien);
+    setCountry(location.state.LoaiTour);
+    setDiaDiemDi(location.state.DiaDiemDi);
+    setCity(location.state.DiaDiemDen);
+    setLichTrinh1(location.state.LichTrinh1);
+    setLichTrinh2(location.state.LichTrinh2);
+    setLichTrinh3(location.state.LichTrinh3);
+    setLichTrinh4(location.state.LichTrinh4);
+    setLichTrinh5(location.state.LichTrinh5);
+    setLichTrinh6(location.state.LichTrinh6);
+  };
+  useEffect(() => {
+    SetItemUpdate();
+  }, []);
+  let ngaydi = new Date(ngayDi).toLocaleDateString("en-US");
+
+  let ngayve = new Date(ngayVe).toLocaleDateString("en-US");
   return (
     <form className={cx("wrapper")} onSubmit={(e) => handleAddTour(e)}>
-      <p className={cx("title")}>Nhap thong tin tour</p>
+      <input type="text" hidden name="char" value={id} onChange={e=>setId(e.target.value)}/>
+      <p className={cx("title")}>Thong tin tour can sua</p>
       <div className={cx("form")}>
         <div className={cx("left")}>
           <div className={cx("list-label")}>
             <label htmlFor="">Ten tour</label>
-            <label htmlFor="">Ngay di</label>
-            <label htmlFor="">Ngay ve</label>
+            {/* <label htmlFor="">Ngay di</label>
+            <label htmlFor="">Ngay ve</label> */}
             <label htmlFor="">Quy mo</label>
             <label htmlFor="">Phuong tien</label>
             <label htmlFor="">Gia tour</label>
@@ -257,18 +274,18 @@ export default function AddTour() {
               name="char"
               onChange={(e) => setTenTour(e.target.value)}
             />
-            <input
+            {/* <input
               type="date"
-              value={ngayDi}
+              value={ngaydi}
               name="date"
               onChange={(e) => setNgayDi(e.target.value)}
             />
             <input
               type="date"
-              value={ngayVe}
+              value={ngayve}
               name="date"
               onChange={(e) => setNgayVe(e.target.value)}
-            />
+            /> */}
             <input
               type="number"
               value={quyMo}
@@ -334,7 +351,7 @@ export default function AddTour() {
               disabled
             />
             <select name="select" id="" value={city} onChange={handleChange3}>
-              <option>Dia Diem Den</option>
+              <option>{city ? city : "Dia Diem Den"}</option>
               {cities.map((item) => (
                 <option value={item}>{item}</option>
               ))}
@@ -343,7 +360,7 @@ export default function AddTour() {
           </div>
         </div>
       </div>
-      <p className={cx("title")}>Upload hinh anh tour</p>
+      {/* <p className={cx("title")}>File hinh anh tour can sua</p>
       <div className={cx("form-down")}>
         <div className={cx("left")}>
           <div className={cx("list-label")}>
@@ -386,7 +403,7 @@ export default function AddTour() {
               <p>{imageName3 ? imageName3 : ""}</p>
               <div className={cx("label")}>
                 <label htmlFor="imagethree">UPLOAD</label>
-              </div>              
+              </div>
             </div>
             <input
               type="file"
@@ -441,10 +458,10 @@ export default function AddTour() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className={cx("list-tourist")}>
-        <p className={cx("title")}>Lich trinh tour</p>
+        <p className={cx("title")}>Lich trinh tour can sua</p>
         <div className={cx("form-text")}>
           <label htmlFor="">Ngay 1</label>
           <JoditEditor
@@ -514,7 +531,7 @@ export default function AddTour() {
           <button className={cx("btn-cancel")}>TRO LAI</button>
         </Link>
         <button className={cx("btn-submit")} type="submit">
-          THEM MOI
+          CAP NHAT <FontAwesomeIcon icon={faRotateRight}></FontAwesomeIcon>
         </button>
       </div>
     </form>

@@ -16,6 +16,10 @@ import Custommer from "../pages/Admin/Custommer";
 import Tour from "../pages/Admin/Tour";
 import AddTour from "../pages/Admin/Tour/AddTour";
 import User from "../pages/User";
+import Ticket from "../pages/Admin/Ticket";
+import UpdateTour from "../pages/Admin/Tour/UpdateTour";
+import DetailTour from "../pages/Admin/Tour/DetailTour";
+import AddTicket from "../pages/Admin/Ticket/AddTicket";
 const publicRoutes = [
   { path: "/login-user", component: Login },
   { path: "/register-user", component: Register },
@@ -25,7 +29,7 @@ const publicRoutes = [
   { path: "/bill", component: Bill },
   { path: "/review", component: Review },
   { path: "/more-summer", component: More },
-  { path: "/details/:id", component: Details },
+  { path: "/details/:name/:id", component: Details },
   { path: "/more-summer/:nn", component: More },
   { path: "/User", component: User },
   { path: "/admin-home", component: HomeAdmin },
@@ -33,9 +37,13 @@ const publicRoutes = [
   { path: "/custommer", component: Custommer },
   { path: "/AddEmployee", component: AddEmployee },
   { path: "/updateEmployee", component: UpdateEmployee },
-  { path: "/detailEmployee", component: DetailEmployee },
+  { path: "/detailEmployee/:name/:id", component: DetailEmployee },
   { path: "/tour", component: Tour },
   { path: "/AddTour", component: AddTour },
+  { path: "/UpdateTour/:TenTour/:id", component: UpdateTour },
+  { path: "/DetailTour", component: DetailTour },
+  { path: "/PhieuDatTour", component: Ticket },
+  { path: "/AddTicket", component: AddTicket },
 ];
 const privateRoutes = [];
 export { publicRoutes, privateRoutes };
