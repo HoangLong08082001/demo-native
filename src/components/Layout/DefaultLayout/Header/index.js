@@ -108,7 +108,7 @@ function Header() {
       { set ? (<div className={cx("warpper-link-icon-login")}>
                 <div>
         
-                    <h5>tuyendang.9887@gmai.com</h5>
+                    <h5>{localStorage.getItem("account")}</h5>
                 
                 </div>
                 <div>

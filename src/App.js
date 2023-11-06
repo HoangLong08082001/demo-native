@@ -37,7 +37,7 @@ function App() {
                 return (
                   <Route key={index} path={route.path} element={ <Page />} />
                 );
-              } else if (index >= 10) {
+              } else if (index > 10) {
                 return (
                   <Route
                     key={index}
