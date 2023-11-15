@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "slick-carousel/slick/slick.scss";
@@ -14,9 +14,41 @@ import pq5 from "../../../../../travel-ui/src/assets/images/PhuQuoc/pq5.jpeg";
 import { faArrows, faArrowsLeftRight } from "@fortawesome/free-solid-svg-icons";
 const cx = classNames.bind(styles);
 
-export default function ImageDetail({ img1, img2, img3, img4, img5, img6 }) {
+export default function ImageDetail({ img1, img2, img3, img4, img5 }) {
   const [nav1, setNav1] = useState();
   const [nav2, setNav2] = useState();
+  const base64String = btoa(
+    new Uint8Array(img1).reduce( 
+      (data, byte) => data + String.fromCharCode(byte),
+      ""
+    )
+  );
+  const base64String2 = btoa(
+    new Uint8Array(img2).reduce(
+      (data, byte) => data + String.fromCharCode(byte),
+      ""
+    )
+  );
+  const base64String3 = btoa(
+    new Uint8Array(img3).reduce(
+      (data, byte) => data + String.fromCharCode(byte),
+      ""
+    )
+  );
+  const base64String4 = btoa(
+    new Uint8Array(img4).reduce(
+      (data, byte) => data + String.fromCharCode(byte),
+      ""
+    )
+  );
+  const base64String5 = btoa(
+    new Uint8Array(img5).reduce(
+      (data, byte) => data + String.fromCharCode(byte),
+      ""
+    )
+  );
+ 
+  
   const settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -30,19 +62,19 @@ export default function ImageDetail({ img1, img2, img3, img4, img5, img6 }) {
   return (
     <div>
       <div className={cx("img-box")}>
-        <h2>Khám Phá Một Số Hình Ảnh Thú Vị</h2>
+        <h2 >Khám Phá Một Số Hình Ảnh Thú Vị</h2>
 
         <Slider
           asNavFor={nav2}
           ref={(slider1) => setNav1(slider1)}
           {...settings}
         >
-          <img className={cx("img")} src={img1}></img>
-          <img className={cx("img")} src={img2}></img>
-          <img className={cx("img")} src={img3}></img>
-          <img className={cx("img")} src={img4}></img>
-          <img className={cx("img")} src={img5}></img>
-          <img className={cx("img")} src={img6}></img>
+          <img className={cx("img")} src={`data:image/jpeg;base64,${base64String}`} ></img>
+          <img className={cx("img")} src={`data:image/jpeg;base64,${base64String2}`}></img>
+          <img className={cx("img")} src={`data:image/jpeg;base64,${base64String3}`}></img>
+          <img className={cx("img")} src={`data:image/jpeg;base64,${base64String4}`}></img>
+          <img className={cx("img")} src={`data:image/jpeg;base64,${base64String5}`}></img>
+          <img className={cx("img")} src={`data:image/jpeg;base64,${base64String3}`}></img>
         </Slider>
 
         <Slider
@@ -58,12 +90,12 @@ export default function ImageDetail({ img1, img2, img3, img4, img5, img6 }) {
           dots={true}
           infinite={true}
         >
-          <img className={cx("img1")} src={pq2}></img>
-          <img className={cx("img1")} src={pq3}></img>
-          <img className={cx("img1")} src={pq4}></img>
-          <img className={cx("img1")} src={pq5}></img>
-          <img className={cx("img1")} src={pq2}></img>
-          <img className={cx("img1")} src={pq3}></img>
+          <img className={cx("img1")} src={`data:image/jpeg;base64,${base64String}`} ></img>
+          <img className={cx("img1")} src={`data:image/jpeg;base64,${base64String2}`}></img>
+          <img className={cx("img1")} src={`data:image/jpeg;base64,${base64String3}`}></img>
+          <img className={cx("img1")} src={`data:image/jpeg;base64,${base64String4}`}></img>
+          <img className={cx("img1")} src={`data:image/jpeg;base64,${base64String5}`}></img>
+          <img className={cx("img1")} src={`data:image/jpeg;base64,${base64String3}`}></img>
         </Slider>
       </div>
     </div>

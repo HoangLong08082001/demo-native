@@ -55,7 +55,7 @@ function Slider() {
         );
       })}
       <div className={cx("title-about")}>
-        <p>TOUR DU LICH</p>
+        <p>Tour Du Lịch</p>
         
         <Button watchadd>Xem Thêm</Button>
       </div>

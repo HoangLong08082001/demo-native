@@ -32,6 +32,7 @@ function Login() {
     .then((res) => {
       if (res.message === "success") {
         localStorage.setItem("account",res.username);
+        localStorage.setItem("Ma",res.MaKH);
         navigate("/");
         toast.success("Login success");
       } else {

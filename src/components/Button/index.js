@@ -43,6 +43,8 @@ function Button({
   btnInfor,
   btnLogout,
   btnExcel,
+  addlike,
+  book
 }) {
   let Comp = "button";
   const props = {
@@ -93,6 +95,8 @@ function Button({
     btnInfor,
     btnLogout,
     btnExcel,
+    addlike,
+    book
   });
   return (
     <Comp className={classes} {...props}>

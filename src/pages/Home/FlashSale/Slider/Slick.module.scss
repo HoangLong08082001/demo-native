@@ -1,14 +1,29 @@
 .slick-slider {
   align-items: center;
   cursor: pointer;
-  display: flex;
+  
+  
 }
 .slick-list {
   padding-left: 0;
 }
 .custom-prevArrow {
   line-height: 250px;
+  position: absolute;
+  z-index: 10;
+  font-size: 25px;
+  left: 0;
+  color: white;
+  
 }
 .custom-nextArrow {
   line-height: 250px;
+  position: absolute;
+  font-size: 25px;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  color: white;
+  
 }
+

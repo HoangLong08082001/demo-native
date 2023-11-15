@@ -8,11 +8,10 @@ import { useReactToPrint } from "react-to-print";
 import TabPanel from "@mui/lab/TabPanel";
 import HTMLReactParser from "html-react-parser";
 import classNames from "classnames/bind";
-import pq1 from "../../../../../travel-ui/src/assets/images/PhuQuoc/pq1.jpeg";
-import HelpForm from "./HelpForm";
+
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook, faPrint } from "@fortawesome/free-solid-svg-icons";
+import {  faPrint } from "@fortawesome/free-solid-svg-icons";
 
 const cx = classNames.bind(styles);
 export default function Trip({ trip1, trip2, trip3, all }) {

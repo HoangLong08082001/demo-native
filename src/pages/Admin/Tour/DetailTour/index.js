@@ -60,7 +60,7 @@ export default function DetailTour() {
     console.log(location.state);
   }, []);
   let ngaydi = new Date(ngayDi).toLocaleDateString("en-US");
-
+  
   let ngayve = new Date(ngayVe).toLocaleDateString("en-US");
   const base64String = btoa(
     new Uint8Array(hinhAnh).reduce(

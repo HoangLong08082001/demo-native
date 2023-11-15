@@ -13,15 +13,36 @@ function Search(props) {
   const [diadiem, setdiadiem] = useState("");
   const [ngaydi, setngaydi] = useState();
   const [ngayve, setngayve] = useState();
-  
-
+  const [valuee,setvalue] =useState("");
+  const [data2,setdata2] = useState([]);
+  const data=["Hà Nội","Hồ Chí Minh","Nha Trang ","Đà Nẵng","Phú Quốc","SaPa","Ninh Bình","Quảng Ninh","Cần Thơ","Vũng Tàu","Đà Lạt"]
   var value2 = [];
   const value = {
     DiaDiemDen: diadiem,
     NgayDi: ngaydi,
     NgayVe: ngayve,
   };
+  
+  const handlesuget=(e)=>{
+    setdiadiem(e);
+    setvalue(e);
 
+    if(e != ""){
+      setdata2(data.filter((item)=>{
+        return item.toLowerCase().includes(e.toLowerCase());
+      }))
+    }
+    else
+    {
+      setdiadiem(null);
+      setdata2([])
+    }
+  }
+  const handleSugesttion=(e)=>{
+      setvalue(e.target.id);
+      setdata2([])
+      setdiadiem(e.target.id);
+  }
   const handleSearch = () => {
     
     if (ngaydi > ngayve) {
@@ -41,7 +62,7 @@ function Search(props) {
       return;
     }
   };  
-
+  console.log(valuee)
   return (
     <div className={cx("wrapper")}>
       <div className={cx("location")}>
@@ -51,8 +72,19 @@ function Search(props) {
           name=""
           id="location"
           placeholder="Bạn muốn khám phá nơi nào ..."
-          onChange={(e) => setdiadiem(e.target.value)}
+          value={valuee}
+          onChange={e=>{handlesuget(e.target.value)}}
         />
+        <div className={cx("location-suggestion")}>
+          <ul>
+            {
+              data2.map((item,index) =>{
+                
+                return (<li key={index}  id={item} onClick={handleSugesttion}> {item}</li>)
+              })
+            }
+          </ul>
+        </div>
       </div>
       <div className={cx("day-go")}>
         <label htmlFor="daygo">Từ Ngày</label>

@@ -7,6 +7,7 @@
   display: flex;
 }
 .location {
+  position: relative;
   width: 50%;
   border-radius: 5px 0px 0px 5px;
   display: flex;
@@ -28,6 +29,30 @@
     color: black;
     font-weight: 700;
   }
+}
+.location-suggestion
+{
+  top:100%;
+  position: absolute;
+  width: 300px;
+  background-color: #2f81bd;
+  z-index: 1;
+  ul{
+    
+    margin: 0;
+    li{
+      color: white;
+      &:hover{
+        color:#c8f400 ;
+        font-size: 20px;
+        cursor: pointer;
+      }
+    }
+   
+   
+  }
+  border-radius: 0 0 5px 5px;
+  box-shadow:  rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 .day-go {
   width: 20%;

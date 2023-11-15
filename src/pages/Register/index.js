@@ -88,7 +88,7 @@ function Register() {
       setSdt("");
       setTenKH("");
     }
-    navigate("/login-user")
+  
   };
   return (
     <div  style={{ backgroundImage: `url(${img4})`,backgroundRepeat:"no-repeat",backgroundSize:"cover"  }} className={cx("box-full")} >

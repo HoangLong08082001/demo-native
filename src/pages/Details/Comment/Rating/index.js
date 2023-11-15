@@ -3,14 +3,15 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 
-export default function BasicRating() {
-  const [value, setValue] = React.useState(2);
-  console.log(value);
+export default function BasicRating(props) {
+  const [value, setValue] = React.useState(5);
+ 
+  React.useEffect(() => {
+      props.parentcallBack(value);
+  },[value])
   return (
     <Box
-      sx={{
-        '& > legend': { mt: 2 },
-      }}
+      
     >
       
       <Rating
@@ -19,6 +20,7 @@ export default function BasicRating() {
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
+        
       />
     </Box>
   );

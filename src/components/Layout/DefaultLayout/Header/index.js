@@ -35,6 +35,7 @@ function Header() {
     {
       toast.success('Logout Success');
       localStorage.removeItem('account');
+      localStorage.removeItem('Ma');
       setvalue(false)
     }
   }
@@ -119,6 +120,7 @@ function Header() {
                   <div className={cx("warpper-link-icon-avatar-select")}>
                     <ul>
                         <li><span>Thông Tin Tài Khoản</span></li>
+                        <li><span>Tour Yêu Thích</span></li>
                          <li onClick={handlelogout}><span>Đăng Xuất</span></li>
                     </ul>
                   </div>

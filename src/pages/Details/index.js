@@ -7,79 +7,64 @@ import AnotherTour from "./AnotherTour";
 import { useParams } from "react-router-dom";
 import Comment from "./Comment";
 import axios from "../../setup-axios/axios";
+import Alert from "../../components/Alert/Alert";
 export default function Details() {
-  const [data, setData] = useState([]);
+  const [value, setData] = useState([]);
   const { id } = useParams();
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  });
-  const fetchTourById = () => {
-    axios.get(`tour/alltour/${id}`).then((res) => {
-      console.log(res.data[0]);
-      setData(res.data[0]);
-    });
-  };
+  const [arrayimg,setarrayimg] = useState([]);
+
+ 
   useEffect(() => {
-    fetchTourById();
-  }, []);
-  const base64String = btoa(
-    new Uint8Array(data.HinhAnh).reduce(
-      (arr, byte) => arr + String.fromCharCode(byte),
-      ""
-    )
-  );
-  const base64String1 = btoa(
-    new Uint8Array(data.HinhAnh1).reduce(
-      (data, byte) => data + String.fromCharCode(byte),
-      ""
-    )
-  );
-  const base64String2 = btoa(
-    new Uint8Array(data.HinhAnh2).reduce(
-      (data, byte) => data + String.fromCharCode(byte),
-      ""
-    )
-  );
-  const base64String3 = btoa(
-    new Uint8Array(data.HinhAnh3).reduce(
-      (data, byte) => data + String.fromCharCode(byte),
-      ""
-    )
-  );
-  const base64String4 = btoa(
-    new Uint8Array(data.HinhAnh4).reduce(
-      (data, byte) => data + String.fromCharCode(byte),
-      ""
-    )
-  );
-  const base64String5 = btoa(
-    new Uint8Array(data.HinhAnh5).reduce(
-      (data, byte) => data + String.fromCharCode(byte),
-      ""
-    )
-  );
+    axios.get(`tour/alltour/${id}`).then((response) => {
+      
+      setData(response.data[0]);
+      setarrayimg(response.data);
+    });
+    
+  },[id]);
+  useLayoutEffect(() => {
+       
+       
+    window.scrollTo(0,0)});
+  
   return (
-    <div>
-      <About
-        tentour={data.TenTour}
-        diadiemden={data.DiaDiemDen}
-        diadiemdi={data.DiaDiemDi}
-        loaitour={data.LoaiTour === "TN" ? "Trong Nuoc" : "Nguoi Nuoc"}
-        quymo={data.QuyMo}
-        phuongtien={data.PhuongTien}
-      />
-      <Price matour={id} />
-      <ImageDetail
-        img1={`data:image/jpeg;base64,${base64String}`}
-        img2={`data:image/jpeg;base64,${base64String1}`}
-      />
-      <Trip
-        trip1={data.LichTrinh1}
-        trip2={data.LichTrinh2}
-        trip3={data.LichTrinh3}
-      />
-      <Comment />
-      <AnotherTour />
+    <div  >
+     
+      <div>
+        <About
+          MaTour={id}
+          tentour={value.TenTour}
+          diadiemden={value.DiaDiemDen}
+          diadiemdi={value.DiaDiemDi}
+          loaitour={value.LoaiTour === "TN" ? "Trong Nuoc" : "Nguoi Nuoc"}
+          quymo={value.QuyMo}
+          phuongtien={value.PhuongTien}
+     
+        />
+        <Price MaTour={id} />
+        {
+          arrayimg.map((value)=>{
+            return(   <ImageDetail key={value.MaTour}
+              img1={value.HinhAnh.data}
+              img2={value.HinhAnh2.data}
+              img3={value.HinhAnh3.data}
+              img4={value.HinhAnh4.data}
+              img5={value.HinhAnh5.data}
+        />)
+          })
+        }
+        <Trip
+          trip1={value.LichTrinh1}
+          trip2={value.LichTrinh2}
+          trip3={value.LichTrinh3}
+        />
+        <Comment MaTour={id} />
+        <AnotherTour />
+      </div>
+
+      
+     
+      
     </div>
   );
 }

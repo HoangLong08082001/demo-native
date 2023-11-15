@@ -1,0 +1,51 @@
+.container
+{
+   
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba(3,18,26,0.5);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    
+}
+.container-box
+{
+   
+    padding: 10px;
+    position: fixed;
+    background-color: white;
+   
+    position: relative;
+    opacity: 1;
+    
+    border-radius: 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    
+    
+}
+.container-box-main
+{
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    h5{
+        font-size: 15px;
+    }
+    svg{
+        cursor: pointer;
+        font-size: 23px;
+        margin-left: 25px;
+    }
+}
+.container-box-1
+{
+    font-size: 40px;
+    color: rgb(78, 188, 228);
+}

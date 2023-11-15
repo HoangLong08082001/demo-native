@@ -1,0 +1,39 @@
+.container
+{
+    display: flex;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    width: 1100px;
+    margin: auto;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+}
+.container-ttmain
+{
+    label{
+        font-size: 17px;
+        color: rgb(132, 134, 136);
+    }
+    input{
+        
+        margin-bottom: 10px;
+        width: 400px;
+        height: 30px;
+        border-left: 0;
+        border-top: 0;
+        border-right: 0;
+        border-bottom: 1px solid;
+        &:focus{
+            outline: none;
+            border-bottom: 1px solid #00b6f3 ;
+        }
+    }
+}
+.container-admin
+{
+    text-align: center;
+    width: 300px;
+    color: rgb(85, 87, 95);
+    line-height: 300px;
+    svg{font-size: 80px;}
+}

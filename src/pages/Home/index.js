@@ -9,6 +9,7 @@ import Search from "./Search";
 import Connect from "./Connect-partner";
 import Famos from "./Famos";
 import HotLocation from "./Hot";
+import Star from "./Star";
 import Loading from "../../components/Loading";
 import Searchresult from "./SearchResult";
 function Home() {
@@ -40,11 +41,14 @@ function Home() {
               <Slider/>
              <Search parentCallback={callbackFunction} />
               { ham ? (<Loading/>) : ( <Searchresult data={value2} Ketqua={ketqua} moment={value1} />) }
-            
+             
              <Panner/>
+             <FlashSale/>
              <Location/>
              <Connect/>
+             <Star/>
              <Famos/>
+            
              <HotLocation/></div>
 
    );

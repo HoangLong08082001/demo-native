@@ -31,9 +31,11 @@ function Location() {
             <ProductBox
               key={value.MaTour}
               id={value.MaTour}
+              MaTour={value.MaTour}
               Name={value.TenTour}
               DiaDiemDen={value.DiaDiemDen}
               img={value.HinhAnh.data}
+              price={value.GiaTour}
               container
             />
           );

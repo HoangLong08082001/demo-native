@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useLayoutEffect, useState } from "react";
 import Slider from "react-slick";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.scss";
 
 import "slick-carousel/slick/slick.scss";
 import classname from "classnames/bind";
+import axios from "../../../../setup-axios/axios";
 
 import ProductBox from "../../../../components/Product";
 import styles from "./Slick.module.scss";
@@ -44,13 +45,20 @@ const GalleryNextArrow = ({ currentSlide, slideCount, ...props }) => {
     </div>
   );
 };
-export default class MultipleItems extends Component {
-  render() {
+export default function Sliders() {
+    const [data, setdata] = useState([]);
+    useEffect(() => {
+      axios.get("/tour/alltour").then((response) => {
+        setdata(response.data);
+      });
+    }, []);
+   
+    
     const settings = {
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 4.1,
+      slidesToShow: 3.98,
       slidesToScroll: 1,
       responsive: [
         {
@@ -150,19 +158,28 @@ export default class MultipleItems extends Component {
       nextArrow: <GalleryNextArrow />,
       prevArrow: <GalleryPrevArrow />,
     };
+    console.log(data)
     return (
       <div>
         <Slider className={cx("slick-slider")} {...settings}>
-          <ProductBox container margin  />
-          <ProductBox container margin />
-          <ProductBox container margin />
-          <ProductBox container margin />
-          <ProductBox container margin />
-          <ProductBox container margin />
-          <ProductBox container margin />
-          <ProductBox container margin />
+          
+          
+          {data.map((value,indexedDB) =>{
+            return (
+              
+            <ProductBox container margin 
+            
+             key={indexedDB}
+              id={value.MaTour}
+              MaTour={value.MaTour}
+              Name={value.TenTour}
+              DiaDiemDen={value.DiaDiemDen}
+              img={value.HinhAnh.data}
+              price={value.GiaTour}  />);
+          })}
+        
         </Slider>
       </div>
     );
   }
-}
+

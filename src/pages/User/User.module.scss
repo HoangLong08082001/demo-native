@@ -6,6 +6,25 @@
     font-size: 30px;
   }
 }
+.condition
+{
+  padding: 12px;
+  color: white;
+  h4{
+    svg
+    {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+  h4{
+    margin: 2px
+  }
+  h2{
+    margin: 5px;
+  }
+  background-color: #00b6f3;
+}
 .content {
   display: flex;
   ul li {

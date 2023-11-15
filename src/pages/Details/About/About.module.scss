@@ -38,6 +38,7 @@
 }
 .wrapper-dow-1
 {
+  position: relative;
   margin-top: 20px;
   p{font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
     font-size: 24px;
@@ -72,4 +73,31 @@
     color: rgb(7, 120, 241);
     font-weight: 600;
   }
+}
+.add-like
+{
+  position: absolute;
+ 
+  height: 50px;
+  
+  line-height: 50px;
+  right: 0;
+  top: 0;
+  right: -24.5%;
+  cursor: pointer;
+  border-radius: 0 0 10px 10px;
+  color: rgb(45, 101, 232) ;
+  
+  span:first-child{
+    font-size: 25px;
+    margin-right: 5px;
+  }
+  text-align: center;
+  align-items: center;
+  
+  &:hover{
+   
+    color: rgb(45, 201, 232);
+  }
+  font-weight: 600;
 }
