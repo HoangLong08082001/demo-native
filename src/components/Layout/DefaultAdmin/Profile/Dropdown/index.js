@@ -22,8 +22,8 @@ export default function Dropdown() {
   return (
     <div className={cx("wrapper")}>
       <p>
-        <Button btnDetailAdmin to="/">
-          DETAIL
+        <Button btnDetailAdmin to="/Information">
+          THONG TIN
         </Button>
       </p>
       <p>

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import style from "./AddEmployee.module.scss";
 import classNames from "classnames/bind";
-import Select from 'react-dropdown-select';
+import Select from "react-dropdown-select";
 import Button from "../../../../components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import axios from "../../../../setup-axios/axios";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { faCancel, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 const cx = classNames.bind(style);
 export default function AddEmployee() {
   const [TenNV, setTenvNV] = useState("");
@@ -150,16 +151,18 @@ export default function AddEmployee() {
         </div>
       </div>
       <div className={cx("btn-submit")}>
-        <Link to="/employee" className={cx("text")}>
-          <button className={cx("btn-cancel")}>TRO LAI</button>
-        </Link>
         <button
           className={cx("btn-submit")}
           onClick={handleSubmit}
           onSubmit={handleSubmit}
         >
-          THEM MOI
+          <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>THEM MOI
         </button>
+        <Link to="/employee" className={cx("text")}>
+          <button className={cx("btn-cancel")}>
+            TRO LAI <FontAwesomeIcon icon={faCancel}></FontAwesomeIcon>
+          </button>
+        </Link>
       </div>
     </div>
   );

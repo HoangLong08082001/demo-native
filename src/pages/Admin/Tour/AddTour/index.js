@@ -309,7 +309,6 @@ export default function AddTour() {
             <label htmlFor="">Khu vuc</label>
             <label htmlFor="">Dia diem di</label>
             <label htmlFor="">Dia diem den</label>
-            <label htmlFor="">Trang thai</label>
           </div>
           <div className={cx("list-input")}>
             <select name="select" id="" value={country} onChange={handleChange}>
@@ -339,7 +338,6 @@ export default function AddTour() {
                 <option value={item}>{item}</option>
               ))}
             </select>
-            <select name="" id=""></select>
           </div>
         </div>
       </div>

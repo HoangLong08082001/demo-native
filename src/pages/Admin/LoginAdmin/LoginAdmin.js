@@ -37,16 +37,21 @@ export default function LoginAdmin() {
         if (res.message === "success") {
           let email = res.email;
           let roles = res.data;
+          let position = res.position;
+          let id = roles[0].MaNV;
           let data = {
+            position: position,
+            id: id,
             isAuthenticated: true,
             token: res.access_token,
-            accout: { email, roles },
+            accout: { email, roles, id, position },
           };
           loginContext(data);
           localStorage.setItem("jwt", res.access_token);
           toast.success("Login success");
           navigate("/admin-home");
-        } else {
+        }
+        if (res.message === "fails") {
           toast.error("Wrong password or username");
         }
       });

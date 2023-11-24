@@ -3,6 +3,8 @@ import style from "./UpdateTour.module.scss";
 import classNames from "classnames/bind";
 import JoditEditor from "jodit-react";
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import "tippy.js/dist/tippy.css"; // optional
 import CurrencyInput from "react-currency-input-field";
 import Tippy from "@tippyjs/react/headless"; // different import path!
@@ -213,6 +215,8 @@ export default function UpdateTour() {
     fd.append("select", state);
     fd.append("select", city);
     fd.append("select", phuongTien);
+    fd.append("date", new Date(ngayDi).toLocaleDateString("sv-SE"));
+    fd.append("date", new Date(ngayVe).toLocaleDateString("sv-SE"));
     console.log(fd);
     axios
       .put("/tourserver/update-tour", fd, {
@@ -254,14 +258,20 @@ export default function UpdateTour() {
   let ngayve = new Date(ngayVe).toLocaleDateString("en-US");
   return (
     <form className={cx("wrapper")} onSubmit={(e) => handleAddTour(e)}>
-      <input type="text" hidden name="char" value={id} onChange={e=>setId(e.target.value)}/>
+      <input
+        type="text"
+        hidden
+        name="char"
+        value={id}
+        onChange={(e) => setId(e.target.value)}
+      />
       <p className={cx("title")}>Thong tin tour can sua</p>
       <div className={cx("form")}>
         <div className={cx("left")}>
           <div className={cx("list-label")}>
             <label htmlFor="">Ten tour</label>
-            {/* <label htmlFor="">Ngay di</label>
-            <label htmlFor="">Ngay ve</label> */}
+            <label htmlFor="">Ngay di</label>
+            <label htmlFor="">Ngay ve</label>
             <label htmlFor="">Quy mo</label>
             <label htmlFor="">Phuong tien</label>
             <label htmlFor="">Gia tour</label>
@@ -286,6 +296,18 @@ export default function UpdateTour() {
               name="date"
               onChange={(e) => setNgayVe(e.target.value)}
             /> */}
+            <DatePicker
+              dateFormat="yyyy-MM-dd"
+              name="date"
+              onChange={(date)=>setNgayDi(date)}
+              value={new Date(ngayDi).toLocaleDateString("sv-SE")}
+            />
+            <DatePicker
+              dateFormat="yyyy-MM-dd"
+              name="date"
+              onChange={(date)=>setNgayVe(date)}
+              value={new Date(ngayVe).toLocaleDateString("sv-SE")}
+            />
             <input
               type="number"
               value={quyMo}
@@ -326,7 +348,6 @@ export default function UpdateTour() {
             <label htmlFor="">Khu vuc</label>
             <label htmlFor="">Dia diem di</label>
             <label htmlFor="">Dia diem den</label>
-            <label htmlFor="">Trang thai</label>
           </div>
           <div className={cx("list-input")}>
             <select name="select" id="" value={country} onChange={handleChange}>
@@ -356,7 +377,6 @@ export default function UpdateTour() {
                 <option value={item}>{item}</option>
               ))}
             </select>
-            <select name="" id=""></select>
           </div>
         </div>
       </div>

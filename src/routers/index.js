@@ -20,6 +20,8 @@ import Ticket from "../pages/Admin/Ticket";
 import UpdateTour from "../pages/Admin/Tour/UpdateTour";
 import DetailTour from "../pages/Admin/Tour/DetailTour";
 import AddTicket from "../pages/Admin/Ticket/AddTicket";
+import AddCustommer from "../pages/Admin/Custommer/AddCustommer";
+import UserAdmin from "../pages/Admin/UserAdmin";
 const publicRoutes = [
   { path: "/login-user", component: Login },
   { path: "/register-user", component: Register },
@@ -44,6 +46,8 @@ const publicRoutes = [
   { path: "/DetailTour", component: DetailTour },
   { path: "/PhieuDatTour", component: Ticket },
   { path: "/AddTicket", component: AddTicket },
+  { path: "/ThemKhachHang", component: AddCustommer },
+  { path: "/Information", component: UserAdmin },
 ];
 const privateRoutes = [];
 export { publicRoutes, privateRoutes };

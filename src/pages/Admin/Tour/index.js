@@ -2,13 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import style from "./Tour.module.scss";
 import classNames from "classnames/bind";
 import { UserContext } from "../../../context/UserContext";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Button from "../../../components/Button";
 import axios from "../../../setup-axios/axios";
 import ReactLoading from "react-loading";
 import ExcelJS from "exceljs";
 import {
   faCircleInfo,
+  faFileExcel,
   faFileExport,
   faInfo,
   faPen,
@@ -54,7 +55,7 @@ export default function Tour() {
     const workBook = new ExcelJS.Workbook();
     const sheet = workBook.addWorksheet("Sheet1");
     sheet.properties.defaultRowHeight = 20;
-    
+
     sheet.columns = [
       {
         header: "STT",
@@ -134,21 +135,18 @@ export default function Tour() {
     });
   };
   if (user && user.isAuthenticated === true) {
-    return (
-      <div className={cx("wrapper")}>
-        {user && user.accout.roles ? (
-          <>
-            <Button btnAdd to="/AddTour">
-              THEM <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>
-            </Button>
-            <Button btnExcel onClick={handleExportExcel}>
-              XUAT EXCEL <FontAwesomeIcon icon={faFileExport}></FontAwesomeIcon>
-            </Button>
-          </>
-        ) : (
-          <></>
-        )}
-        {user && user.accout.roles ? (
+    if (user.accout.position === "DEV") {
+      return (
+        <div className={cx("wrapper")}>
+          <Link to="/AddTour">
+            <button className={cx("btn-add")}>
+              THEM TOUR <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>
+            </button>
+          </Link>
+          <button className={cx("btnExcel")} onClick={handleExportExcel}>
+            XUAT EXCEL <FontAwesomeIcon icon={faFileExcel}></FontAwesomeIcon>
+          </button>
+
           <div className={cx("search")}>
             <input
               type="text"
@@ -159,132 +157,135 @@ export default function Tour() {
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
-        ) : (
-          <></>
-        )}
-        <div className={cx("form-table")}>
-          {api ? (
-            <table border={1} cellSpacing={0}>
-              <tr>
-                <th>Status</th>
-                <th>STT</th>
-                <th>Ma Tour</th>
-                <th>Dia diem di</th>
-                <th>Dia diem den</th>
-                <th>Khu vuc</th>
-                <th>Ngay di</th>
-                <th>Ngay ve</th>
-                <th>Gia tour</th>
-                <th>Loai Tour</th>
-                <th>Action</th>
-              </tr>
-              {listTour
-                .filter((list) => {
-                  return search.toUpperCase() === "" ||
-                    search.toLowerCase() === ""
-                    ? list
-                    : list.LoaiTour.toUpperCase().includes(search) ||
-                        list.LoaiTour.toLowerCase().includes(search) ||
-                        list.LoaiTour.includes(search) ||
-                        list.DiaDiemDen.toLowerCase().includes(search) ||
-                        list.DiaDiemDen.toUpperCase().includes(search) ||
-                        list.DiaDiemDen.includes(search) ||
-                        list.DiaDiemDi.toLowerCase().includes(search) ||
-                        list.DiaDiemDi.toUpperCase().includes(search) ||
-                        list.DiaDiemDi.includes(search) ||
-                        list.vungMien.toLowerCase().includes(search) ||
-                        list.vungMien.toUpperCase().includes(search) ||
-                        list.vungMien.includes(search);
-                })
-                .map((list, index) => {
-                  let ngaydi = new Date(list.NgayDi).toLocaleDateString(
-                    "en-US"
-                  );
+          
+          <div className={cx("form-table")}>
+            {api ? (
+              <table border={1} cellSpacing={0}>
+                <tr>
+                  <th>Status</th>
+                  <th>STT</th>
+                  <th>Ma Tour</th>
+                  <th>Dia diem di</th>
+                  <th>Dia diem den</th>
+                  <th>Khu vuc</th>
+                  <th>Ngay di</th>
+                  <th>Ngay ve</th>
+                  <th>Gia tour</th>
+                  <th>Loai Tour</th>
+                  <th>Action</th>
+                </tr>
+                {
+                  /* `listTour` is a state variable that stores an array of tour objects. It is used to
+              display the list of tours in the table on the UI. */
+                  listTour
+                    .filter((list) => {
+                      return search.toUpperCase() === "" ||
+                        search.toLowerCase() === ""
+                        ? list
+                        : list.LoaiTour.toUpperCase().includes(search) ||
+                            list.LoaiTour.toLowerCase().includes(search) ||
+                            list.LoaiTour.includes(search) ||
+                            list.DiaDiemDen.toLowerCase().includes(search) ||
+                            list.DiaDiemDen.toUpperCase().includes(search) ||
+                            list.DiaDiemDen.includes(search) ||
+                            list.DiaDiemDi.toLowerCase().includes(search) ||
+                            list.DiaDiemDi.toUpperCase().includes(search) ||
+                            list.DiaDiemDi.includes(search) ||
+                            list.vungMien.toLowerCase().includes(search) ||
+                            list.vungMien.toUpperCase().includes(search) ||
+                            list.vungMien.includes(search);
+                    })
+                    .map((list, index) => {
+                      let ngaydi = new Date(list.NgayDi).toLocaleDateString(
+                        "en-US"
+                      );
 
-                  let ngayve = new Date(list.NgayVe).toLocaleDateString(
-                    "en-US"
-                  );
-                  return (
-                    <tr key={index} className={cx("tr")}>
-                      <td>
-                        <input
-                          type="checkbox"
-                          value={check}
-                          checked={list.trangThai === 1 ? "checked" : null}
-                          onChange={() => handleChange(list.MaTour)}
-                        />
-                      </td>
+                      let ngayve = new Date(list.NgayVe).toLocaleDateString(
+                        "en-US"
+                      );
+                      return (
+                        <tr key={index} className={cx("tr")}>
+                          <td>
+                            <input
+                              type="checkbox"
+                              value={check}
+                              checked={list.trangThai === 1 ? "checked" : null}
+                              onChange={() => handleChange(list.MaTour)}
+                            />
+                          </td>
 
-                      <td>{index + 1}</td>
-                      <td>
-                        {list.LoaiTour}
-                        {list.MaTour}
-                      </td>
-                      <td>{list.DiaDiemDi}</td>
-                      <td>{list.DiaDiemDen}</td>
-                      <td>{list.vungMien}</td>
-                      <td>{ngaydi}</td>
-                      <td>{ngayve}</td>
-                      <td>{list.GiaTour}</td>
-                      <td>{list.LoaiTour}</td>
-                      <td>
-                        <button
-                          className={cx("btnInfo")}
-                          onClick={() =>
-                            navigate("/DetailTour", { state: list })
-                          }
-                        >
-                          <FontAwesomeIcon
-                            className={cx("icon-info")}
-                            icon={faInfo}
-                          ></FontAwesomeIcon>
-                        </button>
-                        <button
-                          className={cx("btnUpdate")}
-                          onClick={() =>
-                            navigate(
-                              `/UpdateTour/${list.TenTour}/${list.MaTour}`,
-                              { state: list }
-                            )
-                          }
-                        >
-                          <FontAwesomeIcon
-                            className={cx("icon-pen")}
-                            icon={faPen}
-                          ></FontAwesomeIcon>
-                        </button>
-                        <button
-                          className={cx("btnTrash")}
-                          onClick={() => handleRemove(list)}
-                        >
-                          <FontAwesomeIcon
-                            icon={faTrash}
-                            className={cx("icon-trash")}
-                          >
-                            DELETE
-                          </FontAwesomeIcon>
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
-            </table>
-          ) : (
-            <>
-              <ReactLoading
-                type={"spin"}
-                color="rgb(110, 0, 0)"
-                height={"5%"}
-                width={"5%"}
-                className={cx("loading")}
-              />
-              <h2>Loading data...</h2>
-            </>
-          )}
+                          <td>{index + 1}</td>
+                          <td>
+                            {list.LoaiTour}
+                            {list.MaTour}
+                          </td>
+                          <td>{list.DiaDiemDi}</td>
+                          <td>{list.DiaDiemDen}</td>
+                          <td>{list.vungMien}</td>
+                          <td>{ngaydi}</td>
+                          <td>{ngayve}</td>
+                          <td>{list.GiaTour}</td>
+                          <td>{list.LoaiTour}</td>
+                          <td>
+                            <button
+                              className={cx("btnInfo")}
+                              onClick={() =>
+                                navigate("/DetailTour", { state: list })
+                              }
+                            >
+                              <FontAwesomeIcon
+                                className={cx("icon-info")}
+                                icon={faInfo}
+                              ></FontAwesomeIcon>
+                            </button>
+                            <button
+                              className={cx("btnUpdate")}
+                              onClick={() =>
+                                navigate(
+                                  `/UpdateTour/${list.TenTour}/${list.MaTour}`,
+                                  { state: list }
+                                )
+                              }
+                            >
+                              <FontAwesomeIcon
+                                className={cx("icon-pen")}
+                                icon={faPen}
+                              ></FontAwesomeIcon>
+                            </button>
+                            <button
+                              className={cx("btnTrash")}
+                              onClick={() => handleRemove(list)}
+                            >
+                              <FontAwesomeIcon
+                                icon={faTrash}
+                                className={cx("icon-trash")}
+                              >
+                                DELETE
+                              </FontAwesomeIcon>
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })
+                }
+              </table>
+            ) : (
+              <>
+                <ReactLoading
+                  type={"spin"}
+                  color="#808080"
+                  height={"5%"}
+                  width={"5%"}
+                  className={cx("loading")}
+                />
+                <h2>Loading data...</h2>
+              </>
+            )}
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   } else {
-    return <Navigate to="/login"></Navigate>;
+    return <Navigate to="/admin-login"></Navigate>;
   }
 }

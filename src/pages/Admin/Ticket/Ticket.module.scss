@@ -27,13 +27,8 @@
         text-align: center;
         border-top: 3px solid rgb(213, 213, 213);
         padding: 5px;
-        button {
-          margin-left: 5px;
-          padding: 15px;
-          width: 30%;
-          text-align: center;
-        }
         .btnInfo {
+          padding: 20px;
           font-size: 15px;
           cursor: pointer;
           background-color: #5cb85c;
@@ -43,6 +38,8 @@
           border-radius: 5px;
         }
         .btnUpdate {
+          margin-left: 5px;
+          padding: 20px;
           font-size: 15px;
           cursor: pointer;
           background-color: #0000ff;
@@ -57,6 +54,18 @@
           background-color: #ff0000;
           color: white;
           font-weight: 800;
+          border: none;
+          border-radius: 5px;
+        }
+        .btn-submit {
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+            rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+            rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+          cursor: pointer;
+          padding: 15px;
+          background-color: red;
+          color: white;
+          font-weight: 900;
           border: none;
           border-radius: 5px;
         }
@@ -85,4 +94,75 @@
       opacity: 0.5;
     }
   }
+}
+.btn-create-ticket {
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #ff0000;
+  font-size: 15px;
+  color: white;
+  font-weight: 800;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.btn-add {
+  cursor: pointer;
+  margin-top: 5px;
+  padding: 15px 30px;
+  font-size: 17px;
+  border: none;
+  background-color: rgb(0, 174, 255);
+  color: white;
+  font-weight: 800;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  &:hover {
+    opacity: 0.5;
+    box-shadow: none;
+  }
+}
+.tab-panel {
+  margin: 10px 0px;
+  .checked {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    padding: 10px 20px;
+    background-color: white;
+    border: none;
+    margin-left: 10px;
+    font-size: 15px;
+  }
+  .checked-active {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    padding: 10px 20px;
+    background-color: white;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 5px solid #0095ff;
+    margin-left: 10px;
+    font-size: 15px;
+  }
+}
+.none-active {
+  display: none;
+}
+.btn-submit-checked {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  padding: 15px;
+  background-color: #5cb85c;
+  color: white;
+  font-weight: 900;
+  border: none;
+  border-radius: 5px;
 }

@@ -45,12 +45,14 @@
   .btn-cancel {
     cursor: pointer;
     border: none;
+    font-size: 17px;
     padding: 20px 45px;
     background-color: #ff0e0e;
     color: white;
+    border-radius: 10px;
     font-weight: 900;
     text-decoration: none;
-
+    margin-left: 10px;
     &:hover {
       opacity: 0.5;
     }
@@ -59,9 +61,12 @@
     cursor: pointer;
     border: none;
     color: white;
+    font-size: 17px;
+    border-radius: 10px;
     font-weight: 900;
-    background-color: #0000ff;
-    margin-left: 10px;
+    background-color: rgb(0, 128, 255);
+    margin-left: 30%;
+    margin-top: 10px;
     padding: 20px 45px;
     &:hover {
       opacity: 0.5;

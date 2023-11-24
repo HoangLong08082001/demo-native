@@ -6,11 +6,12 @@ import axios from "../../../setup-axios/axios";
 import {
   faCircleInfo,
   faPen,
+  faPlusCircle,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserContext } from "../../../context/UserContext";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 const cx = classNames.bind(style);
 export default function Custommer() {
@@ -39,20 +40,23 @@ export default function Custommer() {
   if (user && user.isAuthenticated === true) {
     return (
       <div className={cx("wrapper")}>
-        {user && user.accout.roles ? (
-          <div className={cx("search")}>
-            <input
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              type="text"
-              name=""
-              id=""
-              placeholder="search employee"
-            />
-          </div>
-        ) : (
-          <></>
-        )}
+        <Link to="/ThemKhachHang">
+          <button className={cx("btn-add")}>
+            THEM KHACH HANG{" "}
+            <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>
+          </button>
+        </Link>
+        <div className={cx("search")}>
+          <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            type="text"
+            name=""
+            id=""
+            placeholder="search employee"
+          />
+        </div>
+
         <div className={cx("form-table")}>
           <table border={1} cellSpacing={0}>
             <tr>

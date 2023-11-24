@@ -45,22 +45,26 @@
   .btn-cancel {
     cursor: pointer;
     border: none;
+    font-size: 17px;
+    border-radius: 10px;
     padding: 20px 45px;
     background-color: #ff0e0e;
     color: white;
     font-weight: 900;
     text-decoration: none;
-
+    margin-left: 10px;
     &:hover {
       opacity: 0.5;
     }
   }
   .btn-submit {
+    font-size: 17px;
+    border-radius: 10px;
     cursor: pointer;
     border: none;
     color: white;
     font-weight: 900;
-    background-color: #0000ff;
+    background-color: #0099ff;
     margin-left: 10px;
     padding: 20px 45px;
     &:hover {
@@ -101,4 +105,18 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.btn-off {
+  padding: 20px 40px;
+  font-size: 17px;
+  border-radius: 10px;
+  border: none;
+  margin-left: 50%;
+  background-color: rgb(226, 226, 11);
+  color: rgb(146, 3, 3);
+  font-weight: 800;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.5;
+  }
 }

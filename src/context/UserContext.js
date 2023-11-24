@@ -14,17 +14,18 @@ const UserProvider = ({ children }) => {
   };
   const logoutContext = () => {
     setUser({ ...defaultData, isLoading: false });
-
   };
   const fetchUserAccount = async () => {
     let res = await axios.get("/employees/account");
     if (res && res.message === "success") {
       let email = res.data.email;
       let roles = res.data;
+      let position = roles.role[0].TenViTri;
+      let id = roles.role[0].MaNV;
       let data = {
         isAuthenticated: true,
         token: res.access_token,
-        accout: { email, roles },
+        accout: { email, roles, id, position },
         isLoading: false,
       };
       setUser(data);

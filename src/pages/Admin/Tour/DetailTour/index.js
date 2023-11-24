@@ -18,6 +18,10 @@ export default function DetailTour() {
   const [giaTour, setGiaTour] = useState("");
   const [giamGia, setGiamGia] = useState("");
   const [hinhAnh, setHinhAnh1] = useState("");
+  const [hinhAnh1, setHinhAnh2] = useState("");
+  const [hinhAnh2, setHinhAnh3] = useState("");
+  const [hinhAnh3, setHinhAnh4] = useState("");
+  const [hinhAnh4, setHinhAnh5] = useState("");
   const [lichTrinh1, setLichTrinh1] = useState("");
   const [lichTrinh2, setLichTrinh2] = useState("");
   const [lichTrinh3, setLichTrinh3] = useState("");
@@ -44,7 +48,11 @@ export default function DetailTour() {
     setLichTrinh5(location.state.LichTrinh5);
     setLichTrinh6(location.state.LichTrinh6);
     setLichTrinh7(location.state.LichTrinh7);
-    setHinhAnh1(location.state.HinhAnh);
+    setHinhAnh1(location.state.HinhAnh.data);
+    setHinhAnh2(location.state.HinhAnh2.data);
+    setHinhAnh3(location.state.HinhAnh3.data);
+    setHinhAnh4(location.state.HinhAnh4.data);
+    setHinhAnh5(location.state.HinhAnh5.data);
   };
   const arrayTrip = new Array(
     lichTrinh1,
@@ -60,10 +68,34 @@ export default function DetailTour() {
     console.log(location.state);
   }, []);
   let ngaydi = new Date(ngayDi).toLocaleDateString("en-US");
-  
+
   let ngayve = new Date(ngayVe).toLocaleDateString("en-US");
   const base64String = btoa(
     new Uint8Array(hinhAnh).reduce(
+      (data, byte) => data + String.fromCharCode(byte),
+      ""
+    )
+  );
+  const base64String1 = btoa(
+    new Uint8Array(hinhAnh1).reduce(
+      (data, byte) => data + String.fromCharCode(byte),
+      ""
+    )
+  );
+  const base64String2 = btoa(
+    new Uint8Array(hinhAnh2).reduce(
+      (data, byte) => data + String.fromCharCode(byte),
+      ""
+    )
+  );
+  const base64String3 = btoa(
+    new Uint8Array(hinhAnh3).reduce(
+      (data, byte) => data + String.fromCharCode(byte),
+      ""
+    )
+  );
+  const base64String4 = btoa(
+    new Uint8Array(hinhAnh4).reduce(
       (data, byte) => data + String.fromCharCode(byte),
       ""
     )
@@ -73,7 +105,7 @@ export default function DetailTour() {
       <Link to="/tour" className={cx("text")}>
         <button className={cx("btn-cancel")}>TRO LAI</button>
       </Link>
-      <p className={cx("title")}>THONG TIN Tour Da Nang</p>
+      <p className={cx("title")}>THONG TIN {tenTour}</p>
       <div className={cx("form")}>
         <div className={cx("form-label")}>
           <label>TEN TOUR: </label>
@@ -104,16 +136,26 @@ export default function DetailTour() {
       </div>
       <p className={cx("img-title")}>DANH SACH HINH ANH</p>
       <div className={cx("list-img")}>
-        <div
+        <img
           className={cx("img")}
-          style={{
-            backgroundImage: `url(data:image/jpeg;base64,${base64String})`,
-          }}
-        ></div>
-        <div className={cx("img")}></div>
-        <div className={cx("img")}></div>
-        <div className={cx("img")}></div>
-        <div className={cx("img")}></div>
+          src={`data:image/jpeg;base64,${base64String}`}
+        />
+        <img
+          className={cx("img")}
+          src={`data:image/jpeg;base64,${base64String1}`}
+        />
+        <img
+          className={cx("img")}
+          src={`data:image/jpeg;base64,${base64String2}`}
+        />
+        <img
+          className={cx("img")}
+          src={`data:image/jpeg;base64,${base64String3}`}
+        />
+        <img
+          className={cx("img")}
+          src={`data:image/jpeg;base64,${base64String4}`}
+        />
       </div>{" "}
       <p className={cx("img-title")}>DANH SACH LICH TRINH</p>
       {arrayTrip.map((trip, index) => {

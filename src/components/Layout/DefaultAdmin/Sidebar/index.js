@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import style from "./Sidebar.module.scss";
 import classNames from "classnames/bind";
 import Button from "../../../Button";
@@ -14,9 +14,11 @@ import {
   faNewspaper,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
+import { UserContext } from "../../../../context/UserContext";
 
 const cx = classNames.bind(style);
 export default function Sidebar() {
+  const { user } = useContext(UserContext);
   const [active, setActive] = useState(false);
   const handleActive = () => {
     setActive(!active);
@@ -30,6 +32,8 @@ export default function Sidebar() {
     { icon: faTicket, title: "Hoa don", to: "/" },
   ];
   const [click, setClick] = useState("Trang chu");
+
+  console.log(user.accout.position);
   return (
     <>
       <div className={cx("wrapper")}>
@@ -39,23 +43,48 @@ export default function Sidebar() {
         <div className={cx("list-menu")}>
           <ul>
             {menus.map((menu, index) => {
-              return (
-                <li
-                  className={click === menu.title ? cx("active") : null}
-                  key={index}
-                  onClick={() => setClick(menu.title)}
-                >
-                  <FontAwesomeIcon
-                    className={cx("icon")}
-                    icon={menu.icon}
-                  ></FontAwesomeIcon>
-                  <p>
-                    <Button itemmenu to={menu.to}>
-                      {menu.title}
-                    </Button>
-                  </p>
-                </li>
-              );
+              if (user.accout.position === "DEV") {
+                if (index >= 0 && index <= 5) {
+                  return (
+                    <li
+                      className={click === menu.title ? cx("active") : null}
+                      key={index}
+                      onClick={() => setClick(menu.title)}
+                    >
+                      <FontAwesomeIcon
+                        className={cx("icon")}
+                        icon={menu.icon}
+                      ></FontAwesomeIcon>
+                      <p>
+                        <Button itemmenu to={menu.to}>
+                          {menu.title}
+                        </Button>
+                      </p>
+                    </li>
+                  );
+                }
+              }
+              else if (user.accout.position === "DUYET PHIEU TOUR") {
+                if (index === 0 || index === 2 || index === 4) {
+                  return (
+                    <li
+                      className={click === menu.title ? cx("active") : null}
+                      key={index}
+                      onClick={() => setClick(menu.title)}
+                    >
+                      <FontAwesomeIcon
+                        className={cx("icon")}
+                        icon={menu.icon}
+                      ></FontAwesomeIcon>
+                      <p>
+                        <Button itemmenu to={menu.to}>
+                          {menu.title}
+                        </Button>
+                      </p>
+                    </li>
+                  );
+                }
+              }
             })}
           </ul>
         </div>

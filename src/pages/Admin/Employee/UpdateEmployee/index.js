@@ -5,6 +5,14 @@ import Button from "../../../../components/Button";
 import axios from "../../../../setup-axios/axios";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCancel,
+  faRightToBracket,
+  faRotateRight,
+  faUpload,
+} from "@fortawesome/free-solid-svg-icons";
+import Modal from "../../../../components/Modal";
 const cx = classNames.bind(style);
 export default function UpdateEmployee() {
   const location = useLocation();
@@ -15,6 +23,7 @@ export default function UpdateEmployee() {
   const [Sdt, setSdt] = useState("");
   const [Position, setPosition] = useState("");
   const [listPosition, setListPosition] = useState([]);
+  const [modal, setModal] = useState(false);
   const fetchPostion = () => {
     axios.get("/position/list-postion").then((res) => {
       setListPosition(res.data);
@@ -38,6 +47,22 @@ export default function UpdateEmployee() {
       toast.success("Update succcess");
       navigate("/employee");
     }
+  };
+  const handleOut = () => {
+    axios
+      .put("/employees/employee-out", {
+        id,
+        TenNV,
+        cmnd,
+        Sdt,
+        Position,
+      })
+      .then((response) => {
+        if (response && response.message === "success") {
+          toast.success("Update succcess");
+          navigate("/employee");
+        }
+      });
   };
   const setItemUpdate = () => {
     setId(location.state.MaNV);
@@ -113,17 +138,25 @@ export default function UpdateEmployee() {
         </div>
       </div>
       <div className={cx("btn-submit")}>
+        <button className={cx("btn-submit")} onClick={handleUpdate}>
+          CAP NHAT <FontAwesomeIcon icon={faRotateRight}></FontAwesomeIcon>
+        </button>
         <Link to="/employee" className={cx("text")}>
-          <button className={cx("btn-cancel")}>TRO LAI</button>
+          <button className={cx("btn-cancel")}>
+            TRO LAI <FontAwesomeIcon icon={faCancel}></FontAwesomeIcon>
+          </button>
         </Link>
-        <button
-          className={cx("btn-submit")}
-          onClick={handleUpdate}
-          onSubmit={handleUpdate}
-        >
-          THEM MOI
+        <button className={cx("btn-off")} onClick={handleOut}>
+          NGHI VIEC <FontAwesomeIcon icon={faRightToBracket}></FontAwesomeIcon>
         </button>
       </div>
+      {modal === true && (
+        <Modal
+          title="BAN CO CHAC MUON CHO NHAN VIEN NAY NGHI VIEC"
+          clickNo={() => setModal(false)}
+          clickYes={() => handleOut()}
+        />
+      )}
     </div>
   );
 }
