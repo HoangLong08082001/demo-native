@@ -49,21 +49,14 @@ export default function UpdateEmployee() {
     }
   };
   const handleOut = () => {
-    axios
-      .put("/employees/employee-out", {
-        id,
-        TenNV,
-        cmnd,
-        Sdt,
-        Position,
-      })
-      .then((response) => {
-        if (response && response.message === "success") {
-          toast.success("Update succcess");
-          navigate("/employee");
-        }
-      });
+    axios.put("/employees/employee-out", { id }).then((res) => {
+      if (res && res.message === "success") {
+        toast.success("Cap nhat thanh cong");
+        navigate("/employee");
+      }
+    });
   };
+  console.log(id);
   const setItemUpdate = () => {
     setId(location.state.MaNV);
     setTenvNV(location.state.TenNV);
@@ -146,7 +139,7 @@ export default function UpdateEmployee() {
             TRO LAI <FontAwesomeIcon icon={faCancel}></FontAwesomeIcon>
           </button>
         </Link>
-        <button className={cx("btn-off")} onClick={handleOut}>
+        <button className={cx("btn-off")} onClick={() => setModal(true)}>
           NGHI VIEC <FontAwesomeIcon icon={faRightToBracket}></FontAwesomeIcon>
         </button>
       </div>
