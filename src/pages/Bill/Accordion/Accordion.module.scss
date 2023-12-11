@@ -4,6 +4,9 @@
     width: 80%;
     margin: auto;
     .item {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
       transition: 0.2s linear;
       cursor: pointer;
       background-color: #2f81bd;
@@ -42,6 +45,8 @@
   transition: all 0.05s cubic-bezier(1, 0, 1, 0);
 }
 .item-active {
+  border-radius: 10px;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
   transition: 0.2s linear;
   cursor: pointer;
   background-color: #23c50a;

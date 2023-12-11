@@ -23,7 +23,7 @@ function Header() {
  
   
   useEffect(() =>{
-    if(localStorage.getItem('account'))
+    if(localStorage.getItem('account')||localStorage.getItem('account-google'))
   {
     setvalue(true);
   }
@@ -36,8 +36,15 @@ function Header() {
       toast.success('Logout Success');
       localStorage.removeItem('account');
       localStorage.removeItem('Ma');
+      if(localStorage.getItem('image')){
+        localStorage.removeItem("image");
+      }
       setvalue(false)
+     
+        window.location.reload();                     
+    
     }
+    
   }
   
   return (
@@ -113,7 +120,7 @@ function Header() {
                 
                 </div>
                 <div>
-                   <label  for="checkavatar"><img  className={cx("warpper-link-icon-avatar")} src={img}></img></label>
+                   {localStorage.getItem('image') ? (<label  for="checkavatar"><img  className={cx("warpper-link-icon-avatar")} src={localStorage.getItem('image')}></img></label>) : (<label  for="checkavatar"><img  className={cx("warpper-link-icon-avatar")} src={img}></img></label>) }
                    <input className={cx("warpper-link-icon-check")} type="checkbox" id="checkavatar"></input>
                   
                  <div className={cx("warpper-link-icon-avatar-tamgiac")}></div>

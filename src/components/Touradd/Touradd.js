@@ -19,6 +19,7 @@ import {
 import img1 from "../../assets/images/PhuQuoc/pq4.png"
 import { useEffect, useState } from "react";
 import axios from"../../setup-axios/axios";
+import { Link } from "react-router-dom";
 const cx = classname.bind(styles);
 function Touradd({status,name,img,MaTour}) {
 
@@ -59,8 +60,9 @@ function Touradd({status,name,img,MaTour}) {
        
     
     return ( <div  className={cx("container")}>
-        <div className={cx("container-box")}>
-            <div style={{display:"flex"}}>
+        <div  className={cx("container-box")}>
+            <Button underline txt to={'/'} >
+            <div style={{display:"flex", width:"188%"}}>
                 <div className={cx("container-box-left")} style={{backgroundImage: `url(data:image/png;base64,${base64String})`}}>
 
                 </div>
@@ -80,9 +82,10 @@ function Touradd({status,name,img,MaTour}) {
                     </div>
                     
                     <div className={cx("container-box-right-span")}><span className={cx("container-box-right-span")}>Lượt đánh giá ({arraycomment.length})</span></div>
-                    <Button book >Đặt Ngay</Button>
+                    <Button underline  book to={'/user/billdetail'} >Đặt Ngay</Button>
                 </div>
             </div>
+            </Button>
           
             <div className={cx("container-box-close")}>
                 <FontAwesomeIcon icon={faCircleXmark}/>

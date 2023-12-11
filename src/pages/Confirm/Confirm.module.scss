@@ -1,0 +1,37 @@
+.wrapper
+{
+    
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 80%;
+    margin: auto;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+.wrapper-head
+{
+    color:white;
+    font-size: 15px;
+    height: 60px;
+    line-height: 60px;
+    background-color:rgb(19, 163, 240) ;
+    text-align: center;
+}
+.wrapper-box
+{
+    display: flex;
+    justify-content: space-around;
+    h3{
+        text-align: center;
+    }
+}
+.wrapper-box2
+{
+    display: flex;
+    justify-content: space-evenly;
+}
+.wrapper-box-kh-tt
+{
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+}

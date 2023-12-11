@@ -22,13 +22,17 @@ import DetailTour from "../pages/Admin/Tour/DetailTour";
 import AddTicket from "../pages/Admin/Ticket/AddTicket";
 import AddCustommer from "../pages/Admin/Custommer/AddCustommer";
 import UserAdmin from "../pages/Admin/UserAdmin";
+import BillDetail from "../pages/BillDetail";
+import Confirm from "../pages/Confirm";
 const publicRoutes = [
   { path: "/login-user", component: Login },
   { path: "/register-user", component: Register },
   { path: "*", component: Error },
   { path: "/admin-login", component: LoginAdmin },
+  { path: "/User/billdetail/:matour", component: BillDetail },
+  { path: "/Confirm", component: Confirm },
   { path: "/", component: Home },
-  { path: "/bill", component: Bill },
+  { path: "/bill/:name/:id/:date/:giam", component: Bill },
   { path: "/review", component: Review },
   { path: "/more-summer", component: More },
   { path: "/details/:name/:id", component: Details },

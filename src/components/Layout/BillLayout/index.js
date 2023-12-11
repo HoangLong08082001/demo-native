@@ -8,9 +8,9 @@ const cx = classNames.bind(style);
 export default function BillLayout({ children }) {
   return (
     <div>
-      <HeaderBill />
+      
       <div className={cx("container")}>{children}</div>
-      <Footer />
+      
     </div>
   );
 }

@@ -1,0 +1,75 @@
+.box
+{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 70%;
+    margin: auto;
+}
+.box-head
+{
+    display: flex;
+    justify-content: center;
+}
+.box-accept
+{
+    display: flex;
+    justify-content: space-around;
+}
+.box-accept-2
+{
+    
+    display: flex;
+    justify-content: center;
+    h2{
+        text-align: center;
+        width: 800px;
+    }
+}
+.box-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.wrapper-title-btn
+{
+  margin-top: 70px;
+  margin-bottom: 70px;
+  width: 190px;
+  
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: rgb(223, 233, 229);
+  border: 0;
+  border-radius: 5px;
+  height: 50px;
+  svg{
+    margin-right: 10px;
+  }
+  &:hover{
+    background-color: rgb(226, 105, 25);
+    color: white;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  }
+}
+.box-head-detail
+{
+   width: 90%;
+    margin: auto;
+}
+.box-input
+{
+    display: flex;
+    justify-content: space-between;
+    p:last-child{
+        margin-left: 20px;
+    }
+}
+.cancel
+{
+    width: 100%;
+    background-color: #ccc;
+   
+    height: 0.5px;
+}

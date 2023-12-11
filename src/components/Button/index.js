@@ -5,6 +5,7 @@ const cx = classname.bind(styles);
 function Button({
   to,
   href,
+  txt,
   children,
   onClick,
   watchadd,
@@ -51,11 +52,16 @@ function Button({
     onClick,
   };
   if (to) {
+    
     props.to = to;
     Comp = NavLink;
   } else if (href) {
     props.href = href;
     Comp = "a";
+  }
+  else if(txt)
+  {
+    Comp="div";
   }
 
   const classes = cx({

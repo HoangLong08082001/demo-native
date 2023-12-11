@@ -33,11 +33,11 @@ function App() {
               in the JSX code later on. */
 
               const Page = route.component;
-              if (index >= 0 && index <= 3) {
+              if (index >= 0 && index <= 5) {
                 return (
                   <Route key={index} path={route.path} element={ <Page />} />
                 );
-              } else if (index > 10) {
+              } else if (index > 12) {
                 return (
                   <Route
                     key={index}
@@ -59,18 +59,6 @@ function App() {
                           <Page />
                         </LayoutAdmin>
                       )
-                    }
-                  />
-                );
-              } else if (index === 5) {
-                return (
-                  <Route
-                    key={index}
-                    path={route.path}
-                    element={
-                      <Layout>
-                        <Page />
-                      </Layout>
                     }
                   />
                 );

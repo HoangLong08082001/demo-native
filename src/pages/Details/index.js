@@ -41,7 +41,8 @@ export default function Details() {
           phuongtien={value.PhuongTien}
      
         />
-        <Price MaTour={id} />
+        <Price  MaTour={value.MaTour} NgayDi={value.NgayDi} 
+          DiaDiemDi={value.DiaDiemDi} DiaDiemDen={value.DiaDiemDen}  />
         {
           arrayimg.map((value)=>{
             return(   <ImageDetail key={value.MaTour}

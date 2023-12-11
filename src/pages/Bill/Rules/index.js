@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Rules.module.scss";
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(style);
-export default function Rules() {
+export default function Rules(props) {
+  const [value,setvalue] = useState(false)
+  useEffect(()=>{
+    props.callBackParent(value);
+  },[value])
   return (
     <div className={cx("wrapper")}>
       <div className={cx("rule")}>
-        <input type="checkbox" name="" id="" />
+        <input type="checkbox" onChange={(e)=>{setvalue(e.target.checked)}} name="" id="" />
         <p>Tôi đã đọc và đồng ý với điều khoản</p>
       </div>
       <div className={cx("list-rules")}>

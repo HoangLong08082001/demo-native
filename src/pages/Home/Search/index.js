@@ -22,7 +22,7 @@ function Search(props) {
     NgayDi: ngaydi,
     NgayVe: ngayve,
   };
-  
+  console.log(ngaydi)
   const handlesuget=(e)=>{
     setdiadiem(e);
     setvalue(e);

@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const instance = axios.create({
-  baseURL: "http://localhost:9000",
+  baseURL: "http://dattourtravel.com:9000",
 });
 instance.defaults.withCredentials = true;
 instance.interceptors.request.use(

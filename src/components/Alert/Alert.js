@@ -1,8 +1,9 @@
 import classname from "classnames/bind";
 import styles from "./Alert.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight, faClose, faSmile } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight, faClose, faSadCry, faSmile } from "@fortawesome/free-solid-svg-icons";
 import Button from "../Button";
+import { icon } from "@fortawesome/fontawesome-svg-core";
 const cx = classname.bind(styles);
 function Alert(props) {
     
@@ -16,15 +17,17 @@ function Alert(props) {
                 <FontAwesomeIcon onClick={handleclose} icon={faClose}/>
             </div>
             <div className={cx("container-box-1")}>
-                <FontAwesomeIcon icon={faSmile}/>
+                {props.icon === 0 ?(<FontAwesomeIcon icon={faSmile}/>):(<FontAwesomeIcon icon={faSadCry}/>)}
             </div>
             <div className={cx("container-box-2")} >
-                <h5>Danh Sách Yêu Thích</h5>
-                <Button addlike to={"/user"}>
+                {props.icon ===0?(<h5>Danh Sách Yêu Thích</h5>):(props.datatt.map((value)=>{
+                    return(<h5 style={{color:"red",fontWeight:600}}>{value}</h5>)
+                }))}
+                {props.icon===0 ?(<Button addlike to={"/user"}>
                     <FontAwesomeIcon icon={faChevronRight}/>
                     <FontAwesomeIcon icon={faChevronRight}/>
                     <FontAwesomeIcon icon={faChevronRight}/>
-                </Button>
+                </Button>) : ("")}
             </div>
         </div>
     </div> );

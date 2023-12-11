@@ -1,34 +1,35 @@
 .wrapper {
-  
+ 
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 20px;
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   background: #f8f8f8;
-  padding: 10px 40px;
+  padding: 10px 
 }
-.table {
-  width: 100%;
-  margin-left: 20px;
+.box-line-1
+{
+  text-align: center;
+  display: flex;
+  div{
+    width: 18%;
+  }
 }
-.head {
-  color: black;
-  font-weight: 800;
-  font-size: 25px;
+.box-line-2
+{
+  text-align: center;
+  display: flex;
+  div{
+    width: 18%;
+    line-height: 45px;
+  }
 }
-.line {
-  width: 520%;
-  background: black;
-  height: 2px;
-}
-.time-tour,
-.id-tour,
-.adult-price,
-.baby-price {
-  margin-left: 80px;
-}
-
-.adult-price,
-.baby-price {
-  color: rgb(145, 5, 35);
+.box-line-a
+{
+  margin: auto;
+  
+  a{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13px;
+  }
 }
