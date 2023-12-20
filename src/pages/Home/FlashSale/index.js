@@ -62,13 +62,7 @@ function FlashSale() {
   const setDate = (day) => {
     return new Date(day);
   };
-  const fetchTourByDiscount = () => {
-    axios.get("/tour/get-tour-by-voucher").then((res) => {
-      setTimeTarget(res.data[1].thoigiantoi);
-      console.log(res.data[1].thoigiantoi);
-      // setList(res.data);
-    });
-  };
+
   // const getDay = () => {
   //   let today = new Date();
   //   for (let i = 0; i < list.length - 1; i++) {
@@ -87,18 +81,25 @@ function FlashSale() {
     minutes: 0,
     seconds: 0,
   });
+  useEffect(()=>{
+    axios.get("/tour/get-tour-by-voucher").then((res) => {
+      setTimeTarget(res.data[1].thoigiantoi);
+      
+      // setList(res.data);
+    });
+  })
   useEffect(() => {
-    fetchTourByDiscount();
+   
     // Set the target date to tomorrow
     const datenew = dateFormat(timeTarget).format("YYYY/MM/DD");
     const targetDate = new Date(datenew);
-    console.log(datenew);
+    
     const updateCountdown = () => {
       // Get the current date and time
       const now = new Date().getTime();
-
+    
       // Calculate the distance between now and the target date
-      const distance = datenew - now;
+      const distance = targetDate - now;
 
       // Calculate days, hours, minutes, and seconds
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -111,13 +112,11 @@ function FlashSale() {
       // Update the state with the new values
       setTimeLeft({ days, hours, minutes, seconds });
     };
-
     // Update the countdown every 1 second
     const interval = setInterval(updateCountdown, 1000);
-
     // Clean up the interval when the component is unmounted
     return () => clearInterval(interval);
-  }, []); // The empty dependency array ensures that useEffect runs only once on mount
+  }, [timeTarget]); // The empty dependency array ensures that useEffect runs only once on mount
   return (
     <div className={cx("wrapper")}>
       <div className={cx("wrapper-box")}>
