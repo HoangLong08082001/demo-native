@@ -13,6 +13,8 @@ import {
   faUserGroup,
   faNewspaper,
   faBars,
+  faUserCheck,
+  faTag,
 } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "../../../../context/UserContext";
 
@@ -24,14 +26,16 @@ export default function Sidebar() {
     setActive(!active);
   };
   const menus = [
-    { icon: faHome, title: "Trang chu", to: "/admin-home" },
-    { icon: faUser, title: "Nhan vien", to: "/employee" },
-    { icon: faUserGroup, title: "Khach hang", to: "/custommer" },
+    { icon: faHome, title: "Trang chủ", to: "/admin-home" },
+    { icon: faUser, title: "Nhân viên", to: "/nhan-vien" },
+    { icon: faUserGroup, title: "Khách hàng", to: "/khach-hang" },
+    { icon: faTag, title: "Giảm giá", to: "/giam-gia" },
     { icon: faPlane, title: "Tours", to: "/tour" },
-    { icon: faNewspaper, title: "Phieu dat tour", to: "/PhieuDatTour" },
-    { icon: faTicket, title: "Hoa don", to: "/" },
+    { icon: faNewspaper, title: "Phiếu đặt tour", to: "/phieu-dat-tour" },
+    { icon: faTicket, title: "Hoá đơn", to: "/hoa-don" },
+    { icon: faUserCheck, title: "Phân quyền", to: "/phan-quyen" },
   ];
-  const [click, setClick] = useState("Trang chu");
+  const [click, setClick] = useState("Trang chủ");
 
   console.log(user.accout.position);
   return (
@@ -44,7 +48,7 @@ export default function Sidebar() {
           <ul>
             {menus.map((menu, index) => {
               if (user.accout.position === "DEV") {
-                if (index >= 0 && index <= 5) {
+                if (index >= 0 && index <= 7) {
                   return (
                     <li
                       className={click === menu.title ? cx("active") : null}

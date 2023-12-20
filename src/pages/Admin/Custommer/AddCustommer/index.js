@@ -110,7 +110,7 @@ export default function AddCustommer() {
         <button className={cx("Add")} onClick={handleAddCustommer}>
           <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>THEM
         </button>
-        <Link to="/custommer">
+        <Link to="/khach-hang">
           <button className={cx("Cancel")}>
             HUY<FontAwesomeIcon icon={faCancel}></FontAwesomeIcon>
           </button>

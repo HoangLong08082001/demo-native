@@ -11,25 +11,20 @@ import Alert from "../../components/Alert/Alert";
 export default function Details() {
   const [value, setData] = useState([]);
   const { id } = useParams();
-  const [arrayimg,setarrayimg] = useState([]);
+  const [arrayimg, setarrayimg] = useState([]);
 
- 
   useEffect(() => {
     axios.get(`tour/alltour/${id}`).then((response) => {
-      
       setData(response.data[0]);
       setarrayimg(response.data);
     });
-    
-  },[id]);
+  }, [id]);
   useLayoutEffect(() => {
-       
-       
-    window.scrollTo(0,0)});
-  
+    window.scrollTo(0, 0);
+  });
+
   return (
-    <div  >
-     
+    <div>
       <div>
         <About
           MaTour={id}
@@ -39,21 +34,25 @@ export default function Details() {
           loaitour={value.LoaiTour === "TN" ? "Trong Nuoc" : "Nguoi Nuoc"}
           quymo={value.QuyMo}
           phuongtien={value.PhuongTien}
-     
         />
-        <Price  MaTour={value.MaTour} NgayDi={value.NgayDi} 
-          DiaDiemDi={value.DiaDiemDi} DiaDiemDen={value.DiaDiemDen}  />
-        {
-          arrayimg.map((value)=>{
-            return(   <ImageDetail key={value.MaTour}
+        <Price
+          MaTour={value.MaTour}
+          NgayDi={value.NgayDi}
+          DiaDiemDi={value.DiaDiemDi}
+          noiDen={value.DiaDiemDen}
+        />
+        {arrayimg.map((value) => {
+          return (
+            <ImageDetail
+              key={value.MaTour}
               img1={value.HinhAnh.data}
               img2={value.HinhAnh2.data}
               img3={value.HinhAnh3.data}
               img4={value.HinhAnh4.data}
               img5={value.HinhAnh5.data}
-        />)
-          })
-        }
+            />
+          );
+        })}
         <Trip
           trip1={value.LichTrinh1}
           trip2={value.LichTrinh2}
@@ -62,10 +61,6 @@ export default function Details() {
         <Comment MaTour={id} />
         <AnotherTour />
       </div>
-
-      
-     
-      
     </div>
   );
 }

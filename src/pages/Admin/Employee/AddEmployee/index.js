@@ -47,7 +47,7 @@ export default function AddEmployee() {
     setPaswword("");
   };
   useEffect(() => {
-    axios.get("/position/list-postion").then((res) => {
+    axios.get("/position/list-position").then((res) => {
       console.log(res.data);
       setListPosition(res.data);
     });
@@ -158,7 +158,7 @@ export default function AddEmployee() {
         >
           <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>THEM MOI
         </button>
-        <Link to="/employee" className={cx("text")}>
+        <Link to="/nhan-vien" className={cx("text")}>
           <button className={cx("btn-cancel")}>
             TRO LAI <FontAwesomeIcon icon={faCancel}></FontAwesomeIcon>
           </button>

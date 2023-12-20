@@ -97,6 +97,7 @@ export default function AddTour() {
             "Điện Biên",
             "Sơn La",
             "Hòa Bình",
+            "Quảng Ninh",
           ],
         },
         {
@@ -148,6 +149,8 @@ export default function AddTour() {
       ],
     },
   ];
+
+  const today = new Date().toLocaleDateString("sv-SE");
   const vehicles = ["Xe Khach", "May bay", "Tu tuc"];
   const [country, setCountry] = useState("Loai Tour");
   const [state, setState] = useState("Khu Vuc");
@@ -159,7 +162,6 @@ export default function AddTour() {
   const [quyMo, setQuyMo] = useState("");
   const [diaDiemDi, setDiaDiemDi] = useState("TP.HCM");
   const [giaTour, setGiaTour] = useState("");
-  const [giamGia, setGiamGia] = useState("");
   const [hinhAnh1, setHinhAnh1] = useState(null);
   const [hinhAnh2, setHinhAnh2] = useState(null);
   const [hinhAnh3, setHinhAnh3] = useState(null);
@@ -181,6 +183,22 @@ export default function AddTour() {
   const [lichTrinh7, setLichTrinh7] = useState("");
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
+  const [giamgia, setGiamGia] = useState([]);
+  const [giamgiathem, setGiamGiaThem] = useState([]);
+  const [giam, setGiam] = useState(0);
+  const [giamthem, setGiamthem] = useState(0);
+  const [maxDay, setMaxDay] = useState("");
+  const fetchGiamGia = async () => {
+    await axios.get("/voucher/get-voucher").then((res) => {
+      setGiamGia(res.data);
+    });
+  };
+  const fetchGiamGiaThem = async () => {
+    await axios.get("/voucher/get-again").then((res) => {
+      setGiamGiaThem(res.data);
+      console.log("them ", res.data);
+    });
+  };
 
   const handleChange2 = (event) => {
     setState(event.target.value);
@@ -195,60 +213,156 @@ export default function AddTour() {
       countries.find((item) => item.name === event.target.value).states
     );
   };
-  const handleAddTour = (e) => {
-    e.preventDefault();
-    let fd = new FormData();
-    fd.append("imgone", hinhAnh1);
-    fd.append("imgone", hinhAnh2);
-    fd.append("imgone", hinhAnh3);
-    fd.append("imgone", hinhAnh4);
-    fd.append("imgone", hinhAnh5);
-    fd.append("date", ngayDi);
-    fd.append("date", ngayVe);
-    fd.append("char", TenTour);
-    fd.append("char", giaTour);
-    fd.append("char", giamGia);
-    fd.append("char", diaDiemDi);
-    fd.append("number", quyMo);
-    fd.append("editor", lichTrinh1);
-    fd.append("editor", lichTrinh2);
-    fd.append("editor", lichTrinh3);
-    fd.append("editor", lichTrinh4);
-    fd.append("editor", lichTrinh5);
-    fd.append("editor", lichTrinh6);
-    fd.append("editor", lichTrinh7);
-    fd.append("select", country);
-    fd.append("select", state);
-    fd.append("select", city);
-    fd.append("select", phuongTien);
-    console.log(fd);
-    axios
-      .post("/tourserver/add-tour", fd, {
-        headers: { "Content-Type": "multipart/form-data" },
-      })
-      .then((res) => {
-        if (res && res.message === "success") {
-          toast.success("da them tour moi");
-        } else {
-          toast.error("khong them duoc tour moi");
-        }
-      })
-      .catch((err) => console.log(err));
+  const CheckValidate = () => {
+    if (TenTour === "") {
+      toast.warning("Vui lòng nhập tên tour");
+      return false;
+    }
+    if (ngayDi === "") {
+      toast.warning("Vui lòng chọn ngày đi");
+      return false;
+    }
+    if (ngayVe === "") {
+      toast.warning("Vui lòng chọn ngày về");
+      return false;
+    }
+    if (quyMo === "") {
+      toast.warning("Vui lòng nhập quy mô khách hàng");
+      return false;
+    }
+    if (phuongTien === "") {
+      toast.warning("Vui lòng chọn phương tiện");
+      return false;
+    }
+    if (giaTour === "") {
+      toast.warning("Vui lòng nhập giá tour");
+      return false;
+    }
+    if (country === "") {
+      toast.warning("Vui lòng chọn loại tour");
+      return false;
+    }
+    if (state === "") {
+      toast.warning("Vui lòng chọn khu vực");
+      return false;
+    }
+    if (city === "") {
+      toast.warning("Vui lòng chọn địa điểm đến");
+      return false;
+    }
+    if (imageName2 === "") {
+      toast.warning("Vui lòng thêm ảnh bìa");
+      return false;
+    }
+    if (imageName3 === "") {
+      toast.warning("Vui lòng thêm ảnh thứ 1");
+      return false;
+    }
+    if (imageName4 === "") {
+      toast.warning("Vui lòng thêm ảnh thứ 2");
+      return false;
+    }
+    if (imageName5 === "") {
+      toast.warning("Vui lòng thêm ảnh thứ 3");
+      return false;
+    }
+    if (imageName6 === "") {
+      toast.warning("Vui lòng thêm ảnh thứ 4");
+      return false;
+    }
+    if (lichTrinh1 === "" || lichTrinh2 === "") {
+      toast.warning("Vui lòng nhập ít nhất 2 lịch trình");
+      return false;
+    }
+
+    toast.success("Thêm thành công");
+    return true;
   };
-  useEffect(() => {}, []);
+  const handleAddTour = () => {
+    let validate = CheckValidate();
+    if (validate) {
+      let fd = new FormData();
+      fd.append("imgone", hinhAnh1);
+      fd.append("imgone", hinhAnh2);
+      fd.append("imgone", hinhAnh3);
+      fd.append("imgone", hinhAnh4);
+      fd.append("imgone", hinhAnh5);
+      fd.append("date", ngayDi);
+      fd.append("date", ngayVe);
+      fd.append("char", TenTour);
+      fd.append("char", giaTour);
+      fd.append("char", diaDiemDi);
+      fd.append("number", quyMo);
+      fd.append("editor", lichTrinh1);
+      fd.append("editor", lichTrinh2);
+      fd.append("editor", lichTrinh3);
+      fd.append("editor", lichTrinh4);
+      fd.append("editor", lichTrinh5);
+      fd.append("editor", lichTrinh6);
+      fd.append("editor", lichTrinh7);
+      fd.append("select", country);
+      fd.append("select", state);
+      fd.append("select", city);
+      fd.append("select", phuongTien);
+      fd.append("select", giam);
+      fd.append("select", giamthem);
+      console.log(fd);
+      axios
+        .post("/tourserver/add-tour", fd, {
+          headers: { "Content-Type": "multipart/form-data" },
+        })
+        .then((res) => {
+          setTenTour("");
+          setNgayDi("");
+          setNgayVe("");
+          setPhuongTien("");
+          setQuyMo("");
+          setGiaTour("");
+          setImageName1("");
+          setImageName2("");
+          setImageName3("");
+          setImageName4("");
+          setImageName5("");
+          setImageName6("");
+          setLichTrinh1("");
+          setLichTrinh2("");
+          setLichTrinh3("");
+          setLichTrinh4("");
+          setLichTrinh5("");
+          setLichTrinh6("");
+          setLichTrinh7("");
+        });
+    }
+  };
+  const maxDate = () => {
+    let max = new Date(ngayDi);
+    let nextThreeDays = new Date(max.setDate(max.getDate() + 7));
+    return nextThreeDays;
+  };
+  const handleChangeGiamGia = (e) => {
+    setGiam(e);
+    console.log(e);
+  };
+  const handleChangeGiamGiaThem = (e) => {
+    setGiamthem(e);
+    console.log(e);
+  };
+  useEffect(() => {
+    fetchGiamGia();
+    fetchGiamGiaThem();
+  }, []);
   return (
-    <form className={cx("wrapper")} onSubmit={(e) => handleAddTour(e)}>
-      <p className={cx("title")}>Nhap thong tin tour</p>
+    <div className={cx("wrapper")}>
+      <p className={cx("title")}>Nhập thông tin tour</p>
       <div className={cx("form")}>
         <div className={cx("left")}>
           <div className={cx("list-label")}>
-            <label htmlFor="">Ten tour</label>
-            <label htmlFor="">Ngay di</label>
-            <label htmlFor="">Ngay ve</label>
-            <label htmlFor="">Quy mo</label>
-            <label htmlFor="">Phuong tien</label>
-            <label htmlFor="">Gia tour</label>
-            <label htmlFor="">Giam gia</label>
+            <label htmlFor="">Tên tour</label>
+            <label htmlFor="">Ngày đi</label>
+            <label htmlFor="">Ngày về</label>
+            <label htmlFor="">Quy mô</label>
+            <label htmlFor="">Phương tiện</label>
+            <label htmlFor="">Giá tour</label>
           </div>
           <div className={cx("list-input")}>
             <input
@@ -259,13 +373,18 @@ export default function AddTour() {
             />
             <input
               type="date"
+              min={today}
               value={ngayDi}
               name="date"
-              onChange={(e) => setNgayDi(e.target.value)}
+              onChange={(e) => {
+                setNgayDi(e.target.value);
+              }}
             />
             <input
               type="date"
               value={ngayVe}
+              min={today}
+              max={maxDate().toLocaleDateString("sv-SE")}
               name="date"
               onChange={(e) => setNgayVe(e.target.value)}
             />
@@ -284,7 +403,7 @@ export default function AddTour() {
               value={phuongTien}
               onChange={(e) => setPhuongTien(e.target.value)}
             >
-              <option>{phuongTien ? phuongTien : "Phuong Tien"}</option>
+              <option>{phuongTien ? phuongTien : "Chọn Phương tiện"}</option>
               {vehicles.map((item) => (
                 <option value={item}>{item}</option>
               ))}
@@ -293,33 +412,30 @@ export default function AddTour() {
               name="char"
               type="text"
               value={giaTour}
+              pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$"
               onChange={(e) => setGiaTour(e.target.value)}
-            />
-            <input
-              name="char"
-              type="text"
-              value={giamGia}
-              onChange={(e) => setGiamGia(e.target.value)}
             />
           </div>
         </div>
         <div className={cx("right")}>
           <div className={cx("list-label")}>
-            <label htmlFor="">Loai tour</label>
-            <label htmlFor="">Khu vuc</label>
-            <label htmlFor="">Dia diem di</label>
-            <label htmlFor="">Dia diem den</label>
+            <label htmlFor="">Loại tour</label>
+            <label htmlFor="">Khu vực</label>
+            <label htmlFor="">Địa điểm đi</label>
+            <label htmlFor="">Địa điểm đến</label>
+            <label htmlFor="">Giảm giá </label>
+            <label htmlFor="">Giảm giá thêm</label>
           </div>
           <div className={cx("list-input")}>
             <select name="select" id="" value={country} onChange={handleChange}>
-              <option value="">{country ? country : "country"}</option>
+              <option value="">{country ? country : "Khu vực"}</option>
               {countries.map((item) => (
                 <option value={item.name}>{item.name}</option>
               ))}
             </select>
             <select name="select" id="" onChange={handleChange2} value={state}>
               {" "}
-              <option>{state ? state : "Loai Tour"}</option>
+              <option>{state ? state : "Loại tour"}</option>
               {states.map((item) => (
                 <option value={item.name}>{item.name}</option>
               ))}
@@ -333,23 +449,47 @@ export default function AddTour() {
               disabled
             />
             <select name="select" id="" value={city} onChange={handleChange3}>
-              <option>Dia Diem Den</option>
+              <option>Địa điểm đến</option>
               {cities.map((item) => (
                 <option value={item}>{item}</option>
+              ))}
+            </select>
+            <select
+              name="select"
+              id=""
+              value={giam}
+              onChange={(e) => handleChangeGiamGia(e.target.value)}
+            >
+              <option value={0}> Giảm giá</option>
+              {giamgia.map((item) => (
+                <option value={item.id_giamgia}>{item.ten_dotgiamgia}</option>
+              ))}
+            </select>
+            <select
+              name="select"
+              id=""
+              value={giamthem}
+              onChange={(e) => handleChangeGiamGiaThem(e.target.value)}
+            >
+              <option value={0}> Giảm giá thêm</option>
+              {giamgiathem.map((item) => (
+                <option value={item.id_giamgiathem}>
+                  {item.ten_dotgiamgiathem}
+                </option>
               ))}
             </select>
           </div>
         </div>
       </div>
-      <p className={cx("title")}>Upload hinh anh tour</p>
+      <p className={cx("title")}>Upload hình ảnh tour</p>
       <div className={cx("form-down")}>
         <div className={cx("left")}>
           <div className={cx("list-label")}>
-            <label htmlFor="">Hinh anh bia</label>
-            <label htmlFor="">Hinh anh 1</label>
-            <label htmlFor="">Hinh anh 2</label>
-            <label htmlFor="">Hinh anh 3</label>
-            <label htmlFor="">Hinh anh 4</label>
+            <label htmlFor="">Hình ảnh bìa</label>
+            <label htmlFor="">Hình ảnh 1</label>
+            <label htmlFor="">Hình ảnh 2</label>
+            <label htmlFor="">Hình ảnh 3</label>
+            <label htmlFor="">Hình ảnh 4</label>
           </div>
           <div className={cx("list-input")}>
             <input
@@ -384,7 +524,7 @@ export default function AddTour() {
               <p>{imageName3 ? imageName3 : ""}</p>
               <div className={cx("label")}>
                 <label htmlFor="imagethree">UPLOAD</label>
-              </div>              
+              </div>
             </div>
             <input
               type="file"
@@ -442,9 +582,9 @@ export default function AddTour() {
       </div>
 
       <div className={cx("list-tourist")}>
-        <p className={cx("title")}>Lich trinh tour</p>
+        <p className={cx("title")}>Lịch trình tour</p>
         <div className={cx("form-text")}>
-          <label htmlFor="">Ngay 1</label>
+          <label htmlFor="">Ngày 1</label>
           <JoditEditor
             value={lichTrinh1}
             name="editor"
@@ -453,7 +593,7 @@ export default function AddTour() {
           />
         </div>
         <div className={cx("form-text")}>
-          <label htmlFor="">Ngay 2</label>
+          <label htmlFor="">Ngày 2</label>
           <JoditEditor
             value={lichTrinh2}
             name="editor"
@@ -462,7 +602,7 @@ export default function AddTour() {
           />
         </div>
         <div className={cx("form-text")}>
-          <label htmlFor="">Ngay 3</label>
+          <label htmlFor="">Ngày 3</label>
           <JoditEditor
             value={lichTrinh3}
             name="editor"
@@ -471,7 +611,7 @@ export default function AddTour() {
           />
         </div>
         <div className={cx("form-text")}>
-          <label htmlFor="">Ngay 4</label>
+          <label htmlFor="">Ngày 4</label>
           <JoditEditor
             value={lichTrinh4}
             name="editor"
@@ -480,7 +620,7 @@ export default function AddTour() {
           />
         </div>
         <div className={cx("form-text")}>
-          <label htmlFor="">Ngay 5</label>
+          <label htmlFor="">Ngày 5</label>
           <JoditEditor
             name="editor"
             value={lichTrinh5}
@@ -489,7 +629,7 @@ export default function AddTour() {
           />
         </div>
         <div className={cx("form-text")}>
-          <label htmlFor="">Ngay 6</label>
+          <label htmlFor="">Ngày 6</label>
           <JoditEditor
             name="editor"
             value={lichTrinh6}
@@ -498,7 +638,7 @@ export default function AddTour() {
           />
         </div>
         <div className={cx("form-text")}>
-          <label htmlFor="">Ngay 7</label>
+          <label htmlFor="">Ngày 7</label>
           <JoditEditor
             name="editor"
             value={lichTrinh7}
@@ -509,12 +649,12 @@ export default function AddTour() {
       </div>
       <div className={cx("btn-submit")}>
         <Link to="/tour" className={cx("text")}>
-          <button className={cx("btn-cancel")}>TRO LAI</button>
+          <button className={cx("btn-cancel")}>TRỞ LẠI</button>
         </Link>
-        <button className={cx("btn-submit")} type="submit">
-          THEM MOI
+        <button className={cx("btn-submit")} onClick={() => handleAddTour()}>
+          THÊM MỚI
         </button>
       </div>
-    </form>
+    </div>
   );
 }

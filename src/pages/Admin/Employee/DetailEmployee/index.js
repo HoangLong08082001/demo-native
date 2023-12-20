@@ -66,7 +66,7 @@ export default function DetailEmployee() {
           </div>
         </div>
       </div>
-      <Link to="/employee">
+      <Link to="/nhan-vien">
         <button className={cx("btn-cancel")}>Tro lai</button>
       </Link>
     </div>

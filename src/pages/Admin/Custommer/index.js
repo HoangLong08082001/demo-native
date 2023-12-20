@@ -40,9 +40,9 @@ export default function Custommer() {
   if (user && user.isAuthenticated === true) {
     return (
       <div className={cx("wrapper")}>
-        <Link to="/ThemKhachHang">
+        <Link to="/them-khach-hang">
           <button className={cx("btn-add")}>
-            THEM KHACH HANG{" "}
+            THÊM KHÁCH HÀNG{" "}
             <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>
           </button>
         </Link>

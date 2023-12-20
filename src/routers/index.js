@@ -24,6 +24,12 @@ import AddCustommer from "../pages/Admin/Custommer/AddCustommer";
 import UserAdmin from "../pages/Admin/UserAdmin";
 import BillDetail from "../pages/BillDetail";
 import Confirm from "../pages/Confirm";
+import Authentication from "../pages/Admin/Authentication";
+import CheckAuthen from "../pages/Admin/Authentication/CheckAuthen";
+import Discount from "../pages/Admin/Discount";
+import AddDiscount from "../pages/Admin/Discount/AddDiscount";
+import AddPosition from "../pages/Admin/Authentication/AddPosition";
+import AddRule from "../pages/Admin/Authentication/AddRule";
 const publicRoutes = [
   { path: "/login-user", component: Login },
   { path: "/register-user", component: Register },
@@ -39,19 +45,26 @@ const publicRoutes = [
   { path: "/more-summer/:nn", component: More },
   { path: "/User", component: User },
   { path: "/admin-home", component: HomeAdmin },
-  { path: "/employee", component: Employee },
-  { path: "/custommer", component: Custommer },
-  { path: "/AddEmployee", component: AddEmployee },
-  { path: "/updateEmployee", component: UpdateEmployee },
-  { path: "/detailEmployee/:name/:id", component: DetailEmployee },
+  { path: "/nhan-vien", component: Employee },
+  { path: "/khach-hang", component: Custommer },
+  { path: "/them-nhan-vien", component: AddEmployee },
+  { path: "/sua-nhan-vien", component: UpdateEmployee },
+  { path: "/chi-tiet-nhan-vien/:name/:id", component: DetailEmployee },
   { path: "/tour", component: Tour },
-  { path: "/AddTour", component: AddTour },
-  { path: "/UpdateTour/:TenTour/:id", component: UpdateTour },
-  { path: "/DetailTour", component: DetailTour },
-  { path: "/PhieuDatTour", component: Ticket },
-  { path: "/AddTicket", component: AddTicket },
-  { path: "/ThemKhachHang", component: AddCustommer },
+  { path: "/them-tour", component: AddTour },
+  { path: "/sua-tour/:TenTour/:id", component: UpdateTour },
+  { path: "/chi-tiet-tour", component: DetailTour },
+  { path: "/phieu-dat-tour", component: Ticket },
+  { path: "/them-phieu", component: AddTicket },
+  { path: "/them-khach-hang", component: AddCustommer },
   { path: "/Information", component: UserAdmin },
+  { path: "/hoa-don", component: UserAdmin },
+  { path: "/phan-quyen", component: Authentication },
+  { path: "/them-vi-tri", component: AddPosition },
+  { path: "/them-quyen", component: AddRule },
+  { path: "/kiem-tra-quyen", component: CheckAuthen },
+  { path: "/giam-gia", component: Discount },
+  { path: "/them-giam-gia", component: AddDiscount },
 ];
 const privateRoutes = [];
 export { publicRoutes, privateRoutes };

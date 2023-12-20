@@ -59,7 +59,7 @@ export default function Employee() {
   if (user && user.isAuthenticated === true) {
     return (
       <div className={cx("wrapper")}>
-        <Link to="/AddEmployee">
+        <Link to="/them-nhan-vien">
           <button className={cx("btn-add")}>
             THEM NHAN VIEN{" "}
             <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>
@@ -138,7 +138,7 @@ export default function Employee() {
                               className={cx("btnInfo")}
                               onClick={() => {
                                 navigate(
-                                  `/detailEmployee/${list.TenNV}/${list.MaNV}`,
+                                  `/chi-tiet-nhan-vien/${list.TenNV}/${list.MaNV}`,
                                   { state: list }
                                 );
                               }}
@@ -151,7 +151,7 @@ export default function Employee() {
                             <button
                               className={cx("btnUpdate")}
                               onClick={() =>
-                                navigate("/updateEmployee", { state: list })
+                                navigate("/sua-nhan-vien", { state: list })
                               }
                             >
                               <FontAwesomeIcon

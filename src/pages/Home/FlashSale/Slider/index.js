@@ -158,7 +158,6 @@ export default function Sliders() {
       nextArrow: <GalleryNextArrow />,
       prevArrow: <GalleryPrevArrow />,
     };
-    console.log(data)
     return (
       <div>
         <Slider className={cx("slick-slider")} {...settings}>

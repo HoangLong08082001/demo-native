@@ -138,13 +138,13 @@ export default function Tour() {
     if (user.accout.position === "DEV") {
       return (
         <div className={cx("wrapper")}>
-          <Link to="/AddTour">
+          <Link to="/them-tour">
             <button className={cx("btn-add")}>
-              THEM TOUR <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>
+              THÊM TOUR <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>
             </button>
           </Link>
           <button className={cx("btnExcel")} onClick={handleExportExcel}>
-            XUAT EXCEL <FontAwesomeIcon icon={faFileExcel}></FontAwesomeIcon>
+            XUẤT EXCEL <FontAwesomeIcon icon={faFileExcel}></FontAwesomeIcon>
           </button>
 
           <div className={cx("search")}>
@@ -157,21 +157,20 @@ export default function Tour() {
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
-          
+
           <div className={cx("form-table")}>
             {api ? (
               <table border={1} cellSpacing={0}>
                 <tr>
-                  <th>Status</th>
                   <th>STT</th>
-                  <th>Ma Tour</th>
-                  <th>Dia diem di</th>
-                  <th>Dia diem den</th>
-                  <th>Khu vuc</th>
-                  <th>Ngay di</th>
-                  <th>Ngay ve</th>
-                  <th>Gia tour</th>
-                  <th>Loai Tour</th>
+                  <th>Mã tour</th>
+                  <th>Địa điểm đi</th>
+                  <th>Địa điểm đến</th>
+                  <th>Khu vực</th>
+                  <th>Ngày đi</th>
+                  <th>Ngày về</th>
+                  <th>Giá tour</th>
+                  <th>Loại tour</th>
                   <th>Action</th>
                 </tr>
                 {
@@ -205,15 +204,6 @@ export default function Tour() {
                       );
                       return (
                         <tr key={index} className={cx("tr")}>
-                          <td>
-                            <input
-                              type="checkbox"
-                              value={check}
-                              checked={list.trangThai === 1 ? "checked" : null}
-                              onChange={() => handleChange(list.MaTour)}
-                            />
-                          </td>
-
                           <td>{index + 1}</td>
                           <td>
                             {list.LoaiTour}

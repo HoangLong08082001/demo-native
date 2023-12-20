@@ -105,7 +105,6 @@ export default function AddTicket() {
           <div className={cx("input")}>
             <label htmlFor="">Ngay tao phieu</label>
             <DatePicker
-              
               dateFormat="yyyy-MM-dd"
               selected={dateCreated}
               minDate={new Date()}
@@ -211,7 +210,7 @@ export default function AddTicket() {
             />
           </div>
           <div className={cx("input")}>
-            <label htmlFor="">So luong khach hang (Nguoi lon)</label>
+            <label htmlFor="">Người Lớn {">"} 14 Tuổi = 100% Vé</label>
             <input
               type="number"
               value={soLuong}
@@ -222,11 +221,11 @@ export default function AddTicket() {
               name=""
               className={cx("input-quality")}
               id=""
-              style={{ marginLeft: "5px", width: "100px" }}
+              style={{ marginLeft: "40px", width: "100px" }}
             />
           </div>
           <div className={cx("input")}>
-            <label htmlFor="">So luong khach hang (Duoi 6)</label>
+            <label htmlFor="">Người Lớn {"5 - 10 "}Tuổi = 50% Vé</label>
             <input
               type="number"
               value={soLuong1}
@@ -240,7 +239,7 @@ export default function AddTicket() {
             />
           </div>
           <div className={cx("input")}>
-            <label htmlFor="">So luong khach hang (Tu 6-9)</label>
+            <label htmlFor="">Trẻ Em {"< 5"} Tuổi = Miễn Phí Vé </label>
             <input
               type="number"
               value={soLuong2}
@@ -250,7 +249,7 @@ export default function AddTicket() {
               name=""
               className={cx("input-quality")}
               id=""
-              style={{ marginLeft: "40px", width: "100px" }}
+              style={{ marginLeft: "45px", width: "100px" }}
             />
           </div>
         </div>
@@ -259,7 +258,7 @@ export default function AddTicket() {
         <button className={cx("submit")} onClick={handleSubmit}>
           DUYET <FontAwesomeIcon icon={faCheckCircle}></FontAwesomeIcon>
         </button>
-        <Link to="/PhieuDatTour">
+        <Link to="/phieu-dat-tour">
           <button className={cx("cancel")}>
             HUY <FontAwesomeIcon icon={faCancel}></FontAwesomeIcon>
           </button>

@@ -49,7 +49,7 @@ export default function Ticket() {
   }, []);
   return (
     <div className={cx("wrapper")}>
-      <Link to="/AddTicket">
+      <Link to="/them-phieu">
         <button className={cx("btn-add")}>
           TAO PHIEU <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>
         </button>
@@ -75,12 +75,12 @@ export default function Ticket() {
           <input type="text" className="search" placeholder="Search here" />
           <table className={cx("active")}>
             <tr className={cx("tr-th")}>
-              <th>Ma phieu</th>
-              <th>Ten tour</th>
-              <th>Ten khach hang</th>
-              <th>So dien thoai</th>
-              <th>Ngay lap phieu</th>
-              <th>Duyet Phieu</th>
+              <th>Mã phiếu</th>
+              <th>Tên tour</th>
+              <th>Tên khách hàng</th>
+              <th>Số điện thoại</th>
+              <th>Ngày lập phiếu</th>
+              <th>Duyệt phiếu</th>
               <th>Action</th>
             </tr>
             {listTicketChecked.map((l, i) => {

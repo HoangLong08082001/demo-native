@@ -134,7 +134,7 @@ export default function UpdateEmployee() {
         <button className={cx("btn-submit")} onClick={handleUpdate}>
           CAP NHAT <FontAwesomeIcon icon={faRotateRight}></FontAwesomeIcon>
         </button>
-        <Link to="/employee" className={cx("text")}>
+        <Link to="/nhan-vien" className={cx("text")}>
           <button className={cx("btn-cancel")}>
             TRO LAI <FontAwesomeIcon icon={faCancel}></FontAwesomeIcon>
           </button>

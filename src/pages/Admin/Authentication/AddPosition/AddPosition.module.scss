@@ -1,0 +1,83 @@
+.wrapper {
+  width: 100%;
+  margin-top: 25px;
+  height: 759px;
+  overflow-y: scroll;
+  .title {
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(12, 171, 171);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+  }
+  .form {
+    padding: 10px;
+    label {
+      font-size: 20px;
+      font-weight: 900;
+      color: black;
+    }
+    input {
+      padding: 10px 10px;
+      width: 50%;
+      font-size: 17px;
+      text-transform: uppercase;
+    }
+  }
+  .list-rule {
+    .rule-1 {
+      margin-top: 10px;
+      padding: 5px;
+      p {
+        font-family: Arial, Helvetica, sans-serif;
+        color: black;
+        font-weight: 900;
+      }
+      .list {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        .check {
+          margin-left: 2px;
+          border: 0.5px solid black;
+          padding: 10px;
+          box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+            rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+          label {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+.btn {
+  margin-top: 10px;
+  padding: 10px;
+  button {
+    padding: 15px 20px;
+    font-size: 16px;
+    margin-left: 10px;
+  }
+  .cancel {
+    cursor: pointer;
+    background-color: red;
+    border: none;
+    color: white;
+    font-weight: 900;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  .add {
+    cursor: pointer;
+    background-color: rgb(0, 128, 255);
+    border: none;
+    color: white;
+    font-weight: 900;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
