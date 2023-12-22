@@ -30,17 +30,18 @@ export default function AddTicket() {
   const [soLuong2, setSoLuong2] = useState(0);
   const [khachhang, setKhachHang] = useState();
   const [tour, setTour] = useState();
-  const [sum, setSum] = useState();
+  let Price1 = 0;
+  let Price2 = 0;
+  let [sum, setSum] = useState(0);
   const fetchCustommer = async () => {
     await axios.get("/custommer/list-customer").then((res) => {
       setListCustommer(res.list);
     });
   };
   const fetchTour = async () => {
-    await axios.get("/tourserver/getall-tour").then((res) => {
-      if (res && res.message === "success") {
-        setListTour(res.data);
-      }
+    await axios.get("/tour/gettour-with-giamgia").then((res) => {
+      setListTour(res.data);
+      console.log(res.data);
     });
   };
   const handleOnChange = (e) => {
@@ -57,54 +58,140 @@ export default function AddTicket() {
     )[0];
     setTour(selectedTour);
   };
-  const SumMoney = () => {
-    let tong = 0;
-    if (soLuong !== 0) {
-      tong += soLuong * tour?.GiaTour;
-    } else if (soLuong !== 0 && soLuong1 !== 0) {
-      tong += soLuong * soLuong1 * tour?.GiaTour;
-    } else if (soLuong !== 0 && soLuong1 !== 0 && soLuong2 !== 0) {
-      tong += soLuong * soLuong1 * soLuong2 * tour?.GiaTour;
-    }
-    return tong;
-  };
 
+  const checkValidate = () => {
+    if (!tour?.TenTour) {
+      toast.warning("Vui long chon tour");
+      return false;
+    }
+    if (!khachhang?.TenKH) {
+      toast.warning("Vui long chon khach hang");
+      return false;
+    }
+    if (soLuong === 0) {
+      toast.warning("Vui long chon so luong khach hang");
+      return false;
+    }
+    return true;
+  };
   console.log(user.accout.id !== undefined && user.accout.id);
   const handleSubmit = async () => {
     let idNV = user.accout.id !== undefined && user.accout.id;
     let idKH = khachhang?.MaKH;
     let idTour = tour?.MaTour;
-    let sum = SumMoney();
-    let qualityCustomer = soLuong + soLuong1 + soLuong2;
+    let hinhThucThanhToan = "Tiền mặt";
     let date = new Date(dateCreated).toLocaleDateString("sv-SE");
-    await axios
-      .post("/ticket/add-ticket", {
-        idNV,
-        idKH,
-        idTour,
-        sum,
-        date,
-        qualityCustomer,
-      })
-      .then((res) => {
-        if (res && res.message === "success") {
-          toast.success(user.accout.email + "Da duyet phieu");
-        }
-      });
+    let validate = checkValidate();
+    if (validate === true) {
+      await axios
+        .post("/ticket/add-ticket", {
+          idNV,
+          idKH,
+          idTour,
+          sum,
+          date,
+          soLuong,
+          soLuong1,
+          soLuong2,
+          hinhThucThanhToan,
+        })
+        .then((res) => {
+          if (res && res.message === "success") {
+            toast.success(user.accout.email + "Đã duyệt phiếu");
+          }
+        });
+    }
   };
 
   useEffect(() => {
     fetchCustommer();
     fetchTour();
   }, []);
+  const handleupbe = () => {
+    if (!tour?.TenTour) {
+      toast.warning("Vui lòng chọn tour");
+      return false;
+    }
+    setSoLuong2(soLuong2 + 1);
+    return true;
+  };
+  const handledownbe = () => {
+    if (soLuong2 === 0) {
+    } else {
+      setSoLuong2(soLuong2 - 1);
+    }
+  };
+  const handleuppersonmin = () => {
+    if (!tour?.TenTour) {
+      toast.warning("Vui lòng chọn tour");
+      return false;
+    }
+    setSoLuong1(soLuong1 + 1);
+    setSum(
+      (sum +=
+        tour?.GiaTour / 2 -
+        ((tour?.GiaTour / 2) * (+tour?.mucgiamgia + +tour?.mucgiamgiathem)) /
+          100)
+    );
+    return true;
+  };
+  const handledownpersonmin = () => {
+    if (soLuong1 === 0) {
+    } else {
+      setSoLuong1(soLuong1 - 1);
+      setSum(
+        (sum -=
+          tour?.GiaTour / 2 -
+          ((tour?.GiaTour / 2) * (+tour?.mucgiamgia + +tour?.mucgiamgiathem)) /
+            100)
+      );
+    }
+  };
+  const handleupperson = () => {
+    if (!tour?.TenTour) {
+      toast.warning("Vui lòng chọn tour");
+      return false;
+    }
+    setSoLuong(soLuong + 1);
+    setSum(
+      (sum +=
+        tour?.GiaTour -
+        (tour?.GiaTour * (+tour?.mucgiamgia + +tour?.mucgiamgiathem)) / 100)
+    );
+    return true;
+  };
+  const handledownperson = () => {
+    if (soLuong === 0) {
+    } else {
+      setSoLuong(soLuong - 1);
+      setSum(
+        (sum -=
+          tour?.GiaTour -
+          (tour?.GiaTour * (+tour?.mucgiamgia + +tour?.mucgiamgiathem)) / 100)
+      );
+    }
+  };
+  Price1 = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  }).format(tour?.GiaTour);
+  Price2 = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  }).format(tour?.GiaTour / 2);
+  const tongtien = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  }).format(sum);
   return (
     <div className={cx("wrapper")}>
-      <p className={cx("title")}>THONG TIN PHIEU</p>
+      <p className={cx("title")}>THÔNG TIN PHIẾU ĐẶT TOUR</p>
       <div className={cx("form")}>
         <div className={cx("form-left")}>
           <div className={cx("input")}>
-            <label htmlFor="">Ngay tao phieu</label>
+            <label htmlFor="">Ngày tạo phiếu</label>
             <DatePicker
+              placeholderText="Chọn ngày tạo phiếu"
               dateFormat="yyyy-MM-dd"
               selected={dateCreated}
               minDate={new Date()}
@@ -113,8 +200,9 @@ export default function AddTicket() {
             />
           </div>
           <div className={cx("input")}>
-            <label htmlFor="">Ho ten khach hanh</label>
+            <label htmlFor="">Họ tên khách hàng</label>
             <input
+              placeholder="Chọn khách hàng"
               list="custommer"
               name=""
               onChange={(e) => handleOnChange(e)}
@@ -139,7 +227,7 @@ export default function AddTicket() {
             />
           </div>
           <div className={cx("input")}>
-            <label htmlFor="">Dia chi</label>
+            <label htmlFor="">Địa chỉ</label>
             <input
               type="text"
               readOnly
@@ -150,7 +238,7 @@ export default function AddTicket() {
             />
           </div>
           <div className={cx("input")}>
-            <label htmlFor="">So dien thoai</label>
+            <label htmlFor="">Số điện thoại</label>
             <input
               readOnly
               type="text"
@@ -161,13 +249,14 @@ export default function AddTicket() {
             />
           </div>
           <div className={cx("input")}>
-            <p className={cx("sum")}>TONG TIEN: {SumMoney()}</p>
+            <p className={cx("sum")}>TỔNG TIỀN: {tongtien}</p>
           </div>
         </div>
         <div className={cx("form-right")}>
           <div className={cx("input")}>
-            <label htmlFor="">Ten tour</label>
+            <label htmlFor="">Tên tour</label>
             <input
+              placeholder="Chọn tour"
               list="tours"
               type="text"
               name=""
@@ -183,7 +272,7 @@ export default function AddTicket() {
           </div>
 
           <div className={cx("input")}>
-            <label htmlFor="">Ngay di</label>
+            <label htmlFor="">Ngày đi</label>
             <DatePicker
               readOnly
               value={new Date(tour?.NgayDi).toLocaleDateString("en-US")}
@@ -191,7 +280,7 @@ export default function AddTicket() {
             />
           </div>
           <div className={cx("input")}>
-            <label htmlFor="">Ngay ve</label>
+            <label htmlFor="">Ngày về</label>
             <DatePicker
               readOnly
               value={new Date(tour?.NgayVe).toLocaleDateString("en-US")}
@@ -199,9 +288,12 @@ export default function AddTicket() {
             />
           </div>
           <div className={cx("input")}>
-            <label htmlFor="">Gia tour</label>
+            <label htmlFor="">Giá tour</label>
             <input
-              value={tour?.GiaTour}
+              value={new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+              }).format(tour?.GiaTour)}
               type="text"
               name=""
               readOnly
@@ -209,58 +301,89 @@ export default function AddTicket() {
               style={{ marginLeft: "184px" }}
             />
           </div>
+          <br />
+          {Price1 !== 0 && (
+            <span style={{ color: "red", marginLeft: "10px" }}>{Price1}</span>
+          )}
           <div className={cx("input")}>
             <label htmlFor="">Người Lớn {">"} 14 Tuổi = 100% Vé</label>
-            <input
-              type="number"
-              value={soLuong}
-              onChange={(e) => {
-                setSoLuong(e.target.value);
-                SumMoney();
-              }}
-              name=""
-              className={cx("input-quality")}
-              id=""
-              style={{ marginLeft: "40px", width: "100px" }}
-            />
+            <div
+              style={{ marginLeft: "43px" }}
+              className={cx("increase-descrease")}
+            >
+              <button className={cx("descrease")} onClick={handledownperson}>
+                -
+              </button>
+              <p>{soLuong}</p>
+              <button className={cx("increase")} onClick={handleupperson}>
+                +
+              </button>
+            </div>
+            {tour?.TenTour && (
+              <p
+                style={{
+                  marginLeft: "10px",
+                  color: "red",
+                  fontWeight: "900",
+                  fontFamily: "Arial, Helvetica, sans-serif",
+                }}
+              >
+                -{+tour?.mucgiamgia + +tour?.mucgiamgiathem}%
+              </p>
+            )}
           </div>
+          {Price2 !== 0 && (
+            <span style={{ color: "red", marginLeft: "10px" }}>{Price2}</span>
+          )}
           <div className={cx("input")}>
             <label htmlFor="">Người Lớn {"5 - 10 "}Tuổi = 50% Vé</label>
-            <input
-              type="number"
-              value={soLuong1}
-              onChange={(e) => {
-                setSoLuong1(e.target.value);
-              }}
-              name=""
-              className={cx("input-quality")}
-              id=""
-              style={{ marginLeft: "37px", width: "100px" }}
-            />
+            <div className={cx("increase-descrease")}>
+              <button className={cx("descrease")} onClick={handledownpersonmin}>
+                -
+              </button>
+              <p>{soLuong1}</p>
+              <button className={cx("increase")} onClick={handleuppersonmin}>
+                +
+              </button>
+            </div>
+            {tour?.TenTour && (
+              <p
+                style={{
+                  marginLeft: "10px",
+                  color: "red",
+                  fontWeight: "900",
+                  fontFamily: "Arial, Helvetica, sans-serif",
+                }}
+              >
+                -{+tour?.mucgiamgia + +tour?.mucgiamgiathem}%
+              </p>
+            )}
           </div>
+
           <div className={cx("input")}>
             <label htmlFor="">Trẻ Em {"< 5"} Tuổi = Miễn Phí Vé </label>
-            <input
-              type="number"
-              value={soLuong2}
-              onChange={(e) => {
-                setSoLuong2(e.target.value);
-              }}
-              name=""
-              className={cx("input-quality")}
-              id=""
-              style={{ marginLeft: "45px", width: "100px" }}
-            />
+            <div
+              style={{ marginLeft: "47px" }}
+              className={cx("increase-descrease")}
+            >
+              <button className={cx("descrease")} onClick={handledownbe}>
+                -
+              </button>
+              <p>{soLuong2}</p>
+              <button className={cx("increase")} onClick={handleupbe}>
+                +
+              </button>
+            </div>
           </div>
         </div>
       </div>
       <div className={cx("button")}>
         <button className={cx("submit")} onClick={handleSubmit}>
-          DUYET <FontAwesomeIcon icon={faCheckCircle}></FontAwesomeIcon>
+          DUYỆT <FontAwesomeIcon icon={faCheckCircle}></FontAwesomeIcon>
         </button>
         <Link to="/phieu-dat-tour">
           <button className={cx("cancel")}>
-            HUY <FontAwesomeIcon icon={faCancel}></FontAwesomeIcon>
+            HUỶ <FontAwesomeIcon icon={faCancel}></FontAwesomeIcon>
           </button>
         </Link>
       </div>

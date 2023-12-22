@@ -30,6 +30,9 @@ import Discount from "../pages/Admin/Discount";
 import AddDiscount from "../pages/Admin/Discount/AddDiscount";
 import AddPosition from "../pages/Admin/Authentication/AddPosition";
 import AddRule from "../pages/Admin/Authentication/AddRule";
+import Statistical from "../pages/Statistical";
+import BillManager from "../pages/Admin/BillManager";
+import DetailBillManager from "../pages/Admin/BillManager/DetailBillManager";
 const publicRoutes = [
   { path: "/login-user", component: Login },
   { path: "/register-user", component: Register },
@@ -58,13 +61,15 @@ const publicRoutes = [
   { path: "/them-phieu", component: AddTicket },
   { path: "/them-khach-hang", component: AddCustommer },
   { path: "/Information", component: UserAdmin },
-  { path: "/hoa-don", component: UserAdmin },
+  { path: "/hoa-don", component: BillManager },
   { path: "/phan-quyen", component: Authentication },
   { path: "/them-vi-tri", component: AddPosition },
   { path: "/them-quyen", component: AddRule },
   { path: "/kiem-tra-quyen", component: CheckAuthen },
   { path: "/giam-gia", component: Discount },
   { path: "/them-giam-gia", component: AddDiscount },
+  { path: "/thong-ke", component: Statistical },
+  { path: "/chi-tiet-hoadon/:id", component: DetailBillManager },
 ];
 const privateRoutes = [];
 export { publicRoutes, privateRoutes };

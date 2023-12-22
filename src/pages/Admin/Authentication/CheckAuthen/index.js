@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import style from "./CheckAuthen.module.scss";
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRotateLeft } from "@fortawesome/free-solid-svg-icons";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, Navigate, useLocation, useParams } from "react-router-dom";
 import axios from "../../../../setup-axios/axios";
 import _ from "lodash";
 import { toast } from "react-toastify";
+import { UserContext } from "../../../../context/UserContext";
 const cx = classNames.bind(style);
 export default function CheckAuthen() {
+  const { user } = useContext(UserContext);
   const [listPostion, setListPosition] = useState([]);
   const [postion, setPostion] = useState("");
   const [listRule, setListRule] = useState([]);
@@ -103,56 +105,64 @@ export default function CheckAuthen() {
     fetchRule();
   }, []);
 
-  return (
-    <div className={cx("wrapper")}>
-      <div className={cx("btn")}>
-        <Link to="/phan-quyen">
-          <button className={cx("btn-cancel")}>
-            TRO LAI <FontAwesomeIcon icon={faArrowRotateLeft} />
-          </button>
-        </Link>
-      </div>
-      <div className={cx("form")}>
-        <div className={cx("btn-form")}>
-          <select name="" id="" onChange={(e) => handleChange(e.target.value)}>
-            <option value="">--Vui lòng chọn vị trí--</option>
-            {listPostion.map((item, index) => {
-              return (
-                <option key={index} value={item.id_vitri}>
-                  {item.TenViTri}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-        {postion && (
-          <>
-            <div className={cx("list-position")}>
-              {listChecked.map((item, index) => {
-                if (item.desccription !== null) {
-                  return (
-                    <div key={index} className={cx("position")}>
-                      <input
-                        type="checkbox"
-                        value={item.id_quyen}
-                        checked={item.isChecked}
-                        name=""
-                        id={index}
-                        onChange={(e) => handleChecked(e.target.value)}
-                      />
-                      <label htmlFor={index}>{item.desccription}</label>
-                    </div>
-                  );
-                }
-              })}
-            </div>
-
-            <button className={cx("update")} onClick={() => handleSubmit()}>
-              CẬP NHẬT
+  if (user && user.isAuthenticated === true) {
+    return (
+      <div className={cx("wrapper")}>
+        <div className={cx("btn")}>
+          <Link to="/phan-quyen">
+            <button className={cx("btn-cancel")}>
+              TRO LAI <FontAwesomeIcon icon={faArrowRotateLeft} />
             </button>
-          </>
-        )}
+          </Link>
+        </div>
+        <div className={cx("form")}>
+          <div className={cx("btn-form")}>
+            <select
+              name=""
+              id=""
+              onChange={(e) => handleChange(e.target.value)}
+            >
+              <option value="">--Vui lòng chọn vị trí--</option>
+              {listPostion.map((item, index) => {
+                return (
+                  <option key={index} value={item.id_vitri}>
+                    {item.TenViTri}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          {postion && (
+            <>
+              <div className={cx("list-position")}>
+                {listChecked.map((item, index) => {
+                  if (item.desccription !== null) {
+                    return (
+                      <div key={index} className={cx("position")}>
+                        <input
+                          type="checkbox"
+                          value={item.id_quyen}
+                          checked={item.isChecked}
+                          name=""
+                          id={index}
+                          onChange={(e) => handleChecked(e.target.value)}
+                        />
+                        <label htmlFor={index}>{item.desccription}</label>
+                      </div>
+                    );
+                  }
+                })}
+              </div>
+
+              <button className={cx("update")} onClick={() => handleSubmit()}>
+                CẬP NHẬT
+              </button>
+            </>
+          )}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <Navigate to="/admin-login"></Navigate>;
+  }
 }

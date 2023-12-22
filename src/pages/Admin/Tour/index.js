@@ -35,16 +35,7 @@ export default function Tour() {
   useEffect(() => {
     fetchListTour();
   }, []);
-  const handleRemove = async (list) => {
-    await axios
-      .delete("/tourserver/delete-tour", { data: { id: list.MaTour } })
-      .then((res) => {
-        if (res.message === "success") {
-          toast.success("Xoa thanh cong");
-          fetchListTour();
-        }
-      });
-  };
+  
   const { user } = useContext(UserContext);
   const handleChange = (id) => {
     setCheck(!check);
@@ -135,7 +126,7 @@ export default function Tour() {
     });
   };
   if (user && user.isAuthenticated === true) {
-    if (user.accout.position === "DEV") {
+    if (user.accout.position === "DEV" || user.accout.position === "DUYET PHIEU TOUR" || user.accout.position === "KẾ TOÁN") {
       return (
         <div className={cx("wrapper")}>
           <Link to="/them-tour">
@@ -242,17 +233,7 @@ export default function Tour() {
                                 icon={faPen}
                               ></FontAwesomeIcon>
                             </button>
-                            <button
-                              className={cx("btnTrash")}
-                              onClick={() => handleRemove(list)}
-                            >
-                              <FontAwesomeIcon
-                                icon={faTrash}
-                                className={cx("icon-trash")}
-                              >
-                                DELETE
-                              </FontAwesomeIcon>
-                            </button>
+                            
                           </td>
                         </tr>
                       );

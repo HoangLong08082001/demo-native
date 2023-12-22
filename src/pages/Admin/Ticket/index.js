@@ -51,7 +51,7 @@ export default function Ticket() {
     <div className={cx("wrapper")}>
       <Link to="/them-phieu">
         <button className={cx("btn-add")}>
-          TAO PHIEU <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>
+        TẠO PHIẾU <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>
         </button>
       </Link>
 
@@ -60,13 +60,13 @@ export default function Ticket() {
           className={toggle === 1 ? cx("checked-active") : cx("checked")}
           onClick={() => toggleTab(1)}
         >
-          Danh Sach phieu Chua Duyet
+          Danh sách phiếu chưa duyệt
         </button>
         <button
           className={toggle === 2 ? cx("checked-active") : cx("checked")}
           onClick={() => toggleTab(2)}
         >
-          Danh Sach phieu Da Duyet{" "}
+          Danh sách phiếu đã duyệt
           <FontAwesomeIcon icon={faListCheck}></FontAwesomeIcon>
         </button>
       </div>
@@ -98,7 +98,7 @@ export default function Ticket() {
                           className={cx("btn-submit")}
                           onClick={() => handleSubmit(l)}
                         >
-                          Chua duyet
+                          Chưa Duyệt
                         </button>
                       )}
                     </td>
@@ -125,12 +125,12 @@ export default function Ticket() {
 
           <table>
             <tr className={cx("tr-th")}>
-              <th>Ma phieu</th>
-              <th>Ten tour</th>
-              <th>Ten khach hang</th>
-              <th>So dien thoai</th>
-              <th>Ngay lap phieu</th>
-              <th>Duyet Phieu</th>
+            <th>Mã phiếu</th>
+              <th>Tên tour</th>
+              <th>Tên khách hàng</th>
+              <th>Số điện thoại</th>
+              <th>Ngày lập phiếu</th>
+              <th>Duyệt phiếu</th>
               <th>Action</th>
             </tr>
             {listTicketChecked.map((l, i) => {
@@ -144,7 +144,7 @@ export default function Ticket() {
                     <td>{new Date(l.NgayTao).toLocaleDateString("en-US")}</td>
                     <td>
                       <button className={cx("btn-submit-checked")}>
-                        {l.TrangThai === 1 && "DA DUYET"}
+                        {l.TrangThai === 1 && "ĐÃ DUYỆT"}
                       </button>
                     </td>
                     <td>

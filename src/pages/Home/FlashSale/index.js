@@ -75,32 +75,30 @@ function FlashSale() {
   //   }
   // };
   // getDay();
+  const [tourByVoucher, setTourByVoucher] = useState([]);
+  const [timeStart, setTimeStart] = useState("");
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
   });
-  useEffect(()=>{
-    axios.get("/tour/get-tour-by-voucher").then((res) => {
-      setTimeTarget(res.data[1].thoigiantoi);
-      
+  useEffect(() => {
+    axios.get("/tour/get-tour-withday").then((res) => {
+      setTimeTarget(res.data[0].toi);
       // setList(res.data);
     });
-  })
+  }, []);
   useEffect(() => {
-   
     // Set the target date to tomorrow
     const datenew = dateFormat(timeTarget).format("YYYY/MM/DD");
     const targetDate = new Date(datenew);
-    
+
     const updateCountdown = () => {
       // Get the current date and time
       const now = new Date().getTime();
-    
       // Calculate the distance between now and the target date
       const distance = targetDate - now;
-
       // Calculate days, hours, minutes, and seconds
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor(

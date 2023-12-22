@@ -15,6 +15,7 @@ import {
   faBars,
   faUserCheck,
   faTag,
+  faChartSimple,
 } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "../../../../context/UserContext";
 
@@ -34,6 +35,7 @@ export default function Sidebar() {
     { icon: faNewspaper, title: "Phiếu đặt tour", to: "/phieu-dat-tour" },
     { icon: faTicket, title: "Hoá đơn", to: "/hoa-don" },
     { icon: faUserCheck, title: "Phân quyền", to: "/phan-quyen" },
+    { icon: faChartSimple, title: "Thống kê", to: "/thong-ke" },
   ];
   const [click, setClick] = useState("Trang chủ");
 
@@ -48,7 +50,7 @@ export default function Sidebar() {
           <ul>
             {menus.map((menu, index) => {
               if (user.accout.position === "DEV") {
-                if (index >= 0 && index <= 7) {
+                if (index >= 0 && index <= 8) {
                   return (
                     <li
                       className={click === menu.title ? cx("active") : null}
@@ -67,9 +69,28 @@ export default function Sidebar() {
                     </li>
                   );
                 }
-              }
-              else if (user.accout.position === "DUYET PHIEU TOUR") {
-                if (index === 0 || index === 2 || index === 4) {
+              } else if (user.accout.position === "DUYET PHIEU TOUR") {
+                if (index === 0 || index === 2 || index === 4 || index === 5) {
+                  return (
+                    <li
+                      className={click === menu.title ? cx("active") : null}
+                      key={index}
+                      onClick={() => setClick(menu.title)}
+                    >
+                      <FontAwesomeIcon
+                        className={cx("icon")}
+                        icon={menu.icon}
+                      ></FontAwesomeIcon>
+                      <p>
+                        <Button itemmenu to={menu.to}>
+                          {menu.title}
+                        </Button>
+                      </p>
+                    </li>
+                  );
+                }
+              }else if (user.accout.position === "KẾ TOÁN") {
+                if (index >= 0 && index <= 6 || index === 8) {
                   return (
                     <li
                       className={click === menu.title ? cx("active") : null}

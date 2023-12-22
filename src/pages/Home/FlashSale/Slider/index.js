@@ -46,139 +46,141 @@ const GalleryNextArrow = ({ currentSlide, slideCount, ...props }) => {
   );
 };
 export default function Sliders() {
-    const [data, setdata] = useState([]);
-    useEffect(() => {
-      axios.get("/tour/alltour").then((response) => {
+  const [data, setdata] = useState([]);
+
+  useEffect(() => {
+    const fetchTourByVoucher = async () => {
+      await axios.get("/tour/get-tour-by-voucher").then((response) => {
         setdata(response.data);
+        console.log(response.data);
       });
-    }, []);
-   
-    
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 3.98,
-      slidesToScroll: 1,
-      responsive: [
-        {
-          breakpoint: 1366,
-          settings: {
-            slidesToShow: 3.1,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: true
-          }
-        },
-        {
-          breakpoint: 975,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: true
-          }
-        },
-        {
-          breakpoint: 930,
-          settings: {
-            slidesToShow: 2.1,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: true
-          }
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 2.1,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: true
-          }
-        },
-        {
-          breakpoint: 670,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: true
-          }
-        },
-        {
-          breakpoint: 650,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: true
-          }
-        },
-        {
-          breakpoint: 580,
-          settings: {
-            slidesToShow: 1.6,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: true
-          }
-        },
-        {
-          breakpoint: 530,
-          settings: {
-            slidesToShow: 1.1,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: true
-          }
-        },
-        {
-          breakpoint: 500,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: true
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1.1,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: true
-          }
-        }
-      ],
-      autoplay: true,
-      
-      cssEase: "linear",
-      nextArrow: <GalleryNextArrow />,
-      prevArrow: <GalleryPrevArrow />,
     };
-    return (
-      <div>
-        <Slider className={cx("slick-slider")} {...settings}>
-          
-          
-          {data.map((value,indexedDB) =>{
-            return (
-              
-            <ProductBox container margin 
-            
-             key={indexedDB}
+    fetchTourByVoucher();
+  }, []);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3.98,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1366,
+        settings: {
+          slidesToShow: 3.1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 975,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 930,
+        settings: {
+          slidesToShow: 2.1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2.1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 670,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 650,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 580,
+        settings: {
+          slidesToShow: 1.6,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 530,
+        settings: {
+          slidesToShow: 1.1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1.1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+    ],
+    autoplay: true,
+
+    cssEase: "linear",
+    nextArrow: <GalleryNextArrow />,
+    prevArrow: <GalleryPrevArrow />,
+  };
+  return (
+    <div>
+      <Slider className={cx("slick-slider")} {...settings}>
+        {data.map((value, indexedDB) => {
+          return (
+            <ProductBox
+              container
+              margin
+              key={indexedDB}
               id={value.MaTour}
               MaTour={value.MaTour}
               Name={value.TenTour}
               DiaDiemDen={value.DiaDiemDen}
               img={value.HinhAnh.data}
-              price={value.GiaTour}  />);
-          })}
-        
-        </Slider>
-      </div>
-    );
-  }
-
+              price={value.GiaTour}
+            />
+          );
+        })}
+      </Slider>
+    </div>
+  );
+}

@@ -1,0 +1,77 @@
+.wrapper {
+  overflow-y: scroll;
+  max-height: 770px;
+  padding: 10px;
+  width: 100%;
+  margin-top: 20px;
+  .title {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: black;
+    font-weight: 900;
+  }
+  .logo {
+    margin-left: 520px;
+  }
+  .form {
+    border-top: 1px solid black;
+    display: flex;
+    .left {
+      width: 18%;
+      p {
+        font-size: 17px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 900;
+      }
+    }
+    .right {
+      width: 100%;
+      p {
+        font-size: 17px;
+      }
+    }
+  }
+  table {
+    tr {
+      td {
+        text-align: center;
+      }
+    }
+  }
+  .sum {
+    font-size: 20px;
+    text-align: right;
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+  }
+  .btn {
+    button {
+      padding: 20px 40px;
+    }
+    .btn-back {
+      background-color: red;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 900;
+      color: white;
+      border: none;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+    .btn-print {
+      cursor: pointer;
+      margin-left: 20px;
+      background-color: rgb(226, 105, 25);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 900;
+      color: white;
+      border: none;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}

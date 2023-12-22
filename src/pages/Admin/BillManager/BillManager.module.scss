@@ -1,0 +1,37 @@
+.wrapper {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  input {
+    width: 100%;
+    font-size: 15px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+  }
+  .form-table {
+    max-height: 730px;
+    width: 100%;
+    overflow-y: scroll;
+    table {
+      font-family: Arial, Helvetica, sans-serif;
+      tr {
+        td {
+          text-align: center;
+          padding: 5px;
+        }
+      }
+    }
+  }
+}
+.btn-info {
+  cursor: pointer;
+  padding: 5px 20px;
+  font-size: 17px;
+  background-color: rgb(34, 116, 216);
+  border-radius: 2px;
+  border: none;
+  .icon {
+    color: white;
+    font-weight: 900;
+  }
+}
