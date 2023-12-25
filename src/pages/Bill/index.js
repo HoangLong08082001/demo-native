@@ -24,10 +24,11 @@ import Booking from "./Booking";
 import Accordion from "./Accordion";
 import Rules from "./Rules";
 import Button from "../../components/Button";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "../../setup-axios/axios";
 import Alert from "../../components/Alert/Alert";
 import dateFormat from "dayjs";
+import Loading from "../../components/Loadingall";
 const cx = classNames.bind(style);
 export default function Bill() {
   const { id, date, giam } = useParams();
@@ -35,8 +36,10 @@ export default function Bill() {
   const [valueobject, setDataobject] = useState({});
   const [statuspay, setstatuspay] = useState(null);
   const [statusdk, setstatusdk] = useState(false);
+  const [ham,setham]=useState(false);
   const [adderror, seterror] = useState(false);
   const [data, setttdata] = useState({});
+  const navigate = useNavigate();
   let nextpage = 1;
   const [status, setstatus] = useState("Vui Lòng Cung Cấp Thêm Thông Tin");
   useEffect(() => {
@@ -54,7 +57,8 @@ export default function Bill() {
     setstatusdk(e);
   };
   console.log(statuspay);
-  const handlebook = () => {
+  const handlebook = (event) => {
+    event.preventDefault();
     if (
       data.name === "" ||
       data.email === "" ||
@@ -65,6 +69,19 @@ export default function Bill() {
     ) {
       seterror(true);
     }
+    else
+    {
+     
+        setham(true);
+        setTimeout(() => {
+          setham(false);
+          navigate(`/Confirm?name=${data.name}&email=${data.email}&sdt=${data.sdt}&diachi=${data.diachi}&payment=${statuspay}&summoney=${data.countprice}
+          &person=${data.person}&personmin=${data.personmin}&personbe=${data.personbe}
+          &ngaykhoihanh=${date}&matour=${valueobject.MaTour}&loaitour=${valueobject.LoaiTour}
+          &tentour=${valueobject.TenTour}`);
+          
+         }, 2000);
+    }
     // if(statuspay===0)
     // {
     //     ///tienmat
@@ -74,6 +91,7 @@ export default function Bill() {
     //     ///payment
     // }
   };
+ 
   const handleclose = () => {
     seterror(false);
   };
@@ -128,6 +146,7 @@ export default function Bill() {
   console.log(statuspay);
   return (
     <div className={cx("wrapper")}>
+        {ham === true ?(<Loading/>):('')}
       {value.map((value) => {
         const base64String5 = btoa(
           new Uint8Array(value.HinhAnh.data).reduce(
@@ -207,7 +226,7 @@ export default function Bill() {
       <Accordion callBackParent={handlechoosepay} />
       <Rules callBackParent={handlechoosedk} />
       <div className={cx("btn")}>
-        {nextpage === 1 ? (
+        {nextpage === 1 && ham === false ? (
           <Button
             onClick={handlebook}
             underline
@@ -224,7 +243,7 @@ export default function Bill() {
             Đặt Tour
           </Button>
         )}
-        <Button Cancel>Hủy</Button>
+       
       </div>
       {adderror ? (
         <Alert
@@ -232,6 +251,7 @@ export default function Bill() {
           datatt={arraytdata}
           dataprops={status}
           icon={1}
+          good={1}
         />
       ) : (
         ""

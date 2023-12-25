@@ -23,6 +23,7 @@ const cx = classNames.bind(style);
 export default function Ticket() {
   const { user } = useContext(UserContext);
   const [toggle, setToggle] = useState(1);
+  const [status,setstatus] = useState(null);
   const [listTicketChecked, setListTicketChecked] = useState([]);
   const toggleTab = (index) => {
     setToggle(index);
@@ -43,6 +44,7 @@ export default function Ticket() {
       toast.success("Da duyet tour");
       fetchListChecked();
     }
+    setstatus('');
   };
   useEffect(() => {
     fetchListChecked();

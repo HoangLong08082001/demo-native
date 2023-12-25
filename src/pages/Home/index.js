@@ -34,7 +34,7 @@ function Home() {
     useEffect(() => {
       setTimeout(() => {
         setham(false);
-      }, 1300);
+      }, 1500);
     }, [ham]);
     return ( 
              <div> 

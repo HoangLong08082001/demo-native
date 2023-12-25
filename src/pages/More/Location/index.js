@@ -10,8 +10,8 @@ export default function Location(props) {
   const [value,setvalue]=useState([])
   const {nn}=useParams();
   console.log(nn);
-  const tn=["Tour Trong Nước","Miền Bắc","Miền Nam","Miền Trung"]
-  const ncn=["Tour Nước Ngoài","Châu Á","Châu Âu","Châu Phi"]
+  const tn=["Tour Trong Nước","Miền Bắc","Miền Nam","Miền Trung","Tất Cả"]
+  const ncn=["Tour Nước Ngoài","Châu Á","Châu Âu","Châu Phi","Tất Cả"]
   useEffect(()=>{
     if(nn==="TourTrongNuoc")
     {
@@ -31,6 +31,9 @@ export default function Location(props) {
     var handleTrung=()=>{
       props.parentcallback("Miền Trung")
     }
+    var handleAll=()=>{
+      props.parentcallback(null)
+    }
   }else
   {
     var handleBac=()=>{
@@ -41,6 +44,9 @@ export default function Location(props) {
     }
     var handleTrung=()=>{
       props.parentcallback("Châu Phi")
+    }
+    var handleAll=()=>{
+      props.parentcallback(null)
     }
   }
   return (
@@ -57,6 +63,9 @@ export default function Location(props) {
         </Button>
         <Button buttonlocation marginleft onClick={handleTrung}>
           {value[3]}
+        </Button>
+        <Button buttonlocation marginleft onClick={handleAll}>
+          {value[4]}
         </Button>
       
       </div>

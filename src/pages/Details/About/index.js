@@ -79,7 +79,7 @@ export default function About({
 
   return (
     <div className={cx("wrapper")}>
-      {addlike ?(<Alert callBackParent={handleclose} dataprops={status} icon={0} />):("")}
+      {addlike ?(<Alert callBackParent={handleclose} dataprops={status} icon={0} good={1} />):("")}
       <hr></hr>
       <div className={cx("wrapper-dow")}>
         <div className={cx("wrapper-dow-1")}>

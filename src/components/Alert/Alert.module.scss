@@ -49,3 +49,31 @@
     font-size: 40px;
     color: rgb(78, 188, 228);
 }
+.container-box-a
+{
+   
+   a
+   {
+    font-size: 15px;
+    padding: 5px;    
+    cursor: pointer;
+    border: 0;
+    background-color: #2f81bd;
+    border-radius: 10px;
+    width: 127px;
+    height: 35px;
+    color: white;
+  
+    margin-top: 30px;
+   
+    transition: 0.2s linear;
+    border: 0.1px solid #2f81bd;
+    &:hover {
+      transition: 0.2s linear;
+      background: white;
+      color: #2f81bd;
+      border: 0.1px solid #2f81bd;
+    }
+        text-decoration: none;
+   }
+}

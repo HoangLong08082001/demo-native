@@ -47,22 +47,23 @@ const GalleryNextArrow = ({ currentSlide, slideCount, ...props }) => {
 };
 export default function Sliders() {
   const [data, setdata] = useState([]);
-
+  const fetchTourByVoucher = async () => {
+    await axios.get("/tour/get-tour-by-voucher").then((response) => {
+      setdata(response.data);
+      
+    });
+  };
   useEffect(() => {
-    const fetchTourByVoucher = async () => {
-      await axios.get("/tour/get-tour-by-voucher").then((response) => {
-        setdata(response.data);
-        console.log(response.data);
-      });
-    };
+    
     fetchTourByVoucher();
   }, []);
-
+  
+  var count=data.length-0.2;
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3.98,
+    slidesToShow: count,
     slidesToScroll: 1,
     responsive: [
       {
@@ -162,6 +163,7 @@ export default function Sliders() {
     nextArrow: <GalleryNextArrow />,
     prevArrow: <GalleryPrevArrow />,
   };
+
   return (
     <div>
       <Slider className={cx("slick-slider")} {...settings}>

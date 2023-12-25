@@ -2,6 +2,7 @@ import classname from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "../Button"
 import styles from "./Touradd.module.scss";
+import slugify from "react-slugify";
 import {
   
     
@@ -61,13 +62,19 @@ function Touradd({status,name,img,MaTour}) {
     
     return ( <div  className={cx("container")}>
         <div  className={cx("container-box")}>
-            <Button underline txt to={'/'} >
+            <Button underline txt to={`/details/${slugify(name)}/${MaTour}`} >
             <div style={{display:"flex", width:"188%"}}>
                 <div className={cx("container-box-left")} style={{backgroundImage: `url(data:image/png;base64,${base64String})`}}>
 
                 </div>
                 <div className={cx("container-box-right")}>
-                    {status==="1" ?(<h6>Lựa Chọn Yêu Thích Của Bạn</h6>):(<h6>Thịnh hành và được yêu thích</h6>)}
+                {status === "1" ? (
+                                    <h6>Lựa Chọn Yêu Thích Của Bạn</h6>
+                                    ) : status === "0" ? (
+                                      <h6>Thịnh Hành và Được Yêu Thích</h6>
+                                    ) : (
+                                      <h6>Tour Đã Đặt</h6>
+                                    )}
                     <h5>{name}</h5>
                     <div className={cx("container-box-right-star")}>
                     { arraystar.length>0?(
@@ -82,13 +89,13 @@ function Touradd({status,name,img,MaTour}) {
                     </div>
                     
                     <div className={cx("container-box-right-span")}><span className={cx("container-box-right-span")}>Lượt đánh giá ({arraycomment.length})</span></div>
-                    <Button underline  book to={'/user/billdetail'} >Đặt Ngay</Button>
+                    <Button underline  book to={`/details/${slugify(name)}/${MaTour}`} >Đặt Ngay</Button>
                 </div>
             </div>
             </Button>
           
             <div className={cx("container-box-close")}>
-                <FontAwesomeIcon icon={faCircleXmark}/>
+               {status === '0'?(''):( <FontAwesomeIcon icon={faCircleXmark}/>)}
             </div>
         </div>
     </div> );

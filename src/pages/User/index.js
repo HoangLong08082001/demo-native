@@ -19,6 +19,7 @@ export default function User() {
     setValue(newValue);
   };
   const [arrayvalue,setarrayvalue]=useState([])
+  const [arrayvaluebook,setarrayvaluebook]=useState([])
   useEffect(() =>{
      
           axios.post("/tour/gettourlove",{
@@ -26,9 +27,14 @@ export default function User() {
               }).then((response) => {
                   setarrayvalue(response.data);
               });
-      
+              axios.post("/tour/tourbook",{
+                MaKH:localStorage.getItem("Ma")
+                }).then((response) => {
+                  setarrayvaluebook(response.data)
+                });    
   },[])
-  console.log(arrayvalue)
+ 
+ 
   return (
     <div className={cx("wrapper")}>
       <div className={cx("condition")}>
@@ -53,7 +59,10 @@ export default function User() {
 
             <TabPanel value="1" ><TTUser/>  </TabPanel>
             <TabPanel value="2" ><div style={{marginBottom:"100px"}}>
-               
+            {arrayvaluebook.map((value,index)=>{
+
+              return (<Touradd key={index} status="3" TrangThai={value.TrangThai} name={value.TenTour} img={value.HinhAnh.data} MaTour={value.MaTour} />)
+              })}
               </div></TabPanel>
             <TabPanel value="3" ><div style={{marginBottom:"100px"}}>
                 {arrayvalue.map((value,index)=>{

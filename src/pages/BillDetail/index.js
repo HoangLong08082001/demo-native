@@ -5,47 +5,65 @@ import {  faPrint } from "@fortawesome/free-solid-svg-icons";
 import styles from "./BillDetail.module.scss";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { toast } from "react-toastify";
 import QRCode from 'qrcode-generator';
 import { useEffect, useRef, useState } from 'react';
 import { toPng } from 'html-to-image';
 import axios from '../../setup-axios/axios';
+import io from 'socket.io-client';
+
 import emailjs from 'emailjs-com';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import Button from '../../components/Button';
 const cx = classNames.bind(styles);
 function BillDetail() {
     const location = useLocation();
+    const navigate = useNavigate();
     const params = new URLSearchParams(location.search);
     var statusemail = params.get('email');
     const { matour } = useParams();
       
-
+    var socket = io('http://dattourtravel.com:9000');
     var componentRef = useRef(null);
-    var componentRef2 = useRef(null);
+ 
     const [value,setvalue]=useState({})
     useEffect(()=>{
         axios.post("/Bill/getbill",{
             MaTour:matour,
             MaKH:localStorage.getItem('Ma'),
               }).then((response) => {
+               
                  setvalue(response.data[0]);
               });
+              
+             
     },[matour])
-  
+    
+      
     useEffect(()=>{
         if(statusemail != null && statusemail != undefined )
     {
-        
-        const qr = QRCode(0,'H');
-        qr.addData(`http://dattourtravel.com:3000/user/billdetail/${matour}`);
-        qr.make();
-        const qrImage = qr.createDataURL(3); 
-        console.log(qrImage);
+        socket.emit('newOrder',{status: 'success'});
+        toast.success("Đặt Tour Thành Công");
+        localStorage.removeItem('data')
+        // const qr = QRCode(0,'H');
+        // qr.addData(`http://dattourtravel.com:3000/user/billdetail/${matour}`);
+        // qr.make();
+        // const qrImage = qr.createDataURL(3); 
+        // console.log(qrImage);
+       
+    //   const pdfFile = new File([pdfOutput], 'ten_file.pdf', { type: 'application/pdf' });
+
+       
         const templateParams = {
           
             to_email:'tuyendang.9887@gmail.com',
             from_name: value.TenKH,
-            cid_here: qrImage
+            cid_here: `http://dattourtravel.com:3000/user/billdetail/${matour}`
           };
+
+
+
         // emailjs.send('service_2vmrzil', 'template_yi9mpyl',templateParams, '_Qyy3ogwzYSV4UNek')
         // .then((result) => {
         //       console.log(result.text);
@@ -60,10 +78,10 @@ function BillDetail() {
     
     const handlepdf=()=>{
         
-        if(statusemail !=null)
+        if(statusemail !=null ||statusemail ==null)
         {
-            const input = componentRef.current;
-            html2canvas(input).then((canvas) => {
+             const input = componentRef.current;
+                html2canvas(input).then((canvas) => {
                 const imgData = canvas.toDataURL('image/png');
                 const pdf = new jsPDF();
                 const imgProps = pdf.getImageProperties(imgData);
@@ -71,18 +89,20 @@ function BillDetail() {
                 const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
                 
                 pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-                pdf.save('PhieuDatTour-pdf.pdf');
+                pdf.save('PhieuDatTour.pdf');
               });
 
             
             
         }
     }
-  
+    const hanldepre=()=>{
+        navigate('/')
+    }
 
     ////
     return ( <div  >
-                
+                <Button login onClick={hanldepre} >Trang Chủ</Button>
                 <div ref={componentRef} className={cx("box-container")}>
                     <div className={cx("box")}>
                         
@@ -177,7 +197,7 @@ function BillDetail() {
                                 </div>
                                 <div className={cx("box-input")} >
                                     <p>Thời Hạn Thanh Toán</p>
-                                    <p>20/11/2022 chưa</p>
+                                    <p>{value.TrangThaiThanhToan===1?"":"20/11/2021"}</p>
                                 </div>
                                 <div className={cx("box-input")} >
                                     <p>Tình Trạng Thanh Toán</p>
@@ -192,14 +212,14 @@ function BillDetail() {
                         </div>
                         
                     </div>
-                    
-                </div>
-             
-                <button onClick={handlepdf} className={cx("wrapper-title-btn")}>
+                    <button onClick={handlepdf} className={cx("wrapper-title-btn")}>
                         <FontAwesomeIcon icon={faPrint} />
                         Tải Phiếu
                     </button>    
-                <img src='https://drive.google.com/file/d/1rq2aCzvXUQz91fCjobJXEg7XB5CrQ3Kb/view?usp=sharing'></img>   
+                </div>
+             
+               
+              
     </div> );
 }
 

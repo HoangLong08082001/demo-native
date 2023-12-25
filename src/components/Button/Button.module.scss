@@ -1,4 +1,7 @@
 .watchadd {
+  text-decoration: none;
+  text-align: center;
+  line-height: 45px;
   position: absolute;
   width: 230px;
   height: 45px;
@@ -43,6 +46,27 @@
 
   margin-top: 30px;
   margin-right: 20px;
+  transition: 0.2s linear;
+  border: 0.1px solid #2f81bd;
+  &:hover {
+    transition: 0.2s linear;
+    background: white;
+    color: #2f81bd;
+    border: 0.1px solid #2f81bd;
+  }
+}
+.watchdetail
+{
+  cursor: pointer;
+  border: 0;
+  background-color: #2f81bd;
+  border-radius: 10px;
+  width: 127px;
+  height: 35px;
+  color: white;
+
+  margin-top: 30px;
+ 
   transition: 0.2s linear;
   border: 0.1px solid #2f81bd;
   &:hover {

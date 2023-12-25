@@ -20,9 +20,19 @@ export default function Sort(props) {
     
   }
   const hanldedate=(e)=>{
-    setdate(e.target.value)
-    props.parentcallbackdate(e.target.value);
+    if(e.target.value === 0)
+    {
+      setdate('Theo')
+      props.parentcallbackdate(e.target.value);
       setstatus(true);
+    }
+    else
+    {
+      setdate(e.target.value)
+      props.parentcallbackdate(e.target.value);
+      setstatus(true);
+    }
+ 
   }
   return (
   <div className={cx("wrapper")}>
@@ -61,7 +71,7 @@ export default function Sort(props) {
                 <li value={5} onClick={hanldedate}>Tour 5 Ngày</li>
                 <li value={6} onClick={hanldedate}>Tour 6 Ngày</li>
                 <li value={7} onClick={hanldedate}>Tour 7 Ngày</li>
-                
+                <li value={null} onClick={hanldedate}>Tất Cả </li>
               </ul>
           </div>
       </div>

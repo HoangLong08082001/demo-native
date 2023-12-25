@@ -18,7 +18,9 @@ export default function Authentication() {
   const [ListPosition, setListPosition] = useState([]);
   const fetchPosition = () => {
     axios.get("/position/list-position").then((res) => {
-      setListPosition(res.data);
+      if(res && res.message === "success") {
+        setListPosition(res.data);
+      }
     });
   };
   useEffect(() => {

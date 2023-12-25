@@ -8,11 +8,12 @@ import { useParams } from "react-router-dom";
 import Comment from "./Comment";
 import axios from "../../setup-axios/axios";
 import Alert from "../../components/Alert/Alert";
+import Loading from "../../components/Loadingall";
 export default function Details() {
   const [value, setData] = useState([]);
   const { id } = useParams();
   const [arrayimg, setarrayimg] = useState([]);
-
+  const [ham,setham]=useState(true);
   useEffect(() => {
     axios.get(`tour/alltour/${id}`).then((response) => {
       setData(response.data[0]);
@@ -22,9 +23,14 @@ export default function Details() {
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
   });
-
+  useEffect(() => {
+    setTimeout(() => {
+     setham(false)
+    }, 1500);
+  }, [ham]);
   return (
     <div>
+        {ham === true ?(<Loading/>):('')}
       <div>
         <About
           MaTour={id}
@@ -38,8 +44,9 @@ export default function Details() {
         <Price
           MaTour={value.MaTour}
           NgayDi={value.NgayDi}
-          DiaDiemDi={value.DiaDiemDi}
+          
           noiDen={value.DiaDiemDen}
+          noiDi={value.DiaDiemDi}
         />
         {arrayimg.map((value) => {
           return (

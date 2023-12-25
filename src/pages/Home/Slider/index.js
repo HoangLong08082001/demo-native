@@ -57,7 +57,7 @@ function Slider() {
       <div className={cx("title-about")}>
         <p>Tour Du Lịch</p>
         
-        <Button watchadd>Xem Thêm</Button>
+        <Button watchadd  to="/more-summer">Xem Thêm</Button>
       </div>
       <div className={cx("right-icon")} onClick={nextonclick}>
         <FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon>

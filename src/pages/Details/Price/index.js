@@ -7,18 +7,19 @@ import slugify from "react-slugify";
 import dateFormat from "dayjs";
 
 const cx = classNames.bind(styles);
-export default function Price({ noiDen, DiaDiemDen, MaTour, NgayDi }) {
+export default function Price({ noiDen, noiDi, MaTour, NgayDi }) {
   const [valuemain, setarrayvaluemain] = useState([]);
-  // const [value, setvalue] = useState([]);
-  const [DiaDiem, setDiaDiem] = useState(noiDen);
-
-  const fetchTourHere = () => {};
+ 
+ 
+  
+  
   useEffect(() => {
-    axios.get(`/tour/tourhere/${noiDen}`).then((res) => {
+    axios.post('/tour/tourhere',{noiDi,noiDen}).then((res) => {
       setarrayvaluemain(res.data);
-      console.log(res.data);
+      
     });
-  }, [noiDen]);
+  }, [MaTour]);
+  console.log(valuemain);
   // useEffect(() => {
   //   axios
   //     .post("/tour/tourhere", {
@@ -170,6 +171,9 @@ export default function Price({ noiDen, DiaDiemDen, MaTour, NgayDi }) {
         <div></div>
       </div>
       {valuemain.map((value, i) => {
+        if (value.mucgiamgia===null) {
+          value.mucgiamgia=0
+        }
         const price = new Intl.NumberFormat("vi-VN", {
           style: "currency",
           currency: "VND",
@@ -191,7 +195,7 @@ export default function Price({ noiDen, DiaDiemDen, MaTour, NgayDi }) {
             </div>
             <div>
               <span>
-                {value.ten_dotgiamgia}+ {value.ten_dotgiamgiathem}
+                {value.ten_dotgiamgia} {value.ten_dotgiamgia===null ?"" : '+'} {value.ten_dotgiamgiathem}
               </span>
             </div>
             <div style={{ color: "#f7472e", fontWeight: 600 }}>

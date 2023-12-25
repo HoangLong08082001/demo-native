@@ -7,13 +7,16 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import dateFormat from 'dayjs'
 import { useEffect, useState } from "react";
 import emailjs from 'emailjs-com';
+import Alert from "../../components/Alert/Alert";
 import axios from "../../setup-axios/axios";
 import BillDetail from "../BillDetail";
+import Loading from "../../components/Loadingall";
 const cx = classNames.bind(styles);
 function Confirm() {
     const navigate = useNavigate();
     const location = useLocation();
-    const [success,setsucees] = useState(false);
+    const [ham,setham]=useState(false);
+    const [statuspayment,setstatuspayment] = useState(false);
     const params = new URLSearchParams(location.search);
     var name = params.get('name');
     var email = params.get('email');
@@ -33,18 +36,7 @@ function Confirm() {
     var sumperson=(person + personmin + personbe);
 
   
-    useEffect(() => {
-      
-      const url = window.location.href;
-     
-      const urlParams = new URLSearchParams(url);
-      
-      const paymentStatus = urlParams.get('vnp_TransactionStatus');
- 
-    //   console.log('Payment Status:', paymentStatus);
-      
-    }, []);
-   
+    
   
     const handlepre=()=>{
         navigate(-1);
@@ -53,6 +45,7 @@ function Confirm() {
         
         if(payment === 0)
         {
+            setham(true);
             axios.post("/Bill/addbill",{
                 MaTour:params.get('matour'),
                 MaKH:localStorage.getItem('Ma'),
@@ -66,16 +59,17 @@ function Confirm() {
                 TongTien:params.get('summoney'),
                   }).then((response) => {
                       if(response.data === "success"){
-            
-                          window.location.href=`http://dattourtravel.com:3000/user/billdetail/${params.get('matour')}?email='on'`;
+                        setTimeout(() => {
+                            setham(false);
+                            navigate(`/user/billdetail/${params.get('matour')}?email='on'`);
+                            
+                           }, 2000);
+
                       }
                     
                   });
         }
-        else
-        {
-            //online
-        }
+       
 
         
 
@@ -83,28 +77,71 @@ function Confirm() {
         
     }
     const handlemoneyonline=()=>{
-        // const date= new Date();
-        // const datenew=dateFormat(date).format("YYYYMMDDHHmmss");
-        // const orderId=dateFormat(date).format("HHmmss")
-        //   try {
-        //       const response = axios.post('/payment/create_payment_url', {
-        //         amount: '100000',
-        //         date:datenew,
-        //         orderid:orderId,
-        //       });
+        localStorage.setItem('data',JSON.stringify({MaTour:params.get('matour'),NguoiLon:person,
+        TreEm:personmin,
+        EmBe:personbe,
+        TongTien:params.get('summoney')}))
+        const date= new Date();
+        const datenew=dateFormat(date).format("YYYYMMDDHHmmss");
+        const orderId=dateFormat(date).format("HHmmss")
+          try {
+              const response = axios.post('/payment/create_payment_url', {
+                amount: '100000',
+                date:datenew,
+                orderid:orderId,
+              });
         
-        //       response.then((response)=>{
-          
-        //        window.location.href=response.data;
-               
-        //       })
+              response.then((response)=>{
+                
+               window.location.href=response.data;
+              
+              })
            
             
-        //     } catch (error) {
-        //       console.error('Error:', error.message);
-        //     }
+            } catch (error) {
+              console.error('Error:', error.message);
+            }
+        
+    }
+   var information = JSON.parse(localStorage.getItem('data'));
+   useEffect(()=>{
+    const url = window.location.href;
+     
+    const urlParams = new URLSearchParams(url);
+    
+    const paymentStatus = urlParams.get('vnp_TransactionStatus');
+    if(paymentStatus==='00')
+    {
+       
+        axios.post("/Bill/addbill",{
+            MaTour:information.MaTour,
+            MaKH:localStorage.getItem('Ma'),
+            NguoiLon:information.NguoiLon,
+            TreEm:information.TreEm,
+            EmBe:information.EmBe,
+            TrangThai:0,
+            HinhThucThanhToan:"Online",
+            TrangThaiThanhToan:1,
+            NgayTao:dateFormat(new Date).format("YYYY/MM/DD"),
+            TongTien:information.TongTien,
+              }).then((response) => {
+                  if(response.data === "success"){
+                    
+                    
+                  }
+                
+              });
+       setstatuspayment(true);
+       
+       
+    }
+   },[nametour])
+   
+    const handleclose=()=>{
+        setstatuspayment(false);
     }
     return (<div >
+          {ham === true ?(<Loading/>):('')}
         <div className={cx("wrapper")} >
         <div className={cx("wrapper-head")}><h2>Xác Nhận Và Thanh Toán</h2></div>
         <div >
@@ -159,10 +196,12 @@ function Confirm() {
                <div className={cx("wrapper-box2")}>
                     <Button onClick={handlepre} login>Trở Lại</Button>
                     {
-                        payment ===0?(<Button onClick={handlemoney} login>Hoàn Tất</Button>):(<Button onClick={handlemoneyonline} login>Thanh Toán </Button>)
+                        payment ===0?(<Button onClick={handlemoney} login>Hoàn Tất</Button>):(<Button onClick={handlemoneyonline} login>Thanh Toán  </Button>)
                     }
                </div>
-                
+               {
+                statuspayment ?( <Alert   dataprops={'Thanh Toán Thành Công'} good={0} icon={0} url={`/user/billdetail/${information.MaTour}?email='on'`}/>):('')
+               }
         </div>
         </div>
       

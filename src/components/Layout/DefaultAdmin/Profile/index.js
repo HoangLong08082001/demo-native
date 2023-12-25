@@ -8,7 +8,7 @@ import Dropdown from "./Dropdown";
 import userimage from "../../../../../../travel-ui/src/assets/images/user.png";
 import { UserContext } from "../../../../context/UserContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faBell } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const cx = classNames.bind(style);
@@ -34,6 +34,7 @@ export default function Profile(props) {
   return (
     <>
       <div className={cx("menu")}>
+     
         <FontAwesomeIcon
           onClick={handleShow}
           className={cx("icon")}
@@ -65,7 +66,7 @@ export default function Profile(props) {
         {/* resposive with width decrease down 10245 */}
 
         {/* resposive with width decrease down 10245 */}
-
+        
         <div className={cx("back-website")}>
           {user && user.isAuthenticated === true && <p>{user.accout.email}</p>}
         </div>
@@ -74,10 +75,13 @@ export default function Profile(props) {
           interactive
           render={(attrs) => <Dropdown tabIndex="-1" {...attrs} />}
         >
+          
           <div className={cx("profile")}>
+        
             <div className={cx("circle")} onClick={handleOpen}>
               <img src={userimage} alt="loi" />
             </div>
+          
           </div>
         </Tippy>
       </div>

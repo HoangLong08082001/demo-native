@@ -14,7 +14,7 @@ function Famos() {
         <Button buttonproduct>Đà Nẵng</Button>
         <Button buttonproduct>Đà Nẵng</Button>
       </div>
-      {/* <Slider /> */}
+      <Slider />
     </div>
   );
 }

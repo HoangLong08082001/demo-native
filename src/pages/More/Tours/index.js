@@ -15,7 +15,7 @@ export default function Tours({valueprice,valueday,valuelocation}) {
   const itemsPerPage=8;
 
   useEffect(() => {
-    axios.get("/tour/alltour").then((response) => {
+    axios.get("/tour/alltour2").then((response) => {
       setdata(response.data);
     });
    
@@ -34,8 +34,12 @@ export default function Tours({valueprice,valueday,valuelocation}) {
         return (value.vungMien===valuelocation);
       } );
     }
+    else
+    {
+      
+    }
   })
-
+  console.log(key.date);
   useEffect(()=>{
       if(key.date > 0)
       {
@@ -45,6 +49,10 @@ export default function Tours({valueprice,valueday,valuelocation}) {
           return ((dateVe.getUTCDate()+1)-(dateDi.getUTCDate()+1))===valueday;
         } );
         
+      }
+      else
+      {
+
       }
   })
   
@@ -64,9 +72,9 @@ export default function Tours({valueprice,valueday,valuelocation}) {
    
 
    
-   
+ 
   useEffect(() => {
-    console.log(1)
+    
     const endOffset = itemOffset + itemsPerPage;
     
     setCurrentItems(arraydata.current.slice(itemOffset, endOffset));

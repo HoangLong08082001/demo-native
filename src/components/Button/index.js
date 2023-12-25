@@ -45,6 +45,7 @@ function Button({
   btnLogout,
   btnExcel,
   addlike,
+  watchdetail,
   book
 }) {
   let Comp = "button";
@@ -102,7 +103,8 @@ function Button({
     btnLogout,
     btnExcel,
     addlike,
-    book
+    book,
+    watchdetail
   });
   return (
     <Comp className={classes} {...props}>
