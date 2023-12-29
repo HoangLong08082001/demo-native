@@ -47,7 +47,7 @@
       td {
         .btnInfo {
           cursor: pointer;
-          border-radius: 5px;
+
           border: none;
           width: 30%;
           margin-left: 5px;
@@ -56,7 +56,7 @@
         }
         .btnUpdate {
           cursor: pointer;
-          border-radius: 5px;
+
           border: none;
           width: 30%;
           margin-left: 5px;
@@ -65,7 +65,7 @@
         }
         .btnTrash {
           cursor: pointer;
-          border-radius: 5px;
+
           border: none;
           width: 30%;
           margin-left: 5px;
@@ -159,7 +159,6 @@
 }
 .btn-Info {
   cursor: pointer;
-  border-radius: 5px;
   border: none;
   margin-left: 5px;
   padding: 10px 20px;

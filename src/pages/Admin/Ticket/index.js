@@ -146,7 +146,7 @@ export default function Ticket() {
                 <th>Số điện thoại</th>
                 <th>Ngày lập phiếu</th>
                 <th>Duyệt phiếu</th>
-                <th>Action</th>
+                {/* <th>Action</th> */}
               </tr>
               {listTicketChecked.map((l, i) => {
                 if (l.TrangThai === 1) {
@@ -161,12 +161,12 @@ export default function Ticket() {
                         <button className={cx("btn-submit-checked")}>
                           {l.TrangThai === 1 && "ĐÃ DUYỆT"}
                         </button>
-                      </td>
-                      <td>
+                      </td> 
+                      {/* <td>
                         <button className={cx("btnInfo")}>
                           <FontAwesomeIcon icon={faInfo}></FontAwesomeIcon>
                         </button>
-                      </td>
+                      </td> */}
                     </tr>
                   );
                 }

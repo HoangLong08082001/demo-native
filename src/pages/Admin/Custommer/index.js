@@ -64,7 +64,7 @@ export default function Custommer() {
               <th>Tên khách hàng</th>
               <th>Email</th>
               <th>Sdt</th>
-              <th>Action</th>
+              {/* <th>Action</th> */}
             </tr>
             {listCustommer
               .filter((item) => {
@@ -77,7 +77,7 @@ export default function Custommer() {
                     <td>{list.TenKH}</td>
                     <td>{list.username}</td>
                     <td>{list.Sdt}</td>
-                    <td>
+                    {/* <td>
                       <button onClick={() => handleRemove(list)}>
                         <FontAwesomeIcon
                           icon={faTrash}
@@ -86,7 +86,7 @@ export default function Custommer() {
                           DELETE
                         </FontAwesomeIcon>
                       </button>
-                    </td>
+                    </td> */}
                   </tr>
                 );
               })}

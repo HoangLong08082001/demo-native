@@ -18,13 +18,13 @@ function Location() {
     <div className={cx("wrapper")}>
       <h2>Hè 2023</h2>
 
-      <div className={cx("location-tour")}>
+      {/* <div className={cx("location-tour")}>
         <Button buttonproduct>Trong Nước</Button>
         <Button buttonproduct>Châu Âu</Button>
         <Button buttonproduct>Đông Nam Á</Button>
         <Button buttonproduct>Châu Mỹ</Button>
         <Button buttonproduct>Châu Phi</Button>
-      </div>
+      </div> */}
       <div className={cx("List-tour")}>
         {data.map((value) => {
           return (

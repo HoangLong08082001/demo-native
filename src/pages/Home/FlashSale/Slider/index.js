@@ -50,15 +50,13 @@ export default function Sliders() {
   const fetchTourByVoucher = async () => {
     await axios.get("/tour/get-tour-by-voucher").then((response) => {
       setdata(response.data);
-      
     });
   };
   useEffect(() => {
-    
     fetchTourByVoucher();
   }, []);
-  
-  var count=data.length-0.2;
+
+  var count = data.length - 0.2;
   const settings = {
     dots: true,
     infinite: true,
@@ -179,6 +177,7 @@ export default function Sliders() {
               DiaDiemDen={value.DiaDiemDen}
               img={value.HinhAnh.data}
               price={value.GiaTour}
+              percent={+value.mucgiamgia}
             />
           );
         })}

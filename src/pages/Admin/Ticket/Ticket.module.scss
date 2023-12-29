@@ -35,7 +35,6 @@
           color: white;
           font-weight: 800;
           border: none;
-          border-radius: 5px;
         }
         .btnUpdate {
           margin-left: 5px;
@@ -46,7 +45,6 @@
           color: white;
           font-weight: 800;
           border: none;
-          border-radius: 5px;
         }
         .btnDelete {
           font-size: 15px;
@@ -55,7 +53,6 @@
           color: white;
           font-weight: 800;
           border: none;
-          border-radius: 5px;
         }
         .btn-submit {
           box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
@@ -67,7 +64,7 @@
           color: white;
           font-weight: 900;
           border: none;
-          border-radius: 5px;
+          
         }
       }
     }
@@ -166,11 +163,11 @@
   border: none;
   border-radius: 5px;
 }
-.loading-form{
-  .loading{
+.loading-form {
+  .loading {
     margin: auto;
   }
-  h2{
+  h2 {
     text-align: center;
   }
 }

@@ -7,6 +7,17 @@ import axios from "../../../setup-axios/axios";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { UserContext } from "../../../context/UserContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMoneyBill,
+  faMoneyCheck,
+  faPaperPlane,
+  faPaperclip,
+  faPlane,
+  faTicket,
+  faTicketSimple,
+  faUserPlus,
+} from "@fortawesome/free-solid-svg-icons";
 
 const cx = classNames.bind(style);
 
@@ -74,20 +85,24 @@ export default function HomeAdmin() {
       <div className={cx("wrapper")}>
         <div className={cx("list-stati")}>
           <div className={cx("stati-hoadon")}>
+            <FontAwesomeIcon className={cx("icon")} icon={faMoneyCheck} />
             <p>SỐ LƯỢNG HOÁ ĐƠN</p>
-            <p>{hd}</p>
+            <span>SỐ LƯỢNG: {hd}</span>
           </div>
           <div className={cx("stati-register")}>
+            <FontAwesomeIcon className={cx("icon")} icon={faUserPlus} />
             <p>KHÁCH HÀNG ĐĂNG KÝ</p>
-            <p>{kh}</p>
+            <span>SỐ LƯỢNG: {kh}</span>
           </div>
           <div className={cx("stati-tour")}>
+            <FontAwesomeIcon className={cx("icon")} icon={faPlane} />
             <p>SỐ LƯỢNG TOUR</p>
-            <p>{tour}</p>
+            <span>SỐ LƯỢNG: {tour}</span>
           </div>
           <div className={cx("stati-ticket")}>
+            <FontAwesomeIcon className={cx("icon")} icon={faTicket} />
             <p>PHIẾU CHƯA DUYỆT</p>
-            <p>{phieu}</p>
+            <span>SỐ LƯỢNG: {phieu}</span>
           </div>
         </div>
         <div className={cx("list-chart1")}>

@@ -12,10 +12,9 @@
   justify-content: space-between;
 }
 .stati-hoadon {
-  padding: 10px;
+  padding: 20px;
   background-color: #18a2b8;
   width: 30%;
-  height: 200px;
   margin-left: 10px;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
@@ -25,14 +24,22 @@
     font-weight: 800;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-    text-align: center;
+    text-align: left;
+  }
+  .icon {
+    font-size: 50px;
+    color: rgb(255, 255, 255, 0.5);
+  }
+  span {
+    color: white;
+    font-weight: 900;
+    font-family: Arial, Helvetica, sans-serif;
   }
 }
 .stati-register {
-  padding: 10px;
+  padding: 20px;
   background-color: #27a745;
   width: 30%;
-  height: 200px;
   margin-left: 10px;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
@@ -42,14 +49,22 @@
     font-weight: 800;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-    text-align: center;
+    text-align: left;
+  }
+  .icon {
+    font-size: 50px;
+    color: rgb(255, 255, 255, 0.5);
+  }
+  span {
+    color: white;
+    font-weight: 900;
+    font-family: Arial, Helvetica, sans-serif;
   }
 }
 .stati-tour {
-  padding: 10px;
+  padding: 20px;
   background-color: #ffc206;
   width: 30%;
-  height: 200px;
   margin-left: 10px;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
@@ -59,14 +74,22 @@
     font-weight: 800;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-    text-align: center;
+    text-align: left;
+  }
+  .icon {
+    font-size: 50px;
+    color: rgb(255, 255, 255, 0.5);
+  }
+  span {
+    color: white;
+    font-weight: 900;
+    font-family: Arial, Helvetica, sans-serif;
   }
 }
 .stati-ticket {
-  padding: 10px;
+  padding: 20px;
   background-color: #dc3545;
   width: 30%;
-  height: 200px;
   margin-left: 10px;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
@@ -76,7 +99,16 @@
     font-weight: 800;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-    text-align: center;
+    text-align: left;
+  }
+  .icon {
+    font-size: 50px;
+    color: rgb(255, 255, 255, 0.5);
+  }
+  span {
+    color: white;
+    font-weight: 900;
+    font-family: Arial, Helvetica, sans-serif;
   }
 }
 .list-chart1 {

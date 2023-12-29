@@ -22,14 +22,8 @@ export default function Dropdown() {
   return (
     <div className={cx("wrapper")}>
       <p>
-        <Button btnDetailAdmin to="/Information">
-          THONG TIN
-        </Button>
-      </p>
-      
-      <p>
         <Button btnLogoutAdmin onClick={handleLogout}>
-          Logout
+          ĐĂNG XUẤT
         </Button>
       </p>
     </div>

@@ -241,9 +241,9 @@ export default function UpdateTour() {
   const [lichTrinh7, setLichTrinh7] = useState("");
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
-  
+
   const fetchGiamGia = async () => {
-    await axios.get("/voucher/get-voucher").then((res) => {
+    await axios.get("/tour/get-giamgia").then((res) => {
       if (res && res.message === "success") {
         setGiamGia(res.data);
         console.log("giamgia ", res.data);
@@ -458,6 +458,7 @@ export default function UpdateTour() {
                 <option value={item}>{item}</option>
               ))}
             </select>
+            
             <select
               name="select"
               id=""

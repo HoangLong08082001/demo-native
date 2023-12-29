@@ -18,61 +18,49 @@ function ProductBox({
   img,
   id,
   MaTour,
+  percent,
 }) {
-  const [arraycomment,setarraycomment] =useState([]);
-  
-    useEffect(()=>{
-        axios.post("/tour/getcomment",{
-          MaTour:id,
-            }).then((response) => {
-                setarraycomment(response.data);
-                if(response.data==="success"){
-                    
-                }
-            });
-    },[])
-    const sum = arraycomment.reduce(
-      (accumulator, currentValue) => accumulator + currentValue.DanhGia,
-      0,
-    );
-    
-    if(sum>0)
-    {
-      var star=Math.round(sum/arraycomment.length)
-      ;
-      var staflase=5-star;
-    }
-    else
-    {
-      var staflase=5;
-    }
-    var arraystar=[];
+  const [arraycomment, setarraycomment] = useState([]);
 
-    
-    if(star > 0 )
-    {
-      for(let i=0; i<star; i++)
-        {
-            arraystar.push(1);
-            
+  useEffect(() => {
+    axios
+      .post("/tour/getcomment", {
+        MaTour: id,
+      })
+      .then((response) => {
+        setarraycomment(response.data);
+        if (response.data === "success") {
         }
-        if(staflase > 0)
-        {
-          for(let i=0; i<staflase; i++)
-          {
-              arraystar.push(2);
-          }
-        }
-    }
-    else if(staflase === 5){
-      for(let i=0; i<staflase; i++)
-          {
-              arraystar.push(2);
-          }
-    }
+      });
+  }, []);
+  const sum = arraycomment.reduce(
+    (accumulator, currentValue) => accumulator + currentValue.DanhGia,
+    0
+  );
 
-   
-    
+  if (sum > 0) {
+    var star = Math.round(sum / arraycomment.length);
+    var staflase = 5 - star;
+  } else {
+    var staflase = 5;
+  }
+  var arraystar = [];
+
+  if (star > 0) {
+    for (let i = 0; i < star; i++) {
+      arraystar.push(1);
+    }
+    if (staflase > 0) {
+      for (let i = 0; i < staflase; i++) {
+        arraystar.push(2);
+      }
+    }
+  } else if (staflase === 5) {
+    for (let i = 0; i < staflase; i++) {
+      arraystar.push(2);
+    }
+  }
+
   const styles = cx({ margin, container, margintop });
   price = new Intl.NumberFormat("vi-VN", {
     style: "currency",
@@ -86,39 +74,42 @@ function ProductBox({
   );
 
   return (
-    
     <Button underline to={"/details/" + slugify(Name) + "/" + id}>
       <div className={styles}>
         <div
-        
           className={cx("container-img")}
           style={{
             backgroundImage: `url(data:image/png;base64,${base64String})`,
           }}
         >
-          <div className={cx("sale-off")}>
-            <p>15%</p>
-          </div>
-         
+          {percent && (
+            <div className={cx("sale-off")}>
+              <p>{percent}%</p>
+            </div>
+          )}
         </div>
         <div className={cx("container-date")}>3N/2D</div>
         <div className={cx("container-content")}>{Name}</div>
         <div className={cx("container-star")}>
-          {arraystar.map((comment,index)=>{
-            if(comment === 1)
-            {
-              return(<FontAwesomeIcon 
-                key={index} style={{ color: "#e5cf08" }} icon={faStar} />)
+          {arraystar.map((comment, index) => {
+            if (comment === 1) {
+              return (
+                <FontAwesomeIcon
+                  key={index}
+                  style={{ color: "#e5cf08" }}
+                  icon={faStar}
+                />
+              );
+            } else {
+              return (
+                <FontAwesomeIcon
+                  key={index}
+                  style={{ color: "black" }}
+                  icon={faStar}
+                />
+              );
             }
-            else
-            {
-              return(<FontAwesomeIcon key={index} style={{ color: "black" }} icon={faStar} />)
-            }
-            }
-          )}
-              
-
-        
+          })}
         </div>
         <div className={cx("container-discount")}>
           <span>{DiaDiemDen}</span>
