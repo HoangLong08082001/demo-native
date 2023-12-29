@@ -30,11 +30,11 @@ instance.interceptors.response.use(
     const status = (error && error.response && error.response.status) || 500;
     switch (status) {
       case 401: {
-        toast.warning("Unauthorized the user");
+        //toast.warning("Unauthorized the user");
         return error.response.status;
       }
       case 403: {
-        toast.error("You dont have permission to access");
+        toast.error("Bạn không có quyền thực hiện chức năng này");
         return true;
       }
       case 400: {

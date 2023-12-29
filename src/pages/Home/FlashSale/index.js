@@ -57,6 +57,7 @@ function FlashSale() {
   //   return clearInterval(interval.current);
   // }, []);
   const [timeNow, setTimeNow] = useState("");
+  const [name, setName] = useState("");
   const [timeTarget, setTimeTarget] = useState("");
   const [list, setList] = useState([]);
   const setDate = (day) => {
@@ -86,6 +87,7 @@ function FlashSale() {
   useEffect(() => {
     axios.get("/tour/get-tour-withday").then((res) => {
       setTimeTarget(res.data[0].toi);
+      setName(res.data[0].ten_dotgiamgia);
       // setList(res.data);
     });
   }, []);
@@ -119,7 +121,8 @@ function FlashSale() {
     <div className={cx("wrapper")}>
       <div className={cx("wrapper-box")}>
         <h2>
-          FLASH <FontAwesomeIcon icon={faBolt}></FontAwesomeIcon>ALES
+          {name}
+          {/* FLASH <FontAwesomeIcon icon={faBolt}></FontAwesomeIcon>ALES */}
         </h2>
         <div className={cx("wrapper-box")}>
           <div className={cx("wrapper-date")}>

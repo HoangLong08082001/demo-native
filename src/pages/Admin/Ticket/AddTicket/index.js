@@ -35,7 +35,10 @@ export default function AddTicket() {
   let [sum, setSum] = useState(0);
   const fetchCustommer = async () => {
     await axios.get("/custommer/list-customer").then((res) => {
-      setListCustommer(res.list);
+      if(res && res.data === "ok")
+      {
+        setListCustommer(res.list);
+      }
     });
   };
   const fetchTour = async () => {

@@ -61,7 +61,7 @@ export default function Employee() {
       <div className={cx("wrapper")}>
         <Link to="/them-nhan-vien">
           <button className={cx("btn-add")}>
-            THEM NHAN VIEN{" "}
+            THÊM NHÂN VIÊN{" "}
             <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>
           </button>
         </Link>
@@ -73,14 +73,14 @@ export default function Employee() {
             onClick={() => setToggle(1)}
             className={toggle === 1 ? cx("checked-active") : cx("checked")}
           >
-            Nhan vien dang lam <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
+            Nhân viên đang làm <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
           </button>
           <button
             onClick={() => setToggle(2)}
             className={toggle === 2 ? cx("checked-active") : cx("checked")}
             style={{ marginLeft: "20px" }}
           >
-            Nhan vien da nghi{" "}
+            Nhân viên đã nghỉ{" "}
             <FontAwesomeIcon icon={faUserMinus}></FontAwesomeIcon>
           </button>
         </div>
@@ -100,10 +100,10 @@ export default function Employee() {
               <table border={1} cellSpacing={0}>
                 <tr>
                   <th>STT </th>
-                  <th>Ma Nhan Vien</th>
-                  <th>Ten Nhan Vien</th>
+                  <th>Mã nhân viên</th>
+                  <th>Tên nhân viên</th>
                   <th>Email</th>
-                  <th>Vi tri</th>
+                  <th>Vị trí</th>
                   <th>Action</th>
                 </tr>
                 {listEmployee
@@ -185,10 +185,10 @@ export default function Employee() {
               <table border={1} cellSpacing={0}>
                 <tr>
                   <th>STT </th>
-                  <th>Ma Nhan Vien</th>
-                  <th>Ten Nhan Vien</th>
+                  <th>Mã nhân viên</th>
+                  <th>Tên nhân viên</th>
                   <th>Email</th>
-                  <th>Vi tri</th>
+                  <th>Vị trí</th>
                 </tr>
                 {listEmployee.map((list, index) => {
                   if (list.TrangThai === 0) {

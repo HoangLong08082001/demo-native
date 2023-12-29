@@ -61,7 +61,7 @@ export default function Custommer() {
           <table border={1} cellSpacing={0}>
             <tr>
               <th>STT</th>
-              <th>Ten Khach Hang</th>
+              <th>Tên khách hàng</th>
               <th>Email</th>
               <th>Sdt</th>
               <th>Action</th>

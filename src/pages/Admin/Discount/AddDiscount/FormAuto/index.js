@@ -13,6 +13,7 @@ export default function FormAuto() {
   const [name, setName] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
+  const [latestDay, setLatestDay] = useState("");
   const [percent, setPercent] = useState("");
   const [tours, setTours] = useState([]);
   const [tour, setTour] = useState("");
@@ -26,6 +27,14 @@ export default function FormAuto() {
   //     }
   //   });
   // };
+  const fetchLatest = () => {
+    axios.get("/voucher/lastest-day").then((res) => {
+      if (res && res.message === "success") {
+        console.log(new Date(res.data[0].lastest).toLocaleDateString("sv-SE"));
+        setLatestDay(new Date(res.data[0].lastest).toLocaleDateString("sv-SE"));
+      }
+    });
+  };
   const validate = () => {
     if (name === "" && start === "" && end === "" && percent === "") {
       toast.warning("Vui lòng nhập đầy đủ");
@@ -66,7 +75,7 @@ export default function FormAuto() {
     let valid = validate();
     if (valid === true) {
       axios
-        .post("/voucher/add-voucher", { name, start, end, percent})
+        .post("/voucher/add-voucher", { name, start, end, percent })
         .then((res) => {
           if (res.message === "success") {
             navigate("/giam-gia");
@@ -75,7 +84,7 @@ export default function FormAuto() {
     }
   };
   useEffect(() => {
-   
+    fetchLatest();
   }, []);
   return (
     <>
@@ -95,13 +104,13 @@ export default function FormAuto() {
           />
           <input
             type="date"
-            min={today}
+            min={latestDay}
             value={start}
             onChange={(e) => setStart(e.target.value)}
           />
           <input
             type="date"
-            min={today}
+            min={latestDay}
             value={end}
             onChange={(e) => setEnd(e.target.value)}
           />

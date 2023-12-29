@@ -18,19 +18,18 @@ import {
   faChartSimple,
 } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "../../../../context/UserContext";
-import io from 'socket.io-client';
+import io from "socket.io-client";
 import axios from "../../../../setup-axios/axios";
 const cx = classNames.bind(style);
 export default function Sidebar() {
   const { user } = useContext(UserContext);
   const [active, setActive] = useState(false);
-  const [statusorder,setstatus] = useState(false)
+  const [statusorder, setstatus] = useState(false);
   const handleActive = () => {
     setActive(!active);
   };
 
-
-  const socket = io('http://dattourtravel.com:9000');
+  const socket = io("http://dattourtravel.com:9000");
   const menus = [
     { icon: faHome, title: "Trang chủ", to: "/admin-home" },
     { icon: faUser, title: "Nhân viên", to: "/nhan-vien" },
@@ -43,24 +42,22 @@ export default function Sidebar() {
     { icon: faChartSimple, title: "Thống kê", to: "/thong-ke" },
   ];
   const [click, setClick] = useState("Trang chủ");
-useEffect(()=>{
-  axios.get("/tourserver/statusphieutour",{
-      }).then((response) => {
-         if(response.data.length>0) {
-          setstatus(true);
-         }
-      });
-},[])
   useEffect(() => {
-   
-    socket.on('orderNotification', (orderData) => {
-      
-     setstatus(true);
-     socket.disconnect();
-    })},[]);
-    const handlesocket=()=>{
-      setstatus(false);
-    }
+    axios.get("/tourserver/statusphieutour", {}).then((response) => {
+      if (response.data.length > 0) {
+        setstatus(true);
+      }
+    });
+  }, []);
+  useEffect(() => {
+    socket.on("orderNotification", (orderData) => {
+      setstatus(true);
+      socket.disconnect();
+    });
+  }, []);
+  const handlesocket = () => {
+    setstatus(false);
+  };
   return (
     <>
       <div className={cx("wrapper")}>
@@ -77,8 +74,7 @@ useEffect(()=>{
                       className={click === menu.title ? cx("active") : null}
                       key={index}
                       onClick={() => {
-                        
-                        setClick(menu.title)
+                        setClick(menu.title);
                       }}
                     >
                       <FontAwesomeIcon
@@ -86,20 +82,22 @@ useEffect(()=>{
                         icon={menu.icon}
                       ></FontAwesomeIcon>
                       <p>
-                      
-                        {
-                          menu.title === 'Phiếu đặt tour'?(<Button onClick={handlesocket} itemmenu to={menu.to}>
+                        {menu.title === "Phiếu đặt tour" ? (
+                          <Button onClick={handlesocket} itemmenu to={menu.to}>
                             {menu.title}
-                          </Button>):(<Button  itemmenu to={menu.to}>
-                          {menu.title}
-                        </Button>)
-                        }
+                          </Button>
+                        ) : (
+                          <Button itemmenu to={menu.to}>
+                            {menu.title}
+                          </Button>
+                        )}
                       </p>
-                      {
-                        menu.title ==='Phiếu đặt tour' && statusorder === true ?(<div className={cx("circle-alert")}>
-                        
-                        </div>):('')
-                      }
+                      {menu.title === "Phiếu đặt tour" &&
+                      statusorder === true ? (
+                        <div className={cx("circle-alert")}></div>
+                      ) : (
+                        ""
+                      )}
                     </li>
                   );
                 }
@@ -116,25 +114,27 @@ useEffect(()=>{
                         icon={menu.icon}
                       ></FontAwesomeIcon>
                       <p>
-                      
-                      {
-                        menu.title === 'Phiếu đặt tour'?(<Button onClick={handlesocket} itemmenu to={menu.to}>
-                          {menu.title}
-                        </Button>):(<Button  itemmenu to={menu.to}>
-                        {menu.title}
-                      </Button>)
-                      }
-                    </p>
-                    {
-                      menu.title ==='Phiếu đặt tour' && statusorder ===true ?(<div className={cx("circle-alert")}>
-                      
-                      </div>):('')
-                    }
+                        {menu.title === "Phiếu đặt tour" ? (
+                          <Button onClick={handlesocket} itemmenu to={menu.to}>
+                            {menu.title}
+                          </Button>
+                        ) : (
+                          <Button itemmenu to={menu.to}>
+                            {menu.title}
+                          </Button>
+                        )}
+                      </p>
+                      {menu.title === "Phiếu đặt tour" &&
+                      statusorder === true ? (
+                        <div className={cx("circle-alert")}></div>
+                      ) : (
+                        ""
+                      )}
                     </li>
                   );
                 }
-              }else if (user.accout.position === "KẾ TOÁN") {
-                if (index >= 0 && index <= 6 || index === 8) {
+              } else if (user.accout.position === "KẾ TOÁN") {
+                if ((index >= 3 && index <= 6) || index === 8|| index === 0) {
                   return (
                     <li
                       className={click === menu.title ? cx("active") : null}
@@ -145,15 +145,32 @@ useEffect(()=>{
                         className={cx("icon")}
                         icon={menu.icon}
                       ></FontAwesomeIcon>
-                     
+
                       <p>
-                      
                         <Button itemmenu to={menu.to}>
                           {menu.title}
-                          
-
                         </Button>
-                        
+                      </p>
+                    </li>
+                  );
+                }
+              } else if (user.accout.position === "QUẢN LÝ TOUR") {
+                if (index === 0 || index === 4 || index === 3 || index === 5) {
+                  return (
+                    <li
+                      className={click === menu.title ? cx("active") : null}
+                      key={index}
+                      onClick={() => setClick(menu.title)}
+                    >
+                      <FontAwesomeIcon
+                        className={cx("icon")}
+                        icon={menu.icon}
+                      ></FontAwesomeIcon>
+
+                      <p>
+                        <Button itemmenu to={menu.to}>
+                          {menu.title}
+                        </Button>
                       </p>
                     </li>
                   );

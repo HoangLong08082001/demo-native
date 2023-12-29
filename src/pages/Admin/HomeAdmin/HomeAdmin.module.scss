@@ -10,25 +10,75 @@
   padding: 20px;
   display: flex;
   justify-content: space-between;
-  .stati {
-    cursor: pointer;
-    background-color: rgb(87, 87, 87);
-    width: 30%;
-    margin-left: 10px;
-    border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    p {
-      color: white;
-      font-weight: 800;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 20px;
-      text-align: center;
-    }
+}
+.stati-hoadon {
+  padding: 10px;
+  background-color: #18a2b8;
+  width: 30%;
+  height: 200px;
+  margin-left: 10px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  p {
+    color: white;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-align: center;
   }
 }
-
+.stati-register {
+  padding: 10px;
+  background-color: #27a745;
+  width: 30%;
+  height: 200px;
+  margin-left: 10px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  p {
+    color: white;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-align: center;
+  }
+}
+.stati-tour {
+  padding: 10px;
+  background-color: #ffc206;
+  width: 30%;
+  height: 200px;
+  margin-left: 10px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  p {
+    color: white;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-align: center;
+  }
+}
+.stati-ticket {
+  padding: 10px;
+  background-color: #dc3545;
+  width: 30%;
+  height: 200px;
+  margin-left: 10px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  p {
+    color: white;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-align: center;
+  }
+}
 .list-chart1 {
   padding: 20px;
   width: 100%;
@@ -40,6 +90,29 @@
     padding: 10px;
     font-size: 20px;
     text-align: center;
-    background-color: aquamarine;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    background-color: rgb(184, 185, 185);
   }
+}
+table {
+  .tr-th {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background-color: black;
+    th {
+      padding: 10px;
+    }
+  }
+  .tr-td {
+    text-align: center;
+    .active {
+      color: red;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 900;
+    }
+  }
+}
+.form-table {
+  max-height: 385px;
 }

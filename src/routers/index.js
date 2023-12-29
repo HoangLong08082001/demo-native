@@ -33,6 +33,7 @@ import AddRule from "../pages/Admin/Authentication/AddRule";
 import Statistical from "../pages/Statistical";
 import BillManager from "../pages/Admin/BillManager";
 import DetailBillManager from "../pages/Admin/BillManager/DetailBillManager";
+import About from "../pages/About";
 const publicRoutes = [
   { path: "/login-user", component: Login },
   { path: "/register-user", component: Register },
@@ -43,6 +44,7 @@ const publicRoutes = [
   { path: "/", component: Home },
   { path: "/bill/:name/:id/:date/:giam", component: Bill },
   { path: "/review", component: Review },
+  { path: "/chung-toi", component: About },
   { path: "/more-summer", component: More },
   { path: "/details/:name/:id", component: Details },
   { path: "/more-summer/:nn", component: More },

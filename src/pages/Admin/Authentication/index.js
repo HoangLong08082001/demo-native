@@ -18,7 +18,7 @@ export default function Authentication() {
   const [ListPosition, setListPosition] = useState([]);
   const fetchPosition = () => {
     axios.get("/position/list-position").then((res) => {
-      if(res && res.message === "success") {
+      if (res && res.message === "success") {
         setListPosition(res.data);
       }
     });
@@ -27,54 +27,59 @@ export default function Authentication() {
     fetchPosition();
   }, []);
   if (user && user.isAuthenticated === true) {
-    return (
-      <div className={cx("wrapper")}>
-        <div className={cx("btn")}>
-          <Link to="/them-vi-tri">
-            <button className={cx("btn-add")}>
-              THÊM VỊ TRÍ <FontAwesomeIcon icon={faPlusCircle} />
-            </button>
-          </Link>
-          <Link to="/them-quyen">
-            <button className={cx("btn-add")} style={{ marginLeft: "10px" }}>
-              THÊM QUYỀN <FontAwesomeIcon icon={faPlusCircle} />
-            </button>
-          </Link>
-          <Link to="/kiem-tra-quyen">
-            <button className={cx("btn-check")} style={{ marginLeft: "10px" }}>
-              PHÂN QUYỀN <FontAwesomeIcon icon={faUserCheck} />
-            </button>
-          </Link>
-        </div>
-        <div className={cx("form-table")}>
-          <table border={1} cellSpacing={0} className={cx("table-show")}>
-            <tr className={cx("tr-th")}>
-              <th>TÊN VỊ TRÍ</th>
-              <th>ACTION</th>
-            </tr>
-            {ListPosition.map((item, index) => {
-              return (
-                <tr className={cx("tr-td")}>
-                  <td>{item.TenViTri}</td>
+    if (user.accout.position === "DEV") {
+      return (
+        <div className={cx("wrapper")}>
+          <div className={cx("btn")}>
+            <Link to="/them-vi-tri">
+              <button className={cx("btn-add")}>
+                THÊM VỊ TRÍ <FontAwesomeIcon icon={faPlusCircle} />
+              </button>
+            </Link>
+            <Link to="/them-quyen">
+              <button className={cx("btn-add")} style={{ marginLeft: "10px" }}>
+                THÊM QUYỀN <FontAwesomeIcon icon={faPlusCircle} />
+              </button>
+            </Link>
+            <Link to="/kiem-tra-quyen">
+              <button
+                className={cx("btn-check")}
+                style={{ marginLeft: "10px" }}
+              >
+                PHÂN QUYỀN <FontAwesomeIcon icon={faUserCheck} />
+              </button>
+            </Link>
+          </div>
+          <div className={cx("form-table")}>
+            <table border={1} cellSpacing={0} className={cx("table-show")}>
+              <tr className={cx("tr-th")}>
+                <th>TÊN VỊ TRÍ</th>
+                
+              </tr>
+              {ListPosition.map((item, index) => {
+                return (
+                  <tr className={cx("tr-td")}>
+                    <td>{item.TenViTri}</td>
 
-                  <td width={"20%"}>
-                    <button
-                      onClick={() =>
-                        navigate(`/kiem-tra-quyen`, {
-                          state: item,
-                        })
-                      }
-                    >
-                      Chi tiết <FontAwesomeIcon icon={faCheckSquare} />
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </table>
+                    {/* <td width={"20%"}>
+                      <button
+                        onClick={() =>
+                          navigate(`/kiem-tra-quyen`, {
+                            state: item,
+                          })
+                        }
+                      >
+                        Chi tiết <FontAwesomeIcon icon={faCheckSquare} />
+                      </button>
+                    </td> */}
+                  </tr>
+                );
+              })}
+            </table>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   } else {
     return <Navigate to="/admin-login"></Navigate>;
   }

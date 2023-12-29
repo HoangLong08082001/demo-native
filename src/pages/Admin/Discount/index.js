@@ -24,7 +24,7 @@ export default function Discount() {
       <div className={cx("btn")}>
         <Link to="/them-giam-gia">
           <button className={cx("btn-add")}>
-            THÊM <FontAwesomeIcon icon={faPlusCircle} />
+            THÊM ĐỢT GIẢM GIÁ <FontAwesomeIcon icon={faPlusCircle} />
           </button>
         </Link>
         <button className={cx("btn-excel")}>

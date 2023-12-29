@@ -52,14 +52,14 @@ export default function HeaderLogin() {
 
       <div className={cx("warpper-link")}>
         <div className={cx("warpper-link-h")}>
-          <Link className={cx("link")} to="/review">
+          <Link className={cx("link")} to="/">
             {" "}
             Trang Chu
           </Link>
           <Link className={cx("link")} to="/">
             Ưu Đãi
           </Link>
-          <Link className={cx("link")} to="/">
+          <Link className={cx("link")} to="/chung-toi">
             Chúng Tôi
           </Link>
           <Link className={cx("link")} to="/">

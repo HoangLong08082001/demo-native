@@ -21,6 +21,63 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 const cx = classNames.bind(style);
 export default function AddTour() {
+  const inVN = [
+    { city: "Ha Noi" },
+    { city: "Sapa" },
+    { city: "Vinh Ha Long" },
+    { city: " Hà Giang" },
+    { city: "Cao Bằng" },
+    { city: "Lào Cai" },
+    { city: "Bắc Kạn" },
+    { city: "Lạng Sơn" },
+    { city: "Tuyên Quang" },
+    { city: "Yên Bái" },
+    { city: "Thái Nguyên" },
+    { city: "Phú Thọ" },
+    { city: "Bắc Giang" },
+    { city: "Lai Châu" },
+    { city: "Điện Biên" },
+    { city: "Sơn La" },
+    { city: "Hòa Bình" },
+    { city: "Quảng Ninh" },
+    { city: "Thanh Hoá" },
+    { city: "Nghệ An" },
+    { city: "Hà Tĩnh" },
+    { city: "Quảng Bình" },
+    { city: "Quảng Trị" },
+    { city: "Thừa Thiên-Huế" },
+    { city: " Kon Tum" },
+    { city: "Gia Lai" },
+    { city: "Đắc Lắc" },
+    { city: "Đắc Nông" },
+    { city: "Lâm Đồng" },
+    { city: "Đà Nẵng" },
+    { city: "Quảng Nam" },
+    { city: "Quảng Ngãi" },
+    { city: "Bình Định" },
+    { city: "Phú Yên" },
+    { city: "Khánh Hoà" },
+    { city: "Ninh Thuận" },
+    { city: "Bình Thuận" },
+    { city: "Bình Phước" },
+    { city: "Bình Dương" },
+    { city: "Đồng Nai" },
+    { city: "Tây Ninh" },
+    { city: "Bà Rịa Vũng Tàu" },
+    { city: "TP.HCM" },
+    { city: "Long An" },
+    { city: "Đồng Tháp" },
+    { city: "Tiền Giang" },
+    { city: "An Giang" },
+    { city: "Bến Tre" },
+    { city: "Vĩnh Long" },
+    { city: "Trà Vinh" },
+    { city: "Hậu Giang" },
+    { city: "Kiên Giang" },
+    { city: "Sóc Trăng" },
+    { city: "Bạc Liêu" },
+    { city: "Cà Mau" },
+  ];
   const countries = [
     {
       name: "NN",
@@ -190,13 +247,17 @@ export default function AddTour() {
   const [maxDay, setMaxDay] = useState("");
   const fetchGiamGia = async () => {
     await axios.get("/voucher/get-voucher").then((res) => {
-      setGiamGia(res.data);
+      if (res && res.message === "success") {
+        setGiamGia(res.data);
+      }
     });
   };
   const fetchGiamGiaThem = async () => {
-    await axios.get("/voucher/get-again").then((res) => {
-      setGiamGiaThem(res.data);
-      console.log("them ", res.data);
+    await axios.get("/voucher/get-more-voucher").then((res) => {
+      if (res && res.message === "success") {
+        setGiamGiaThem(res.data);
+        console.log("them ", res.data);
+      }
     });
   };
 
@@ -248,6 +309,10 @@ export default function AddTour() {
     }
     if (city === "") {
       toast.warning("Vui lòng chọn địa điểm đến");
+      return false;
+    }
+    if (diaDiemDi === "") {
+      toast.warning("Vui lòng chọn địa điểm đi");
       return false;
     }
     if (imageName2 === "") {
@@ -312,25 +377,27 @@ export default function AddTour() {
           headers: { "Content-Type": "multipart/form-data" },
         })
         .then((res) => {
-          setTenTour("");
-          setNgayDi("");
-          setNgayVe("");
-          setPhuongTien("");
-          setQuyMo("");
-          setGiaTour("");
-          setImageName1("");
-          setImageName2("");
-          setImageName3("");
-          setImageName4("");
-          setImageName5("");
-          setImageName6("");
-          setLichTrinh1("");
-          setLichTrinh2("");
-          setLichTrinh3("");
-          setLichTrinh4("");
-          setLichTrinh5("");
-          setLichTrinh6("");
-          setLichTrinh7("");
+          if (res && res.message === "success") {
+            setTenTour("");
+            setNgayDi("");
+            setNgayVe("");
+            setPhuongTien("");
+            setQuyMo("");
+            setGiaTour("");
+            setImageName1("");
+            setImageName2("");
+            setImageName3("");
+            setImageName4("");
+            setImageName5("");
+            setImageName6("");
+            setLichTrinh1("");
+            setLichTrinh2("");
+            setLichTrinh3("");
+            setLichTrinh4("");
+            setLichTrinh5("");
+            setLichTrinh6("");
+            setLichTrinh7("");
+          }
         });
     }
   };
@@ -440,14 +507,20 @@ export default function AddTour() {
                 <option value={item.name}>{item.name}</option>
               ))}
             </select>
-            <input
-              type="text"
+            <select
+              name="select"
+              id=""
               value={diaDiemDi}
-              name="char"
-              onChange={(e) => setDiaDiemDi(e.target.value)}
-              placeholder="TP.HCM"
-              disabled
-            />
+              onChange={(e) => {
+                setDiaDiemDi(e.target.value);
+                console.log(e.target.value);
+              }}
+            >
+              <option>Địa điểm đi</option>
+              {inVN.map((item) => (
+                <option value={item.city}>{item.city}</option>
+              ))}
+            </select>
             <select name="select" id="" value={city} onChange={handleChange3}>
               <option>Địa điểm đến</option>
               {cities.map((item) => (

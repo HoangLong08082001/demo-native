@@ -23,29 +23,75 @@ export default function AddEmployee() {
   const handleShow = () => {
     setShow(!show);
   };
-  const handleSubmit = async () => {
-    await axios
-      .post("/employees/add", {
-        TenNV,
-        cmnd,
-        Ngaysinh,
-        Sdt,
-        Email,
-        Password,
-        Position,
-      })
-      .then((res) => {
-        if (res) {
-          toast.success("Them thanh cong");
-        }
-      });
-    setTenvNV("");
-    setCMND("");
-    setNgaySinh("");
-    setSdt("");
-    setEmail("");
-    setPaswword("");
+  const checkValidate = () => {
+    if (TenNV === "") {
+      toast.warning("Vui lòng nhập đầy đủ họ tên nhân viên");
+      return false;
+    }
+    if (cmnd === "" || cmnd.length !== 12) {
+      toast.warning("Vui lòng nhập căn cước công dân nhân viên");
+      return false;
+    }
+    if (Ngaysinh === "") {
+      toast.warning("Vui lòng ngày sinh nhân viên");
+      return false;
+    }
+    if (Sdt === "") {
+      toast.warning("Vui lòng nhập số điện thoại");
+      return false;
+    }
+    if (Sdt.length !== 10) {
+      toast.warning("Vui lòng nhập đúng định dạng số điện thoại Việt Nam");
+      return false;
+    }
+    if (Email === "") {
+      toast.warning("Vui lòng nhập email nhân viên");
+      return false;
+    }
+    if (!/\S+@\S+\.\S+/.test(Email)) {
+      toast.warning("Nhập sai định dạng email");
+      return false;
+    }
+    if (Password === "") {
+      toast.warning("Vui lòng nhập password của nhân viên");
+      return false;
+    }
+    if (Position === "") {
+      toast.warning("Vui lòng chọn vị trí nhân viên");
+      return false;
+    }
+    return true;
   };
+  const handleSubmit = async () => {
+    let check = checkValidate();
+    if (check === true) {
+      await axios
+        .post("/employees/add", {
+          TenNV,
+          cmnd,
+          Ngaysinh,
+          Sdt,
+          Email,
+          Password,
+          Position,
+        })
+        .then((res) => {
+          if (res && res.message === "exists") {
+            toast.warning("Email này đã tồn tại");
+          }
+          if (res && res.message === "success") {
+            toast.success("Thêm thành công");
+            setTenvNV("");
+            setCMND("");
+            setNgaySinh("");
+            setSdt("");
+            setEmail("");
+            setPaswword("");
+          }
+        });
+    }
+  };
+
   useEffect(() => {
     axios.get("/position/list-position").then((res) => {
       console.log(res.data);
@@ -55,15 +101,16 @@ export default function AddEmployee() {
   return (
     <div className={cx("wrapper")}>
       {/* TENNV CMND NGAYSINH SDT EMAIL PASS POSTION*/}
-      <p>Nhap thong tin nhan vien</p>
+      <p>NHẬP THÔNG TIN NHÂN VIÊN</p>
       <div className={cx("form")}>
         <div className={cx("form-left")}>
           <div className={cx("form-input")}>
-            <label htmlFor="">Ten nhan vien:</label>
+            <label htmlFor="">Tên nhân viên:</label>
             <input
               type="text"
               name=""
               id=""
+              placeholder="Nhập đầy đủ họ và tên"
               value={TenNV}
               onChange={(e) => setTenvNV(e.target.value)}
             />
@@ -75,12 +122,13 @@ export default function AddEmployee() {
               type="number"
               name=""
               id=""
+              placeholder="Nhập số căn cước công dân"
               value={cmnd}
               onChange={(e) => setCMND(e.target.value)}
             />
           </div>
           <div className={cx("form-input")}>
-            <label htmlFor="">Ngay sinh:</label>
+            <label htmlFor="">Ngày sinh:</label>
             <input
               style={{ marginLeft: "50px" }}
               type="date"
@@ -91,12 +139,13 @@ export default function AddEmployee() {
             />
           </div>
           <div className={cx("form-input")}>
-            <label htmlFor="">So dien thoai:</label>
+            <label htmlFor="">Số điện thoại:</label>
             <input
               style={{ marginLeft: "20px" }}
               type="number"
               name=""
               id=""
+              placeholder="Nhập số điện thoại (VD:09x)"
               value={Sdt}
               onChange={(e) => setSdt(e.target.value)}
             />
@@ -109,6 +158,7 @@ export default function AddEmployee() {
               type="email"
               name=""
               id=""
+              placeholder="Nhập email cá nhân"
               value={Email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -120,6 +170,7 @@ export default function AddEmployee() {
                 type={show === false ? "password" : "text"}
                 name=""
                 id=""
+                placeholder="Nhập password đăng nhập"
                 value={Password}
                 onChange={(e) => setPaswword(e.target.value)}
               />
@@ -131,7 +182,7 @@ export default function AddEmployee() {
             </div>
           </div>
           <div className={cx("form-input")} style={{ display: "flex" }}>
-            <label htmlFor="">Vi tri:</label>
+            <label htmlFor="">Vị trí:</label>
             <select
               name={Position}
               id=""
@@ -156,11 +207,11 @@ export default function AddEmployee() {
           onClick={handleSubmit}
           onSubmit={handleSubmit}
         >
-          <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>THEM MOI
+          <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>THÊM MỚI
         </button>
         <Link to="/nhan-vien" className={cx("text")}>
           <button className={cx("btn-cancel")}>
-            TRO LAI <FontAwesomeIcon icon={faCancel}></FontAwesomeIcon>
+            TRỞ LẠI<FontAwesomeIcon icon={faCancel}></FontAwesomeIcon>
           </button>
         </Link>
       </div>

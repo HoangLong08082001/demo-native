@@ -103,22 +103,22 @@ export default function DetailTour() {
   return (
     <div className={cx("wrapper")}>
       <Link to="/tour" className={cx("text")}>
-        <button className={cx("btn-cancel")}>TRO LAI</button>
+        <button className={cx("btn-cancel")}>TRỞ LẠI</button>
       </Link>
-      <p className={cx("title")}>THONG TIN {tenTour}</p>
+      <p className={cx("title")}>THÔNG TIN {tenTour}</p>
       <div className={cx("form")}>
         <div className={cx("form-label")}>
-          <label>TEN TOUR: </label>
-          <label>DIA DIEM DI: </label>
-          <label>DIA DIEM VE: </label>
-          <label>NGAY DI: </label>
-          <label>NGAY VE: </label>
-          <label>PHUONG TIEN: </label>
-          <label>LOAI TOUR: </label>
-          <label>KHU VUC: </label>
-          <label>QUY MO: </label>
-          <label>GIA TOUR: </label>
-          <label>GIAM GIA: </label>
+          <label>TÊN TOUR: </label>
+          <label>ĐỊA ĐIỂM ĐI: </label>
+          <label>ĐỊA ĐIỂM ĐẾN: </label>
+          <label>NGÀY ĐI: </label>
+          <label>NGÀY VỀ: </label>
+          <label>PHƯƠNG TIỆN: </label>
+          <label>LOẠI TOUR: </label>
+          <label>KHU VỰC: </label>
+          <label>QUY MÔ: </label>
+          <label>GIÁ TOUR: </label>
+          <label>GIẢM GIÁ: </label>
         </div>
         <div className={cx("form-info")}>
           <label>{tenTour}</label>
@@ -130,11 +130,16 @@ export default function DetailTour() {
           <label>{loaiTour}</label>
           <label>{khuVuc}</label>
           <label>{quyMo} nguoi</label>
-          <label>{giaTour}</label>
+          <label>
+            {new Intl.NumberFormat("vi-VN", {
+              style: "currency",
+              currency: "VND",
+            }).format(giaTour)}
+          </label>
           <label>{giamGia}</label>
         </div>
       </div>
-      <p className={cx("img-title")}>DANH SACH HINH ANH</p>
+      <p className={cx("img-title")}>DANH SÁCH HÌNH ẢNH</p>
       <div className={cx("list-img")}>
         <img
           className={cx("img")}
@@ -157,7 +162,7 @@ export default function DetailTour() {
           src={`data:image/jpeg;base64,${base64String4}`}
         />
       </div>{" "}
-      <p className={cx("img-title")}>DANH SACH LICH TRINH</p>
+      <p className={cx("img-title")}>DANH DÁCH LỊCH TRÌNH</p>
       {arrayTrip.map((trip, index) => {
         if (trip !== null) {
           return (

@@ -25,6 +25,63 @@ import { toast } from "react-toastify";
 import { Link, useLocation, useParams } from "react-router-dom";
 const cx = classNames.bind(style);
 export default function UpdateTour() {
+  const inVN = [
+    { city: "Ha Noi" },
+    { city: "Sapa" },
+    { city: "Vinh Ha Long" },
+    { city: " Hà Giang" },
+    { city: "Cao Bằng" },
+    { city: "Lào Cai" },
+    { city: "Bắc Kạn" },
+    { city: "Lạng Sơn" },
+    { city: "Tuyên Quang" },
+    { city: "Yên Bái" },
+    { city: "Thái Nguyên" },
+    { city: "Phú Thọ" },
+    { city: "Bắc Giang" },
+    { city: "Lai Châu" },
+    { city: "Điện Biên" },
+    { city: "Sơn La" },
+    { city: "Hòa Bình" },
+    { city: "Quảng Ninh" },
+    { city: "Thanh Hoá" },
+    { city: "Nghệ An" },
+    { city: "Hà Tĩnh" },
+    { city: "Quảng Bình" },
+    { city: "Quảng Trị" },
+    { city: "Thừa Thiên-Huế" },
+    { city: " Kon Tum" },
+    { city: "Gia Lai" },
+    { city: "Đắc Lắc" },
+    { city: "Đắc Nông" },
+    { city: "Lâm Đồng" },
+    { city: "Đà Nẵng" },
+    { city: "Quảng Nam" },
+    { city: "Quảng Ngãi" },
+    { city: "Bình Định" },
+    { city: "Phú Yên" },
+    { city: "Khánh Hoà" },
+    { city: "Ninh Thuận" },
+    { city: "Bình Thuận" },
+    { city: "Bình Phước" },
+    { city: "Bình Dương" },
+    { city: "Đồng Nai" },
+    { city: "Tây Ninh" },
+    { city: "Bà Rịa Vũng Tàu" },
+    { city: "TP.HCM" },
+    { city: "Long An" },
+    { city: "Đồng Tháp" },
+    { city: "Tiền Giang" },
+    { city: "An Giang" },
+    { city: "Bến Tre" },
+    { city: "Vĩnh Long" },
+    { city: "Trà Vinh" },
+    { city: "Hậu Giang" },
+    { city: "Kiên Giang" },
+    { city: "Sóc Trăng" },
+    { city: "Bạc Liêu" },
+    { city: "Cà Mau" },
+  ];
   const countries = [
     {
       name: "NN",
@@ -163,9 +220,12 @@ export default function UpdateTour() {
   const [ngayVe, setNgayVe] = useState("");
   const [phuongTien, setPhuongTien] = useState("");
   const [quyMo, setQuyMo] = useState("");
-  const [diaDiemDi, setDiaDiemDi] = useState("TP.HCM");
+  const [diaDiemDi, setDiaDiemDi] = useState("");
   const [giaTour, setGiaTour] = useState("");
-  const [giamGia, setGiamGia] = useState("");
+  const [giamgia, setGiamGia] = useState([]);
+  const [giamgiathem, setGiamGiaThem] = useState([]);
+  const [giam, setGiam] = useState(0);
+  const [giamthem, setGiamthem] = useState(0);
   const [hinhAnh1, setHinhAnh1] = useState(null);
   const [hinhAnh2, setHinhAnh2] = useState(null);
   const [hinhAnh3, setHinhAnh3] = useState(null);
@@ -181,7 +241,23 @@ export default function UpdateTour() {
   const [lichTrinh7, setLichTrinh7] = useState("");
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
-
+  
+  const fetchGiamGia = async () => {
+    await axios.get("/voucher/get-voucher").then((res) => {
+      if (res && res.message === "success") {
+        setGiamGia(res.data);
+        console.log("giamgia ", res.data);
+      }
+    });
+  };
+  const fetchGiamGiaThem = async () => {
+    await axios.get("/voucher/get-more-voucher").then((res) => {
+      if (res && res.message === "success") {
+        setGiamGiaThem(res.data);
+        console.log("them ", res.data);
+      }
+    });
+  };
   const handleChange2 = (event) => {
     setState(event.target.value);
     setCities(states.find((state) => state.name === event.target.value).cities);
@@ -200,7 +276,6 @@ export default function UpdateTour() {
     let fd = new FormData();
     fd.append("char", TenTour);
     fd.append("char", giaTour);
-    fd.append("char", giamGia);
     fd.append("char", diaDiemDi);
     fd.append("char", id);
     fd.append("number", quyMo);
@@ -231,6 +306,10 @@ export default function UpdateTour() {
       })
       .catch((err) => console.log(err));
   };
+  const handleChangeGiamGiaThem = (e) => {
+    setGiamthem(e);
+    console.log(e);
+  };
   const SetItemUpdate = () => {
     setId(location.state.MaTour);
     setTenTour(location.state.TenTour);
@@ -252,6 +331,8 @@ export default function UpdateTour() {
   };
   useEffect(() => {
     SetItemUpdate();
+    fetchGiamGia();
+    fetchGiamGiaThem();
   }, []);
   let ngaydi = new Date(ngayDi).toLocaleDateString("en-US");
 
@@ -269,13 +350,12 @@ export default function UpdateTour() {
       <div className={cx("form")}>
         <div className={cx("left")}>
           <div className={cx("list-label")}>
-            <label htmlFor="">Ten tour</label>
-            <label htmlFor="">Ngay di</label>
-            <label htmlFor="">Ngay ve</label>
-            <label htmlFor="">Quy mo</label>
-            <label htmlFor="">Phuong tien</label>
-            <label htmlFor="">Gia tour</label>
-            <label htmlFor="">Giam gia</label>
+            <label htmlFor="">Tên tour</label>
+            <label htmlFor="">Ngày đi</label>
+            <label htmlFor="">Ngày về</label>
+            <label htmlFor="">Quy mô</label>
+            <label htmlFor="">Phương tiện</label>
+            <label htmlFor="">Giá tour</label>
           </div>
           <div className={cx("list-input")}>
             <input
@@ -299,13 +379,13 @@ export default function UpdateTour() {
             <DatePicker
               dateFormat="yyyy-MM-dd"
               name="date"
-              onChange={(date)=>setNgayDi(date)}
+              onChange={(date) => setNgayDi(date)}
               value={new Date(ngayDi).toLocaleDateString("sv-SE")}
             />
             <DatePicker
               dateFormat="yyyy-MM-dd"
               name="date"
-              onChange={(date)=>setNgayVe(date)}
+              onChange={(date) => setNgayVe(date)}
               value={new Date(ngayVe).toLocaleDateString("sv-SE")}
             />
             <input
@@ -334,20 +414,16 @@ export default function UpdateTour() {
               value={giaTour}
               onChange={(e) => setGiaTour(e.target.value)}
             />
-            <input
-              name="char"
-              type="text"
-              value={giamGia}
-              onChange={(e) => setGiamGia(e.target.value)}
-            />
           </div>
         </div>
         <div className={cx("right")}>
           <div className={cx("list-label")}>
-            <label htmlFor="">Loai tour</label>
-            <label htmlFor="">Khu vuc</label>
-            <label htmlFor="">Dia diem di</label>
-            <label htmlFor="">Dia diem den</label>
+            <label htmlFor="">Loại tour</label>
+            <label htmlFor="">Khu vực</label>
+            <label htmlFor="">Địa điểm đi</label>
+            <label htmlFor="">Địa điểm đến</label>
+            <label htmlFor="">Giảm giá </label>
+            <label htmlFor="">Giảm giá thêm</label>
           </div>
           <div className={cx("list-input")}>
             <select name="select" id="" value={country} onChange={handleChange}>
@@ -363,18 +439,36 @@ export default function UpdateTour() {
                 <option value={item.name}>{item.name}</option>
               ))}
             </select>
-            <input
-              type="text"
+            <select
+              name="select"
+              id=""
               value={diaDiemDi}
-              name="char"
               onChange={(e) => setDiaDiemDi(e.target.value)}
-              placeholder="TP.HCM"
-              disabled
-            />
+            >
+              <option>{diaDiemDi ? diaDiemDi : "Dia Diem Den"}</option>
+              {inVN.map((item, index) => (
+                <option key={index} value={item.city}>
+                  {item.city}
+                </option>
+              ))}
+            </select>
             <select name="select" id="" value={city} onChange={handleChange3}>
               <option>{city ? city : "Dia Diem Den"}</option>
               {cities.map((item) => (
                 <option value={item}>{item}</option>
+              ))}
+            </select>
+            <select
+              name="select"
+              id=""
+              value={giamthem}
+              onChange={(e) => handleChangeGiamGiaThem(e.target.value)}
+            >
+              <option value={0}> Giảm giá thêm</option>
+              {giamgiathem.map((item) => (
+                <option value={item.id_giamgiathem}>
+                  {item.ten_dotgiamgiathem}
+                </option>
               ))}
             </select>
           </div>

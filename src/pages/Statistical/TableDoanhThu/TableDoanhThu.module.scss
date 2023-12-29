@@ -1,25 +1,37 @@
 .wrapper {
-    overflow-y: scroll;
-    max-height: 600px;
-    table {
-      tr {
-        th {
-          color: white;
-          font-weight: 900;
-          font-family: Arial, Helvetica, sans-serif;
-        }
+  overflow-y: scroll;
+  max-height: 600px;
+  table {
+    tr {
+      th {
+        color: white;
+        font-weight: 900;
+        font-family: Arial, Helvetica, sans-serif;
       }
-      tr {
-        td {
-          text-align: center;
-        }
+    }
+    tr {
+      td {
+        text-align: center;
       }
     }
   }
-  .sum {
-    font-weight: 900;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    color: red;
+}
+.sum {
+  font-weight: 900;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: red;
+}
+.btn-excel {
+  background-color: #1d6f42;
+  margin: 10px 0px;
+  padding: 10px 25px;
+  border: none;
+  color: white;
+  font-weight: 900;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.5;
   }
-  
+}

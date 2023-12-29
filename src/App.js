@@ -25,7 +25,7 @@ function App() {
             {publicRoutes.map((route, index) => {
               const Layout = DefaultLayout;
               const LayoutAdmin = DefaultAdmin;
-              
+
               const LayoutBill =
                 BillLayout; /* The line `const Page = route.component;` is assigning
               the value of `route.component` to the variable `Page`.
@@ -35,9 +35,9 @@ function App() {
               const Page = route.component;
               if (index >= 0 && index <= 5) {
                 return (
-                  <Route key={index} path={route.path} element={ <Page />} />
+                  <Route key={index} path={route.path} element={<Page />} />
                 );
-              } else if (index > 12) {
+              } else if (index > 13) {
                 return (
                   <Route
                     key={index}

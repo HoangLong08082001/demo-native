@@ -12,7 +12,7 @@ export default function Statistical() {
   const options = [
     { id: 1, name: "Doanh thu", component: TableDoanhThu },
     { id: 2, name: "Số lượng tour", component: TableTour },
-    { id: 3, name: "Số lượng đợt giảm giá", component: TableDotGiamGia },
+    { id: 3, name: "Số lượng khách hàng đặt tour", component: TableDotGiamGia },
   ];
   let Table = options.component;
   const [tab, setTab] = useState("");

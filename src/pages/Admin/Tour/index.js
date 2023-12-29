@@ -25,6 +25,7 @@ export default function Tour() {
   const [api, setApi] = useState(null);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const [tab, setTab] = useState(1);
   const fetchListTour = async () => {
     let response = await axios.get("/tourserver/getall-tour");
     if (response.message === "success") {
@@ -35,7 +36,7 @@ export default function Tour() {
   useEffect(() => {
     fetchListTour();
   }, []);
-  
+
   const { user } = useContext(UserContext);
   const handleChange = (id) => {
     setCheck(!check);
@@ -126,7 +127,12 @@ export default function Tour() {
     });
   };
   if (user && user.isAuthenticated === true) {
-    if (user.accout.position === "DEV" || user.accout.position === "DUYET PHIEU TOUR" || user.accout.position === "KẾ TOÁN") {
+    if (
+      user.accout.position === "DEV" ||
+      user.accout.position === "DUYET PHIEU TOUR" ||
+      user.accout.position === "KẾ TOÁN" ||
+      user.accout.position === "QUẢN LÝ TOUR"
+    ) {
       return (
         <div className={cx("wrapper")}>
           <Link to="/them-tour">
@@ -148,111 +154,250 @@ export default function Tour() {
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
-
-          <div className={cx("form-table")}>
-            {api ? (
-              <table border={1} cellSpacing={0}>
-                <tr>
-                  <th>STT</th>
-                  <th>Mã tour</th>
-                  <th>Địa điểm đi</th>
-                  <th>Địa điểm đến</th>
-                  <th>Khu vực</th>
-                  <th>Ngày đi</th>
-                  <th>Ngày về</th>
-                  <th>Giá tour</th>
-                  <th>Loại tour</th>
-                  <th>Action</th>
-                </tr>
-                {
-                  /* `listTour` is a state variable that stores an array of tour objects. It is used to
-              display the list of tours in the table on the UI. */
-                  listTour
-                    .filter((list) => {
-                      return search.toUpperCase() === "" ||
-                        search.toLowerCase() === ""
-                        ? list
-                        : list.LoaiTour.toUpperCase().includes(search) ||
-                            list.LoaiTour.toLowerCase().includes(search) ||
-                            list.LoaiTour.includes(search) ||
-                            list.DiaDiemDen.toLowerCase().includes(search) ||
-                            list.DiaDiemDen.toUpperCase().includes(search) ||
-                            list.DiaDiemDen.includes(search) ||
-                            list.DiaDiemDi.toLowerCase().includes(search) ||
-                            list.DiaDiemDi.toUpperCase().includes(search) ||
-                            list.DiaDiemDi.includes(search) ||
-                            list.vungMien.toLowerCase().includes(search) ||
-                            list.vungMien.toUpperCase().includes(search) ||
-                            list.vungMien.includes(search);
-                    })
-                    .map((list, index) => {
-                      let ngaydi = new Date(list.NgayDi).toLocaleDateString(
-                        "en-US"
-                      );
-
-                      let ngayve = new Date(list.NgayVe).toLocaleDateString(
-                        "en-US"
-                      );
-                      return (
-                        <tr key={index} className={cx("tr")}>
-                          <td>{index + 1}</td>
-                          <td>
-                            {list.LoaiTour}
-                            {list.MaTour}
-                          </td>
-                          <td>{list.DiaDiemDi}</td>
-                          <td>{list.DiaDiemDen}</td>
-                          <td>{list.vungMien}</td>
-                          <td>{ngaydi}</td>
-                          <td>{ngayve}</td>
-                          <td>{list.GiaTour}</td>
-                          <td>{list.LoaiTour}</td>
-                          <td>
-                            <button
-                              className={cx("btnInfo")}
-                              onClick={() =>
-                                navigate("/DetailTour", { state: list })
-                              }
-                            >
-                              <FontAwesomeIcon
-                                className={cx("icon-info")}
-                                icon={faInfo}
-                              ></FontAwesomeIcon>
-                            </button>
-                            <button
-                              className={cx("btnUpdate")}
-                              onClick={() =>
-                                navigate(
-                                  `/UpdateTour/${list.TenTour}/${list.MaTour}`,
-                                  { state: list }
-                                )
-                              }
-                            >
-                              <FontAwesomeIcon
-                                className={cx("icon-pen")}
-                                icon={faPen}
-                              ></FontAwesomeIcon>
-                            </button>
-                            
-                          </td>
-                        </tr>
-                      );
-                    })
-                }
-              </table>
-            ) : (
-              <>
-                <ReactLoading
-                  type={"spin"}
-                  color="#808080"
-                  height={"5%"}
-                  width={"5%"}
-                  className={cx("loading")}
-                />
-                <h2>Loading data...</h2>
-              </>
-            )}
+          <div className={cx("tab-pannel")}>
+            <button
+              onClick={() => setTab(1)}
+              className={tab === 1 ? cx("tab-active") : cx("tab")}
+            >
+              Tour mới
+            </button>
+            <button
+              onClick={() => setTab(2)}
+              className={tab === 2 ? cx("tab-active") : cx("tab")}
+              style={{ marginLeft: "10px" }}
+            >
+              Tour đã hết hạn
+            </button>
           </div>
+          {tab === 1 && (
+            <div className={cx("form-table")}>
+              {api ? (
+                <table border={1} cellSpacing={0}>
+                  <tr>
+                    <th>STT</th>
+                    <th>Mã tour</th>
+                    <th>Địa điểm đi</th>
+                    <th>Địa điểm đến</th>
+                    <th>Khu vực</th>
+                    <th>Ngày đi</th>
+                    <th>Ngày về</th>
+                    <th>Giá tour</th>
+                    <th>Loại tour</th>
+                    <th>Action</th>
+                  </tr>
+                  {
+                    /* `listTour` is a state variable that stores an array of tour objects. It is used to
+              display the list of tours in the table on the UI. */
+                    listTour
+                      .filter((list) => {
+                        return search.toUpperCase() === "" ||
+                          search.toLowerCase() === ""
+                          ? list
+                          : list.LoaiTour.toUpperCase().includes(search) ||
+                              list.LoaiTour.toLowerCase().includes(search) ||
+                              list.LoaiTour.includes(search) ||
+                              list.DiaDiemDen.toLowerCase().includes(search) ||
+                              list.DiaDiemDen.toUpperCase().includes(search) ||
+                              list.DiaDiemDen.includes(search) ||
+                              list.DiaDiemDi.toLowerCase().includes(search) ||
+                              list.DiaDiemDi.toUpperCase().includes(search) ||
+                              list.DiaDiemDi.includes(search) ||
+                              list.vungMien.toLowerCase().includes(search) ||
+                              list.vungMien.toUpperCase().includes(search) ||
+                              list.vungMien.includes(search);
+                      })
+                      .map((list, index) => {
+                        let ngaydi = new Date(list.NgayDi).toLocaleDateString(
+                          "en-US"
+                        );
+                        let conditionNgayVe = new Date(list.NgayVe);
+                        let conditionToday = new Date();
+                        let homnay = new Date().toLocaleDateString("en-US");
+                        let ngayve = new Date(list.NgayVe).toLocaleDateString(
+                          "en-US"
+                        );
+                        if (conditionNgayVe >= conditionToday) {
+                          return (
+                            <tr key={index} className={cx("tr")}>
+                              <td>{index + 1}</td>
+                              <td>
+                                {list.LoaiTour}
+                                {list.MaTour}
+                              </td>
+                              <td>{list.DiaDiemDi}</td>
+                              <td>{list.DiaDiemDen}</td>
+                              <td>{list.vungMien}</td>
+                              <td>{ngaydi}</td>
+                              <td>{ngayve}</td>
+                              <td>
+                                {new Intl.NumberFormat("vi-VN", {
+                                  style: "currency",
+                                  currency: "VND",
+                                }).format(list.GiaTour)}
+                              </td>
+                              <td>{list.LoaiTour}</td>
+                              <td>
+                                <button
+                                  className={cx("btnInfo")}
+                                  onClick={() =>
+                                    navigate("/chi-tiet-tour", { state: list })
+                                  }
+                                >
+                                  <FontAwesomeIcon
+                                    className={cx("icon-info")}
+                                    icon={faInfo}
+                                  ></FontAwesomeIcon>
+                                </button>
+                                <button
+                                  className={cx("btnUpdate")}
+                                  onClick={() =>
+                                    navigate(
+                                      `/sua-tour/${list.TenTour}/${list.MaTour}`,
+                                      { state: list }
+                                    )
+                                  }
+                                >
+                                  <FontAwesomeIcon
+                                    className={cx("icon-pen")}
+                                    icon={faPen}
+                                  ></FontAwesomeIcon>
+                                </button>
+                              </td>
+                            </tr>
+                          );
+                        }
+                      })
+                  }
+                </table>
+              ) : (
+                <>
+                  <ReactLoading
+                    type={"spin"}
+                    color="#808080"
+                    height={"5%"}
+                    width={"5%"}
+                    className={cx("loading")}
+                  />
+                  <h2>Loading data...</h2>
+                </>
+              )}
+            </div>
+          )}
+          {tab === 2 && (
+            <div className={cx("form-table")}>
+              {api ? (
+                <table border={1} cellSpacing={0}>
+                  <tr>
+                    <th>STT</th>
+                    <th>Mã tour</th>
+                    <th>Địa điểm đi</th>
+                    <th>Địa điểm đến</th>
+                    <th>Khu vực</th>
+                    <th>Ngày đi</th>
+                    <th>Ngày về</th>
+                    <th>Giá tour</th>
+                    <th>Loại tour</th>
+                    <th>Action</th>
+                  </tr>
+                  {
+                    /* `listTour` is a state variable that stores an array of tour objects. It is used to
+              display the list of tours in the table on the UI. */
+                    listTour
+                      .filter((list) => {
+                        return search.toUpperCase() === "" ||
+                          search.toLowerCase() === ""
+                          ? list
+                          : list.LoaiTour.toUpperCase().includes(search) ||
+                              list.LoaiTour.toLowerCase().includes(search) ||
+                              list.LoaiTour.includes(search) ||
+                              list.DiaDiemDen.toLowerCase().includes(search) ||
+                              list.DiaDiemDen.toUpperCase().includes(search) ||
+                              list.DiaDiemDen.includes(search) ||
+                              list.DiaDiemDi.toLowerCase().includes(search) ||
+                              list.DiaDiemDi.toUpperCase().includes(search) ||
+                              list.DiaDiemDi.includes(search) ||
+                              list.vungMien.toLowerCase().includes(search) ||
+                              list.vungMien.toUpperCase().includes(search) ||
+                              list.vungMien.includes(search);
+                      })
+                      .map((list, index) => {
+                        let ngaydi = new Date(list.NgayDi).toLocaleDateString(
+                          "en-US"
+                        );
+                        let conditionNgayDi = new Date(list.NgayDi);
+                        let conditionNgayVe = new Date(list.NgayVe);
+                        let conditionToday = new Date();
+                        let homnay = new Date();
+                        let ngayve = new Date(list.NgayVe).toLocaleDateString(
+                          "en-US"
+                        );
+                        if (conditionNgayVe < conditionToday) {
+                          return (
+                            <tr key={index} className={cx("tr")}>
+                              <td>{index + 1}</td>
+                              <td>
+                                {list.LoaiTour}
+                                {list.MaTour}
+                              </td>
+                              <td>{list.DiaDiemDi}</td>
+                              <td>{list.DiaDiemDen}</td>
+                              <td>{list.vungMien}</td>
+                              <td>{ngaydi}</td>
+                              <td>{ngayve}</td>
+                              <td>
+                                {new Intl.NumberFormat("vi-VN", {
+                                  style: "currency",
+                                  currency: "VND",
+                                }).format(list.GiaTour)}
+                              </td>
+                              <td>{list.LoaiTour}</td>
+                              <td>
+                                <button
+                                  className={cx("btn-Info")}
+                                  onClick={() =>
+                                    navigate("/chi-tiet-tour", { state: list })
+                                  }
+                                >
+                                  <FontAwesomeIcon
+                                    className={cx("icon-info")}
+                                    icon={faInfo}
+                                  ></FontAwesomeIcon>
+                                </button>
+                                {/* <button
+                                  className={cx("btnUpdate")}
+                                  onClick={() =>
+                                    navigate(
+                                      `/sua-tour/${list.TenTour}/${list.MaTour}`,
+                                      { state: list }
+                                    )
+                                  }
+                                >
+                                  <FontAwesomeIcon
+                                    className={cx("icon-pen")}
+                                    icon={faPen}
+                                  ></FontAwesomeIcon>
+                                </button> */}
+                              </td>
+                            </tr>
+                          );
+                        }
+                      })
+                  }
+                </table>
+              ) : (
+                <>
+                  <ReactLoading
+                    type={"spin"}
+                    color="#808080"
+                    height={"5%"}
+                    width={"5%"}
+                    className={cx("loading")}
+                  />
+                  <h2>Loading data...</h2>
+                </>
+              )}
+            </div>
+          )}
         </div>
       );
     }

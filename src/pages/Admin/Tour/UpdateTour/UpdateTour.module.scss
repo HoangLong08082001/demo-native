@@ -1,239 +1,239 @@
 .wrapper {
-    margin-top: 20px;
-    padding: 5px;
+  margin-top: 20px;
+  padding: 5px;
+  width: 100%;
+  height: 790px;
+  overflow-y: scroll;
+  .title {
+    font-size: 25px;
+    font-weight: 900;
+    color: white;
+    background-color: rgb(13, 163, 205);
+    text-align: center;
+    padding: 10px;
+  }
+  .form {
     width: 100%;
-    height: 766px;
-    overflow-y: scroll;
-    .title {
-      font-size: 25px;
-      font-weight: 900;
-      color: white;
-      background-color: rgb(13, 163, 205);
-      text-align: center;
-      padding: 10px;
-    }
-    .form {
-      width: 100%;
+    display: flex;
+    .left {
       display: flex;
-      .left {
-        display: flex;
-        width: 100%;
-        .list-label {
-          display: flex;
-          flex-direction: column;
-          label {
-            margin-left: 10px;
-            margin-top: 23px;
-            font-size: 20px;
-            font-weight: 800;
-            color: black;
-          }
-        }
-        .list-input {
-          display: flex;
-          flex-direction: column;
-          input {
-            font-size: 15px;
-            margin-top: 15px;
-            padding: 10px;
-            margin-left: 90px;
-            width: 150%;
-          }
-          select {
-            width: 150%;
-            margin-left: 90px;
-          }
-        }
-      }
-      .right {
-        display: flex;
-        width: 100%;
-        .list-label {
-          margin-left: 10px;
-          display: flex;
-          flex-direction: column;
-          label {
-            margin-top: 23px;
-            font-size: 20px;
-            font-weight: 800;
-            color: black;
-          }
-        }
-        .list-input {
-          display: flex;
-          flex-direction: column;
-          input {
-            margin-top: 15px;
-            font-size: 15px;
-            padding: 10px;
-            margin-left: 80px;
-            width: 150%;
-          }
-          select {
-            width: 150%;
-            margin-left: 80px;
-          }
-        }
-      }
-    }
-    .form-down {
       width: 100%;
-      display: flex;
-      .left {
+      .list-label {
         display: flex;
-        width: 100%;
-        .list-label {
-          display: flex;
-          flex-direction: column;
-          label {
-            margin-left: 10px;
-            margin-top: 23px;
-            font-size: 20px;
-            font-weight: 800;
-            color: black;
-          }
-        }
-        .list-input {
-          display: flex;
-          flex-direction: column;
-          input {
-            font-size: 15px;
-            margin-top: 15px;
-            padding: 10px;
-            margin-left: 90px;
-            width: 101%;
-          }
-          select {
-            width: 150%;
-            margin-left: 90px;
-          }
-          .form-upload {
-            border: 1px solid black;
-            display: flex;
-            justify-content: space-between;
-            height: 10%;
-            width: 300px;
-            margin-left: 90px;
-            margin-top: 20px;
-            border-radius: 5px;
-            p {
-              font-weight: 800;
-              color: rgb(162, 162, 162);
-              margin-top: 5px;
-              margin-left: 20px;
-            }
-            .label {
-              cursor: pointer;
-              box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
-                rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
-                rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
-                rgba(0, 0, 0, 0.06) 0px 2px 1px,
-                rgba(153, 153, 153, 0.09) 0px 4px 2px,
-                rgba(131, 131, 131, 0.09) 0px 8px 4px,
-                rgba(145, 145, 145, 0.09) 0px 16px 8px,
-                rgba(137, 137, 137, 0.09) 0px 32px 16px;
-              padding-bottom: 15px;
-              padding-top: 5px;
-              padding-left: 10px;
-              padding-right: 10px;
-              background-color: rgb(13, 163, 205);
-              label {
-                cursor: pointer;
-                color: white;
-              }
-              transition: 0.1s linear;
-              &:hover {
-                background-color: rgb(71, 102, 120);
-                transition: 0.1s linear;
-                box-shadow: none;
-              }
-            }
-          }
-        }
-      }
-      .right {
-        display: flex;
-        width: 100%;
-        .list-label {
-          margin-left: 10px;
-          display: flex;
-          flex-direction: column;
-          label {
-            margin-top: 23px;
-            font-size: 20px;
-            font-weight: 800;
-            color: black;
-          }
-        }
-        .list-input {
-          display: flex;
-          flex-direction: column;
-          input {
-            margin-top: 15px;
-            font-size: 15px;
-            padding: 10px;
-            margin-left: 100px;
-            width: 100%;
-          }
-          select {
-            width: 150%;
-            margin-left: 80px;
-          }
-        }
-      }
-    }
-    .list-tourist {
-      width: 100%;
-      .title {
-        text-align: center;
-        font-size: 30px;
-        padding: 10px;
-        font-weight: 900;
-        color: white;
-        background-color: rgb(13, 163, 205);
-      }
-      .form-text {
-        margin-top: 20px;
+        flex-direction: column;
         label {
+          margin-left: 10px;
+          margin-top: 23px;
           font-size: 20px;
           font-weight: 800;
           color: black;
         }
       }
+      .list-input {
+        display: flex;
+        flex-direction: column;
+        input {
+          font-size: 15px;
+          margin-top: 15px;
+          padding: 10px;
+          margin-left: 90px;
+          width: 150%;
+        }
+        select {
+          width: 150%;
+          margin-left: 90px;
+        }
+      }
+    }
+    .right {
+      display: flex;
+      width: 100%;
+      .list-label {
+        margin-left: 10px;
+        display: flex;
+        flex-direction: column;
+        label {
+          margin-top: 23px;
+          font-size: 20px;
+          font-weight: 800;
+          color: black;
+        }
+      }
+      .list-input {
+        display: flex;
+        flex-direction: column;
+        input {
+          margin-top: 15px;
+          font-size: 15px;
+          padding: 10px;
+          margin-left: 60px;
+          width: 120%;
+        }
+        select {
+          font-size: 14px;
+          width: 120%;
+          margin-left: 60px;
+        }
+      }
+    }
+  }
+  .form-down {
+    width: 100%;
+    display: flex;
+    .left {
+      display: flex;
+      width: 100%;
+      .list-label {
+        display: flex;
+        flex-direction: column;
+        label {
+          margin-left: 10px;
+          margin-top: 23px;
+          font-size: 20px;
+          font-weight: 800;
+          color: black;
+        }
+      }
+      .list-input {
+        display: flex;
+        flex-direction: column;
+        input {
+          font-size: 15px;
+          margin-top: 15px;
+          padding: 10px;
+          margin-left: 90px;
+          width: 101%;
+        }
+        select {
+          width: 50%;
+          margin-left: 90px;
+        }
+        .form-upload {
+          border: 1px solid black;
+          display: flex;
+          justify-content: space-between;
+          height: 10%;
+          width: 300px;
+          margin-left: 90px;
+          margin-top: 20px;
+          border-radius: 5px;
+          p {
+            font-weight: 800;
+            color: rgb(162, 162, 162);
+            margin-top: 5px;
+            margin-left: 20px;
+          }
+          .label {
+            cursor: pointer;
+            box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+              rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+              rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+              rgba(0, 0, 0, 0.06) 0px 2px 1px,
+              rgba(153, 153, 153, 0.09) 0px 4px 2px,
+              rgba(131, 131, 131, 0.09) 0px 8px 4px,
+              rgba(145, 145, 145, 0.09) 0px 16px 8px,
+              rgba(137, 137, 137, 0.09) 0px 32px 16px;
+            padding-bottom: 15px;
+            padding-top: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            background-color: rgb(13, 163, 205);
+            label {
+              cursor: pointer;
+              color: white;
+            }
+            transition: 0.1s linear;
+            &:hover {
+              background-color: rgb(71, 102, 120);
+              transition: 0.1s linear;
+              box-shadow: none;
+            }
+          }
+        }
+      }
+    }
+    .right {
+      display: flex;
+      width: 100%;
+      .list-label {
+        margin-left: 10px;
+        display: flex;
+        flex-direction: column;
+        label {
+          margin-top: 23px;
+          font-size: 20px;
+          font-weight: 800;
+          color: black;
+        }
+      }
+      .list-input {
+        display: flex;
+        flex-direction: column;
+        input {
+          margin-top: 15px;
+          font-size: 15px;
+          padding: 10px;
+          margin-left: 100px;
+          width: 100%;
+        }
+        select {
+          width: 20px;
+          margin-left: 80px;
+        }
+      }
+    }
+  }
+  .list-tourist {
+    width: 100%;
+    .title {
+      text-align: center;
+      font-size: 30px;
+      padding: 10px;
+      font-weight: 900;
+      color: white;
+      background-color: rgb(13, 163, 205);
+    }
+    .form-text {
+      margin-top: 20px;
+      label {
+        font-size: 20px;
+        font-weight: 800;
+        color: black;
+      }
+    }
+  }
+}
+.btn-submit {
+  .btn-cancel {
+    cursor: pointer;
+    border: none;
+    padding: 20px 45px;
+    background-color: #ff0e0e;
+    color: white;
+    font-weight: 900;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.5;
     }
   }
   .btn-submit {
-    .btn-cancel {
-      cursor: pointer;
-      border: none;
-      padding: 20px 45px;
-      background-color: #ff0e0e;
-      color: white;
-      font-weight: 900;
-      text-decoration: none;
-  
-      &:hover {
-        opacity: 0.5;
-      }
-    }
-    .btn-submit {
-      cursor: pointer;
-      border: none;
-      color: white;
-      font-weight: 900;
-      background-color: #0000ff;
-      margin-left: 10px;
-      padding: 20px 45px;
-      &:hover {
-        opacity: 0.5;
-      }
+    cursor: pointer;
+    border: none;
+    color: white;
+    font-weight: 900;
+    background-color: #0000ff;
+    margin-left: 10px;
+    padding: 20px 45px;
+    &:hover {
+      opacity: 0.5;
     }
   }
-  @media only screen and (max-width: 1024px) {
-    .wrapper {
-      .form {
-        display: block;
-      }
+}
+@media only screen and (max-width: 1024px) {
+  .wrapper {
+    .form {
+      display: block;
     }
   }
-  
+}

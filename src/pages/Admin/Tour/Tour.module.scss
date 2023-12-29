@@ -22,7 +22,7 @@
     color: #828282;
   }
   margin-top: 5px;
-  height: 660px;
+  height: 620px;
   overflow-y: scroll;
   table {
     border-collapse: collapse;
@@ -45,21 +45,31 @@
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       }
       td {
-        button {
+        .btnInfo {
           cursor: pointer;
           border-radius: 5px;
           border: none;
           width: 30%;
           margin-left: 5px;
           padding: 10px;
-        }
-        .btnInfo {
           background-color: #5cb85c;
         }
         .btnUpdate {
+          cursor: pointer;
+          border-radius: 5px;
+          border: none;
+          width: 30%;
+          margin-left: 5px;
+          padding: 10px;
           background-color: #0000ff;
         }
         .btnTrash {
+          cursor: pointer;
+          border-radius: 5px;
+          border: none;
+          width: 30%;
+          margin-left: 5px;
+          padding: 10px;
           background-color: #ff0000;
         }
       }
@@ -118,4 +128,40 @@
     opacity: 0.5;
     box-shadow: none;
   }
+}
+.tab-pannel {
+  padding: 10px 0px;
+  button {
+    cursor: pointer;
+    padding: 10px;
+    font-size: 20px;
+  }
+  .tab {
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-bottom: none;
+  }
+  .tab-active {
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-bottom: 5px solid rgb(0, 174, 255);
+  }
+}
+.btn-Info {
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  margin-left: 5px;
+  padding: 10px 20px;
+  background-color: #5cb85c;
 }

@@ -17,48 +17,60 @@ export default function AddCustommer() {
   const [Sdt, setSdt] = useState("");
   const [listCustommer, setListCustommer] = useState([]);
   const [listTour, setListTour] = useState([]);
+  const checkValidate = () => {
+    if (TenKH === "") {
+      toast.warning("Vui lòng nhập đầy đủ họ và tên khách hàng");
+      return false;
+    }
+    if (CMND === "" || CMND.length !== 12) {
+      toast.warning("Vui lòng nhập số căn cước công dân khách hàng");
+      return false;
+    }
+    if (DiaChi === "") {
+      toast.warning("Vui lòng nhập địa chỉ khách hàng");
+      return false;
+    }
+    if (ngaySinh === "") {
+      toast.warning("Vui lòng chọn ngày sinh khách hàng");
+      return false;
+    }
+    if (Sdt === "") {
+      toast.warning("Vui lòng nhập số điện thoại khách hàng");
+      return false;
+    }
+    return true;
+  };
   const handleAddCustommer = async () => {
-    let Birth = new Date(ngaySinh).toLocaleDateString("en-US");
-    await axios
-      .post("/custommer/add-custommer", {
-        TenKH,
-        CMND,
-        DiaChi,
-        Birth,
-        Sdt,
-      })
-      .then((res) => {
-        if (res && res.message === "success") {
-          toast.success("Them thanh cong");
-        }
-      });
+    let check = checkValidate();
+    if (check === true) {
+      let Birth = new Date(ngaySinh).toLocaleDateString("en-US");
+      await axios
+        .post("/custommer/add-custommer", {
+          TenKH,
+          CMND,
+          DiaChi,
+          Birth,
+          Sdt,
+        })
+        .then((res) => {
+          if (res && res.message === "success") {
+            toast.success("Thêm thành công");
+          }
+        });
+    }
   };
-  const fetchCustommer = async () => {
-    await axios.get("/custommer/list-customer").then((res) => {
-      console.log(res.data);
-    });
-  };
-  const fetchTour = async () => {
-    await axios.get("/tourserver/getall-tour").then((res) => {
-      if (res && res.message === "success") {
-        console.log(res);
-      }
-    });
-  };
-  useEffect(() => {
-    fetchCustommer();
-    fetchTour();
-  }, []);
+  useEffect(() => {}, []);
   return (
     <div className={cx("wrapper")}>
-      <p className={cx("title")}>THONG TIN KHACH HANG</p>
+      <p className={cx("title")}>THÔNG TIN KHÁCH HÀNG</p>
       <div className={cx("form")}>
-        <label htmlFor="">Ten khach hang</label>
+        <label htmlFor="">Tên khách hàng</label>
         <input
           value={TenKH}
           onChange={(e) => setTenKH(e.target.value)}
           type="text"
           name=""
+          placeholder="Nhập đầy đủ họ và tên khách hàng"
           id=""
           style={{ marginLeft: "100px" }}
         />
@@ -70,23 +82,25 @@ export default function AddCustommer() {
           value={CMND}
           onChange={(e) => setCMND(e.target.value)}
           name=""
+          placeholder="Nhập số căn cước công dân khách hàng"
           id=""
           style={{ marginLeft: "195px" }}
         />
       </div>
       <div className={cx("form")}>
-        <label htmlFor="">Dia chi</label>
+        <label htmlFor="">Địa chỉ</label>
         <input
           type="text"
           value={DiaChi}
           onChange={(e) => setDiaChi(e.target.value)}
           name=""
+          placeholder="Nhập địa chỉ khách hàng"
           id=""
           style={{ marginLeft: "195px" }}
         />
       </div>
       <div className={cx("form")}>
-        <label htmlFor="">Ngay sinh</label>
+        <label htmlFor="">Ngày sinh</label>
         <DatePicker
           dateFormat="MM/dd/yyyy"
           placeholderText="mm/dd/yyyy"
@@ -96,10 +110,11 @@ export default function AddCustommer() {
         />
       </div>
       <div className={cx("form")}>
-        <label htmlFor="">So dien thoai</label>
+        <label htmlFor="">Số điện thoại</label>
         <input
           type="text"
           value={Sdt}
+          placeholder="Nhập số điện thoại khách hàng"
           onChange={(e) => setSdt(e.target.value)}
           name=""
           id=""
@@ -108,11 +123,11 @@ export default function AddCustommer() {
       </div>
       <div className={cx("button")}>
         <button className={cx("Add")} onClick={handleAddCustommer}>
-          <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>THEM
+          <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>THÊM
         </button>
         <Link to="/khach-hang">
           <button className={cx("Cancel")}>
-            HUY<FontAwesomeIcon icon={faCancel}></FontAwesomeIcon>
+            HUỶ<FontAwesomeIcon icon={faCancel}></FontAwesomeIcon>
           </button>
         </Link>
       </div>
