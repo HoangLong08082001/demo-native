@@ -47,7 +47,9 @@ function Header() {
       window.location.reload();
     }
   };
-
+  const hanldleuser=()=>{
+    window.location.href="http://dattourtravel.com:3000/user"
+  }
   return (
     <div className={cx("wrapper")}>
       <input
@@ -96,14 +98,14 @@ function Header() {
 
       <div className={cx("warpper-link")}>
         <div className={cx("warpper-link-h")}>
-          <Link className={cx("link")} to="/review">
+          <Link className={cx("link")} to="/">
             {" "}
             Trang Chủ
           </Link>
-          <Link className={cx("link")} to="/">
+          <Link className={cx("link")} to="/review">
             Ưu Đãi
           </Link>
-          <Link className={cx("link")} to="/">
+          <Link className={cx("link")} to="/chung-toi">
             Chúng Tôi
           </Link>
           <Link className={cx("link")} to="/">
@@ -169,10 +171,10 @@ function Header() {
               <div className={cx("warpper-link-icon-avatar-select")}>
                 <ul>
                   <li>
-                    <span>Thông Tin Tài Khoản</span>
+                    <span onClick={hanldleuser}>Thông Tin Tài Khoản</span>
                   </li>
                   <li>
-                    <span>Tour Yêu Thích</span>
+                    <span onClick={hanldleuser}>Tour Yêu Thích</span>
                   </li>
                   <li onClick={handlelogout}>
                     <span>Đăng Xuất</span>

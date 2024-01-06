@@ -19,16 +19,18 @@ function Alert(props) {
             {
                 props.good===1?(
                     <div className={cx("container-box-1")}>
-                {props.icon === 0 ?(<FontAwesomeIcon icon={faSmile}/>):(<FontAwesomeIcon icon={faSadCry}/>)}
+                {props.icon === 0  ?(<FontAwesomeIcon icon={faSmile}/>) :(props.icon === 2 ?(<FontAwesomeIcon icon={faSmile}/>):(<FontAwesomeIcon icon={faSadCry}/>))}
             </div>
                 ):(<div className={cx("container-box-1")}>
                     <FontAwesomeIcon style={{color:"green"}} icon={faCircleCheck}/>
             </div>)
             }
             {props.good===1?(<div className={cx("container-box-2")} >
-                {props.icon ===0?(<h5>Danh Sách Yêu Thích</h5>) :  (props.datatt.map((value)=>{
+                {props.icon ===0?(<h5>Danh Sách Yêu Thích</h5>) : (props.icon===2)?( (props.datatt.map((value)=>{
+                    return(<h5 style={{color:"green",fontWeight:600}}>{value}</h5>)
+                }))):( (props.datatt.map((value)=>{
                     return(<h5 style={{color:"red",fontWeight:600}}>{value}</h5>)
-                }))}
+                })))}
                 {props.icon === 0 ?(<Button addlike to={"/user"}>
                     <FontAwesomeIcon icon={faChevronRight}/>
                     <FontAwesomeIcon icon={faChevronRight}/>

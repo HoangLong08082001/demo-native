@@ -73,3 +73,129 @@
    
     height: 0.5px;
 }
+
+@media only screen and (max-width: 480px) and (min-width:375px)  {
+    .box
+    {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 99%;
+        margin: auto;
+    }
+    .box-accept
+    {
+        flex-direction: column;
+    }
+    .box-accept-2
+    {
+        
+     
+     
+        h2{
+            text-align: center;
+            width: 300px;
+        }
+    }
+    .box-head
+    {
+       flex-direction: column;
+       align-items: center;
+    }
+  }
+  @media only screen and (max-width: 530px) and (min-width:480px)  {
+    .box
+    {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 99%;
+        margin: auto;
+    }
+    .box-head
+    {
+       flex-direction: column;
+       align-items: center;
+    }
+    .box-accept
+    {
+        flex-direction: column;
+    }
+    .box-accept-2
+    {
+        
+     
+     
+        h2{
+            text-align: center;
+            width: 300px;
+        }
+    }
+  }
+  @media only screen and (max-width: 650px) and (min-width: 530px){
+    .box
+    {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 99%;
+        margin: auto;
+    }
+    .box-accept
+    {
+        flex-direction: column;
+    }
+    .box-accept-2
+    {
+        
+     
+     
+        h2{
+            text-align: center;
+            width: 400px;
+        }
+    }
+  }
+  //tablet
+  @media only screen and (min-width:650px)  and (max-width: 1024px) {
+    .box
+    {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 99%;
+        margin: auto;
+    }
+    .box-accept
+    {
+        flex-direction: column;
+    }
+    .box-accept-2
+    {
+        
+     
+     
+        h2{
+            text-align: center;
+            width: 400px;
+        }
+    }
+  }
+    
+  
+  //tabletpro
+  @media only screen and (min-width:1024px)  and (max-width: 1366px) {
+  
+    .box
+    {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 99%;
+        margin: auto;
+    }
+    .box-accept
+    {
+        flex-direction: column;
+    }
+  }
+  
+  //pc
+  @media only screen and (min-width: 1024px) {
+    
+  }

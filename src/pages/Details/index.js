@@ -14,10 +14,12 @@ export default function Details() {
   const { id } = useParams();
   const [arrayimg, setarrayimg] = useState([]);
   const [ham,setham]=useState(true);
+  const [array,setarray]=useState([]);
   useEffect(() => {
     axios.get(`tour/alltour/${id}`).then((response) => {
       setData(response.data[0]);
       setarrayimg(response.data);
+      setarray([response.data[0].LichTrinh1,response.data[0].LichTrinh2,response.data[0].LichTrinh3,response.data[0].LichTrinh4,response.data[0].LichTrinh5,response.data[0].LichTrinh6,response.data[0].LichTrinh7]);
     });
   }, [id]);
   useLayoutEffect(() => {
@@ -28,6 +30,7 @@ export default function Details() {
      setham(false)
     }, 1500);
   }, [ham]);
+console.log(array)
   return (
     <div>
         {ham === true ?(<Loading/>):('')}
@@ -61,9 +64,8 @@ export default function Details() {
           );
         })}
         <Trip
-          trip1={value.LichTrinh1}
-          trip2={value.LichTrinh2}
-          trip3={value.LichTrinh3}
+          trip={array}
+       
         />
         <Comment MaTour={id} />
         <AnotherTour />

@@ -31,7 +31,7 @@ export default function HomeAdmin() {
   const navigate = useNavigate();
   const today = new Date().toLocaleDateString("en-US");
   const fetchtour = () => {
-    axios.get("/tour/alltour2").then((res) => {
+    axios.post("/tour/alltour2",{data:null}).then((res) => {
       if (res) {
         setlistTour(res.data);
         console.log(res.data);

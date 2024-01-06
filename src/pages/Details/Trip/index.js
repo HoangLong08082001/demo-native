@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {  faPrint } from "@fortawesome/free-solid-svg-icons";
 
 const cx = classNames.bind(styles);
-export default function Trip({ trip1, trip2, trip3, all }) {
+export default function Trip({ trip }) {
   const [show, setShow] = useState(false);
   useEffect(() => {
     const handlScroll = () => {
@@ -29,7 +29,7 @@ export default function Trip({ trip1, trip2, trip3, all }) {
       window.removeEventListener("scroll", handlScroll);
     };
   }, []);
-  const [value, setValue] = useState("1");
+  const [value, setValue] = useState("9");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -55,21 +55,31 @@ export default function Trip({ trip1, trip2, trip3, all }) {
               <TabList
                 onChange={handleChange}
                 aria-label="lab API tabs example"
+                
               >
-                <Tab label="Ngày 1" value="1" />
-                <Tab label="Ngày 2" value="2" />
-                <Tab label="Ngày 3" value="3" />
+                {trip.map((values,index)=>{
+                 if(values === "" || values ==="<p>null</p>" ||values === null )
+                 {}
+                 else
+                 {
+                  return( <Tab label={`Ngày ${index + 1}`} value={index +1 } />)
+                 }
+                })}
                 <Tab label="Tất Cả" value="9" />
               </TabList>
             </Box>
 
-            <TabPanel value="1"> {HTMLReactParser(`${trip1}`)}</TabPanel>
-            <TabPanel value="2"> {HTMLReactParser(`${trip2}`)}</TabPanel>
-            <TabPanel value="3">{HTMLReactParser(`${trip3}`)}</TabPanel>
+            {
+              trip.map((values,index)=>{
+                return(<TabPanel value={index + 1 }> {HTMLReactParser(`${values}`)}</TabPanel>)
+              })
+            }
+          
             <TabPanel ref={componentRef} value="9">
-              {HTMLReactParser(`${trip1}`)}
-              {HTMLReactParser(`${trip2}`)}
-              {HTMLReactParser(`${trip3}`)}
+             {trip.map((values)=>{
+              return( HTMLReactParser(`${values}`)
+           )
+             })}
               </TabPanel>
           </TabContext>
         </Box>

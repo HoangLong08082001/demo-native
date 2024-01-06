@@ -202,11 +202,11 @@ export default function Price({ noiDen, noiDi, MaTour, NgayDi }) {
               <span>{value.mucgiamgia}% / Vé</span>
             </div>
 
-            <div>
+            
               <div className={cx("box-line-a")}>
                 <Button
-                  underline
-                  txt
+                
+                  
                   book
                   to={
                     "/bill/" +
@@ -222,7 +222,7 @@ export default function Price({ noiDen, noiDi, MaTour, NgayDi }) {
                   Đặt Tour
                 </Button>
               </div>
-            </div>
+            
           </div>
         );
       })}

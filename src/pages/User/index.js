@@ -12,6 +12,7 @@ import Touradd from "../../components/Touradd/Touradd";
 import { faArrowRight, faCaretRight, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import TTUser from "./TTUser";
 import axios from "../../setup-axios/axios";
+import { useNavigate } from "react-router-dom";
 const cx = classNames.bind(style);
 export default function User() {
   const [value, setValue] = useState("1");
@@ -20,9 +21,16 @@ export default function User() {
   };
   const [arrayvalue,setarrayvalue]=useState([])
   const [arrayvaluebook,setarrayvaluebook]=useState([])
+  const naviagete =useNavigate();
   useEffect(() =>{
      
-          axios.post("/tour/gettourlove",{
+          if(localStorage.getItem("Ma")===null)
+          {
+            naviagete("*")
+          } 
+          else
+          {
+            axios.post("/tour/gettourlove",{
               MaKH:localStorage.getItem("Ma"),
               }).then((response) => {
                   setarrayvalue(response.data);
@@ -31,10 +39,18 @@ export default function User() {
                 MaKH:localStorage.getItem("Ma")
                 }).then((response) => {
                   setarrayvaluebook(response.data)
-                });    
+                });  
+          } 
   },[])
- 
- 
+
+  const hanldleclose=()=>{
+    axios.post("/tour/gettourlove",{
+      MaKH:localStorage.getItem("Ma"),
+      }).then((response) => {
+          setarrayvalue(response.data);
+      });
+  }
+
   return (
     <div className={cx("wrapper")}>
       <div className={cx("condition")}>
@@ -48,7 +64,7 @@ export default function User() {
             >
               <TabList
                 onChange={handleChange}
-                
+               
               >
                 <Tab  sx={{  fontSize:"13px",fontWeight: 600 }} label="Thông Tin Tài Khoản" value="1" />
                 <Tab  sx={{  fontSize:"13px",fontWeight: 600 }} label="Lịch Sử Tour" value="2" />
@@ -61,13 +77,13 @@ export default function User() {
             <TabPanel value="2" ><div style={{marginBottom:"100px"}}>
             {arrayvaluebook.map((value,index)=>{
 
-              return (<Touradd key={index} status="3" TrangThai={value.TrangThai} name={value.TenTour} img={value.HinhAnh.data} MaTour={value.MaTour} />)
+              return (<Touradd key={index} status="3" TrangThai={value.TrangThai} name={value.TenTour} img={value.HinhAnh.data} MaTour={value.MaTour} MaPhieu={value.MaPhieu} />)
               })}
               </div></TabPanel>
             <TabPanel value="3" ><div style={{marginBottom:"100px"}}>
                 {arrayvalue.map((value,index)=>{
-
-                  return (<Touradd key={index} status="1" name={value.TenTour} img={value.HinhAnh.data} MaTour={value.MaTour} />)
+                 
+                  return (<Touradd key={index} status="1" name={value.TenTour} img={value.HinhAnh.data} MaTour={value.MaTour} TrangThai={value.TrangThai}  click={hanldleclose} />)
                 })}
                
               </div></TabPanel>

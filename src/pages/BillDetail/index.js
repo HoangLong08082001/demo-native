@@ -11,7 +11,7 @@ import { useEffect, useRef, useState } from 'react';
 import { toPng } from 'html-to-image';
 import axios from '../../setup-axios/axios';
 import io from 'socket.io-client';
-
+import dateFormat from "dayjs";
 import emailjs from 'emailjs-com';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Button from '../../components/Button';
@@ -21,8 +21,9 @@ function BillDetail() {
     const navigate = useNavigate();
     const params = new URLSearchParams(location.search);
     var statusemail = params.get('email');
+    var phieu = params.get('MaPhieu');
     const { matour } = useParams();
-      
+    const count = useRef(0); 
     var socket = io('http://dattourtravel.com:9000');
     var componentRef = useRef(null);
  
@@ -30,6 +31,7 @@ function BillDetail() {
     useEffect(()=>{
         axios.post("/Bill/getbill",{
             MaTour:matour,
+            MaPhieu:phieu,
             MaKH:localStorage.getItem('Ma'),
               }).then((response) => {
                
@@ -39,12 +41,16 @@ function BillDetail() {
              
     },[matour])
     
-      
+   
     useEffect(()=>{
         if(statusemail != null && statusemail != undefined )
     {
         socket.emit('newOrder',{status: 'success'});
+       if(count.current === 0)
+       {
         toast.success("Đặt Tour Thành Công");
+       }
+       count.current=1;
         localStorage.removeItem('data')
         // const qr = QRCode(0,'H');
         // qr.addData(`http://dattourtravel.com:3000/user/billdetail/${matour}`);
@@ -73,7 +79,7 @@ function BillDetail() {
     }
     },[])
 
-
+    console.log(value);
 
     
     const handlepdf=()=>{
@@ -99,7 +105,13 @@ function BillDetail() {
     const hanldepre=()=>{
         navigate('/')
     }
-
+    const datedi = dateFormat(value.NgayDi).format("DD/MM/YYYY");
+    const dateve = dateFormat(value.NgayVe).format("DD/MM/YYYY");
+    const datetao = dateFormat(value.NgayTao).format("DD/MM/YYYY");
+    const price = new Intl.NumberFormat("vi-VN", {
+        style: "currency",
+        currency: "VND",
+      }).format(value.Tongtien);
     ////
     return ( <div  >
                 <Button login onClick={hanldepre} >Trang Chủ</Button>
@@ -134,11 +146,11 @@ function BillDetail() {
                                 </div>
                                 <div className={cx("box-input")} >
                                     <p>Ngày Đi</p>
-                                    <p>{value.NgayDi}</p>
+                                    <p>{datedi}</p>
                                 </div>
                                 <div className={cx("box-input")} >
                                     <p>Ngày Về</p>
-                                    <p>{value.NgayVe}</p>
+                                    <p>{dateve}</p>
                                 </div>
                                 <div className={cx("box-input")} >
                                     <p>Nơi Khởi Hành</p>
@@ -171,6 +183,7 @@ function BillDetail() {
                                
                             </div>
                         </div>
+                        
                         <div className={cx("box-accept-2")}>
                                 <div>
                                     <h2>Thông tin chi tiết booking</h2>
@@ -181,11 +194,11 @@ function BillDetail() {
                                 </div>
                                 <div className={cx("box-input")} >
                                     <p>Tổng Chi Phí</p>
-                                    <p>{value.Tongtien}</p>
+                                    <p>{price}</p>
                                 </div>
                                 <div className={cx("box-input")} >
                                     <p>Ngày Đăng Ký</p>
-                                    <p>{value.NgayTao}</p>
+                                    <p>{datetao}</p>
                                 </div>
                                 <div className={cx("box-input")} >
                                     <p>Tình Trạng Tour</p>
@@ -197,7 +210,7 @@ function BillDetail() {
                                 </div>
                                 <div className={cx("box-input")} >
                                     <p>Thời Hạn Thanh Toán</p>
-                                    <p>{value.TrangThaiThanhToan===1?"":"20/11/2021"}</p>
+                                    <p>{value.TrangThaiThanhToan===1?"":datedi-1}</p>
                                 </div>
                                 <div className={cx("box-input")} >
                                     <p>Tình Trạng Thanh Toán</p>

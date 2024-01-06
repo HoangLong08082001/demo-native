@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import classname from "classnames/bind";
 
 import styles from "./Slider.module.scss";
-import img1 from "../../../../../travel-ui/src/assets/images/slider/img1.png";
-import img2 from "../../../../../travel-ui/src/assets/images/slider/img2.png";
-import img3 from "../../../../../travel-ui/src/assets/images/slider/img3.png";
+import img1 from "../../../../../travel-ui/src/assets/images/binhba.jpg";
+import img2 from "../../../../../travel-ui/src/assets/images/nha-trang-1.jpg";
+import img3 from "../../../../../travel-ui/src/assets/images/slider/img2.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,

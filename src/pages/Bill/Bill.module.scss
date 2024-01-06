@@ -79,3 +79,151 @@
     text-align: center;
   }
 }
+@media only screen and (max-width: 480px) and (min-width:375px)  {
+  .wrapper {
+    padding: 10px 20px;
+  }
+  .wrapper-tour {
+    padding: 10px 5px;
+   
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .background-tour
+  {
+  
+    display: none;
+  
+  }.background-tour-detail-tittle-css
+  {
+    
+    width: 90%;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  .background-tour-detail-tittle
+  {
+    font-size: 14px;
+  }
+  .background-tour-detail
+  {
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    font-size: 13px;
+  }
+  .background-tour-detail-price
+  {
+    font-size: 14px;
+  }
+  .title {
+    font-size: 15px;
+    
+  }
+}
+@media only screen and (max-width: 530px) and (min-width:480px)  {
+  .wrapper {
+    padding: 10px 20px;
+  }
+  .wrapper-tour {
+    padding: 10px 5px;
+   
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .background-tour
+  {
+  
+    display: none;
+  
+  }.background-tour-detail-tittle-css
+  {
+    
+    width: 90%;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  .background-tour-detail-tittle
+  {
+    font-size: 14px;
+  }
+  .background-tour-detail
+  {
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    font-size: 13px;
+  }
+  .background-tour-detail-price
+  {
+    font-size: 14px;
+  }
+  .title {
+    font-size: 15px;
+    
+  }
+}
+@media only screen and (max-width: 650px) and (min-width: 530px){
+  .wrapper {
+    padding: 10px 20px;
+  }
+  .wrapper-tour {
+    padding: 10px 5px;
+   
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .background-tour
+  {
+  
+    display: none;
+  
+  }.background-tour-detail-tittle-css
+  {
+    
+    width: 90%;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  .background-tour-detail-tittle
+  {
+    font-size: 14px;
+  }
+  .background-tour-detail
+  {
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    font-size: 13px;
+  }
+  .background-tour-detail-price
+  {
+    font-size: 14px;
+  }
+  .title {
+    font-size: 15px;
+    
+  }
+}
+//tablet
+@media only screen and (min-width:650px)  and (max-width: 1024px) {
+  .background-tour
+  {
+  
+    height: 376px;
+  
+  }
+}
+//tabletpro
+@media only screen and (min-width:1024px)  and (max-width: 1366px) {
+
+  
+}
+
+//pc
+@media only screen and (min-width: 1024px) {
+  
+}

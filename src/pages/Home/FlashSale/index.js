@@ -63,7 +63,15 @@ function FlashSale() {
   const setDate = (day) => {
     return new Date(day);
   };
-
+  const [data, setdata] = useState([]);
+  const fetchTourByVoucher = async () => {
+    await axios.get("/tour/get-tour-by-voucher").then((response) => {
+      setdata(response.data);
+    });
+  };
+  useEffect(() => {
+    fetchTourByVoucher();
+  }, []);
   // const getDay = () => {
   //   let today = new Date();
   //   for (let i = 0; i < list.length - 1; i++) {
@@ -86,6 +94,7 @@ function FlashSale() {
   });
   useEffect(() => {
     axios.get("/tour/get-tour-withday").then((res) => {
+     
       setTimeTarget(res.data[0].toi);
       setName(res.data[0].ten_dotgiamgia);
       // setList(res.data);
@@ -121,8 +130,8 @@ function FlashSale() {
     <div className={cx("wrapper")}>
       <div className={cx("wrapper-box")}>
         <h2>
-          {name}
-          {/* FLASH <FontAwesomeIcon icon={faBolt}></FontAwesomeIcon>ALES */}
+        
+          FLASH <FontAwesomeIcon icon={faBolt}></FontAwesomeIcon>ALES
         </h2>
         <div className={cx("wrapper-box")}>
           <div className={cx("wrapper-date")}>
@@ -147,8 +156,9 @@ function FlashSale() {
             <div className={cx("wrapper-box-time")}>Giây</div>
           </div>
         </div>
+        <div className={cx("wrapper-box-end")} > {name}</div>
       </div>
-      <Slider />
+      <Slider data={data} />
     </div>
   );
 }

@@ -27,9 +27,170 @@
 .box-line-a
 {
   margin: auto;
-  
+  display: flex;
+  justify-content: center;
   a{
     font-family: 'Times New Roman', Times, serif;
     font-size: 13px;
   }
+}
+@media only screen and (max-width: 480px) and (min-width:375px)  {
+  
+  .wrapper {
+ 
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    background: #f8f8f8;
+    padding: 5px 
+  }
+  .box-line-1
+  {
+    text-align: center;
+    display: flex;
+    div{
+      width: 16.5%;
+      font-size: 12px;
+    }
+  }
+  .box-line-2
+  {
+    text-align: center;
+    display: flex;
+    div{
+      width: 16.5%;
+      line-height: 45px;
+      font-size: 10px;
+    }
+  }
+  .box-line-a
+  {
+    text-align: center;
+    a{
+      font-size: 10px;
+    }
+  }
+}
+@media only screen and (max-width: 530px) and (min-width:480px)  {
+  .wrapper {
+ 
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    background: #f8f8f8;
+    padding: 5px 
+  }
+  .box-line-1
+  {
+    text-align: center;
+    display: flex;
+    div{
+      width: 16.5%;
+      font-size: 12px;
+    }
+  }
+  .box-line-2
+  {
+    text-align: center;
+    display: flex;
+    div{
+      width: 16.5%;
+      line-height: 45px;
+      font-size: 10px;
+    }
+  }
+  .box-line-a
+  {
+    text-align: center;
+    a{
+      font-size: 10px;
+    }
+  }
+}
+@media only screen and (max-width: 650px) and (min-width: 530px){
+  .wrapper {
+ 
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    background: #f8f8f8;
+    padding: 10px 
+  }
+  .box-line-1
+  {
+    text-align: center;
+    display: flex;
+    div{
+      width: 17%;
+      font-size: 14px;
+    }
+  }
+  .box-line-2
+  {
+    text-align: center;
+    display: flex;
+    div{
+      width: 17%;
+      line-height: 45px;
+      font-size: 13px;
+    }
+  }
+  .box-line-a
+  {
+    text-align: center;
+    a{
+      font-size: 12px;
+    }
+  }
+}
+//tablet
+@media only screen and (min-width:650px)  and (max-width: 1024px) {
+  .wrapper {
+ 
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    background: #f8f8f8;
+    padding: 10px 
+  }
+  .box-line-1
+  {
+    text-align: center;
+    display: flex;
+    div{
+      width: 17%;
+     
+    }
+  }
+  .box-line-2
+  {
+    text-align: center;
+    display: flex;
+    div{
+      width: 17%;
+      line-height: 45px;
+    }
+  }
+  .box-line-a
+  {
+    a{
+      font-size: 12px;
+    }
+  }
+ 
+}
+  
+
+//tabletpro
+@media only screen and (min-width:1024px)  and (max-width: 1366px) {
+
+}
+
+//pc
+@media only screen and (min-width: 1024px) {
+  
 }

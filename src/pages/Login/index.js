@@ -46,7 +46,7 @@ function Login() {
   };
   
   return (
-    <div  style={{ backgroundImage: `url(${img4})`,backgroundRepeat:"no-repeat",backgroundSize:"cover"  }} className={cx("box-full")} >
+    <div  style={{ backgroundImage: `url(${img4})`,backgroundRepeat:"no-repeat",backgroundSize:"cover" }} className={cx("box-full")} >
       <div className={cx("box")}>
       <div className={cx("title")}>
         <p>LOGIN YOUR ACCOUNT</p>

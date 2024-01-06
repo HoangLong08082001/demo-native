@@ -62,6 +62,7 @@
   span{
     text-align: center;
     width: 90%;
+    height: 48px;
   }
   
 }
@@ -76,3 +77,192 @@
   }
 }
 
+@media only screen and (max-width: 480px) and (min-width:375px)  {
+  .booking
+  {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    align-items: center;
+    
+  }
+  .booking-total
+  {
+    padding: 5px;
+    width: 100%;
+    margin: 0;
+  }
+  .booking-total-check
+{
+  width: 100%;
+
+ span{
+  font-size: 13px;
+  
+  line-height:48px ;
+ }
+}
+.booking-total-title
+{
+  span{
+    font-size: 15px;
+ 
+   
+  }
+}
+.booking-information
+{
+  width: 100%;
+
+}
+.booking-total-price
+{
+  
+  flex-direction: column;
+  align-items: center;
+ 
+  span{
+    font-size: 15px;
+    font-weight: 600;
+    color:#d10a00;
+  }
+}
+}
+@media only screen and (max-width: 530px) and (min-width:480px)  {
+  .booking
+  {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    align-items: center;
+  }
+  .booking-total
+  {
+    button{
+      border-radius: 5px;
+    }
+ 
+    width: 100%;
+    margin: 0;
+  
+  }
+  .booking-total-title
+{
+  span{
+    font-size: 15px;
+ 
+   
+  }
+}
+  .booking-total-check
+{
+  width: 100%;
+ 
+  
+}
+.booking-information
+{
+  width: 100%;
+
+}
+}
+@media only screen and (max-width: 650px) and (min-width: 530px){
+  .booking
+  {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    align-items: center;
+  }
+  .booking-total-title
+{
+  span{
+    font-size: 15px;
+ 
+   
+  }
+}
+  .booking-total
+  {
+   
+    width: 100%;
+    margin: 0;
+ 
+  }
+  .booking-total-check
+{
+  width: 100%;
+  span{
+    line-height:48px ;
+  }
+  
+}
+.booking-information
+{
+  width: 100%;
+
+}
+}
+//tablet
+@media only screen and (min-width:650px)  and (max-width: 1024px) {
+  .booking
+  {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    align-items: center;
+  }
+  .booking-total
+  {
+  
+    width: 100%;
+    margin: 0;
+  }
+  .booking-total-check
+{
+  width: 100%;
+  span{
+    line-height:48px ;
+  }
+  
+}
+.booking-information
+{
+  width: 100%;
+
+}
+}
+  
+
+//tabletpro
+@media only screen and (min-width:1024px)  and (max-width: 1446px) {
+  .booking
+  {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    align-items: center;
+  }
+  .booking-total
+{
+  
+  width: 100%;
+  margin: 0;
+}
+.booking-total-check
+{
+  width: 100%;
+  line-height: 48px;
+  
+}
+.booking-information
+{
+  width: 100%;
+
+}
+}
+
+//pc
+@media only screen and (min-width: 1024px) {
+  
+}

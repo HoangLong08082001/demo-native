@@ -31,6 +31,7 @@ export default function About({
   const [arraycomment,setarraycomment] =useState([]);
   const [addlike,setaddlike] =useState(false);
   const [status,setstatus] =useState("");
+  const [error,seterror]=useState(false);
     useEffect(()=>{
         axios.post("/tour/getcomment",{
           MaTour,
@@ -56,6 +57,12 @@ export default function About({
         }
     }
   const handleadd=()=>{
+      if(localStorage.getItem('Ma')=== null || localStorage.getItem('Ma')===undefined)
+      {
+        seterror(true)
+      }
+      else
+      { 
         axios.post("/tour/addtourlove",{
           MaKH:localStorage.getItem("Ma"),
           MaTour
@@ -71,14 +78,27 @@ export default function About({
                     setaddlike(true);
                 }
             });
+      }
   }  
   const handleclose=()=>{
       setaddlike(false)
+      seterror(false);
 }  
   
 
   return (
     <div className={cx("wrapper")}>
+       {error ? (
+        <Alert
+          callBackParent={handleclose}
+          datatt={['Vui Lòng Đăng Nhập Để Thực Hiện Thao Tác']}
+          dataprops={status}
+          icon={1}
+          good={1}
+        />
+      ) : (
+        ""
+      )}
       {addlike ?(<Alert callBackParent={handleclose} dataprops={status} icon={0} good={1} />):("")}
       <hr></hr>
       <div className={cx("wrapper-dow")}>

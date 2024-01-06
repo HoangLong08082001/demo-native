@@ -2,7 +2,7 @@
 {
   padding: 4.1%;
   height: 100%;
- 
+  background-attachment: fixed;
 }
 .box {
   
@@ -75,4 +75,134 @@
     
     text-align: center;
   }
+}
+@media only screen and (max-width: 480px) and (min-width:375px)  {
+  .box {
+  
+    border-radius:10px ;
+    width: 99%;
+    background-color: transparent;
+    backdrop-filter: blur(20px) ;
+    height: 100%;
+    border: 1px solid;
+    margin: auto;
+    box-shadow: rgba(5, 2, 2, 0.2) 0px 22px 28px 0px;
+    
+    
+  }
+  .title {
+    p {
+      text-align: center;
+      font-size: 23px;
+      font-weight: 800;
+      margin-top: 0;
+    }
+  }
+  .box-full
+  {
+    
+    height: 900px;
+    
+  }
+
+}
+@media only screen and (max-width: 530px) and (min-width:480px)  {
+  .box {
+  
+    border-radius:10px ;
+    width: 99%;
+    background-color: transparent;
+    backdrop-filter: blur(20px) ;
+    height: 100%;
+    border: 1px solid;
+    margin: auto;
+    box-shadow: rgba(5, 2, 2, 0.2) 0px 22px 28px 0px;
+    
+    
+  }
+  .title {
+    p {
+      text-align: center;
+      font-size: 23px;
+      font-weight: 800;
+      margin-top: 0;
+    }
+  }
+  .box-full
+  {
+    
+    height: 900px;
+    
+  }
+}
+@media only screen and (max-width: 650px) and (min-width: 530px){
+  .box {
+  
+    border-radius:10px ;
+    width: 80%;
+    background-color: transparent;
+    backdrop-filter: blur(20px) ;
+    height: 100%;
+    border: 1px solid;
+    margin: auto;
+    box-shadow: rgba(5, 2, 2, 0.2) 0px 22px 28px 0px;
+    
+    
+  }
+  .box-full
+  {
+    
+    height: 900px;
+    
+  }
+}
+//tablet
+@media only screen and (min-width:650px)  and (max-width: 1024px) {
+  .box {
+  
+    border-radius:10px ;
+    width: 70%;
+    background-color: transparent;
+    backdrop-filter: blur(20px) ;
+    height: 100%;
+    border: 1px solid;
+    margin: auto;
+    box-shadow: rgba(5, 2, 2, 0.2) 0px 22px 28px 0px;
+    
+    
+  }
+  .box-full
+  {
+    
+    height: 1024px;
+    
+  }
+}
+  
+
+//tabletpro
+@media only screen and (min-width:1024px)  and (max-width: 1366px) {
+
+  .box {
+  
+    border-radius:10px ;
+    width: 50%;
+    background-color: transparent;
+    backdrop-filter: blur(20px) ;
+    height: 50%;
+    border: 1px solid;
+    margin: auto;
+    box-shadow: rgba(5, 2, 2, 0.2) 0px 22px 28px 0px; 
+  }
+  .box-full
+{
+  
+  height: 1366px;
+  
+}
+}
+
+//pc
+@media only screen and (min-width: 1024px) {
+  
 }

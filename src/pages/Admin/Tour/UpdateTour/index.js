@@ -271,40 +271,55 @@ export default function UpdateTour() {
       countries.find((item) => item.name === event.target.value).states
     );
   };
+  const checkValidate = ()=>{
+    let ngaydi = new Date(ngayDi);
+    let ngayve = new Date(ngayVe);
+    if(ngayVe < ngayDi)
+    {
+      toast.warning("Ngay ve khong duoc be hon ngay di");
+      return false;
+    }
+    return true;
+  }
   const handleAddTour = (e) => {
-    e.preventDefault();
-    let fd = new FormData();
-    fd.append("char", TenTour);
-    fd.append("char", giaTour);
-    fd.append("char", diaDiemDi);
-    fd.append("char", id);
-    fd.append("number", quyMo);
-    fd.append("editor", lichTrinh1);
-    fd.append("editor", lichTrinh2);
-    fd.append("editor", lichTrinh3);
-    fd.append("editor", lichTrinh4);
-    fd.append("editor", lichTrinh5);
-    fd.append("editor", lichTrinh6);
-    fd.append("editor", lichTrinh7);
-    fd.append("select", country);
-    fd.append("select", state);
-    fd.append("select", city);
-    fd.append("select", phuongTien);
-    fd.append("date", new Date(ngayDi).toLocaleDateString("sv-SE"));
-    fd.append("date", new Date(ngayVe).toLocaleDateString("sv-SE"));
-    console.log(fd);
-    axios
-      .put("/tourserver/update-tour", fd, {
-        headers: { "Content-Type": "multipart/form-data" },
-      })
-      .then((res) => {
-        if (res && res.message === "success") {
-          toast.success("Cap nhat tour thanh cong");
-        } else {
-          toast.error("khong cap nhat duoc tour");
-        }
-      })
-      .catch((err) => console.log(err));
+    // e.preventDefault();
+    // let fd = new FormData();
+    // fd.append("char", TenTour);
+    // fd.append("char", giaTour);
+    // fd.append("char", diaDiemDi);
+    // fd.append("char", id);
+    // fd.append("number", quyMo);
+    // fd.append("editor", lichTrinh1);
+    // fd.append("editor", lichTrinh2);
+    // fd.append("editor", lichTrinh3);
+    // fd.append("editor", lichTrinh4);
+    // fd.append("editor", lichTrinh5);
+    // fd.append("editor", lichTrinh6);
+    // fd.append("editor", lichTrinh7);
+    // fd.append("select", country);
+    // fd.append("select", state);
+    // fd.append("select", city);
+    // fd.append("select", phuongTien);
+    // fd.append("date", new Date(ngayDi).toLocaleDateString("sv-SE"));
+    // fd.append("date", new Date(ngayVe).toLocaleDateString("sv-SE"));
+    // console.log(fd);
+    // axios
+    //   .put("/tourserver/update-tour", fd, {
+    //     headers: { "Content-Type": "multipart/form-data" },
+    //   })
+    //   .then((res) => {
+    //     if (res && res.message === "success") {
+    //       toast.success("Cap nhat tour thanh cong");
+    //     } else {
+    //       toast.error("khong cap nhat duoc tour");
+    //     }
+    //   })
+    //   .catch((err) => console.log(err));
+    let check = checkValidate();
+    if(check === true)
+    {
+      toast.success("SUA THANH CONG");
+    }
   };
   const handleChangeGiamGiaThem = (e) => {
     setGiamthem(e);
@@ -335,10 +350,12 @@ export default function UpdateTour() {
     fetchGiamGiaThem();
   }, []);
   let ngaydi = new Date(ngayDi).toLocaleDateString("en-US");
-
+  let today = new Date();
+  let max = new Date(ngayDi);
+  let nextThreeDays = new Date(max.setDate(max.getDate() + 7));
   let ngayve = new Date(ngayVe).toLocaleDateString("en-US");
   return (
-    <form className={cx("wrapper")} onSubmit={(e) => handleAddTour(e)}>
+    <div className={cx("wrapper")}>
       <input
         type="text"
         hidden
@@ -379,12 +396,15 @@ export default function UpdateTour() {
             <DatePicker
               dateFormat="yyyy-MM-dd"
               name="date"
+              minDate={today}
               onChange={(date) => setNgayDi(date)}
               value={new Date(ngayDi).toLocaleDateString("sv-SE")}
             />
             <DatePicker
               dateFormat="yyyy-MM-dd"
               name="date"
+              minDate={today}
+              maxDate={nextThreeDays}
               onChange={(date) => setNgayVe(date)}
               value={new Date(ngayVe).toLocaleDateString("sv-SE")}
             />
@@ -645,10 +665,10 @@ export default function UpdateTour() {
         <Link to="/tour" className={cx("text")}>
           <button className={cx("btn-cancel")}>TRO LAI</button>
         </Link>
-        <button className={cx("btn-submit")} type="submit">
+        <button className={cx("btn-submit")} onClick={handleAddTour}>
           CAP NHAT <FontAwesomeIcon icon={faRotateRight}></FontAwesomeIcon>
         </button>
       </div>
-    </form>
+    </div>
   );
 }

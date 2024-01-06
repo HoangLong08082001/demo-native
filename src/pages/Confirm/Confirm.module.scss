@@ -35,3 +35,71 @@
     display: flex;
     justify-content: space-between;
 }
+@media only screen and (max-width: 480px) and (min-width:375px)  {
+    .wrapper
+    {
+        width: 98%;
+    }
+    .wrapper-box
+{   align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.wrapper-box-kh-tt
+{
+    width: 300px;
+    
+}
+  }
+  @media only screen and (max-width: 530px) and (min-width:480px)  {
+    .wrapper
+    {
+        width: 98%;
+    }
+    .wrapper-box
+{   align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.wrapper-box-kh-tt
+{
+    width: 300px;
+    
+}
+  }
+  @media only screen and (max-width: 650px) and (min-width: 530px){
+    .wrapper
+    {
+        width: 99%;
+    }
+    .wrapper-box
+{   align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+  }
+  //tablet
+  @media only screen and (min-width:650px)  and (max-width: 1024px) {
+    .wrapper
+    {
+        width: 99%;
+    }
+    .wrapper-box
+{   align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+  }
+  //tabletpro
+  @media only screen and (min-width:1024px)  and (max-width: 1366px) {
+  
+    .wrapper
+    {
+        width: 99%;
+    }
+  }
+  
+  //pc
+  @media only screen and (min-width: 1024px) {
+    
+  }

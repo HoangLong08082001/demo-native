@@ -20,6 +20,7 @@ function Confirm() {
     const params = new URLSearchParams(location.search);
     var name = params.get('name');
     var email = params.get('email');
+    var [MaPhieu,setMaPhieu]=useState();
     var sdt = params.get('sdt');
     var diachi = params.get('diachi');
     var payment = parseInt(params.get('payment'));
@@ -61,7 +62,7 @@ function Confirm() {
                       if(response.data === "success"){
                         setTimeout(() => {
                             setham(false);
-                            navigate(`/user/billdetail/${params.get('matour')}?email='on'`);
+                            navigate(`/user/billdetail/${params.get('matour')}?email='on'&MaPhieu=${response.MaPhieu}`);
                             
                            }, 2000);
 
@@ -127,7 +128,7 @@ function Confirm() {
               }).then((response) => {
                   if(response.data === "success"){
                     
-                    
+                    setMaPhieu(response.MaPhieu);
                   }
                 
               });
@@ -189,18 +190,18 @@ function Confirm() {
                             </div>
                             <div className={cx("wrapper-box-kh-tt")}>
                                 <p>Hình Thức Thanh Toán</p>
-                                <p>{payment ===0?"Tiền Mặt":"Chuyển Khoản"}</p>
+                                <p>{payment === 0?"Tiền Mặt":"Chuyển Khoản"}</p>
                             </div>
                         </div>
                      </div>
                <div className={cx("wrapper-box2")}>
                     <Button onClick={handlepre} login>Trở Lại</Button>
                     {
-                        payment ===0?(<Button onClick={handlemoney} login>Hoàn Tất</Button>):(<Button onClick={handlemoneyonline} login>Thanh Toán  </Button>)
+                        payment === 0 ?(<Button onClick={handlemoney} login>Hoàn Tất</Button>):(<Button onClick={handlemoneyonline} login>Thanh Toán  </Button>)
                     }
                </div>
                {
-                statuspayment ?( <Alert   dataprops={'Thanh Toán Thành Công'} good={0} icon={0} url={`/user/billdetail/${information.MaTour}?email='on'`}/>):('')
+                statuspayment ?( <Alert   dataprops={'Thanh Toán Thành Công'} good={0} icon={0} url={`/user/billdetail/${information.MaTour}?email='on'&MaPhieu=${MaPhieu}`}/>):('')
                }
         </div>
         </div>

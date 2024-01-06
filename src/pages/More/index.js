@@ -13,6 +13,10 @@ export default function More() {
   const [dataPrice,setdataprice] = useState(0);
   const [dataDate,setdatadate] = useState("");
   const [ham,setham]=useState(true);
+
+  useEffect(()=>{
+      setdatalocation(null);
+  },[nn])
   useLayoutEffect(() => {
     if(nn===undefined)
     {
@@ -33,7 +37,9 @@ export default function More() {
   const handlecallbackdate=(valueDate)=>{
     
     setdatadate(valueDate);
+
   }
+ 
   useEffect(() => {
     setTimeout(() => {
      setham(false)
@@ -43,7 +49,7 @@ export default function More() {
     <div>
       {ham === true ?(<Loading/>):('')}
       {status ?(null) :(<Location parentcallback={handleLocation} />)}
-      <Sort parentcallback={handlePrice} parentcallbackdate={handlecallbackdate} />
+      <Sort parentcallback={handlePrice} parentcallbackdate={handlecallbackdate}  />
       <Tours valueprice={dataPrice} valueday={dataDate} valuelocation={datalocation}  />
       <Endow />
     </div>

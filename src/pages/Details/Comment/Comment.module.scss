@@ -86,3 +86,83 @@
     margin-bottom: 10px;
     margin-top: 10px;
 }
+@media only screen and (max-width: 480px) and (min-width:375px)  {
+    .box
+    {
+       
+        display: block;
+      
+    }
+    .box-push-comment
+    {
+        padding: 0;
+    }
+    .box-show-comment-reponse
+{   margin-bottom: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    width: 100%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    padding: 10px;
+    p{
+        margin: 0;
+        font-size: 15px;
+        font-weight: 400;
+    }
+    div{
+        display: flex;
+        align-items: center;
+        height: 50px;
+        font-weight: 600;
+        line-height: 50px;
+    }
+    img{
+        margin-right: 10px;
+        width: 25px;
+        height: 25px;
+        
+    }
+}
+  }
+  @media only screen and (max-width: 530px) and (min-width:480px)  {
+    .box
+    {
+       
+        display: block;
+      
+    }
+    .box-push-comment
+    {
+        padding: 0;
+    }
+  }
+  @media only screen and (max-width: 650px) and (min-width: 530px){
+    .box
+    {
+       
+        display: block;
+      
+    }
+  }
+  //tablet
+  @media only screen and (min-width:650px)  and (max-width: 1024px) {
+    .box
+{
+   
+    display: block;
+  
+}
+  
+  }
+    
+  
+  //tabletpro
+  @media only screen and (min-width:1024px)  and (max-width: 1366px) {
+   
+   
+  }
+  
+  //pc
+  @media only screen and (min-width: 1024px) {
+    
+  }

@@ -13,7 +13,7 @@ function Location() {
       setdata(response.data);
     });
   }, []);
-
+  console.log(data)
   return (
     <div className={cx("wrapper")}>
       <h2>Hè 2023</h2>
@@ -36,6 +36,7 @@ function Location() {
               DiaDiemDen={value.DiaDiemDen}
               img={value.HinhAnh.data}
               price={value.GiaTour}
+              percent={value.mucgiamgiathem}
               container
             />
           );

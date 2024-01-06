@@ -5,7 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyBill, faMoneyCheck } from "@fortawesome/free-solid-svg-icons";
 import axios from "../../../setup-axios/axios";
 const cx = classNames.bind(style);
-export default function Booking({ callBackname, Giam, Price, MaTour }) {
+export default function Booking(props) {
+  
   const [Person, setPerson] = useState(0);
   const [Personmin, setPersonmin] = useState(0);
   const [Personbe, setPerbe] = useState(0);
@@ -36,7 +37,7 @@ export default function Booking({ callBackname, Giam, Price, MaTour }) {
           }
         });
     }
-  }, [MaTour]);
+  }, [props.MaTour]);
 
   const handleupbe = () => {
     setPerbe(Personbe + 1);
@@ -49,41 +50,41 @@ export default function Booking({ callBackname, Giam, Price, MaTour }) {
   };
   const handleuppersonmin = () => {
     setPersonmin(Personmin + 1);
-    setcountprice((countprice += Price / 2 - ((Price / 2) * Giam) / 100));
+    setcountprice((countprice += props.Price / 2 - ((props.Price / 2) * props.Giam) / 100));
   };
   const handledownpersonmin = () => {
     if (Personmin === 0) {
     } else {
       setPersonmin(Personmin - 1);
-      setcountprice((countprice -= Price / 2 - ((Price / 2) * Giam) / 100));
+      setcountprice((countprice -= props.Price / 2 - ((props.Price / 2) * props.Giam) / 100));
     }
   };
   const handleupperson = () => {
     setPerson(Person + 1);
-    setcountprice((countprice += Price - (Price * Giam) / 100));
+    setcountprice((countprice += props.Price - (props.Price * props.Giam) / 100));
   };
   const handledownperson = () => {
     if (Person === 0) {
     } else {
       setPerson(Person - 1);
-      setcountprice((countprice -= Price - (Price * Giam) / 100));
+      setcountprice((countprice -= props.Price - (props.Price * props.Giam) / 100));
     }
   };
 
   const price = new Intl.NumberFormat("vi-VN", {
     style: "currency",
     currency: "VND",
-  }).format(Price);
+  }).format(props.Price);
   const price2 = new Intl.NumberFormat("vi-VN", {
     style: "currency",
     currency: "VND",
-  }).format(Price / 2);
+  }).format(props.Price / 2);
   const a = new Intl.NumberFormat("vi-VN", {
     style: "currency",
     currency: "VND",
   }).format(countprice);
   useEffect(() => {
-    callBackname(
+    props.callBackname(
       name,
       email,
       sdt,
@@ -155,7 +156,7 @@ export default function Booking({ callBackname, Giam, Price, MaTour }) {
         <div className={cx("booking-total-check")}>
           <span>Người Lớn</span>
           <span> x {price}</span>
-          <span style={{ color: "#d10a00", fontWeight: 600 }}> - {Giam}%</span>
+          <span style={{ color: "#d10a00", fontWeight: 600 }}> - {props.Giam}%</span>
           <button onClick={handledownperson}>-</button>
           <span>{Person}</span>
           <button onClick={handleupperson}>+</button>
@@ -163,7 +164,7 @@ export default function Booking({ callBackname, Giam, Price, MaTour }) {
         <div className={cx("booking-total-check")}>
           <span>Trẻ Em </span>
           <span> x {price2}</span>
-          <span style={{ color: "#d10a00", fontWeight: 600 }}> - {Giam}%</span>
+          <span style={{ color: "#d10a00", fontWeight: 600 }}> - {props.Giam}%</span>
           <button onClick={handledownpersonmin}>-</button>
           <span>{Personmin}</span>
           <button onClick={handleuppersonmin}>+</button>

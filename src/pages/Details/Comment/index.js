@@ -32,7 +32,7 @@ function Comment({MaTour}) {
         settext(e);
     }
     const hanldecomment=()=>{
-        if(localStorage.getItem("account")===null)
+        if(localStorage.getItem("account") === null)
         {
             toast.warning("Bạn chưa đăng nhập tài khoản")
             console.log(MaTour)
@@ -46,8 +46,13 @@ function Comment({MaTour}) {
                 MaTour,
                 })
                 .then((response) => {
-                    if(response.data==="success"){
+                    console.log(response.data)
+                    if(response.data === "success"){
                         toast.success("Cảm Ơn Đánh Giá Của Bạn")
+                    }
+                    else
+                    {
+                        toast.error("Bạn chưa tham gia tour này")
                     }
                 });
                 

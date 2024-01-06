@@ -14,7 +14,13 @@ function Searchresult({data,Ketqua,moment}) {
               {
                 
                 data.map(value=>{
-                  return (<ProductBox key={value.MaTour} id={value.MaTour} Name={value.DiaDiemDen}  NgayDi={value.NgayDi} img={value.HinhAnh.data}   container />)
+                  return (<ProductBox key={value.MaTour}id={value.MaTour}
+                    MaTour={value.MaTour}
+                    Name={value.TenTour}
+                    DiaDiemDen={value.DiaDiemDen}
+                    img={value.HinhAnh.data}
+                    price={value.GiaTour}
+                    percent={value.mucgiamgia}   container />)
                 })
               }
               

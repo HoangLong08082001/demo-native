@@ -45,18 +45,21 @@ const GalleryNextArrow = ({ currentSlide, slideCount, ...props }) => {
     </div>
   );
 };
-export default function Sliders() {
-  const [data, setdata] = useState([]);
-  const fetchTourByVoucher = async () => {
-    await axios.get("/tour/get-tour-by-voucher").then((response) => {
-      setdata(response.data);
-    });
-  };
-  useEffect(() => {
-    fetchTourByVoucher();
-  }, []);
+export default function Sliders({data=[]}) {
+  
 
-  var count = data.length - 0.2;
+  if(data.length < 2)
+  {
+    var count = data.length-0.2;
+  }
+  else if(data.length < 4 && data.length > 2)
+  {
+    var count = data.length - 0.1;
+  }
+  else
+  {
+    var count = 3.8;
+  }
   const settings = {
     dots: true,
     infinite: true,
@@ -65,9 +68,40 @@ export default function Sliders() {
     slidesToScroll: 1,
     responsive: [
       {
+        
         breakpoint: 1366,
         settings: {
-          slidesToShow: 3.1,
+          slidesToShow:3.1,
+                    slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        
+        breakpoint: 1224,
+        settings: {
+          slidesToShow:2.8,
+                    slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        
+        breakpoint: 1124,
+        settings: {
+          slidesToShow: 2.9,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2.9,
           slidesToScroll: 1,
           infinite: true,
           dots: true,
@@ -76,7 +110,7 @@ export default function Sliders() {
       {
         breakpoint: 975,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2.9,
           slidesToScroll: 1,
           infinite: true,
           dots: true,
@@ -177,7 +211,7 @@ export default function Sliders() {
               DiaDiemDen={value.DiaDiemDen}
               img={value.HinhAnh.data}
               price={value.GiaTour}
-              percent={+value.mucgiamgia}
+              percent={value.mucgiamgia}
             />
           );
         })}

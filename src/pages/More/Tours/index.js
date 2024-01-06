@@ -5,6 +5,7 @@ import ProductBox from "../../../components/Product";
 import Button from "../../../components/Button";
 import ReactPaginate from'react-paginate'
 import axios from "../../../setup-axios/axios";
+import { useParams } from "react-router-dom";
 const cx = classNames.bind(styles);
 export default function Tours({valueprice,valueday,valuelocation}) {
   const [data, setdata] = useState([]);
@@ -13,13 +14,34 @@ export default function Tours({valueprice,valueday,valuelocation}) {
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage=8;
-
+  const {nn}=useParams();
   useEffect(() => {
-    axios.get("/tour/alltour2").then((response) => {
-      setdata(response.data);
-    });
+    const ss='';
+    if(nn ==='TourTrongNuoc')
+    {
+      axios.post("/tour/alltour2",{data:'TN'}).then((response) => {
+        setdata(response.data);
+      });
+    
+    }
+    else if(nn ==='TourNuocNgoai')
+    {
+      axios.post("/tour/alltour2",{data:'NN'}).then((response) => {
+        setdata(response.data);
+      });
+      
+    }
+    else
+    {
+      axios.post("/tour/alltour2",{data:null}).then((response) => {
+        setdata(response.data);
+        
+      });
+      
+    }
    
-  }, []);
+    
+  }, [nn]);
  
   
   arraydata.current=data
@@ -33,6 +55,7 @@ export default function Tours({valueprice,valueday,valuelocation}) {
       arraydata.current=arraydata.current.filter((value)=>{
         return (value.vungMien===valuelocation);
       } );
+     
     }
     else
     {
@@ -56,6 +79,9 @@ export default function Tours({valueprice,valueday,valuelocation}) {
       }
   })
   
+ 
+  
+  
   if(key.price === 1)
   {
     
@@ -68,6 +94,7 @@ export default function Tours({valueprice,valueday,valuelocation}) {
     currentItems.sort((a,b)=>a.GiaTour-b.GiaTour);
   }
 
+  
  
    
 
@@ -91,7 +118,7 @@ export default function Tours({valueprice,valueday,valuelocation}) {
   
    
   
-  
+  console.log(currentItems)
   return (
     <div className={cx("wrapper")}>
       <div className={cx("wrapper-tour")}>
@@ -105,6 +132,7 @@ export default function Tours({valueprice,valueday,valuelocation}) {
               DiaDiemDen={value.DiaDiemDen}
               price={value.GiaTour}
               img={value.HinhAnh.data}
+              percent={value.mucgiamgiathem}
               container
             />
           );

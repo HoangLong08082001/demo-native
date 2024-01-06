@@ -21,7 +21,7 @@ function ProductBox({
   percent,
 }) {
   const [arraycomment, setarraycomment] = useState([]);
-
+ 
   useEffect(() => {
     axios
       .post("/tour/getcomment", {
@@ -82,11 +82,13 @@ function ProductBox({
             backgroundImage: `url(data:image/png;base64,${base64String})`,
           }}
         >
-          {percent && (
+          {percent > 0 ? (
             <div className={cx("sale-off")}>
               <p>{percent}%</p>
             </div>
-          )}
+          ) :(<div className={cx("sale-off-2")}>
+          <p>{0}%</p>
+        </div>) }
         </div>
         <div className={cx("container-date")}>3N/2D</div>
         <div className={cx("container-content")}>{Name}</div>

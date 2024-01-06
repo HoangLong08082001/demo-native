@@ -37,11 +37,16 @@ export default function Bill() {
   const [statuspay, setstatuspay] = useState(null);
   const [statusdk, setstatusdk] = useState(false);
   const [ham,setham]=useState(false);
+ 
   const [adderror, seterror] = useState(false);
   const [data, setttdata] = useState({});
   const navigate = useNavigate();
   let nextpage = 1;
-  const [status, setstatus] = useState("Vui Lòng Cung Cấp Thêm Thông Tin");
+  const [status, setstatus] = useState("");
+ 
+  const datenew=new Date().getTime();
+  const datess = new Date(valueobject.NgayDi);
+  const datenew2 = datess.getTime();
   useEffect(() => {
     axios
       .post(`tour/alltour/gettourbill`, { MaTour: id, NgayDi: date })
@@ -59,28 +64,54 @@ export default function Bill() {
   console.log(statuspay);
   const handlebook = (event) => {
     event.preventDefault();
-    if (
-      data.name === "" ||
-      data.email === "" ||
-      data.sdt === "" ||
+    if(  datenew >= datenew2 ||
+      (data.person + data.personmin) > valueobject.QuyMo || localStorage.getItem('account')=== null)
+      {
+        seterror(true);
+        setstatus('Thông Báo')
+       
+      }
+    else if (
+      data.name === null ||
+      data.email === null ||
+      data.sdt === null ||
+      data.diachi === null ||
+      data.name === '' ||
+      data.email === '' ||
+      data.sdt === '' ||
+      data.diachi === '' ||
       data.countprice === 0 ||
       statuspay === null ||
-      statusdk === false
+      statusdk === false 
     ) {
       seterror(true);
+      setstatus('Vui Lòng Cung Cấp Thêm Thông Tin')
     }
     else
     {
-     
-        setham(true);
-        setTimeout(() => {
-          setham(false);
-          navigate(`/Confirm?name=${data.name}&email=${data.email}&sdt=${data.sdt}&diachi=${data.diachi}&payment=${statuspay}&summoney=${data.countprice}
-          &person=${data.person}&personmin=${data.personmin}&personbe=${data.personbe}
-          &ngaykhoihanh=${date}&matour=${valueobject.MaTour}&loaitour=${valueobject.LoaiTour}
-          &tentour=${valueobject.TenTour}`);
-          
-         }, 2000);
+      axios.post("/custommer/addttuserbook",{
+        TenKH:data.name,
+        DiaChi:data.diachi,
+        Sdt:data.sdt,
+        MaKH:localStorage.getItem("Ma"),
+        }).then((response) => {
+            if(response.data === "Success"){
+              setham(true);
+              setTimeout(() => {
+                setham(false);
+                navigate(`/Confirm?name=${data.name}&email=${data.email}&sdt=${data.sdt}&diachi=${data.diachi}&payment=${statuspay}&summoney=${data.countprice}
+                &person=${data.person}&personmin=${data.personmin}&personbe=${data.personbe}
+                &ngaykhoihanh=${date}&matour=${valueobject.MaTour}&loaitour=${valueobject.LoaiTour}
+                &tentour=${valueobject.TenTour}`);
+                
+               }, 2000);
+            }
+        });  
+      
+
+
+
+       
     }
     // if(statuspay===0)
     // {
@@ -116,34 +147,66 @@ export default function Bill() {
       personbe: Personbe,
     });
   };
-  let arraytdata = [];
-  if (data.name == "") {
+ 
+
+  let arraytdata=[];
+  if(datenew >= datenew2)
+  {
     nextpage = 0;
+    arraytdata.push("Rất tiếc tour đã hết hạn hoặc đã bị hủy");
+    
+  } 
+  else if
+  (localStorage.getItem('account')=== null)
+  {
+    nextpage = 0;
+    arraytdata.push("Bạn cần phải đăng nhập trước khi đặt");
+    
+  }
+  else if (data.name === null || data.name==='') {
+    nextpage = 0;
+    arraytdata=[];
     arraytdata.push("Họ Tên  ?");
-  } else if (data.email == "") {
+
+  } 
+  else if (data.email === null || data.email==='') {
     nextpage = 0;
+    arraytdata=[];
     arraytdata.push("Email  ?");
-  } else if (data.sdt == "") {
+  } else if (data.sdt === null|| data.sdt==='') {
     nextpage = 0;
+    arraytdata=[];
     arraytdata.push("Phone  ?");
-  } else if (data.diachi == "") {
+  } else if (data.diachi === null || data.diachi==='') {
     nextpage = 0;
+    arraytdata=[];
     arraytdata.push("Địa Chỉ  ?");
   } else if (data.countprice == 0) {
     nextpage = 0;
+    arraytdata=[];
     arraytdata.push("Số lượng thành viên ?");
   } else if (data.person === 0) {
     nextpage = 0;
+    arraytdata=[];
     arraytdata.push("Số lượng thành viên đủ tuổi  ?");
   } else if (statuspay === null) {
     nextpage = 0;
     arraytdata.push("Phương thức thanh toán?");
   } else if (statusdk === false) {
     nextpage = 0;
+    arraytdata=[];
     arraytdata.push("Chấp thuận điều khoản ?");
   }
+  if((data.person + data.personmin) > valueobject.QuyMo  )
+  {
+    nextpage = 0;
+    arraytdata=[];
+    arraytdata.push("Số người vượt quá số chỗ còn trống");
+  }
+  
 
-  console.log(statuspay);
+
+
   return (
     <div className={cx("wrapper")}>
         {ham === true ?(<Loading/>):('')}
@@ -223,7 +286,7 @@ export default function Bill() {
         Phương Thức Thanh Toán{" "}
         <FontAwesomeIcon style={{ color: "#0d91f5 " }} icon={faCircleInfo} />
       </p>
-      <Accordion callBackParent={handlechoosepay} />
+      <Accordion callBackParent={handlechoosepay}  />
       <Rules callBackParent={handlechoosedk} />
       <div className={cx("btn")}>
         {nextpage === 1 && ham === false ? (

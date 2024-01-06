@@ -447,6 +447,7 @@
     width: 70px;
     height: 20px;
     font-size: 8px;
+    line-height: 20px;
     font-weight: 400;
   }
   .buttonproduct {
@@ -458,9 +459,44 @@
   .LinkMore {
     font-size: 13px;
   }
+  .book
+  {
+    width: 50px;
+    
+  }
+  .buttonlocation
+  {
+    width: 150px;
+    margin-bottom: 10px;
+    height: 40px;
+    font-size: 13px;
+    border: 1px solid black;
+    top: 80%;
+    cursor: pointer;
+    left: 13%;
+ 
+  
+ 
+   
+  }
 }
 @media only screen and (max-width: 530px) and (min-width: 480px) {
   .login,
+  .buttonlocation
+  {
+    width: 150px;
+    margin-bottom: 10px;
+    height: 40px;
+    font-size: 13px;
+    border: 1px solid black;
+    top: 80%;
+    cursor: pointer;
+    left: 13%;
+ 
+  
+ 
+   
+  }
   .logout {
     width: 100px;
   }
@@ -468,6 +504,7 @@
     width: 120px;
     font-size: 13px;
     height: 25px;
+    line-height: 25px;
     font-weight: 400;
   }
   .buttonproduct {
@@ -475,17 +512,28 @@
     font-size: 13px;
     margin-bottom: 5px;
   }
+  .book
+  {
+    width: 50px;
+    
+  }
 }
 @media only screen and (max-width: 650px) and (min-width: 530px) {
   .watchadd {
     width: 120px;
     height: 30px;
     font-weight: 400;
+    line-height: 30px;
   }
   .buttonproduct {
     width: 90px;
     font-size: 10px;
     margin-bottom: 5px;
+  }
+  .book
+  {
+    width: 60px;
+    
   }
 }
 //tablet
@@ -498,6 +546,11 @@
     width: 100px;
     font-size: 13px;
     margin-bottom: 5px;
+  }
+  .book
+  {
+    width: 70px;
+   
   }
 }
 //tabletpro

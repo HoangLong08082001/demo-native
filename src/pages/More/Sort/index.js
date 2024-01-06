@@ -34,12 +34,13 @@ export default function Sort(props) {
     }
  
   }
+
   return (
   <div className={cx("wrapper")}>
    <input className={cx("cscheck1")} type="radio" name="check" id="check1" ></input>
     <label for="check1" className={cx("wrapper-full")}>
       <div className={cx("sort-form")}>
-        <p>Sắp Xếp Theo</p>
+        <p>Sắp Xếp </p>
 
       </div>
       <div className={cx("sort-tour")}>

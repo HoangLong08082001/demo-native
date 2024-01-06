@@ -140,3 +140,75 @@
  display: none;
 }
 
+ //mobile
+ @media only screen and (max-width: 480px) and (min-width:375px)  {
+ 
+  .sort-form
+  {
+    width: 32%;
+    p{
+      font-size: 12px;
+      
+    }
+  }
+  .wrapper {
+   height: 110px;
+  }
+  .wrapper-full
+  {
+    height: 90px;
+  }
+  .sort-tour
+  {
+    margin-left: 5px;
+    line-height: 20px;
+    label{
+      font-size: 12px;
+    }
+  }
+}
+@media only screen and (max-width: 530px) and (min-width:480px)  {
+  .sort-form
+  {
+    width: 30%;
+    p{
+      font-size: 12px;
+      
+    }
+  }
+  .sort-tour
+  {
+    
+    label{
+      font-size: 12px;
+    }
+  }
+}
+@media only screen and (max-width: 650px) and (min-width: 530px){
+  .sort-form
+  {
+    width: 30%;
+  }
+}
+//tablet
+@media only screen and (min-width:650px)  and (max-width: 1024px) {
+  .sort-form
+  {
+    width: 30%;
+  }
+}
+  
+
+//tabletpro
+@media only screen and (min-width:1024px)  and (max-width: 1366px) {
+
+  .sort-form
+  {
+    width: 30%;
+  }
+}
+
+//pc
+@media only screen and (min-width: 1024px) {
+  
+}

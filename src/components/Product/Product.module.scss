@@ -69,7 +69,18 @@
   margin-top: 20px;
 }
 .sale-off {
-  background: red;
+  background: rgb(227, 50, 1);
+  width: 40px;
+  padding: 1px 5px;
+  border-radius: 15px 0px 60px 0px;
+  p{
+    color: white;
+    font-weight: 800;
+  }
+}
+.sale-off-2
+{
+  background: rgb(110, 167, 211);
   width: 40px;
   padding: 1px 5px;
   border-radius: 15px 0px 60px 0px;

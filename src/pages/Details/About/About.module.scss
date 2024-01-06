@@ -101,3 +101,339 @@
   }
   font-weight: 600;
 }
+@media only screen and (max-width: 480px) and (min-width:375px)  {
+  .wrapper-dow
+  {
+    margin: auto;
+    width: 100%;
+  } 
+  .wrapper-dow-2
+  {
+  
+    display: flex;
+    div{
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      img{
+        width: 100px;
+        height: 50px;
+      }
+    }
+  }
+  .wrapper-dow-1
+  {
+    margin-top: 10px;
+    p{
+      font-size: 18px;
+    }
+  }
+  .wrapper-menu
+  {
+    
+    padding-bottom: 10px;
+    text-align: center;
+    display: flex;
+    font-size: 12px;
+    justify-content: space-around;
+    div{
+      width: 10px;
+    }
+    div svg{
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    div span:first-child{
+      font-size: 14px;
+      padding-top: 10px;
+    }
+   
+  }
+  .add-like
+  {
+    position: absolute;
+   
+    height: 40px;
+    
+    line-height: 40px;
+    right: 0;
+    top: -200%;
+    right: 13%;
+  
+    span:first-child{
+      font-size: 15px;
+      margin-right: 5px;
+    }
+    font-size: 12px;
+    
+    
+  }
+  
+}
+@media only screen and (max-width: 530px) and (min-width:480px)  {
+  .wrapper-dow
+  {
+    margin: auto;
+    width: 100%;
+  } 
+  .wrapper-dow-2
+  {
+  
+    display: flex;
+    div{
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      img{
+        width: 100px;
+        height: 50px;
+      }
+    }
+  }
+  .wrapper-dow-1
+  {
+    margin-top: 10px;
+    p{
+      font-size: 18px;
+    }
+  }
+  .wrapper-menu
+  {
+    
+    padding-bottom: 10px;
+    text-align: center;
+    display: flex;
+    font-size: 13px;
+    justify-content: space-around;
+    div{
+      width: 120px;
+    }
+    div svg{
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    div span:first-child{
+      font-size: 16px;
+      padding-top: 10px;
+    }
+   
+  }
+  .add-like
+  {
+    position: absolute;
+   
+    height: 40px;
+    
+    line-height: 40px;
+    right: 0;
+    top: -200%;
+    right: 13%;
+  
+    span:first-child{
+      font-size: 20px;
+      margin-right: 5px;
+    }
+    font-size: 15px;
+    
+    
+  }
+}
+@media only screen and (max-width: 650px) and (min-width: 530px){
+  .wrapper-dow
+  {
+    margin: auto;
+    width: 600px;
+  } 
+  .wrapper-dow-2
+  {
+  
+    display: flex;
+    div{
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 13px;
+
+    }
+  }
+  .wrapper-dow-1
+  {
+    margin-top: 10px;
+    p{
+      font-size: 18px;
+    }
+  }
+  .wrapper-menu
+  {
+    
+    padding-bottom: 10px;
+    text-align: center;
+    display: flex;
+    font-size: 13px;
+    justify-content: space-around;
+    div{
+      width: 120px;
+    }
+    div svg{
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    div span:first-child{
+      font-size: 16px;
+      padding-top: 10px;
+    }
+   
+  }
+  .add-like
+  {
+    position: absolute;
+   
+    height: 40px;
+    
+    line-height: 40px;
+    right: 0;
+    top: -200%;
+    right: 6%;
+  
+    span:first-child{
+      font-size: 20px;
+      margin-right: 5px;
+    }
+    font-size: 15px;
+    
+    
+  }
+}
+//tablet
+@media only screen and (min-width:650px)  and (max-width: 1024px) {
+  
+  .wrapper-dow
+{
+  margin: auto;
+  width: 700px;
+} 
+.wrapper-dow-2
+{
+
+  display: flex;
+  div{
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+.wrapper-dow-1
+{
+  margin-top: 15px;
+  p{
+    font-size: 18px;
+  }
+}
+.wrapper-menu
+{
+  
+  padding-bottom: 10px;
+  text-align: center;
+  display: flex;
+  font-size: 14px;
+  justify-content: space-around;
+  div{
+    width: 200px;
+  }
+  div svg{
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  div span:first-child{
+    font-size: 18px;
+    padding-top: 10px;
+  }
+ 
+}
+.add-like
+{
+  position: absolute;
+ 
+  height: 40px;
+  
+  line-height: 40px;
+  right: 0;
+  top: 0;
+  right: -1%;
+
+  span:first-child{
+    font-size: 20px;
+    margin-right: 5px;
+  }
+  
+  
+  
+}
+}
+  
+
+//tabletpro
+@media only screen and (min-width:1024px)  and (max-width: 1366px) {
+ 
+  .wrapper-dow
+{
+  margin: auto;
+  width: 900px;
+} 
+.wrapper-dow-2
+{
+  justify-content: space-evenly;
+  display: flex;
+  div{
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+.wrapper-dow-1
+{
+  margin-top: 15px;
+}
+.wrapper-menu
+{
+  
+  padding-bottom: 15px;
+  text-align: center;
+  display: flex;
+  font-size: 15px;
+  justify-content: space-around;
+  div{
+    width: 250px;
+  }
+  div svg{
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  div span:first-child{
+    font-size: 18px;
+    padding-top: 10px;
+  }
+ 
+}
+.add-like
+{
+  position: absolute;
+ 
+  height: 50px;
+  
+  line-height: 50px;
+  right: 0;
+  top: 0;
+  right: -5%;
+
+  span:first-child{
+    font-size: 20px;
+    margin-right: 5px;
+  }
+  
+  
+  
+}
+}
+
+//pc
+@media only screen and (min-width: 1024px) {
+  
+}

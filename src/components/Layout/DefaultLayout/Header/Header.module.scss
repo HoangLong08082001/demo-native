@@ -94,7 +94,9 @@
   opacity: 0;
   border-radius: 0 0 20px 0;
   height: 50%;
-  background-color: white;
+  
+  color: black;
+  background-color: #2a4f6b ;
   z-index: 11;
   transform: translateX(-100%);
   ul
@@ -106,7 +108,10 @@
       font-size: 20px;
       a{
         text-decoration: none;
-        color: black;
+        color: white;
+      }
+      a:hover{
+        color: rgb(176, 144, 0);
       }
     }
   }
@@ -261,7 +266,7 @@
     height: 70%;
     ul{
       li{
-        font-size: 10px;
+        font-size: 15px;
       }
     }
     label{
@@ -301,13 +306,13 @@
     height: 70%;
     ul{
       li{
-        font-size: 10px;
+        font-size: 16px;
       }
     }
     label{
       svg{
         top: 10px;
-        font-size: 20px;
+        font-size: 17px;
         position: absolute;
         right: 15px;
       }
@@ -333,6 +338,17 @@
   {
     display: block;
   }
+  .menu-bar
+  {
+    width: 50%;
+    height: 70%;
+    ul{
+      li{
+        font-size: 18px;
+        margin-top: 30px;
+      }
+    }
+  }
 }
 //tablet
 @media only screen and (min-width:650px)  and (max-width: 1024px) {
@@ -351,10 +367,11 @@
   .menu-bar
   {
     width: 45%;
-    height: 60%;
+    height: 70%;
     ul{
       li{
         font-size: 20px;
+        margin-top: 30px;
       }
     }
   }
