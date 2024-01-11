@@ -27,6 +27,7 @@ export default function Ticket() {
   const { user } = useContext(UserContext);
   const [toggle, setToggle] = useState(1);
   const [status, setstatus] = useState(null);
+  const [countDown, setCountDown] = useState("");
   const [listTicketChecked, setListTicketChecked] = useState([]);
   const toggleTab = (index) => {
     setToggle(index);
@@ -36,19 +37,28 @@ export default function Ticket() {
       if (res && res.message === "success") {
         setListTicketChecked(res.data);
         setLoad(res.data);
+        console.log(res.data);
       }
     });
   };
   const handleSubmit = async (l) => {
     let maphieu = l.MaPhieu;
+    let mahoadon = l.MaHoaDon;
+    let tongtien = l.Tongtien;
+    let hinhthucthanhtoan = l.HinhThucThanhToan;
     console.log(maphieu);
-    let response = await axios.put("/ticket/update-status-ticket", { maphieu });
+    let response = await axios.put("/ticket/update-status-ticket", {
+      maphieu,
+      mahoadon,
+      tongtien,
+      hinhthucthanhtoan,
+    });
     if (response && response.message === "success") {
-      toast.success("Da duyet tour");
+      toast.success("Xác nhận đã thanh toán");
       fetchListChecked();
     }
-    setstatus("");
   };
+
   useEffect(() => {
     fetchListChecked();
   }, []);
@@ -59,23 +69,21 @@ export default function Ticket() {
           TẠO PHIẾU <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>
         </button>
       </Link>
-
       <div className={cx("tab-panel")}>
         <button
+          onClick={() => setToggle(1)}
           className={toggle === 1 ? cx("checked-active") : cx("checked")}
-          onClick={() => toggleTab(1)}
         >
-          Danh sách phiếu chưa duyệt
+          Chờ thanh toán
         </button>
         <button
+          onClick={() => setToggle(2)}
           className={toggle === 2 ? cx("checked-active") : cx("checked")}
-          onClick={() => toggleTab(2)}
         >
-          Danh sách phiếu đã duyệt
-          <FontAwesomeIcon icon={faListCheck}></FontAwesomeIcon>
+          Đã huỷ
         </button>
       </div>
-      {toggle === 1 ? (
+      {toggle === 1 && (
         <>
           <input type="text" className="search" placeholder="Search here" />
           {load ? (
@@ -86,11 +94,23 @@ export default function Ticket() {
                 <th>Tên khách hàng</th>
                 <th>Số điện thoại</th>
                 <th>Ngày lập phiếu</th>
-                <th>Duyệt phiếu</th>
+                <th>Thời hạn thanh toán</th>
                 <th>Action</th>
               </tr>
               {listTicketChecked.map((l, i) => {
-                if (l.TrangThai === 0) {
+                const today = new Date();
+                const ngaytao = new Date(l.NgayTao);
+                // Ngày mục tiêu (20/1/2024)
+                const targetDate = new Date(l.NgayDi);
+
+                // Tính số mili giây còn lại
+                const timeRemaining = targetDate - today;
+
+                // Chuyển đổi số mili giây thành số ngày
+                const days = Math.floor(
+                  timeRemaining / (1000 * 60 * 60 * 24) - 1
+                );
+                if (l.TrangThai === 0 && days > 0) {
                   return (
                     <tr className={cx("tr")}>
                       <td>{l.MaPhieu}</td>
@@ -98,20 +118,34 @@ export default function Ticket() {
                       <td>{l.TenKH}</td>
                       <td>{l.Sdt}</td>
                       <td>{new Date(l.NgayTao).toLocaleDateString("en-US")}</td>
+                      {days <= 0 ? (
+                        <td className={cx("offday")}>Hết Hạn Thanh Toán</td>
+                      ) : (
+                        <td>Còn {days} Ngày</td>
+                      )}
                       <td>
-                        {l.TrangThai === 0 && (
+                        {days <= 0 ? (
                           <button
-                            className={cx("btn-submit")}
+                            className={cx("btnDelete")}
+                            onClick={() =>
+                              navigate(
+                                `/chi-tiet-phieu-dat-tour/${l.MaPhieu}`,
+                                {
+                                  state: l,
+                                }
+                              )
+                            }
+                          >
+                            <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
+                          </button>
+                        ) : (
+                          <button
+                            className={cx("btnUpdate")}
                             onClick={() => handleSubmit(l)}
                           >
-                            Chưa Duyệt
+                            <FontAwesomeIcon icon={faCheck}></FontAwesomeIcon>
                           </button>
                         )}
-                      </td>
-                      <td>
-                        <button className={cx("btnUpdate")}>
-                          <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>
-                        </button>
                       </td>
                     </tr>
                   );
@@ -131,42 +165,46 @@ export default function Ticket() {
             </div>
           )}
         </>
-      ) : (
-        <></>
       )}
-      {toggle === 2 ? (
+      {toggle === 2 && (
         <>
           <input type="text" className="search" placeholder="Search here" />
           {load ? (
-            <table>
+            <table className={cx("active")}>
               <tr className={cx("tr-th")}>
                 <th>Mã phiếu</th>
                 <th>Tên tour</th>
                 <th>Tên khách hàng</th>
                 <th>Số điện thoại</th>
                 <th>Ngày lập phiếu</th>
-                <th>Duyệt phiếu</th>
-                {/* <th>Action</th> */}
+                <th>Thời hạn thanh toán</th>
               </tr>
               {listTicketChecked.map((l, i) => {
-                if (l.TrangThai === 1) {
+                const today = new Date();
+                const ngaytao = new Date(l.NgayTao);
+                // Ngày mục tiêu (20/1/2024)
+                const targetDate = new Date(l.NgayDi);
+
+                // Tính số mili giây còn lại
+                const timeRemaining = targetDate - today;
+
+                // Chuyển đổi số mili giây thành số ngày
+                const days = Math.floor(
+                  timeRemaining / (1000 * 60 * 60 * 24) - 1
+                );
+                if (l.TrangThai === 0 && days <= 0) {
                   return (
-                    <tr className={cx("tr")}>
+                    <tr className={cx("tr-off")}>
                       <td>{l.MaPhieu}</td>
                       <td>{l.TenTour}</td>
                       <td>{l.TenKH}</td>
                       <td>{l.Sdt}</td>
                       <td>{new Date(l.NgayTao).toLocaleDateString("en-US")}</td>
-                      <td>
-                        <button className={cx("btn-submit-checked")}>
-                          {l.TrangThai === 1 && "ĐÃ DUYỆT"}
-                        </button>
-                      </td> 
-                      {/* <td>
-                        <button className={cx("btnInfo")}>
-                          <FontAwesomeIcon icon={faInfo}></FontAwesomeIcon>
-                        </button>
-                      </td> */}
+                      {days <= 0 ? (
+                        <td className={cx("offday")}>Hết Hạn Thanh Toán</td>
+                      ) : (
+                        <td>Còn {days} Ngày</td>
+                      )}
                     </tr>
                   );
                 }
@@ -185,8 +223,6 @@ export default function Ticket() {
             </div>
           )}
         </>
-      ) : (
-        <></>
       )}
     </div>
   );

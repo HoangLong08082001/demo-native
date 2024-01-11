@@ -38,6 +38,36 @@ table {
       }
     }
   }
+  .tr-td-disable {
+    opacity: 0.5;
+    td {
+      padding: 10px;
+      text-align: center;
+    }
+    transition: 0.2s;
+    
+    .list-action {
+      display: flex;
+      justify-content: space-around;
+      .btn-edit {
+        cursor: pointer;
+        padding: 10px;
+        background-color: #0000ff;
+        border: none;
+        color: white;
+        font-weight: 900;
+      }
+      .btn-info {
+        cursor: pointer;
+        width: 25%;
+        padding: 10px;
+        background-color: #5cb85c;
+        border: none;
+        color: white;
+        font-weight: 900;
+      }
+    }
+  }
 }
 .loading-form{
   .loading{

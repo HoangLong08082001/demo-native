@@ -1,0 +1,28 @@
+.wrapper {
+  margin-top: 20px;
+  height: 795px;
+  padding: 10px;
+  .tab-pannel {
+    .tab {
+        cursor: pointer;
+      margin-left: 20px;
+      padding: 12px 15px;
+      border: none;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      background-color: white;
+      font-size: 17px;
+    }
+    .tab-active {
+        cursor: pointer;
+        margin-left: 20px;
+        padding: 12px 15px;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: 4px solid rgb(0, 166, 255);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        background-color: white;
+        font-size: 17px;
+      }
+  }
+}

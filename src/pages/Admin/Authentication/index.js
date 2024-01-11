@@ -27,7 +27,7 @@ export default function Authentication() {
     fetchPosition();
   }, []);
   if (user && user.isAuthenticated === true) {
-    if (user.accout.position === "DEV") {
+    if (user.accout.position === "DEV" || user.accout.position === "Admin") {
       return (
         <div className={cx("wrapper")}>
           <div className={cx("btn")}>

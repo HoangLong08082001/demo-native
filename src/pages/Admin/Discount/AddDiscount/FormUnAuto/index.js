@@ -87,7 +87,21 @@ export default function FormUnauto() {
     }
   };
   const validateDate = (e) => {
-    setEnd(e);
+    if (start !== "") {
+      setEnd(e);
+    } else {
+      toast.warning("Vui lòng chọn ngày bắt đầu trước ngày kết thúc!");
+      setEnd("");
+    }
+  };
+  const validateStartDate = (e) => {
+    let startday = new Date(e);
+    let endday = new Date(end);
+    if (startday > endday) {
+      toast.warning("Vui lòng chọn ngày bắt đầu trước ngày kết thúc!");
+    } else {
+      setStart(e);
+    }
   };
   const handleSubmit = () => {
     let valid = validate();
@@ -137,9 +151,15 @@ export default function FormUnauto() {
                 --Chọn đợt giảm giá--
               </option>
               {discounts.map((item, index) => {
-                return (
-                  <option value={item.id_giamgia}>{item.ten_dotgiamgia}</option>
-                );
+                let today = new Date();
+                let endday = new Date(item.thoigiantoi);
+                if (today <= endday) {
+                  return (
+                    <option value={item.id_giamgia}>
+                      {item.ten_dotgiamgia}
+                    </option>
+                  );
+                }
               })}
             </select>
           ) : (
@@ -158,7 +178,7 @@ export default function FormUnauto() {
             min={min ? min : today}
             max={max && max}
             value={start}
-            onChange={(e) => setStart(e.target.value)}
+            onChange={(e) => validateStartDate(e.target.value)}
           />
           <input
             type="date"

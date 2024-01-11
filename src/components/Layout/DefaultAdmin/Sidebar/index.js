@@ -175,6 +175,48 @@ export default function Sidebar() {
                     </li>
                   );
                 }
+              }else if (user.accout.position === "Admin") {
+                if (index === 0 || index === 1 || index === 7 ) {
+                  return (
+                    <li
+                      className={click === menu.title ? cx("active") : null}
+                      key={index}
+                      onClick={() => setClick(menu.title)}
+                    >
+                      <FontAwesomeIcon
+                        className={cx("icon")}
+                        icon={menu.icon}
+                      ></FontAwesomeIcon>
+
+                      <p>
+                        <Button itemmenu to={menu.to}>
+                          {menu.title}
+                        </Button>
+                      </p>
+                    </li>
+                  );
+                }
+              }else if (user.accout.position === "Tư vấn tour") {
+                if (index === 0 || index === 2 || index === 3|| index === 4 || index === 5 || index === 6  ) {
+                  return (
+                    <li
+                      className={click === menu.title ? cx("active") : null}
+                      key={index}
+                      onClick={() => setClick(menu.title)}
+                    >
+                      <FontAwesomeIcon
+                        className={cx("icon")}
+                        icon={menu.icon}
+                      ></FontAwesomeIcon>
+
+                      <p>
+                        <Button itemmenu to={menu.to}>
+                          {menu.title}
+                        </Button>
+                      </p>
+                    </li>
+                  );
+                }
               }
             })}
           </ul>

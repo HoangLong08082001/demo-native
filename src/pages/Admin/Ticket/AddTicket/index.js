@@ -17,6 +17,7 @@ import { UserContext } from "../../../../context/UserContext";
 import { toast } from "react-toastify";
 const cx = classNames.bind(style);
 export default function AddTicket() {
+  const today = new Date();
   const { user } = useContext(UserContext);
   const ref = useRef(null);
   const handleFocus = () => {
@@ -29,14 +30,15 @@ export default function AddTicket() {
   const [soLuong1, setSoLuong1] = useState(0);
   const [soLuong2, setSoLuong2] = useState(0);
   const [khachhang, setKhachHang] = useState();
+  const [giamGia, setGiamGia] = useState(0);
+  const [giamGiaThem, setGiamGiaThem] = useState(0);
   const [tour, setTour] = useState();
   let Price1 = 0;
   let Price2 = 0;
   let [sum, setSum] = useState(0);
   const fetchCustommer = async () => {
     await axios.get("/custommer/list-customer").then((res) => {
-      if(res && res.data === "ok")
-      {
+      if (res && res.data === "ok") {
         setListCustommer(res.list);
       }
     });
@@ -60,19 +62,32 @@ export default function AddTicket() {
       (t) => t.TenTour === selectedIDTour
     )[0];
     setTour(selectedTour);
+    if (
+      (selectedTour.mucgiamgia && selectedTour.mucgiamgia !== null) ||
+      (selectedTour.mucgiamgiathem && selectedTour.mucgiamgiathem !== null)
+    ) {
+      setGiamGia(selectedTour.mucgiamgia);
+      console.log(selectedTour.mucgiamgia);
+      setGiamGiaThem(selectedTour.mucgiamgiathem);
+      console.log(selectedTour.mucgiamgiathem);
+    }
   };
 
   const checkValidate = () => {
     if (!tour?.TenTour) {
-      toast.warning("Vui long chon tour");
+      toast.warning("Vui lòng chọn tour");
       return false;
     }
     if (!khachhang?.TenKH) {
-      toast.warning("Vui long chon khach hang");
+      toast.warning("Vui lòng chọn khách hàng");
       return false;
     }
     if (soLuong === 0) {
-      toast.warning("Vui long chon so luong khach hang");
+      toast.warning("Vui lòng chọn số lượng khách hàng");
+      return false;
+    }
+    if ((soLuong + soLuong1 + soLuong2) > tour?.QuyMo) {
+      toast.warning("Số người vượt quá số chỗ còn trống");
       return false;
     }
     return true;
@@ -100,7 +115,10 @@ export default function AddTicket() {
         })
         .then((res) => {
           if (res && res.message === "success") {
-            toast.success(user.accout.email + "Đã duyệt phiếu");
+            toast.success(user.accout.email + "Đã tao phiếu");
+          }
+          if (res && res.message === "biggest") {
+            toast.warning("Số lượng khách vượt quá quy mô tour!");
           }
         });
     }
@@ -293,10 +311,14 @@ export default function AddTicket() {
           <div className={cx("input")}>
             <label htmlFor="">Giá tour</label>
             <input
-              value={new Intl.NumberFormat("vi-VN", {
-                style: "currency",
-                currency: "VND",
-              }).format(tour?.GiaTour)}
+              value={
+                !isNaN(tour?.GiaTour)
+                  ? new Intl.NumberFormat("vi-VN", {
+                      style: "currency",
+                      currency: "VND",
+                    }).format(tour?.GiaTour)
+                  : ""
+              }
               type="text"
               name=""
               readOnly
@@ -305,7 +327,7 @@ export default function AddTicket() {
             />
           </div>
           <br />
-          {Price1 !== 0 && (
+          {isNaN(Price1) && (
             <span style={{ color: "red", marginLeft: "10px" }}>{Price1}</span>
           )}
           <div className={cx("input")}>
@@ -335,7 +357,7 @@ export default function AddTicket() {
               </p>
             )}
           </div>
-          {Price2 !== 0 && (
+          {isNaN(Price2) && (
             <span style={{ color: "red", marginLeft: "10px" }}>{Price2}</span>
           )}
           <div className={cx("input")}>
@@ -382,7 +404,7 @@ export default function AddTicket() {
       </div>
       <div className={cx("button")}>
         <button className={cx("submit")} onClick={handleSubmit}>
-          DUYỆT <FontAwesomeIcon icon={faCheckCircle}></FontAwesomeIcon>
+          TẠO PHIẾU <FontAwesomeIcon icon={faCheckCircle}></FontAwesomeIcon>
         </button>
         <Link to="/phieu-dat-tour">
           <button className={cx("cancel")}>

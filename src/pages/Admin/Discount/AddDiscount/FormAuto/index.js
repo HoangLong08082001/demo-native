@@ -82,6 +82,22 @@ export default function FormAuto() {
           }
         });
     }
+  };const validateStartDate = (e) => {
+    let startday = new Date(e);
+    let endday = new Date(end);
+    if (startday > endday) {
+      toast.warning("Ngày bắt đầu trước ngày kết thúc!");
+    } else {
+      setStart(e);
+    }
+  };
+  const handleEndDay = (e) => {
+    if (start !== "") {
+      setEnd(e.target.value);
+    } else {
+      toast.warning("Vui lòng chọn ngày bắt đầu trước ngày kết thúc!");
+      setEnd("");
+    }
   };
   useEffect(() => {
     fetchLatest();
@@ -106,13 +122,13 @@ export default function FormAuto() {
             type="date"
             min={latestDay}
             value={start}
-            onChange={(e) => setStart(e.target.value)}
+            onChange={(e) => validateStartDate(e.target.value)}
           />
           <input
             type="date"
             min={latestDay}
             value={end}
-            onChange={(e) => setEnd(e.target.value)}
+            onChange={(e) => handleEndDay(e)}
           />
           <input
             type="text"

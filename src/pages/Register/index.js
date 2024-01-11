@@ -23,22 +23,25 @@ function Register() {
   const [confirm, setConfirm] = useState("");
   const checkValidate = () => {
     if (email === "") {
-      toast.warning("Vui long nhap email");
+      toast.warning("Vui lòng nhập email");
+      return false;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      toast.warning("Nhập sai định dạng email");
       return false;
     }
     if (password === "") {
-      toast.warning("Vui long nhap mat khau");
+      toast.warning("Vui lòng nhập mật khẩu");
       return false;
     }
     if (confirm === "") {
-      toast.warning("Vui long nhap lai mat khau");
+      toast.warning("Vui lòng nhập lại mật khẩu");
       return false;
     }
     if (confirm !== password) {
-      toast.warning("Sai mat khau");
+      toast.warning("Mật khẩu không trùng khớp");
       return false;
     }
-    toast.success("Tao tai khoan thanh cong");
     return true;
   };
   const handleHideShow = () => {
@@ -52,17 +55,33 @@ function Register() {
   const handleCreate = () => {
     let check = checkValidate();
     if (check) {
-      axios.post("/custommer/register-custommer", {
-        email,
-        password,
-      });
+      axios
+        .post("/custommer/register-custommer", {
+          email,
+          password,
+        })
+        .then((res) => {
+          if (res && res.message === "exists") {
+            toast.warning("Email này đã tồn tại!");
+          }
+          if (res && res.message === "success") {
+            toast.success("Tạo tài khoản thành công!");
+          }
+        });
       setPassword("");
       setEmail("");
+      setConfirm("");
     }
-  
   };
   return (
-    <div  style={{ backgroundImage: `url(${img4})`,backgroundRepeat:"no-repeat",backgroundSize:"cover"  }} className={cx("box-full")} >
+    <div
+      style={{
+        backgroundImage: `url(${img4})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+      className={cx("box-full")}
+    >
       <div className={cx("box")}>
         <div className={cx("title")}>
           <p>CREATE YOUR ACCOUNT</p>
@@ -116,7 +135,7 @@ function Register() {
           <div className={cx("text")}>
             <p>
               Don't have an account ?{" "}
-              <Button to="/login" linkregister>
+              <Button to="/login-user" linkregister>
                 login here
               </Button>
             </p>

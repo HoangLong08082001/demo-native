@@ -77,3 +77,30 @@
     opacity: 0.5;
   }
 }
+
+@media only screen and (max-width: 1536px) {
+  .wrapper {
+    height: 100vh;
+    .ticket {
+      height: 650px;
+      .form {
+        border-top: 1px solid black;
+        display: flex;
+        .left {
+          width: 40%;
+          p {
+            font-size: 15px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 900;
+          }
+        }
+        .right {
+          width: 100%;
+          p {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}

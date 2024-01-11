@@ -25,8 +25,10 @@ export default function UpdateEmployee() {
   const [listPosition, setListPosition] = useState([]);
   const [modal, setModal] = useState(false);
   const fetchPostion = () => {
-    axios.get("/position/list-postion").then((res) => {
-      setListPosition(res.data);
+    axios.get("/position/list-position").then((res) => {
+      if (res && res.message === "success") {
+        setListPosition(res.data);
+      }
     });
   };
   // const fetchById = (user) => {
@@ -35,17 +37,38 @@ export default function UpdateEmployee() {
   //     console.log(response.data);
   //   }
   // };
+  const checkValidate = () => {
+    if (TenNV === "") {
+      toast.warning("Vui lòng nhập đầy đủ họ tên nhân viên");
+      return false;
+    }
+    if (cmnd === "" || cmnd.length !== 12) {
+      toast.warning("Vui lòng nhập căn cước công dân nhân viên");
+      return false;
+    }
+    if (Sdt === "") {
+      toast.warning("Vui lòng nhập số điện thoại");
+      return false;
+    }
+    return true;
+  };
   const handleUpdate = async () => {
-    let response = await axios.put(`/employees/update-employee`, {
-      id,
-      TenNV,
-      cmnd,
-      Sdt,
-      Position,
-    });
-    if (response && response.message === "success") {
-      toast.success("Update succcess");
-      navigate("/employee");
+    let check = checkValidate();
+    if (check === true) {
+      await axios
+        .put(`/employees/update-employee`, {
+          id,
+          TenNV,
+          cmnd,
+          Sdt,
+          Position,
+        })
+        .then((response) => {
+          if (response.message === "success") {
+            toast.success("Cập nhật thành công!");
+            navigate("/nhan-vien");
+          }
+        });
     }
   };
   const handleOut = () => {
@@ -72,11 +95,11 @@ export default function UpdateEmployee() {
   }, []);
   return (
     <div className={cx("wrapper")}>
-      <p>Sua thong tin nhan vien</p>
+      <p>Sửa thông tin nhân viên</p>
       <div className={cx("form")}>
         <div className={cx("form-left")}>
           <div className={cx("form-input")}>
-            <label htmlFor="">Ten nhan vien:</label>
+            <label htmlFor="">Tên nhân viên:</label>
             <input
               type="text"
               name=""
@@ -97,7 +120,7 @@ export default function UpdateEmployee() {
             />
           </div>
           <div className={cx("form-input")}>
-            <label htmlFor="">So dien thoai:</label>
+            <label htmlFor="">Số điện thoại:</label>
             <input
               style={{ marginLeft: "20px" }}
               type="number"
@@ -110,7 +133,7 @@ export default function UpdateEmployee() {
         </div>
         <div className={cx("form-right")}>
           <div className={cx("form-input")}>
-            <label htmlFor="">Vi tri:</label>
+            <label htmlFor="">Vị trí:</label>
             <select
               name={Position}
               disabled
@@ -132,20 +155,20 @@ export default function UpdateEmployee() {
       </div>
       <div className={cx("btn-submit")}>
         <button className={cx("btn-submit")} onClick={handleUpdate}>
-          CAP NHAT <FontAwesomeIcon icon={faRotateRight}></FontAwesomeIcon>
+          CẬP NHẬT <FontAwesomeIcon icon={faRotateRight}></FontAwesomeIcon>
         </button>
         <Link to="/nhan-vien" className={cx("text")}>
           <button className={cx("btn-cancel")}>
-            TRO LAI <FontAwesomeIcon icon={faCancel}></FontAwesomeIcon>
+            TRỞ LẠI <FontAwesomeIcon icon={faCancel}></FontAwesomeIcon>
           </button>
         </Link>
         <button className={cx("btn-off")} onClick={() => setModal(true)}>
-          NGHI VIEC <FontAwesomeIcon icon={faRightToBracket}></FontAwesomeIcon>
+          NGHỈ VIỆC <FontAwesomeIcon icon={faRightToBracket}></FontAwesomeIcon>
         </button>
       </div>
       {modal === true && (
         <Modal
-          title="BAN CO CHAC MUON CHO NHAN VIEN NAY NGHI VIEC"
+          title="BẠN CÓ MUỐN CHO NHÂN VIÊN NÀY NGHỈ VIỆC"
           clickNo={() => setModal(false)}
           clickYes={() => handleOut()}
         />

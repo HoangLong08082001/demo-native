@@ -24,6 +24,9 @@ export default function PrintPage({
   hinhthuc,
   tongtien,
   tentour,
+  ngaydi,
+  ngayve,
+  makhachhang,
 }) {
   var componentRef = useRef(null);
   const handlepdf = () => {
@@ -36,7 +39,11 @@ export default function PrintPage({
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
       pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-      pdf.save("PhieuDatTour.pdf");
+      pdf.save(
+        `PhieuDatTour_${makhachhang}_${new Date().toLocaleDateString(
+          "en-US"
+        )}.pdf`
+      );
     });
   };
   return (
@@ -55,14 +62,14 @@ export default function PrintPage({
             <p>Điện thoại :</p>
             <p>Địa chỉ :</p>
             <p>Web :</p>
-            <p>Email :</p>
+            <p>Fax :</p>
           </div>
           <div className={cx("right")}>
             <p>TOT-TRAVEL</p>
             <p>0898668731</p>
             <p>180 Đ. Cao Lỗ, Phường 4, Quận 8, Thành phố Hồ Chí Minh</p>
             <p>dattourtravel.com</p>
-            <p>Email :</p>
+            <p>32627262 </p>
           </div>
         </div>
         <div className={cx("form")}>
@@ -91,6 +98,8 @@ export default function PrintPage({
           >
             <th>STT</th>
             <th>TÊN TOUR</th>
+            <th>NGÀY ĐI</th>
+            <th>NGÀY VỀ</th>
             <th>SỐ LƯỢNG KHÁCH ({">"}14 TUỔI)</th>
             <th>SỐ LƯỢNG KHÁCH (5-10 TUỔI)</th>
             <th>SỐ LƯỢNG KHÁCH ({"<"}5 TUỔI)</th>
@@ -99,6 +108,8 @@ export default function PrintPage({
           <tr>
             <td>1</td>
             <td>{tentour}</td>
+            <td>{ngaydi}</td>
+            <td>{ngayve}</td>
             <td>{khachlon}</td>
             <td>{khachnho}</td>
             <td>{treem}</td>

@@ -31,6 +31,7 @@ export default function Tour() {
     if (response.message === "success") {
       setListTour(response.data);
       setApi(response.data);
+      console.log(response.data);
     }
   };
   useEffect(() => {
@@ -44,94 +45,187 @@ export default function Tour() {
   };
   const today = new Date().toLocaleDateString("en-US");
   const handleExportExcel = () => {
-    const workBook = new ExcelJS.Workbook();
-    const sheet = workBook.addWorksheet("Sheet1");
-    sheet.properties.defaultRowHeight = 20;
+    if (tab === 1) {
+      const workBook = new ExcelJS.Workbook();
+      const sheet = workBook.addWorksheet("Sheet1");
+      sheet.properties.defaultRowHeight = 20;
 
-    sheet.columns = [
-      {
-        header: "STT",
-        key: "stt",
-        width: 5,
-      },
-      {
-        header: "Ma Tour",
-        key: "matour",
-        width: 10,
-      },
-      {
-        header: "Dia diem di",
-        key: "diadiemdi",
-        width: 10,
-      },
-      {
-        header: "Dia diem den",
-        key: "diadiemden",
-        width: 10,
-      },
-      {
-        header: "Khu vuc",
-        key: "khuvuc",
-        width: 10,
-      },
-      {
-        header: "Ngay di",
-        key: "ngaydi",
-        width: 15,
-      },
-      {
-        header: "Ngay ve",
-        key: "ngayve",
-        width: 15,
-      },
-      {
-        header: "Gia tour",
-        key: "giatour",
-        width: 10,
-      },
-      {
-        header: "Loai Tour",
-        key: "loaitour",
-        width: 10,
-      },
-      {
-        header: "Giam Gia",
-        key: "giamgia",
-        width: 10,
-      },
-    ];
-    listTour.map((list, index) => {
-      sheet.addRow({
-        stt: index + 1,
-        matour: list.MaTour,
-        loaitour: list.LoaiTour,
-        diadiemdi: list.DiaDiemDi,
-        diadiemden: list.DiaDiemDen,
-        khuvuc: list.vungMien,
-        ngaydi: new Date(list.NgayDi).toLocaleDateString("en-US"),
-        ngayve: new Date(list.NgayVe).toLocaleDateString("en-US"),
-        giatour: list.GiaTour,
-        giamgia: list.GiamGia,
+      sheet.columns = [
+        {
+          header: "STT",
+          key: "stt",
+          width: 5,
+        },
+        {
+          header: "Ma Tour",
+          key: "matour",
+          width: 10,
+        },
+        {
+          header: "Dia diem di",
+          key: "diadiemdi",
+          width: 10,
+        },
+        {
+          header: "Dia diem den",
+          key: "diadiemden",
+          width: 10,
+        },
+        {
+          header: "Khu vuc",
+          key: "khuvuc",
+          width: 10,
+        },
+        {
+          header: "Ngay di",
+          key: "ngaydi",
+          width: 15,
+        },
+        {
+          header: "Ngay ve",
+          key: "ngayve",
+          width: 15,
+        },
+        {
+          header: "Gia tour",
+          key: "giatour",
+          width: 10,
+        },
+        {
+          header: "Loai Tour",
+          key: "loaitour",
+          width: 10,
+        },
+      ];
+      listTour.map((list, index) => {
+        let ngaydi = new Date(list.NgayDi).toLocaleDateString("en-US");
+        let conditionNgayVe = new Date(list.NgayVe);
+        let conditionToday = new Date();
+        let conditionNgaDi = new Date(list.NgayDi);
+        let homnay = new Date().toLocaleDateString("en-US");
+        let ngayve = new Date(list.NgayVe).toLocaleDateString("en-US");
+        if (
+          conditionToday <= conditionNgayVe ||
+          (conditionToday <= conditionNgayVe &&
+            conditionToday >= conditionNgaDi) ||
+          (conditionNgaDi === today && conditionNgayVe === today)
+        ) {
+          sheet.addRow({
+            stt: index + 1,
+            matour: list.MaTour,
+            loaitour: list.LoaiTour,
+            diadiemdi: list.DiaDiemDi,
+            diadiemden: list.DiaDiemDen,
+            khuvuc: list.vungMien,
+            ngaydi: new Date(list.NgayDi).toLocaleDateString("en-US"),
+            ngayve: new Date(list.NgayVe).toLocaleDateString("en-US"),
+            giatour: list.GiaTour,
+          });
+        }
       });
-    });
-    workBook.xlsx.writeBuffer().then((data) => {
-      const blob = new Blob([data], {
-        type: "application/vnd.openxmlformats-officedocument.spreadsheet.sheet",
+      workBook.xlsx.writeBuffer().then((data) => {
+        const blob = new Blob([data], {
+          type: "application/vnd.openxmlformats-officedocument.spreadsheet.sheet",
+        });
+        const url = window.URL.createObjectURL(blob);
+        const anchor = document.createElement("a");
+        anchor.href = url;
+        anchor.download = `LIST_Tour_ConThoiHan_${today}.xlsx`;
+        anchor.click();
+        window.URL.revokeObjectURL(url);
       });
-      const url = window.URL.createObjectURL(blob);
-      const anchor = document.createElement("a");
-      anchor.href = url;
-      anchor.download = `LIST_Tour_${today}.xlsx`;
-      anchor.click();
-      window.URL.revokeObjectURL(url);
-    });
+    } else {
+      const workBook = new ExcelJS.Workbook();
+      const sheet = workBook.addWorksheet("Sheet1");
+      sheet.properties.defaultRowHeight = 20;
+
+      sheet.columns = [
+        {
+          header: "STT",
+          key: "stt",
+          width: 5,
+        },
+        {
+          header: "Ma Tour",
+          key: "matour",
+          width: 10,
+        },
+        {
+          header: "Dia diem di",
+          key: "diadiemdi",
+          width: 10,
+        },
+        {
+          header: "Dia diem den",
+          key: "diadiemden",
+          width: 10,
+        },
+        {
+          header: "Khu vuc",
+          key: "khuvuc",
+          width: 10,
+        },
+        {
+          header: "Ngay di",
+          key: "ngaydi",
+          width: 15,
+        },
+        {
+          header: "Ngay ve",
+          key: "ngayve",
+          width: 15,
+        },
+        {
+          header: "Gia tour",
+          key: "giatour",
+          width: 10,
+        },
+        {
+          header: "Loai Tour",
+          key: "loaitour",
+          width: 10,
+        },
+      ];
+      listTour.map((list, index) => {
+        let ngaydi = new Date(list.NgayDi).toLocaleDateString("en-US");
+        let conditionNgayDi = new Date(list.NgayDi);
+        let conditionNgayVe = new Date(list.NgayVe);
+        let conditionToday = new Date();
+        let homnay = new Date();
+        let ngayve = new Date(list.NgayVe).toLocaleDateString("en-US");
+        if (conditionNgayVe < conditionToday) {
+          sheet.addRow({
+            stt: index + 1,
+            matour: list.MaTour,
+            loaitour: list.LoaiTour,
+            diadiemdi: list.DiaDiemDi,
+            diadiemden: list.DiaDiemDen,
+            khuvuc: list.vungMien,
+            ngaydi: new Date(list.NgayDi).toLocaleDateString("en-US"),
+            ngayve: new Date(list.NgayVe).toLocaleDateString("en-US"),
+            giatour: list.GiaTour,
+          });
+        }
+      });
+      workBook.xlsx.writeBuffer().then((data) => {
+        const blob = new Blob([data], {
+          type: "application/vnd.openxmlformats-officedocument.spreadsheet.sheet",
+        });
+        const url = window.URL.createObjectURL(blob);
+        const anchor = document.createElement("a");
+        anchor.href = url;
+        anchor.download = `LIST_Tour_HetThoiHan_${today}.xlsx`;
+        anchor.click();
+        window.URL.revokeObjectURL(url);
+      });
+    }
   };
   if (user && user.isAuthenticated === true) {
     if (
       user.accout.position === "DEV" ||
       user.accout.position === "DUYET PHIEU TOUR" ||
       user.accout.position === "KẾ TOÁN" ||
-      user.accout.position === "QUẢN LÝ TOUR"
+      user.accout.position === "QUẢN LÝ TOUR" || user.accout.position === "Tư vấn tour"
     ) {
       return (
         <div className={cx("wrapper")}>
@@ -212,11 +306,18 @@ export default function Tour() {
                         );
                         let conditionNgayVe = new Date(list.NgayVe);
                         let conditionToday = new Date();
+                        let conditionNgaDi = new Date(list.NgayDi);
                         let homnay = new Date().toLocaleDateString("en-US");
                         let ngayve = new Date(list.NgayVe).toLocaleDateString(
                           "en-US"
                         );
-                        if (conditionNgayVe >= conditionToday) {
+                        if (
+                          conditionToday <= conditionNgayVe ||
+                          (conditionToday <= conditionNgayVe &&
+                            conditionToday >= conditionNgaDi) ||
+                          (conditionNgaDi === today &&
+                            conditionNgayVe === today)
+                        ) {
                           return (
                             <tr key={index} className={cx("tr")}>
                               <td>{index + 1}</td>

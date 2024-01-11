@@ -36,14 +36,14 @@ export default function DetailBillManager() {
             <p>Điện thoại :</p>
             <p>Địa chỉ :</p>
             <p>Web :</p>
-            <p>Email :</p>
+            <p>Fax :</p>
           </div>
           <div className={cx("right")}>
             <p>TOT-TRAVEL</p>
             <p>0898668731</p>
             <p>180 Đ. Cao Lỗ, Phường 4, Quận 8, Thành phố Hồ Chí Minh</p>
             <p>dattourtravel.com</p>
-            <p>Email :</p>
+            <p>32627262 </p>
           </div>
         </div>
         <div className={cx("form")}>
@@ -72,6 +72,8 @@ export default function DetailBillManager() {
           >
             <th>STT</th>
             <th>TÊN TOUR</th>
+            <th>NGÀY ĐI</th>
+            <th>NGÀY VỀ</th>
             <th>SỐ LƯỢNG KHÁCH ({">"}14 TUỔI)</th>
             <th>SỐ LƯỢNG KHÁCH (5-10 TUỔI)</th>
             <th>SỐ LƯỢNG KHÁCH ({"<"}5 TUỔI)</th>
@@ -80,6 +82,8 @@ export default function DetailBillManager() {
           <tr>
             <td>1</td>
             <td>{bill.TenTour}</td>
+            <td>{new Date(bill.NgayDi).toLocaleDateString("en-US")}</td>
+            <td>{new Date(bill.NgayVe).toLocaleDateString("en-US")}</td>
             <td>{bill.NguoiLon}</td>
             <td>{bill.TreEm}</td>
             <td>{bill.EmBe}</td>
@@ -121,6 +125,9 @@ export default function DetailBillManager() {
             hinhthuc={bill.HinhThucThanhToan}
             tongtien={bill.Tongtien}
             tentour={bill.TenTour}
+            makhachhang={bill.MaKH}
+            ngaydi={new Date(bill.NgayDi).toLocaleDateString("en-US")}
+            ngayve={new Date(bill.NgayVe).toLocaleDateString("en-US")}
           />
         )}
       </div>

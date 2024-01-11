@@ -30,28 +30,22 @@ export default function AutoTable() {
             <th>Thời gian bắt đầu</th>
             <th>Thời gian kết thúc</th>
             <th>Mức giảm(%)</th>
-            <th>Action</th>
           </tr>
           {listDiscount.map((item, index) => {
             let start = new Date(item.thoigianbatdau).toLocaleDateString(
               "sv-SE"
             );
             let end = new Date(item.thoigiantoi).toLocaleDateString("sv-SE");
+            let enday = new Date(item.thoigiantoi);
+            let today = new Date();
             return (
-              <tr className={cx("tr-td")}>
+              <tr className={today <= enday ? cx("tr-td") : cx("tr-td-disable")}>
                 <td>{item.id_giamgia}</td>
                 <td>{item.ten_dotgiamgia}</td>
                 <td>{start}</td>
                 <td>{end}</td>
                 <td>{item.mucgiamgia}</td>
-                <td className={cx("list-action")}>
-                  <button className={cx("btn-edit")}>
-                    <FontAwesomeIcon icon={faPen} />
-                  </button>
-                  <button className={cx("btn-info")}>
-                    <FontAwesomeIcon icon={faInfo} />
-                  </button>
-                </td>
+                
               </tr>
             );
           })}

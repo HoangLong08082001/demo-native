@@ -16,7 +16,6 @@ export default function DetailTour() {
   const [khuVuc, setKhuVuc] = useState("");
   const [quyMo, setQuyMo] = useState("");
   const [giaTour, setGiaTour] = useState("");
-  const [giamGia, setGiamGia] = useState("");
   const [hinhAnh, setHinhAnh1] = useState("");
   const [hinhAnh1, setHinhAnh2] = useState("");
   const [hinhAnh2, setHinhAnh3] = useState("");
@@ -29,6 +28,7 @@ export default function DetailTour() {
   const [lichTrinh5, setLichTrinh5] = useState("");
   const [lichTrinh6, setLichTrinh6] = useState("");
   const [lichTrinh7, setLichTrinh7] = useState("");
+  const [giamGia, setGiamGia] = useState(0);
   const getItemLocaion = () => {
     setTenTour(location.state.TenTour);
     setDiaDiemDen(location.state.DiaDiemDen);
@@ -118,7 +118,6 @@ export default function DetailTour() {
           <label>KHU VỰC: </label>
           <label>QUY MÔ: </label>
           <label>GIÁ TOUR: </label>
-          <label>GIẢM GIÁ: </label>
         </div>
         <div className={cx("form-info")}>
           <label>{tenTour}</label>
@@ -136,7 +135,6 @@ export default function DetailTour() {
               currency: "VND",
             }).format(giaTour)}
           </label>
-          <label>{giamGia}</label>
         </div>
       </div>
       <p className={cx("img-title")}>DANH SÁCH HÌNH ẢNH</p>

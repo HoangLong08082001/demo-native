@@ -31,8 +31,8 @@ export default function HomeAdmin() {
   const navigate = useNavigate();
   const today = new Date().toLocaleDateString("en-US");
   const fetchtour = () => {
-    axios.post("/tour/alltour2",{data:null}).then((res) => {
-      if (res) {
+    axios.get("/tour/get-tourhomepage").then((res) => {
+      if (res && res.message === "success") {
         setlistTour(res.data);
         console.log(res.data);
       }
@@ -101,7 +101,7 @@ export default function HomeAdmin() {
           </div>
           <div className={cx("stati-ticket")}>
             <FontAwesomeIcon className={cx("icon")} icon={faTicket} />
-            <p>PHIẾU CHƯA DUYỆT</p>
+            <p>HOÁ ĐƠN CHƯA THANH TOÁN</p>
             <span>SỐ LƯỢNG: {phieu}</span>
           </div>
         </div>
@@ -120,17 +120,14 @@ export default function HomeAdmin() {
                 let conditionNgayDi = new Date(t.NgayDi);
                 let dateNgayVe = new Date(t.NgayVe).getTime();
                 let dateHomNay = new Date().getTime();
-                if (
-                  conditionNgayDi >= conditionToday &&
-                  conditionNgayVe >= conditionToday
-                ) {
+                let timeRemain = conditionNgayDi - conditionToday;
+                const days = Math.floor(timeRemain / (1000 * 60 * 60 * 24));
+                if (days > 0) {
                   return (
                     <tr className={cx("tr-td")}>
                       <td>{t.MaTour}</td>
                       <td>{t.TenTour}</td>
-                      <td className={cx("active")}>
-                        {new Date(dateNgayVe - dateHomNay).getDate()} Ngày
-                      </td>
+                      <td className={cx("active")}>{days} Ngày</td>
                     </tr>
                   );
                 }

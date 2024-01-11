@@ -21,203 +21,33 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 const cx = classNames.bind(style);
 export default function AddTour() {
-  const inVN = [
-    { city: "Ha Noi" },
-    { city: "Sapa" },
-    { city: "Vinh Ha Long" },
-    { city: " Hà Giang" },
-    { city: "Cao Bằng" },
-    { city: "Lào Cai" },
-    { city: "Bắc Kạn" },
-    { city: "Lạng Sơn" },
-    { city: "Tuyên Quang" },
-    { city: "Yên Bái" },
-    { city: "Thái Nguyên" },
-    { city: "Phú Thọ" },
-    { city: "Bắc Giang" },
-    { city: "Lai Châu" },
-    { city: "Điện Biên" },
-    { city: "Sơn La" },
-    { city: "Hòa Bình" },
-    { city: "Quảng Ninh" },
-    { city: "Thanh Hoá" },
-    { city: "Nghệ An" },
-    { city: "Hà Tĩnh" },
-    { city: "Quảng Bình" },
-    { city: "Quảng Trị" },
-    { city: "Thừa Thiên-Huế" },
-    { city: " Kon Tum" },
-    { city: "Gia Lai" },
-    { city: "Đắc Lắc" },
-    { city: "Đắc Nông" },
-    { city: "Lâm Đồng" },
-    { city: "Đà Nẵng" },
-    { city: "Quảng Nam" },
-    { city: "Quảng Ngãi" },
-    { city: "Bình Định" },
-    { city: "Phú Yên" },
-    { city: "Khánh Hoà" },
-    { city: "Ninh Thuận" },
-    { city: "Bình Thuận" },
-    { city: "Bình Phước" },
-    { city: "Bình Dương" },
-    { city: "Đồng Nai" },
-    { city: "Tây Ninh" },
-    { city: "Bà Rịa Vũng Tàu" },
-    { city: "TP.HCM" },
-    { city: "Long An" },
-    { city: "Đồng Tháp" },
-    { city: "Tiền Giang" },
-    { city: "An Giang" },
-    { city: "Bến Tre" },
-    { city: "Vĩnh Long" },
-    { city: "Trà Vinh" },
-    { city: "Hậu Giang" },
-    { city: "Kiên Giang" },
-    { city: "Sóc Trăng" },
-    { city: "Bạc Liêu" },
-    { city: "Cà Mau" },
-  ];
   const countries = [
     {
       name: "NN",
-      states: [
-        {
-          name: "Chau A",
-          cities: [
-            "Han Quoc",
-            "Nhat Ban",
-            "Thai Lan",
-            "Campuchia",
-            "Lao",
-            "Myanmar",
-            "Trung Quoc",
-            "Singapore",
-            "A rap Xe Ut",
-            "Philippines",
-            "UAE",
-            "HongKong",
-            "Quatar",
-            "Maldives",
-            "MaCao",
-          ],
-        },
-        {
-          name: "Chau Au",
-          cities: [
-            "Pháp",
-            "Tây Ban Nha",
-            "Thụy Điển",
-            "Đức",
-            "Phần Lan",
-            "Na Uy",
-            "Italy",
-            "Đan Mạch",
-            "Thụy Sĩ",
-            "Hà Lan",
-            "Anh",
-          ],
-        },
-        {
-          name: "Chau My",
-          cities: [
-            "Hoa Kỳ",
-            "Canada",
-            "Mexico",
-            "Chile",
-            "Argentina",
-            "Brazil",
-          ],
-        },
-      ],
+      states: [{ name: "Châu Á" }, { name: "Châu Âu" }, { name: "Châu Mỹ" }],
     },
     {
       name: "TN",
       states: [
-        {
-          name: "Bac",
-          cities: [
-            "Ha Noi",
-            "Sapa",
-            "Vinh Ha Long",
-            " Hà Giang",
-            "Cao Bằng",
-            "Lào Cai",
-            "Bắc Kạn",
-            "Lạng Sơn",
-            "Tuyên Quang",
-            "Yên Bái",
-            "Thái Nguyên",
-            "Phú Thọ",
-            "Bắc Giang",
-            "Lai Châu",
-            "Điện Biên",
-            "Sơn La",
-            "Hòa Bình",
-            "Quảng Ninh",
-          ],
-        },
-        {
-          name: "Trung",
-          cities: [
-            "Thanh Hoá",
-            "Nghệ An",
-            "Hà Tĩnh",
-            "Quảng Bình",
-            "Quảng Trị",
-            "Thừa Thiên-Huế",
-            " Kon Tum",
-            "Gia Lai",
-            "Đắc Lắc",
-            "Đắc Nông",
-            "Lâm Đồng",
-            "Đà Nẵng",
-            "Quảng Nam",
-            "Quảng Ngãi",
-            "Bình Định",
-            "Phú Yên",
-            "Khánh Hoà",
-            "Ninh Thuận",
-            "Bình Thuận",
-          ],
-        },
-        {
-          name: "Nam",
-          cities: [
-            "Bình Phước",
-            "Bình Dương",
-            "Đồng Nai",
-            "Tây Ninh",
-            "Bà Rịa Vũng Tàu",
-            "Long An",
-            "Đồng Tháp",
-            "Tiền Giang",
-            "An Giang",
-            "Bến Tre",
-            "Vĩnh Long",
-            "Trà Vinh",
-            "Hậu Giang",
-            "Kiên Giang",
-            "Sóc Trăng",
-            "Bạc Liêu",
-            "Cà Mau",
-          ],
-        },
+        { name: "Miền Bắc" },
+        { name: "Miền Trung" },
+        { name: "Miền Nam" },
       ],
     },
   ];
-
-  const today = new Date().toLocaleDateString("sv-SE");
-  const vehicles = ["Xe Khach", "May bay", "Tu tuc"];
+  const nextThree = new Date();
+  nextThree.setDate(nextThree.getDate() + 4);
+  const today = nextThree.toLocaleDateString("sv-SE");
+  const vehicles = ["Xe Khách", "Máy bay"];
   const [country, setCountry] = useState("Loai Tour");
   const [state, setState] = useState("Khu Vuc");
-  const [city, setCity] = useState("Dia Diem Den");
-  const [TenTour, setTenTour] = useState("");
+  const [city, setCity] = useState("");
+  const [diaDiemDi, setDiaDiemDi] = useState("");
+  const [TenTour, setTenTour] = useState(`Tour du lịch ${diaDiemDi}-${city}`);
   const [ngayDi, setNgayDi] = useState("");
   const [ngayVe, setNgayVe] = useState("");
   const [phuongTien, setPhuongTien] = useState("");
   const [quyMo, setQuyMo] = useState("");
-  const [diaDiemDi, setDiaDiemDi] = useState("TP.HCM");
   const [giaTour, setGiaTour] = useState("");
   const [hinhAnh1, setHinhAnh1] = useState(null);
   const [hinhAnh2, setHinhAnh2] = useState(null);
@@ -238,6 +68,15 @@ export default function AddTour() {
   const [lichTrinh5, setLichTrinh5] = useState("");
   const [lichTrinh6, setLichTrinh6] = useState("");
   const [lichTrinh7, setLichTrinh7] = useState("");
+  const [lichTrinhs, setLichTrinhs] = useState([
+    lichTrinh1,
+    lichTrinh2,
+    lichTrinh3,
+    lichTrinh4,
+    lichTrinh5,
+    lichTrinh6,
+    lichTrinh7,
+  ]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [giamgia, setGiamGia] = useState([]);
@@ -245,6 +84,8 @@ export default function AddTour() {
   const [giam, setGiam] = useState(0);
   const [giamthem, setGiamthem] = useState(0);
   const [maxDay, setMaxDay] = useState("");
+  console.log(diaDiemDi);
+  console.log(city);
   const fetchGiamGia = async () => {
     await axios.get("/voucher/get-voucher").then((res) => {
       if (res && res.message === "success") {
@@ -261,24 +102,28 @@ export default function AddTour() {
     });
   };
 
-  const handleChange2 = (event) => {
-    setState(event.target.value);
-    setCities(states.find((state) => state.name === event.target.value).cities);
-  };
-  const handleChange3 = (event) => {
-    setCity(event.target.value);
-  };
   const handleChange = (event) => {
     setCountry(event.target.value);
     setStates(
       countries.find((item) => item.name === event.target.value).states
     );
   };
+  function tinhSoNgay(ngayDi, ngayVe) {
+    // Chuyển đổi chuỗi ngày thành đối tượng Date
+    let dateDi = new Date(ngayDi);
+    let dateVe = new Date(ngayVe);
+
+    // Tính số mili giây giữa hai ngày
+    let soMiligiayGiua = dateVe - dateDi;
+
+    // Chuyển đổi số mili giây thành số ngày
+    let soNgay = Math.floor(soMiligiayGiua / (1000 * 60 * 60 * 24));
+
+    return soNgay;
+  }
   const CheckValidate = () => {
-    if (TenTour === "") {
-      toast.warning("Vui lòng nhập tên tour");
-      return false;
-    }
+    let soNgay = tinhSoNgay(ngayDi, ngayVe);
+
     if (ngayDi === "") {
       toast.warning("Vui lòng chọn ngày đi");
       return false;
@@ -307,12 +152,16 @@ export default function AddTour() {
       toast.warning("Vui lòng chọn khu vực");
       return false;
     }
-    if (city === "") {
-      toast.warning("Vui lòng chọn địa điểm đến");
+    if (diaDiemDi === "") {
+      toast.warning("Vui lòng nhập địa điểm đi");
       return false;
     }
-    if (diaDiemDi === "") {
-      toast.warning("Vui lòng chọn địa điểm đi");
+    if (city === "") {
+      toast.warning("Vui lòng nhập địa điểm đến");
+      return false;
+    }
+    if (city === diaDiemDi) {
+      toast.warning("Địa điểm đến và đi không được giống nhau");
       return false;
     }
     if (imageName2 === "") {
@@ -335,11 +184,17 @@ export default function AddTour() {
       toast.warning("Vui lòng thêm ảnh thứ 4");
       return false;
     }
-    if (lichTrinh1 === "" || lichTrinh2 === "") {
-      toast.warning("Vui lòng nhập ít nhất 2 lịch trình");
+    if (lichTrinh1 === "") {
+      toast.warning("Vui lòng nhập ít nhất 1 lịch trình");
       return false;
     }
-
+    // for (let i = 1; i <= lichTrinhs.length; i++) {
+    //     if (lichTrinhs[i] === "" && i < soNgay) {
+    //       toast.warning(`Vui long nhap du ${soNgay} lich trinh`);
+    //       return false;
+    //     }
+    //     return true;
+    // }
     toast.success("Thêm thành công");
     return true;
   };
@@ -357,7 +212,7 @@ export default function AddTour() {
       fd.append("char", TenTour);
       fd.append("char", giaTour);
       fd.append("char", diaDiemDi);
-      fd.append("number", quyMo);
+      fd.append("num", quyMo);
       fd.append("editor", lichTrinh1);
       fd.append("editor", lichTrinh2);
       fd.append("editor", lichTrinh3);
@@ -372,6 +227,7 @@ export default function AddTour() {
       fd.append("select", giam);
       fd.append("select", giamthem);
       console.log(fd);
+      console.log(TenTour);
       axios
         .post("/tourserver/add-tour", fd, {
           headers: { "Content-Type": "multipart/form-data" },
@@ -414,6 +270,20 @@ export default function AddTour() {
     setGiamthem(e);
     console.log(e);
   };
+  const handleInputChange = (e) => {
+    // Lọc ra chỉ các chữ số và dấu chấm
+    const inputValue = e.target.value.replace(/[^\d.]/g, "");
+
+    // Kiểm tra xem có nhiều hơn một dấu chấm không
+    if (inputValue.split(".").length <= 2) {
+      setGiaTour(inputValue);
+    }
+  };
+
+  const handleChange2 = (event) => {
+    setState(event.target.value);
+    setCities(states.find((state) => state.name === event.target.value).cities);
+  };
   useEffect(() => {
     fetchGiamGia();
     fetchGiamGiaThem();
@@ -433,8 +303,9 @@ export default function AddTour() {
           </div>
           <div className={cx("list-input")}>
             <input
+              readOnly
               type="text"
-              value={TenTour}
+              value={`Tour du lịch ${diaDiemDi}-${city}`}
               name="char"
               onChange={(e) => setTenTour(e.target.value)}
             />
@@ -444,24 +315,37 @@ export default function AddTour() {
               value={ngayDi}
               name="date"
               onChange={(e) => {
-                setNgayDi(e.target.value);
+                let startDay = new Date(e.target.value);
+                let endDay = new Date(ngayVe);
+                if (startDay > endDay) {
+                  toast.warning("Ngày đi phải trước ngày về!");
+                } else {
+                  setNgayDi(e.target.value);
+                }
               }}
             />
             <input
               type="date"
               value={ngayVe}
-              min={today}
+              min={ngayDi !== "" ? ngayDi : today}
               max={maxDate().toLocaleDateString("sv-SE")}
               name="date"
-              onChange={(e) => setNgayVe(e.target.value)}
+              onChange={(e) => {
+                if (ngayDi === "") {
+                  toast.warning("Vui chọn ngày đi trước khi chọn ngày về!");
+                  setNgayDi("");
+                } else {
+                  setNgayVe(e.target.value);
+                }
+              }}
             />
             <input
-              type="number"
+              type="text"
+              maxlength="3"
+              oninput="this.value=this.value.replace(/[^0-9]/g,'');"
               value={quyMo}
-              name="number"
-              onKeyDown={(evt) =>
-                ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()
-              }
+              name="num"
+              placeholder="VD:100"
               onChange={(e) => setQuyMo(e.target.value)}
             />
             <select
@@ -479,8 +363,8 @@ export default function AddTour() {
               name="char"
               type="text"
               value={giaTour}
-              pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$"
-              onChange={(e) => setGiaTour(e.target.value)}
+              placeholder="VD:1000000"
+              onChange={handleInputChange}
             />
           </div>
         </div>
@@ -507,36 +391,47 @@ export default function AddTour() {
                 <option value={item.name}>{item.name}</option>
               ))}
             </select>
-            <select
-              name="select"
-              id=""
+            <input
+              type="text"
+              name="char"
+              placeholder="VD: TP.HCM"
               value={diaDiemDi}
+              onChange={(e) => setDiaDiemDi(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="VD: TP.HCM"
+              id=""
+              name="select"
+              value={city}
               onChange={(e) => {
-                setDiaDiemDi(e.target.value);
-                console.log(e.target.value);
+                if (diaDiemDi === "") {
+                  toast.warning("Vui lòng nhập địa điểm đi trước");
+                  setCity("");
+                } else {
+                  setCity(e.target.value);
+                }
               }}
-            >
-              <option>Địa điểm đi</option>
-              {inVN.map((item) => (
-                <option value={item.city}>{item.city}</option>
-              ))}
-            </select>
-            <select name="select" id="" value={city} onChange={handleChange3}>
-              <option>Địa điểm đến</option>
-              {cities.map((item) => (
-                <option value={item}>{item}</option>
-              ))}
-            </select>
+            />
+
             <select
               name="select"
               id=""
               value={giam}
               onChange={(e) => handleChangeGiamGia(e.target.value)}
             >
-              <option value={0}> Giảm giá</option>
-              {giamgia.map((item) => (
-                <option value={item.id_giamgia}>{item.ten_dotgiamgia}</option>
-              ))}
+              <option value={0}> Giảm giá tự động</option>
+              {giamgia.map((item) => {
+                let today = new Date();
+                let endday = new Date(item.thoigiantoi);
+                if (today <= endday) {
+                  return (
+                    <option value={item.id_giamgia}>
+                      {item.ten_dotgiamgia}
+                    </option>
+                  );
+                }
+              })}
             </select>
             <select
               name="select"
@@ -545,11 +440,17 @@ export default function AddTour() {
               onChange={(e) => handleChangeGiamGiaThem(e.target.value)}
             >
               <option value={0}> Giảm giá thêm</option>
-              {giamgiathem.map((item) => (
-                <option value={item.id_giamgiathem}>
-                  {item.ten_dotgiamgiathem}
-                </option>
-              ))}
+              {giamgiathem.map((item) => {
+                let today = new Date();
+                let endday = new Date(item.thoigianketthucthem);
+                if (today <= endday) {
+                  return (
+                    <option value={item.id_giamgiathem}>
+                      {item.ten_dotgiamgiathem}
+                    </option>
+                  );
+                }
+              })}
             </select>
           </div>
         </div>

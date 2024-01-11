@@ -31,7 +31,6 @@ export default function UnAutoTable() {
             <th>Thời gian bắt đầu</th>
             <th>Thời gian kết thúc</th>
             <th>Mức giảm(%)</th>
-            <th>Action</th>
           </tr>
           {listDiscount.map((item, index) => {
             let start = new Date(item.thoigianbatdauthem).toLocaleDateString(
@@ -40,21 +39,18 @@ export default function UnAutoTable() {
             let end = new Date(item.thoigianketthucthem).toLocaleDateString(
               "sv-SE"
             );
+            let today = new Date();
+            let endday = new Date(item.thoigianketthucthem);
             return (
-              <tr className={cx("tr-td")}>
+              <tr
+                className={today <= endday ? cx("tr-td") : cx("tr-td-disable")}
+              >
                 <td>{item.id_giamgiathem}</td>
                 <td>{item.ten_dotgiamgiathem}</td>
                 <td>{start}</td>
                 <td>{end}</td>
                 <td>{item.mucgiamgiathem}</td>
-                <td className={cx("list-action")}>
-                  <button className={cx("btn-edit")}>
-                    <FontAwesomeIcon icon={faPen} />
-                  </button>
-                  <button className={cx("btn-info")}>
-                    <FontAwesomeIcon icon={faInfo} />
-                  </button>
-                </td>
+                
               </tr>
             );
           })}

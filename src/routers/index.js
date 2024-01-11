@@ -34,6 +34,8 @@ import Statistical from "../pages/Statistical";
 import BillManager from "../pages/Admin/BillManager";
 import DetailBillManager from "../pages/Admin/BillManager/DetailBillManager";
 import About from "../pages/About";
+import AddLocation from "../pages/Admin/Tour/AddLocation";
+import UpdateTicket from "../pages/Admin/Ticket/UpdateTicket";
 const publicRoutes = [
   { path: "/login-user", component: Login },
   { path: "/register-user", component: Register },
@@ -60,6 +62,7 @@ const publicRoutes = [
   { path: "/sua-tour/:TenTour/:id", component: UpdateTour },
   { path: "/chi-tiet-tour", component: DetailTour },
   { path: "/phieu-dat-tour", component: Ticket },
+  { path: "/chi-tiet-phieu-dat-tour/:id", component: UpdateTicket },
   { path: "/them-phieu", component: AddTicket },
   { path: "/them-khach-hang", component: AddCustommer },
   { path: "/Information", component: UserAdmin },
