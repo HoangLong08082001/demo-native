@@ -46,16 +46,7 @@ export default function Custommer() {
             <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>
           </button>
         </Link>
-        <div className={cx("search")}>
-          <input
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            type="text"
-            name=""
-            id=""
-            placeholder="search employee"
-          />
-        </div>
+        
 
         <div className={cx("form-table")}>
           <table border={1} cellSpacing={0}>
@@ -66,18 +57,14 @@ export default function Custommer() {
               <th>Sdt</th>
               {/* <th>Action</th> */}
             </tr>
-            {listCustommer
-              .filter((item) => {
-                return search === "" ? item : item.Sdt.includes(search);
-              })
-              .map((list, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>{list.TenKH}</td>
-                    <td>{list.username}</td>
-                    <td>{list.Sdt}</td>
-                    {/* <td>
+            {listCustommer.map((list, index) => {
+              return (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{list.TenKH}</td>
+                  <td>{list.username}</td>
+                  <td>{list.Sdt}</td>
+                  {/* <td>
                       <button onClick={() => handleRemove(list)}>
                         <FontAwesomeIcon
                           icon={faTrash}
@@ -87,9 +74,9 @@ export default function Custommer() {
                         </FontAwesomeIcon>
                       </button>
                     </td> */}
-                  </tr>
-                );
-              })}
+                </tr>
+              );
+            })}
           </table>
         </div>
       </div>

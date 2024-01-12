@@ -10,6 +10,7 @@ const cx = classNames.bind(style);
 export default function BillManager() {
   const navigate = useNavigate();
   const [listBill, setListBill] = useState([]);
+  const [search, setSearch] = useState("");
   const fetchBill = async () => {
     await axios.get("/hoadon/get-hoadon").then((res) => {
       if (res.message === "success") {
@@ -24,7 +25,14 @@ export default function BillManager() {
   if (user && user.isAuthenticated === true) {
     return (
       <div className={cx("wrapper")}>
-        <input type="text" placeholder="Search in here" name="" id="" />
+        {/* <input
+          type="number"
+          placeholder="Search in here"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          name=""
+          id=""
+        /> */}
         <div className={cx("form-table")}>
           <table border={1} cellSpacing={0}>
             <tr
@@ -36,38 +44,47 @@ export default function BillManager() {
               }}
             >
               <th>Mã hoá đơn</th>
+              <th>Mã phiếu</th>
               <th>Tổng tiền</th>
               <th>Hình thức thanh toán</th>
               <th>Trạng thái thanh toán</th>
               <th>Action</th>
             </tr>
-            {listBill.map((b, i) => {
-              return (
-                <tr className={cx("tr-td")}>
-                  <td>{b.MaHoaDon}</td>
-                  <td>
-                    {new Intl.NumberFormat("vi-VN", {
-                      style: "currency",
-                      currency: "VND",
-                    }).format(b.Tongtien)}
-                  </td>
-                  <td>{b.HinhThucThanhToan}</td>
-                  <td>
-                    {b.TrangThaiThanhToan === 1
-                      ? "ĐÃ THANH TOÁN"
-                      : "CHƯA THANH TOÁN"}
-                  </td>
-                  <td>
-                    <button
-                      onClick={() => navigate(`/chi-tiet-hoadon/${b.MaHoaDon}`)}
-                      className={cx("btn-info")}
-                    >
-                      <FontAwesomeIcon className={cx("icon")} icon={faInfo} />
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
+            {listBill
+              .filter((list) => {
+                let MaPhieu = list.MaPhieu;
+                return search === "" ? list : MaPhieu.includes(search);
+              })
+              .map((b, i) => {
+                return (
+                  <tr className={cx("tr-td")}>
+                    <td>{b.MaHoaDon}</td>
+                    <td>{b.MaPhieu}</td>
+                    <td>
+                      {new Intl.NumberFormat("vi-VN", {
+                        style: "currency",
+                        currency: "VND",
+                      }).format(b.Tongtien)}
+                    </td>
+                    <td>{b.HinhThucThanhToan}</td>
+                    <td>
+                      {b.TrangThaiThanhToan === 1
+                        ? "ĐÃ THANH TOÁN"
+                        : "CHƯA THANH TOÁN"}
+                    </td>
+                    <td>
+                      <button
+                        onClick={() =>
+                          navigate(`/chi-tiet-hoadon/${b.MaHoaDon}`)
+                        }
+                        className={cx("btn-info")}
+                      >
+                        <FontAwesomeIcon className={cx("icon")} icon={faInfo} />
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
           </table>
         </div>
       </div>

@@ -85,7 +85,6 @@ export default function Ticket() {
       </div>
       {toggle === 1 && (
         <>
-          <input type="text" className="search" placeholder="Search here" />
           {load ? (
             <table className={cx("active")}>
               <tr className={cx("tr-th")}>
@@ -168,7 +167,6 @@ export default function Ticket() {
       )}
       {toggle === 2 && (
         <>
-          <input type="text" className="search" placeholder="Search here" />
           {load ? (
             <table className={cx("active")}>
               <tr className={cx("tr-th")}>
