@@ -47,6 +47,10 @@ function Header() {
       window.location.reload();
     }
   };
+  const handleload=()=>{
+    window.reload();
+   
+  }
   const hanldleuser=()=>{
     window.location.href="http://dattourtravel.com:3000/user"
   }
@@ -64,9 +68,11 @@ function Header() {
         <label for="checkboxbar">
           <FontAwesomeIcon icon={faXmark} />
         </label>
-        <ul>
-          <li>
-            <Link>Trang Chủ</Link>
+        <ul >
+          
+          <li >
+              
+            <Link onClick={handleload}  to="/"   >Trang Chủ</Link>
           </li>
           <li>
             <Link>Ưu Đãi</Link>
@@ -78,10 +84,10 @@ function Header() {
             <Link>Hợp Tác</Link>
           </li>
           <li>
-            <Link>Tour Trong Nước</Link>
+            <Link onClick={handleload} to={"/more-summer/" + nn[1]}>Tour Trong Nước</Link>
           </li>
           <li>
-            <Link>Tour Ngoài Nước</Link>
+            <Link onClick={handleload}  to={"/more-summer/" + nn[2]}>Tour Ngoài Nước</Link>
           </li>
         </ul>
       </div>

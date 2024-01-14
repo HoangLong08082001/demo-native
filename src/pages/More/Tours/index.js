@@ -56,20 +56,31 @@ export default function Tours({ valueprice, valueday, valuelocation }) {
     }
   });
 
-  if (key.price === 1) {
-    arraydata.current.sort((a, b) => b.GiaTour - a.GiaTour);
-    currentItems.sort((a, b) => b.GiaTour - a.GiaTour);
-  } else {
-    arraydata.current.sort((a, b) => a.GiaTour - b.GiaTour);
-    currentItems.sort((a, b) => a.GiaTour - b.GiaTour);
-  }
+
+ 
+
+    if (key.price === 1) {
+      arraydata.current.sort((a, b) => b.GiaTour - a.GiaTour);
+   
+    } else {
+      arraydata.current.sort((a, b) => a.GiaTour - b.GiaTour);
+    
+    }
+   
+    
+
+
 
   useEffect(() => {
+    
+  
+  
     const endOffset = itemOffset + itemsPerPage;
 
     setCurrentItems(arraydata.current.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(arraydata.current.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage, arraydata.current, key.date, key.location]);
+   
+  }, [itemOffset, itemsPerPage, arraydata.current, key.date, key.location,key.price]);
 
   const handlePageClick = (event) => {
     const newOffset =
@@ -119,7 +130,7 @@ export default function Tours({ valueprice, valueday, valuelocation }) {
           nextLinkClassName={cx("page-num")}
           // breakClassName="page-item"
           // breakLinkClassName="page-link"
-
+          
           activeLinkClassName={cx("active")}
           renderOnZeroPageCount={null}
         />

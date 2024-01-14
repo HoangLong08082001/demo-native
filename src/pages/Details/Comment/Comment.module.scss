@@ -58,7 +58,7 @@
 {
     textarea
     {
-        width: 300px;
+        width: 250px;
         height: 200px;
     }
 }
@@ -135,6 +135,10 @@
     {
         padding: 0;
     }
+    .box-show-comment-reponse
+    {
+        width: 100%;
+    }
   }
   @media only screen and (max-width: 650px) and (min-width: 530px){
     .box
@@ -142,6 +146,9 @@
        
         display: block;
       
+    }.box-show-comment-reponse
+    {
+        width: 100%;
     }
   }
   //tablet
@@ -152,7 +159,10 @@
     display: block;
   
 }
-  
+.box-show-comment-reponse
+{
+    width: 100%;
+}
   }
     
   

@@ -115,9 +115,7 @@ function ProductBox({
         </div>
         <div className={cx("container-discount")}>
           <span>{DiaDiemDen}</span>
-          <span>
-            <strike>5.200.000</strike>
-          </span>
+         
         </div>
         <div className={cx("container-price")}>{price}</div>
       </div>

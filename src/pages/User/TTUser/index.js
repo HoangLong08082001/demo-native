@@ -45,7 +45,7 @@ function TTUser() {
     }
     return ( <div  className={cx("container")}>
         <div className={cx("container-admin")}><FontAwesomeIcon icon={faUser}/></div>
-        <div >
+        <div style={{flex:1}}>
           {error ?(  <Alert callBackParent={handleclose}
           datatt={['Lưu Thông Tin Thành Công']}
           dataprops={'Thông Báo'}

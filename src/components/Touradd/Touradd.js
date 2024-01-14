@@ -99,7 +99,7 @@ function Touradd(props) {
                     
                     <div className={cx("container-box-right-span")}><span className={cx("container-box-right-span")}>Lượt đánh giá ({arraycomment.length})</span></div>
                    {
-                    props.status !=="3"?( <Button underline  book to={props.status !== "3" ?`/details/${slugify(props.name)}/${props.MaTour}`:`/user/billdetail/${props.MaTour}`} >Đặt Ngay</Button>):(<Button underline  book to={props.status !== "3" ?`/details/${slugify(props.name)}/${props.MaTour}`:`/user/billdetail/${props.MaTour}`} >Xem </Button>)
+                    props.status !=="3"?( <Button underline  book to={props.status !== "3" ?`/details/${slugify(props.name)}/${props.MaTour}`:`/user/billdetail/${props.MaTour}`} >Xem</Button>):(<Button underline  book to={props.status !== "3" ?`/details/${slugify(props.name)}/${props.MaTour}`:`/user/billdetail/${props.MaTour}`} >Xem </Button>)
                    }
                 </div>
             </div>

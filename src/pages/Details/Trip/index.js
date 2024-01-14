@@ -55,7 +55,9 @@ export default function Trip({ trip }) {
               <TabList
                 onChange={handleChange}
                 aria-label="lab API tabs example"
-                
+                variant="scrollable"
+                scrollButtons
+                allowScrollButtonsMobile
               >
                 {trip.map((values,index)=>{
                  if(values === "" || values ==="<p>null</p>" ||values === null )
@@ -71,7 +73,7 @@ export default function Trip({ trip }) {
 
             {
               trip.map((values,index)=>{
-                return(<TabPanel value={index + 1 }> {HTMLReactParser(`${values}`)}</TabPanel>)
+                return(<TabPanel  value={index + 1 }> {HTMLReactParser(`${values}`)}</TabPanel>)
               })
             }
           

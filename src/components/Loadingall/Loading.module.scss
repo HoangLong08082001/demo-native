@@ -14,11 +14,11 @@
     width: 300px;
     height: 300px;
     top: 25%;
-    right: 630px;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
+   
     margin: auto;
     background: rgb(133, 184, 205);
     z-index: 1;
@@ -43,3 +43,34 @@
         transform: rotate(360deg);
     }
 }
+@media only screen and (max-width: 550px) and (min-width: 350px) {
+    .loader-container {
+
+        width: 150px;
+        height: 150px;
+        font-size: 10px;
+       
+    }
+    .spinner {
+        font-size: 10px;
+        width: 64px;
+        height: 64px;
+     
+    }
+  }
+@media only screen and (max-width: 650px) and (min-width: 550px) {
+    .loader-container {
+
+        width: 250px;
+        height: 250px;
+        
+    }
+    
+    .spinner {
+    
+        width: 64px;
+        height: 64px;
+     
+    }
+  }
+  

@@ -57,14 +57,17 @@ export default function User() {
         <h4>Trang Chủ<FontAwesomeIcon icon={faChevronRight}/> Tài Khoản</h4>
         <h2>Tài Khoản</h2>
       </div>
-        <Box sx={{ width: "100%", typography: "body1" }}>
-          <TabContext value={value} >
+        <Box sx={{ width: "100%", typography: "body1",padding:0 }}>
+          <TabContext value={value}  >
             <Box
               sx={{ borderBottom: 1, borderColor: "divider", fontWeight: 600 }}
             >
               <TabList
                 onChange={handleChange}
-               
+                sx={{ width: "100%", typography: "body1",padding:0  } }
+                variant="scrollable"
+                scrollButtons
+                allowScrollButtonsMobile
               >
                 <Tab  sx={{  fontSize:"13px",fontWeight: 600 }} label="Thông Tin Tài Khoản" value="1" />
                 <Tab  sx={{  fontSize:"13px",fontWeight: 600 }} label="Lịch Sử Tour" value="2" />
@@ -73,14 +76,14 @@ export default function User() {
               </TabList>
             </Box>
 
-            <TabPanel value="1" ><TTUser/>  </TabPanel>
-            <TabPanel value="2" ><div style={{marginBottom:"100px"}}>
+            <TabPanel sx={{padding:0 }} value="1" ><TTUser/>  </TabPanel>
+            <TabPanel sx={{padding:0 }} value="2" ><div style={{marginBottom:"100px"}}>
             {arrayvaluebook.map((value,index)=>{
 
               return (<Touradd key={index} status="3" TrangThai={value.TrangThai} name={value.TenTour} img={value.HinhAnh.data} MaTour={value.MaTour} MaPhieu={value.MaPhieu} />)
               })}
               </div></TabPanel>
-            <TabPanel value="3" ><div style={{marginBottom:"100px"}}>
+            <TabPanel sx={{padding:0 }} value="3" ><div style={{marginBottom:"100px"}}>
                 {arrayvalue.map((value,index)=>{
                  
                   return (<Touradd key={index} status="1" name={value.TenTour} img={value.HinhAnh.data} MaTour={value.MaTour} TrangThai={value.TrangThai}  click={hanldleclose} />)
