@@ -76,6 +76,7 @@ export default function AddEmployee() {
           Position,
         })
         .then((res) => {
+          console.log(TenNV, cmnd, Ngaysinh, Sdt, Email, Password, Position);
           if (res && res.message === "exists") {
             toast.warning("Email này đã tồn tại");
           }

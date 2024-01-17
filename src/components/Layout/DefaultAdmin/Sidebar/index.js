@@ -134,7 +134,7 @@ export default function Sidebar() {
                   );
                 }
               } else if (user.accout.position === "KẾ TOÁN") {
-                if ((index >= 3 && index <= 6) || index === 8|| index === 0) {
+                if ((index >= 3 && index <= 6) || index === 8 || index === 0) {
                   return (
                     <li
                       className={click === menu.title ? cx("active") : null}
@@ -175,8 +175,8 @@ export default function Sidebar() {
                     </li>
                   );
                 }
-              }else if (user.accout.position === "Admin") {
-                if (index === 0 || index === 1 || index === 7 ) {
+              } else if (user.accout.position === "Admin") {
+                if (index === 0 || index === 1 || index === 7) {
                   return (
                     <li
                       className={click === menu.title ? cx("active") : null}
@@ -196,8 +196,15 @@ export default function Sidebar() {
                     </li>
                   );
                 }
-              }else if (user.accout.position === "Tư vấn tour") {
-                if (index === 0 || index === 2 || index === 3|| index === 4 || index === 5 || index === 6  ) {
+              } else if (user.accout.position === "Tư Vấn Tour") {
+                if (
+                  index === 0 ||
+                  index === 2 ||
+                  index === 3 ||
+                  index === 4 ||
+                  index === 5 ||
+                  index === 6
+                ) {
                   return (
                     <li
                       className={click === menu.title ? cx("active") : null}

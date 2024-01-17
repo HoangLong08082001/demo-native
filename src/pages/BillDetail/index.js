@@ -37,11 +37,12 @@ function BillDetail() {
       })
       .then((response) => {
         setvalue(response.data[0]);
+        console.log(response.data);
       });
   }, [matour]);
 
   useEffect(() => {
-    if (statusemail != null && statusemail != undefined) {
+    if (statusemail !== null && statusemail !== undefined) {
       socket.emit("newOrder", { status: "success" });
       if (count.current === 0) {
         toast.success("Đặt Tour Thành Công");
