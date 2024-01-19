@@ -56,36 +56,38 @@ export default function PrintPage({
         />
         <p className={cx("title")}>HOÁ ĐƠN ĐẶT TOUR</p>
         <img src={logo} alt="" className={cx("logo")} />
-        <div className={cx("form")}>
-          <div className={cx("left")}>
-            <p>Tên công ty :</p>
-            <p>Điện thoại :</p>
-            <p>Địa chỉ :</p>
-            <p>Web :</p>
-            <p>Fax :</p>
+        <div className={cx("form-info")}>
+          <div className={cx("form")}>
+            <div className={cx("left")}>
+              <p>Tên công ty :</p>
+              <p>Điện thoại :</p>
+              <p>Địa chỉ :</p>
+              <p>Web :</p>
+              <p>Fax :</p>
+            </div>
+            <div className={cx("right")}>
+              <p>TOT-TRAVEL</p>
+              <p>0898668731</p>
+              <p>180 Đ. Cao Lỗ, Phường 4, Quận 8, Thành phố Hồ Chí Minh</p>
+              <p>dattourtravel.com</p>
+              <p>32627262 </p>
+            </div>
           </div>
-          <div className={cx("right")}>
-            <p>TOT-TRAVEL</p>
-            <p>0898668731</p>
-            <p>180 Đ. Cao Lỗ, Phường 4, Quận 8, Thành phố Hồ Chí Minh</p>
-            <p>dattourtravel.com</p>
-            <p>32627262 </p>
-          </div>
-        </div>
-        <div className={cx("form")}>
-          <div className={cx("left")}>
-            <p>Tên khách hàng :</p>
-            <p>Số CMND :</p>
-            <p>Điện thoại :</p>
-            <p>Địa chỉ :</p>
-            <p>Hình thức thanh toán :</p>
-          </div>
-          <div className={cx("right")}>
-            <p>{tenKhachHang}</p>
-            <p>{cmnd}</p>
-            <p>{dienthoai}</p>
-            <p>{diachi}</p>
-            <p>{hinhthuc}</p>
+          <div className={cx("form")}>
+            <div className={cx("left")}>
+              <p>Tên khách hàng :</p>
+              <p>Số CMND :</p>
+              <p>Điện thoại :</p>
+              <p>Địa chỉ :</p>
+              <p>Hình thức thanh toán :</p>
+            </div>
+            <div className={cx("right")}>
+              <p>{tenKhachHang}</p>
+              <p className={cx("cmnd")}>{cmnd}</p>
+              <p className={cx("dienthoai")}>{dienthoai}</p>
+              <p className={cx("diachi")}>{diachi}</p>
+              <p>{hinhthuc}</p>
+            </div>
           </div>
         </div>
         <table border={1} cellSpacing={0}>
