@@ -5,11 +5,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCancel, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "../../../../setup-axios/axios.js";
 import { toast } from "react-toastify";
 const cx = classNames.bind(style);
 export default function AddCustommer() {
+  const navigate = useNavigate();
   const [ngaySinh, setNgaySinh] = useState("");
   const [TenKH, setTenKH] = useState("");
   const [CMND, setCMND] = useState("");
@@ -55,6 +56,7 @@ export default function AddCustommer() {
         .then((res) => {
           if (res && res.message === "success") {
             toast.success("Thêm thành công");
+            navigate("/khach-hang");
           }
         });
     }

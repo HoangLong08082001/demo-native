@@ -12,11 +12,12 @@ import {
   faCheck,
   faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../../../context/UserContext";
 import { toast } from "react-toastify";
 const cx = classNames.bind(style);
 export default function AddTicket() {
+  const navigate = useNavigate();
   const today = new Date();
   const { user } = useContext(UserContext);
   const ref = useRef(null);
@@ -86,7 +87,7 @@ export default function AddTicket() {
       toast.warning("Vui lòng chọn số lượng khách hàng");
       return false;
     }
-    if ((soLuong + soLuong1 + soLuong2) > tour?.QuyMo) {
+    if (soLuong + soLuong1 + soLuong2 > tour?.QuyMo) {
       toast.warning("Số người vượt quá số chỗ còn trống");
       return false;
     }
@@ -116,6 +117,7 @@ export default function AddTicket() {
         .then((res) => {
           if (res && res.message === "success") {
             toast.success(user.accout.email + "Đã tao phiếu");
+            navigate("/phieu-dat-tour");
           }
           if (res && res.message === "biggest") {
             toast.warning("Số lượng khách vượt quá quy mô tour!");

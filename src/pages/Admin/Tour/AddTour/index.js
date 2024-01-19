@@ -18,9 +18,10 @@ import {
 import FormData from "form-data";
 import axios from "../../../../setup-axios/axios";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const cx = classNames.bind(style);
 export default function AddTour() {
+  const navigate = useNavigate();
   const countries = [
     {
       name: "NN",
@@ -253,6 +254,7 @@ export default function AddTour() {
             setLichTrinh5("");
             setLichTrinh6("");
             setLichTrinh7("");
+            navigate("/tour");
           }
         });
     }
