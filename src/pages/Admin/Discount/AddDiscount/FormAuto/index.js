@@ -68,7 +68,6 @@ export default function FormAuto() {
       toast.warning("Mức giảm vượt quá 100%");
       return false;
     }
-    toast.success("Thêm thành công");
     return true;
   };
   const handleSubmit = () => {
@@ -78,6 +77,7 @@ export default function FormAuto() {
         .post("/voucher/add-voucher", { name, start, end, percent })
         .then((res) => {
           if (res.message === "success") {
+            toast.success("Thêm thành công");
             navigate("/giam-gia");
           }
         });

@@ -51,8 +51,8 @@ export default function LoginAdmin() {
           toast.success("Login success");
           navigate("/admin-home");
         }
-        if (res.message === "fails") {
-          toast.error("Wrong password or username");
+        if (res.message === "fails" || res.message === "wrong") {
+          toast.error("Sai username hoặc password");
         }
       });
   };

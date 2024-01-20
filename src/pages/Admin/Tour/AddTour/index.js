@@ -197,7 +197,6 @@ export default function AddTour() {
     //     }
     //     return true;
     // }
-    toast.success("Thêm thành công");
     return true;
   };
   const handleAddTour = () => {
@@ -236,6 +235,7 @@ export default function AddTour() {
         })
         .then((res) => {
           if (res && res.message === "success") {
+            toast.success("Thêm thành công");
             setTenTour("");
             setNgayDi("");
             setNgayVe("");

@@ -63,7 +63,6 @@ export default function FormUnauto() {
       toast.warning("Mức giảm vượt quá 100%");
       return false;
     }
-    toast.success("Thêm thành công");
     return true;
   };
   const handleChange = (e) => {
@@ -116,6 +115,7 @@ export default function FormUnauto() {
         })
         .then((res) => {
           if (res.message === "success") {
+            toast.success("Thêm thành công");
             setName("");
             setStart("");
             setDiscount("");

@@ -75,7 +75,7 @@ export default function UpdateEmployee() {
     axios.put("/employees/employee-out", { id }).then((res) => {
       if (res && res.message === "success") {
         toast.success("Cap nhat thanh cong");
-        navigate("/employee");
+        navigate("/nhan-vien");
       }
     });
   };
