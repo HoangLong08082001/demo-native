@@ -33,6 +33,7 @@ export default function AddTour() {
         { name: "Miền Bắc" },
         { name: "Miền Trung" },
         { name: "Miền Nam" },
+        { name: "Miền Tây" },
       ],
     },
   ];

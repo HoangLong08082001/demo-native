@@ -69,8 +69,10 @@ export default function AddTicket() {
     ) {
       setGiamGia(selectedTour.mucgiamgia);
       console.log(selectedTour.mucgiamgia);
-      setGiamGiaThem(selectedTour.mucgiamgiathem);
-      console.log(selectedTour.mucgiamgiathem);
+      if (today <= new Date(selectedTour.thoigianketthucthem)) {
+        setGiamGiaThem(selectedTour.mucgiamgiathem);
+        console.log(selectedTour.mucgiamgiathem);
+      }
     }
   };
 
